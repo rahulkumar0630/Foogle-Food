@@ -1,0 +1,29 @@
+<pre id="spoonacular-ingredients" style="display:none">
+<script type="text/javascript">
+
+   function getParameter(theParameter) { 
+      var params = window.location.search.substr(1).split('&');
+ 
+      for (var i = 0; i < params.length; i++) {
+         var p=params[i].split('=');
+	 if (p[0] == theParameter) {
+	    return decodeURIComponent(p[1]);
+	 } 
+       }
+       return false;
+    }
+   var Data = getParameter('Data');
+   document.write(Data);
+
+</script>
+
+
+
+</pre>
+<div id="spoonacular-price-estimator"></div>
+<script type="text/javascript">
+ var spoonacularServings = 1;
+ var spoonacularPriceView = 2;
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
