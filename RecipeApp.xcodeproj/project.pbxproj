@@ -16,6 +16,7 @@
 		E4614F881EF45088003F4EE7 /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F871EF45088003F4EE7 /* backArrow.png */; };
 		E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */; };
 		E4614F8C1EF486C3003F4EE7 /* arrow_forward_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */; };
+		E46CC2551EF9D4D40063AF18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46CC2541EF9D4D40063AF18 /* String.swift */; };
 		E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */; };
 		E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C1701EEA357800CE2D6B /* ViewController.swift */; };
 		E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F0C1721EEA357800CE2D6B /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		E4614F871EF45088003F4EE7 /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backArrow.png; path = ../../../../../Downloads/backArrow.png; sourceTree = "<group>"; };
 		E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_back_white_192x192.png; path = ../../../../../Downloads/arrow_back_white_192x192.png; sourceTree = "<group>"; };
 		E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_forward_white_192x192.png; path = ../../../../../Downloads/arrow_forward_white_192x192.png; sourceTree = "<group>"; };
+		E46CC2541EF9D4D40063AF18 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */,
 				E4F0C1701EEA357800CE2D6B /* ViewController.swift */,
+				E46CC2541EF9D4D40063AF18 /* String.swift */,
 				E4F0C1721EEA357800CE2D6B /* Main.storyboard */,
 				E42635681EF0D9FA000D6076 /* Banner.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46CC2551EF9D4D40063AF18 /* String.swift in Sources */,
 				E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */,
 				E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */,
 			);
