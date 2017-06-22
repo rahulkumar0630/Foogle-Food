@@ -53,7 +53,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         self.UrlBeforeSent = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)"
         //print(self.UrlBeforeSent)
         
-        self.UrlBeforeSent = self.UrlBeforeSent.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        let urlSet = CharacterSet.urlQueryAllowed
+            .union(CharacterSet.punctuationCharacters)
+        
+        self.UrlBeforeSent = self.UrlBeforeSent.addingPercentEncoding(withAllowedCharacters: urlSet)!
         print(self.UrlBeforeSent)
         
         let foodPriceUrl = URL(string: self.UrlBeforeSent)
@@ -64,46 +67,31 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
         
-        self.webViewforData.evaluateJavaScript("document.getElementsByTagName('html')[0].innerHTML", completionHandler: { (value, error) in
+        self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
             //print(value)
             self.stringforvalue = value as! String
             
             if self.stringforvalue.range(of:"price:") != nil{
             
                 
-                let range: Range<String.Index> = self.stringforvalue.range(of: "price:")!
+                let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
                 let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
-                self.incremetor = index
+                self.incremetor = index + 19
                 
                 
                 while self.boolForSubstring == false
                 {
-                    if(self.stringforvalue[self.incremetor] != "\"")
+                    if(self.stringforvalue[self.incremetor] != "<")
                     {
+                        self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
                         self.incremetor = self.incremetor + 1
                     }
-                    if(self.stringforvalue[self.incremetor] == "\"")
+                    else
                     {
-                        //self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
-                        self.NextQoute = true
-                        self.incremetor = self.incremetor + 2
-                        
-                        while self.boolForSubstring == false
-                        {
-                            
-                            if(self.stringforvalue[self.incremetor] != "\"")
-                            {
-                                self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
-                                self.incremetor = self.incremetor + 1
-                            }
-                            else
-                            {
-                                self.boolForSubstring = true
-                            }
-                        }
+                         self.boolForSubstring = true
                     }
                 }
-                //self.Price = Double(self.newPriceString)!
+                self.Price = Double(self.newPriceString)!
                 print(self.newPriceString)
                 self.newPriceString = ""
                 self.boolForSubstring = false
@@ -196,10 +184,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 
                 if(item == ArrayForIngredients[ArrayForIngredients.count - 1])
                 {
-                    self.StringforIngredients = "\(self.StringforIngredients) \(item)."
+                    self.StringforIngredients = "\(self.StringforIngredients) \(item)"
                     break
                 }
-                self.StringforIngredients = "\(self.StringforIngredients) \(item) |"
+                self.StringforIngredients = "\(self.StringforIngredients) \(item) %0A"
             }
             self.StringforIngredients = self.StringforIngredients.trimmingCharacters(in: .whitespacesAndNewlines)
             print(self.StringforIngredients)
