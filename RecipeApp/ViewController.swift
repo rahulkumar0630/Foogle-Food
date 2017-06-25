@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate {
 
     @IBOutlet var WebView: UIWebView!
     var currentURL:String = ""
@@ -22,9 +22,21 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var UrlBeforeSent: String = ""
     var StringforIngredients: String = ""
     var Price:Double = 0.0
+    var ChangeNewLabel:Bool = false
+    var NumberofTimesWebViewLoaded:Int = 0
+    let CanGoBack = UIImage(named: "arrow_back_white_192x192")
+    let canGoForward = UIImage(named: "arrow_forward_white_192x192")
+    let CantGoBack = UIImage(named: "arrowBackWhenCantGoBack")
+    let cantGoForward = UIImage(named: "arrowForwardWhenCantGoForward")
+
 
     
     @IBOutlet var Orderbutton: UIButton!
+    @IBOutlet var SmallSearchRecipes: UILabel!
+    @IBOutlet var BigSearchRecipes: UILabel!
+    @IBOutlet var WhiteBar: UIImageView!
+    @IBOutlet var BackArrow: UIButton!
+    @IBOutlet var ForwardArrow: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +52,78 @@ class ViewController: UIViewController, WKNavigationDelegate {
         WebView.loadRequest(request)
         
         webViewforData.navigationDelegate = self
+        WebView.delegate = self
+        SmallSearchRecipes.isHidden = true
+
         
     }
     
+    @objc(webViewDidStartLoad:) func webViewDidStartLoad(_ webView: UIWebView)
+    {
+         NumberofTimesWebViewLoaded = NumberofTimesWebViewLoaded + 1
+        
+            if(NumberofTimesWebViewLoaded == 2)
+            {
+                var newFrame = CGRect.init(x: 0, y: 86, width: WebView.frame.width, height: WebView.frame.height + 31)
+                WebView.frame = newFrame
+                BigSearchRecipes.isHidden = true
+                WhiteBar.isHidden = true
+                SmallSearchRecipes.isHidden = false
+            }
+    }
     
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        
+            if(WebView.canGoBack == true)
+            {
+                
+                UIView.transition(with: BackArrow,
+                                  duration: 0.3,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                   self.BackArrow.setImage(self.CanGoBack, for: UIControlState.normal)
+                },
+                                  completion: nil)
+            }
+        
+            if(WebView.canGoForward == true)
+            {
+                ForwardArrow.setImage(canGoForward, for: UIControlState.normal)
+                
+                UIView.transition(with: ForwardArrow,
+                                  duration: 0.3,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.ForwardArrow.setImage(self.canGoForward, for: UIControlState.normal)
+                },
+                                  completion: nil)
+            }
+            if(WebView.canGoBack == false)
+            {
+                
+                UIView.transition(with: BackArrow,
+                                  duration: 0.3,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.BackArrow.setImage(self.CantGoBack, for: UIControlState.normal)
+                },
+                                  completion: nil)
+            }
+        
+            if(WebView.canGoForward == false)
+            {
+                
+                UIView.transition(with: ForwardArrow,
+                                  duration: 0.3,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.ForwardArrow.setImage(self.cantGoForward, for: UIControlState.normal)
+                },
+                                  completion: nil)
+            }
+  
+        
+    }
     
     
     func FindIngredientPrice(Ingredient: String){
@@ -64,7 +144,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let requestforPrice = URLRequest(url: foodPriceUrl!)
         self.webViewforData.load(requestforPrice)
         
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
         
         self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
@@ -92,7 +172,19 @@ class ViewController: UIViewController, WKNavigationDelegate {
                     }
                 }
                 self.Price = Double(self.newPriceString)!
-                print(self.newPriceString)
+                print(self.Price)
+                
+                let alert = UIAlertController(title: "Price",
+                                              message: self.newPriceString,
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                
+                let cancelAction = UIAlertAction(title: "OK",
+                                                 style: .cancel, handler: nil)
+                
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true)
+                
+                
                 self.newPriceString = ""
                 self.boolForSubstring = false
                 self.NextQoute = false
@@ -109,6 +201,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Loaded")
+        
         
     }
 
@@ -201,6 +294,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         
 
+    }
+    
+    
+    @IBAction func onSettingsPress(_ sender: Any) {
+        print(self.Price)
     }
     
     

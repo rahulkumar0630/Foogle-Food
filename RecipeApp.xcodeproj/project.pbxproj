@@ -17,6 +17,9 @@
 		E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */; };
 		E4614F8C1EF486C3003F4EE7 /* arrow_forward_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */; };
 		E46CC2551EF9D4D40063AF18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46CC2541EF9D4D40063AF18 /* String.swift */; };
+		E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250541EFF0EB300222E5E /* WhiteBar.png */; };
+		E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */; };
+		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
 		E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */; };
 		E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C1701EEA357800CE2D6B /* ViewController.swift */; };
 		E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F0C1721EEA357800CE2D6B /* Main.storyboard */; };
@@ -54,6 +57,9 @@
 		E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_back_white_192x192.png; path = ../../../../../Downloads/arrow_back_white_192x192.png; sourceTree = "<group>"; };
 		E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_forward_white_192x192.png; path = ../../../../../Downloads/arrow_forward_white_192x192.png; sourceTree = "<group>"; };
 		E46CC2541EF9D4D40063AF18 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E4C250541EFF0EB300222E5E /* WhiteBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBar.png; path = ../../../../../Downloads/WhiteBar.png; sourceTree = "<group>"; };
+		E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForwardWhenCantGoForward.png; path = ../../../../../Downloads/arrowForwardWhenCantGoForward.png; sourceTree = "<group>"; };
+		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
 		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,10 +128,13 @@
 				E46CC2541EF9D4D40063AF18 /* String.swift */,
 				E4F0C1721EEA357800CE2D6B /* Main.storyboard */,
 				E42635681EF0D9FA000D6076 /* Banner.png */,
+				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
 				E45072C61EF1972800DC0921 /* OrderButton.png */,
 				E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */,
 				E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */,
+				E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */,
+				E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */,
 				E4614F871EF45088003F4EE7 /* backArrow.png */,
 				E45072CA1EF1A7D900DC0921 /* OrderButtonFalse.png */,
 				E45072C81EF1A15A00DC0921 /* Settings.png */,
@@ -266,17 +275,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4614F8C1EF486C3003F4EE7 /* arrow_forward_white_192x192.png in Resources */,
+				E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */,
 				E4614F881EF45088003F4EE7 /* backArrow.png in Resources */,
 				E45072C91EF1A15A00DC0921 /* Settings.png in Resources */,
 				E4F0C1791EEA357800CE2D6B /* LaunchScreen.storyboard in Resources */,
 				E426356B1EF0DB33000D6076 /* BottomBanner.png in Resources */,
 				E4F0C1761EEA357800CE2D6B /* Assets.xcassets in Resources */,
 				E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */,
+				E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */,
 				E45072C71EF1972800DC0921 /* OrderButton.png in Resources */,
 				E42635691EF0D9FA000D6076 /* Banner.png in Resources */,
 				E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */,
 				E45072CB1EF1A7D900DC0921 /* OrderButtonFalse.png in Resources */,
 				E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */,
+				E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FL3J93TK96;
 				INFOPLIST_FILE = RecipeApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RahulKumar.RecipeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,7 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FL3J93TK96;
 				INFOPLIST_FILE = RecipeApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RahulKumar.RecipeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
