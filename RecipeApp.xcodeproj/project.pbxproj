@@ -17,6 +17,7 @@
 		E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */; };
 		E4614F8C1EF486C3003F4EE7 /* arrow_forward_white_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */; };
 		E46CC2551EF9D4D40063AF18 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46CC2541EF9D4D40063AF18 /* String.swift */; };
+		E473CDCD1F004C3B007CEDEF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E473CDCC1F004C3B007CEDEF /* UIButton.swift */; };
 		E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250541EFF0EB300222E5E /* WhiteBar.png */; };
 		E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */; };
 		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
@@ -57,6 +58,7 @@
 		E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_back_white_192x192.png; path = ../../../../../Downloads/arrow_back_white_192x192.png; sourceTree = "<group>"; };
 		E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_forward_white_192x192.png; path = ../../../../../Downloads/arrow_forward_white_192x192.png; sourceTree = "<group>"; };
 		E46CC2541EF9D4D40063AF18 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E473CDCC1F004C3B007CEDEF /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E4C250541EFF0EB300222E5E /* WhiteBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBar.png; path = ../../../../../Downloads/WhiteBar.png; sourceTree = "<group>"; };
 		E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForwardWhenCantGoForward.png; path = ../../../../../Downloads/arrowForwardWhenCantGoForward.png; sourceTree = "<group>"; };
 		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E4F0C1701EEA357800CE2D6B /* ViewController.swift */,
 				E46CC2541EF9D4D40063AF18 /* String.swift */,
 				E4F0C1721EEA357800CE2D6B /* Main.storyboard */,
+				E473CDCC1F004C3B007CEDEF /* UIButton.swift */,
 				E42635681EF0D9FA000D6076 /* Banner.png */,
 				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
@@ -316,6 +319,7 @@
 				E46CC2551EF9D4D40063AF18 /* String.swift in Sources */,
 				E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */,
 				E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */,
+				E473CDCD1F004C3B007CEDEF /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

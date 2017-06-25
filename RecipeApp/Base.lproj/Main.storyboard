@@ -56,19 +56,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Th-LC-Pj2">
-                                <rect key="frame" x="16" y="16" width="41" height="43"/>
+                                <rect key="frame" x="16" y="615" width="47" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back" image="arrowBackWhenCantGoBack.png"/>
                                 <connections>
                                     <action selector="OnBackPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iEE-2W-tcl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-uo-mOd">
-                                <rect key="frame" x="53" y="16" width="41" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Forward" image="arrowForwardWhenCantGoForward.png"/>
-                                <connections>
-                                    <action selector="OnForwardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrr-Hq-tDO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqt-WZ-MVX">
@@ -79,46 +71,7 @@
                                         <attributes>
                                             <color key="NSColor" red="0.17805000000000001" green="0.36514999999999997" blue="0.60399999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="28">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="56">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="84">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="112">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="140">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="168">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="196">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="224">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="252">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="280">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="308">
-                                                        <options/>
-                                                    </textTab>
-                                                    <textTab alignment="left" location="336">
-                                                        <options/>
-                                                    </textTab>
-                                                </tabStops>
-                                            </paragraphStyle>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -142,13 +95,21 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-uo-mOd">
+                                <rect key="frame" x="63" y="615" width="47" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forward" image="arrowForwardWhenCantGoForward.png"/>
+                                <connections>
+                                    <action selector="OnForwardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrr-Hq-tDO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="BackArrow" destination="4Th-LC-Pj2" id="7vY-wg-qDO"/>
+                        <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
-                        <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="mRs-iE-cxD"/>
+                        <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="Be9-4c-7z6"/>
                         <outlet property="Orderbutton" destination="Xp5-ht-NNJ" id="dX8-rx-tzr"/>
                         <outlet property="SmallSearchRecipes" destination="Yqt-WZ-MVX" id="DrI-Z6-UP0"/>
                         <outlet property="WebView" destination="blr-di-NBO" id="G58-vw-2WR"/>

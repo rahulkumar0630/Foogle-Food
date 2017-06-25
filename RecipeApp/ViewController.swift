@@ -70,60 +70,64 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                 WhiteBar.isHidden = true
                 SmallSearchRecipes.isHidden = false
             }
+            //checkArrowStatus()
+    }
+    
+    func checkArrowStatus()
+    {
+        if(WebView.canGoBack == true)
+        {
+            
+            UIWebView.transition(with: self.BackArrow,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.BackArrow.setImage(self.CanGoBack, for: UIControlState.normal)
+            },
+                              completion: nil)
+        }
+        
+        if(WebView.canGoForward == true)
+        {
+            
+            UIWebView.transition(with: self.ForwardArrow,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.ForwardArrow.setImage(self.canGoForward, for: UIControlState.normal)
+            },
+                              completion: nil)
+        }
+        if(WebView.canGoBack == false)
+        {
+            
+            UIWebView.transition(with: self.BackArrow,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.BackArrow.setImage(self.CantGoBack, for: UIControlState.normal)
+            },
+                              completion: nil)
+        }
+        
+        if(WebView.canGoForward == false)
+        {
+            
+            UIWebView.transition(with: self.ForwardArrow,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.ForwardArrow.setImage(self.cantGoForward, for: UIControlState.normal)
+            },
+                              completion: nil)
+        }
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
-            if(WebView.canGoBack == true)
-            {
-                
-                UIView.transition(with: BackArrow,
-                                  duration: 0.3,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                   self.BackArrow.setImage(self.CanGoBack, for: UIControlState.normal)
-                },
-                                  completion: nil)
-            }
-        
-            if(WebView.canGoForward == true)
-            {
-                ForwardArrow.setImage(canGoForward, for: UIControlState.normal)
-                
-                UIView.transition(with: ForwardArrow,
-                                  duration: 0.3,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                    self.ForwardArrow.setImage(self.canGoForward, for: UIControlState.normal)
-                },
-                                  completion: nil)
-            }
-            if(WebView.canGoBack == false)
-            {
-                
-                UIView.transition(with: BackArrow,
-                                  duration: 0.3,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                    self.BackArrow.setImage(self.CantGoBack, for: UIControlState.normal)
-                },
-                                  completion: nil)
-            }
-        
-            if(WebView.canGoForward == false)
-            {
-                
-                UIView.transition(with: ForwardArrow,
-                                  duration: 0.3,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                    self.ForwardArrow.setImage(self.cantGoForward, for: UIControlState.normal)
-                },
-                                  completion: nil)
-            }
-  
-        
+            checkArrowStatus()
     }
+    
     
     
     func FindIngredientPrice(Ingredient: String){
@@ -303,12 +307,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     
     
     @IBAction func OnBackPress(_ sender: Any) {
-        WebView.goBack()
+        
+       if(WebView.canGoBack)
+       {
+          WebView.goBack()
+       }
     }
     
     
     @IBAction func OnForwardPress(_ sender: Any) {
-        WebView.goForward()
+        
+        if(WebView.canGoForward)
+        {
+           WebView.goForward()
+        }
     }
     
     

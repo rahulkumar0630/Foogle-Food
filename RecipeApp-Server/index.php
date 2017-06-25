@@ -9,7 +9,7 @@ $input = $_GET['url'];
 
 $response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" . "$input",
   array(
-    "X-Mashape-Key" => "Z5awmF4951mshriAJrQnjykAAwvLp1Eo2TrjsnaxC5oOOqIUdB"
+    "X-Mashape-Key" => ""
   )
 );
 
