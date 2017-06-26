@@ -28,15 +28,19 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     let canGoForward = UIImage(named: "arrow_forward_white_192x192")
     let CantGoBack = UIImage(named: "arrowBackWhenCantGoBack")
     let cantGoForward = UIImage(named: "arrowForwardWhenCantGoForward")
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
 
-
-    
+    @IBOutlet var Masterview: UIView!
     @IBOutlet var Orderbutton: UIButton!
     @IBOutlet var SmallSearchRecipes: UILabel!
     @IBOutlet var BigSearchRecipes: UILabel!
     @IBOutlet var WhiteBar: UIImageView!
     @IBOutlet var BackArrow: UIButton!
     @IBOutlet var ForwardArrow: UIButton!
+    @IBOutlet var OrderView: UIView!
+    @IBOutlet var PriceTextinOrderView: UILabel!
+    @IBOutlet var ActivitySpinner: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         webViewforData.navigationDelegate = self
         WebView.delegate = self
         SmallSearchRecipes.isHidden = true
+        
+        self.OrderView.frame.origin.y = 667
+        OrderView.layer.cornerRadius = 10
+        
+        ActivitySpinner.isHidden = true
+        ActivitySpinner.scale(factor: 1.5)
+
+
 
         
     }
@@ -148,7 +160,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         let requestforPrice = URLRequest(url: foodPriceUrl!)
         self.webViewforData.load(requestforPrice)
         
-        let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
         
         self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
@@ -175,19 +187,30 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                          self.boolForSubstring = true
                     }
                 }
+                self.ActivitySpinner.stopAnimating()
                 self.Price = Double(self.newPriceString)!
                 print(self.Price)
                 
-                let alert = UIAlertController(title: "Price",
-                                              message: self.newPriceString,
-                                              preferredStyle: UIAlertControllerStyle.alert)
+                self.PriceTextinOrderView.text = "Price: \(self.newPriceString)"
+                self.ActivitySpinner.removeFromSuperview()
                 
-                let cancelAction = UIAlertAction(title: "OK",
-                                                 style: .cancel, handler: nil)
+                UIView.animate(withDuration: 0.6, animations: {
+                    self.OrderView.frame.origin.y = 315
+                    
+                })
+
+
                 
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true)
-                
+//                let alert = UIAlertController(title: "Price",
+//                                              message: self.newPriceString,
+//                                              preferredStyle: UIAlertControllerStyle.alert)
+//                
+//                let cancelAction = UIAlertAction(title: "OK",
+//                                                 style: .cancel, handler: nil)
+//                
+//                alert.addAction(cancelAction)
+//                self.present(alert, animated: true)
+//                
                 
                 self.newPriceString = ""
                 self.boolForSubstring = false
@@ -212,6 +235,31 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBAction func OnOrderPress(_ sender: Any) {
         
         //self.FindIngredientPrice(Ingredient: "3 pounds beef")
+        
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+        self.view.backgroundColor = UIColor.clear
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+                //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        
+        UIView.transition(with: self.Masterview,
+                             duration: 1,
+                             options: .transitionCrossDissolve,
+                             animations: {
+            self.ActivitySpinner.isHidden = false
+            self.ActivitySpinner.startAnimating()
+            self.view.addSubview(self.blurEffectView)
+            self.blurEffectView.addSubview(self.ActivitySpinner)
+            self.view.addSubview(self.OrderView)
+            
+                                
+            })
+        } else {
+            self.view.backgroundColor = UIColor.black
+        }
     
         currentURL = (WebView.request?.url?.absoluteString)!
         print(currentURL)
@@ -303,6 +351,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     
     @IBAction func onSettingsPress(_ sender: Any) {
         print(self.Price)
+        //print(self.OrderView.frame.origin.y)
     }
     
     
@@ -322,6 +371,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
            WebView.goForward()
         }
     }
+    
+    @IBAction func OnExitOrderPress(_ sender: Any) {
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
+            
+        })
+        UIView.transition(with: self.Masterview,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                self.blurEffectView.removeFromSuperview()
+                            
+        })
+    }
+    
     
     
     override func didReceiveMemoryWarning() {

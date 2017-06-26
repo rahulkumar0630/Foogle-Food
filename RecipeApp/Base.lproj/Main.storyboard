@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blr-di-NBO">
-                                <rect key="frame" x="0.0" y="119" width="375" height="493"/>
+                                <rect key="frame" x="4" y="121" width="375" height="493"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
@@ -63,6 +63,14 @@
                                     <action selector="OnBackPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iEE-2W-tcl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-uo-mOd">
+                                <rect key="frame" x="63" y="615" width="47" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forward" image="arrowForwardWhenCantGoForward.png"/>
+                                <connections>
+                                    <action selector="OnForwardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrr-Hq-tDO"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqt-WZ-MVX">
                                 <rect key="frame" x="127" y="66" width="121" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,22 +103,44 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-uo-mOd">
-                                <rect key="frame" x="63" y="615" width="47" height="48"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gDJ-FQ-5ix">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Forward" image="arrowForwardWhenCantGoForward.png"/>
-                                <connections>
-                                    <action selector="OnForwardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrr-Hq-tDO"/>
-                                </connections>
-                            </button>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vww-Ic-9Iu">
+                                <rect key="frame" x="9" y="317" width="357" height="342"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTf-n2-fcL">
+                                        <rect key="frame" x="317" y="6" width="32" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="ExitButton.png"/>
+                                        <connections>
+                                            <action selector="OnExitOrderPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gef-3e-zqK"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-rI-nk8">
+                                        <rect key="frame" x="100" y="13" width="156" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" red="0.085723079741001129" green="0.37061983346939087" blue="0.6227070689201355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="ActivitySpinner" destination="gDJ-FQ-5ix" id="hlc-eD-d41"/>
                         <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
                         <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="Be9-4c-7z6"/>
+                        <outlet property="Masterview" destination="8bC-Xf-vdC" id="Ud9-lA-kXx"/>
+                        <outlet property="OrderView" destination="vww-Ic-9Iu" id="eGk-Ms-KQb"/>
                         <outlet property="Orderbutton" destination="Xp5-ht-NNJ" id="dX8-rx-tzr"/>
+                        <outlet property="PriceTextinOrderView" destination="7N2-rI-nk8" id="baL-TT-Ech"/>
                         <outlet property="SmallSearchRecipes" destination="Yqt-WZ-MVX" id="DrI-Z6-UP0"/>
                         <outlet property="WebView" destination="blr-di-NBO" id="G58-vw-2WR"/>
                         <outlet property="WhiteBar" destination="hVf-yd-gOU" id="iWt-EU-wT5"/>
@@ -123,6 +153,7 @@
     </scenes>
     <resources>
         <image name="BackgroundforAPP.png" width="750" height="1334"/>
+        <image name="ExitButton.png" width="512" height="512"/>
         <image name="OrderButton.png" width="750" height="126"/>
         <image name="Settings.png" width="256" height="256"/>
         <image name="WhiteBar.png" width="748" height="108"/>
