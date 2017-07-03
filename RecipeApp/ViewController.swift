@@ -29,7 +29,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     let CantGoBack = UIImage(named: "arrowBackWhenCantGoBack")
     let cantGoForward = UIImage(named: "arrowForwardWhenCantGoForward")
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    let grayView = UIView()
 
+    @IBOutlet var LoaderView: UIView!
     @IBOutlet var Masterview: UIView!
     @IBOutlet var Orderbutton: UIButton!
     @IBOutlet var SmallSearchRecipes: UILabel!
@@ -63,7 +65,19 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         OrderView.layer.cornerRadius = 10
         
         ActivitySpinner.isHidden = true
-        ActivitySpinner.scale(factor: 1.5)
+        ActivitySpinner.startAnimating()
+        LoaderView.isHidden = true
+        LoaderView.layer.cornerRadius = 10
+        //LoaderView.addBlurEffect()
+        
+        
+        //grayView.isHidden = true
+        self.grayView.frame = self.view.bounds
+        grayView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.addSubview(grayView)
+        self.grayView.addSubview(LoaderView)
+        self.grayView.isHidden = true
+
 
 
 
@@ -187,14 +201,40 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                          self.boolForSubstring = true
                     }
                 }
-                self.ActivitySpinner.stopAnimating()
+                //self.ActivitySpinner.stopAnimating()
                 self.Price = Double(self.newPriceString)!
                 print(self.Price)
                 
                 self.PriceTextinOrderView.text = "Price: \(self.newPriceString)"
-                self.ActivitySpinner.removeFromSuperview()
+                self.ActivitySpinner.isHidden = true
+                self.LoaderView.isHidden = true
+                self.grayView.isHidden = true
+
                 
-                UIView.animate(withDuration: 0.6, animations: {
+                if !UIAccessibilityIsReduceTransparencyEnabled() {
+                    self.view.backgroundColor = UIColor.clear
+                    //always fill the view
+                    self.blurEffectView.frame = self.view.bounds
+                    //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
+                    self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    
+                    
+                    UIView.transition(with: self.Masterview,
+                                      duration: 0.5,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                                        self.view.addSubview(self.blurEffectView)
+                                        self.view.addSubview(self.OrderView)
+                                        
+                                        
+                    })
+                } else {
+                    self.view.backgroundColor = UIColor.black
+                }
+                
+
+                
+                UIView.animate(withDuration: 1, animations: {
                     self.OrderView.frame.origin.y = 315
                     
                 })
@@ -234,33 +274,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
 
     @IBAction func OnOrderPress(_ sender: Any) {
         
+        self.grayView.isHidden = false
+        LoaderView.isHidden = false
+        ActivitySpinner.isHidden = false
+        
+        //LoaderView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+        
+        
         //self.FindIngredientPrice(Ingredient: "3 pounds beef")
         
-        
-        if !UIAccessibilityIsReduceTransparencyEnabled() {
-        self.view.backgroundColor = UIColor.clear
-            //always fill the view
-            blurEffectView.frame = self.view.bounds
-                //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        
-        UIView.transition(with: self.Masterview,
-                             duration: 1,
-                             options: .transitionCrossDissolve,
-                             animations: {
-            self.ActivitySpinner.isHidden = false
-            self.ActivitySpinner.startAnimating()
-            self.view.addSubview(self.blurEffectView)
-            self.blurEffectView.addSubview(self.ActivitySpinner)
-            self.view.addSubview(self.OrderView)
-            
-                                
-            })
-        } else {
-            self.view.backgroundColor = UIColor.black
-        }
-    
         currentURL = (WebView.request?.url?.absoluteString)!
         print(currentURL)
         var ArrayForIngredients = [String]()

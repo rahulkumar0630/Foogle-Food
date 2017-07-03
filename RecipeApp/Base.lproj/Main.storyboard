@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blr-di-NBO">
-                                <rect key="frame" x="4" y="121" width="375" height="493"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="493"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
@@ -103,12 +103,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gDJ-FQ-5ix">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vww-Ic-9Iu">
-                                <rect key="frame" x="9" y="317" width="357" height="342"/>
+                                <rect key="frame" x="9" y="311" width="357" height="342"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTf-n2-fcL">
@@ -129,6 +125,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvw-sc-Z8P">
+                                <rect key="frame" x="131" y="296" width="112" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gDJ-FQ-5ix">
+                                        <rect key="frame" x="46" y="27" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.48793533444404602" green="0.76345562934875488" blue="0.96081876754760742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -137,6 +144,7 @@
                         <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
                         <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="Be9-4c-7z6"/>
+                        <outlet property="LoaderView" destination="fvw-sc-Z8P" id="gkR-mf-ehU"/>
                         <outlet property="Masterview" destination="8bC-Xf-vdC" id="Ud9-lA-kXx"/>
                         <outlet property="OrderView" destination="vww-Ic-9Iu" id="eGk-Ms-KQb"/>
                         <outlet property="Orderbutton" destination="Xp5-ht-NNJ" id="dX8-rx-tzr"/>
