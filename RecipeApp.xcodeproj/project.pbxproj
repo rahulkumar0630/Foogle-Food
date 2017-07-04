@@ -21,6 +21,9 @@
 		E471761A1F09B13600E9A65D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47176191F09B13600E9A65D /* UIView.swift */; };
 		E473CDCD1F004C3B007CEDEF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E473CDCC1F004C3B007CEDEF /* UIButton.swift */; };
 		E473CDCF1F007575007CEDEF /* ExitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E473CDCE1F007575007CEDEF /* ExitButton.png */; };
+		E4B386621F0B04B300E23AE3 /* BackgroundforAPPGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B386611F0B04B300E23AE3 /* BackgroundforAPPGreen.png */; };
+		E4B386641F0B07BC00E23AE3 /* SkyBlueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B386631F0B07BC00E23AE3 /* SkyBlueButton.png */; };
+		E4B386661F0B08BC00E23AE3 /* GrayOrderButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */; };
 		E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250541EFF0EB300222E5E /* WhiteBar.png */; };
 		E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */; };
 		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
@@ -65,6 +68,9 @@
 		E47176191F09B13600E9A65D /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E473CDCC1F004C3B007CEDEF /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E473CDCE1F007575007CEDEF /* ExitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitButton.png; path = ../../../../../Downloads/ExitButton.png; sourceTree = "<group>"; };
+		E4B386611F0B04B300E23AE3 /* BackgroundforAPPGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforAPPGreen.png; path = ../../../../../Downloads/BackgroundforAPPGreen.png; sourceTree = "<group>"; };
+		E4B386631F0B07BC00E23AE3 /* SkyBlueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SkyBlueButton.png; path = ../../../../../Downloads/SkyBlueButton.png; sourceTree = "<group>"; };
+		E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayOrderButton.png; path = ../../../../../Downloads/GrayOrderButton.png; sourceTree = "<group>"; };
 		E4C250541EFF0EB300222E5E /* WhiteBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBar.png; path = ../../../../../Downloads/WhiteBar.png; sourceTree = "<group>"; };
 		E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForwardWhenCantGoForward.png; path = ../../../../../Downloads/arrowForwardWhenCantGoForward.png; sourceTree = "<group>"; };
 		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E473CDCE1F007575007CEDEF /* ExitButton.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
+				E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */,
+				E4B386631F0B07BC00E23AE3 /* SkyBlueButton.png */,
+				E4B386611F0B04B300E23AE3 /* BackgroundforAPPGreen.png */,
 				E45072C61EF1972800DC0921 /* OrderButton.png */,
 				E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */,
 				E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */,
@@ -298,10 +307,13 @@
 				E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */,
 				E45072C71EF1972800DC0921 /* OrderButton.png in Resources */,
 				E42635691EF0D9FA000D6076 /* Banner.png in Resources */,
+				E4B386661F0B08BC00E23AE3 /* GrayOrderButton.png in Resources */,
 				E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */,
 				E45072CB1EF1A7D900DC0921 /* OrderButtonFalse.png in Resources */,
 				E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */,
 				E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */,
+				E4B386621F0B04B300E23AE3 /* BackgroundforAPPGreen.png in Resources */,
+				E4B386641F0B07BC00E23AE3 /* SkyBlueButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

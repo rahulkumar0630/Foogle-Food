@@ -88,10 +88,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         self.progressbar.setProgress(0.1, animated: false)
         
         //Orderbutton.isHidden = true
-        
-
-
-
+        whitebarforprogressbar.isHidden = true
 
 
         
@@ -140,6 +137,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         
             if(NumberofTimesWebViewLoaded == 2)
             {
+                whitebarforprogressbar.isHidden = false
                 SmallSearchRecipes.isHidden = false
                 var newFrame = CGRect.init(x: 0, y: 86, width: WebView.frame.width, height: WebView.frame.height + 31)
                 WebView.frame = newFrame
@@ -243,10 +241,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
             .union(CharacterSet.punctuationCharacters)
         
         self.UrlBeforeSent = self.UrlBeforeSent.addingPercentEncoding(withAllowedCharacters: urlSet)!
-        print(self.UrlBeforeSent)
+        //print(self.UrlBeforeSent)
         
         let foodPriceUrl = URL(string: self.UrlBeforeSent)
-
+        print ("ravi....\(foodPriceUrl)")
         let requestforPrice = URLRequest(url: foodPriceUrl!)
         self.webViewforData.load(requestforPrice)
         
@@ -344,7 +342,94 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Loaded")
+//        print
+//            self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
+//                //print(value)
+//                self.stringforvalue = value as! String
+//                
+//                if self.stringforvalue.range(of:"price:") != nil{
+//                    
+//                    
+//                    let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
+//                    let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
+//                    self.incremetor = index + 19
+//                    
+//                    print(self.stringforvalue)
+//                    while self.boolForSubstring == false
+//                    {
+//                        if(self.stringforvalue[self.incremetor] != "<")
+//                        {
+//                            self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
+//                            self.incremetor = self.incremetor + 1
+//                        }
+//                        else
+//                        {
+//                            self.boolForSubstring = true
+//                        }
+//                    }
+//                    //self.ActivitySpinner.stopAnimating()
+//                    self.Price = Double(self.newPriceString)!
+//                    print(self.Price)
+//                    
+//                    self.PriceTextinOrderView.text = "Price: \(self.newPriceString)"
+//                    self.ActivitySpinner.isHidden = true
+//                    self.LoaderView.isHidden = true
+//                    self.grayView.isHidden = true
+//                    
+//                    
+//                    if !UIAccessibilityIsReduceTransparencyEnabled() {
+//                        self.view.backgroundColor = UIColor.clear
+//                        //always fill the view
+//                        self.blurEffectView.frame = self.view.bounds
+//                        //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
+//                        self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                        
+//                        
+//                        UIView.transition(with: self.Masterview,
+//                                          duration: 0.5,
+//                                          options: .transitionCrossDissolve,
+//                                          animations: {
+//                                            self.view.addSubview(self.blurEffectView)
+//                                            self.view.addSubview(self.OrderView)
+//                                            
+//                                            
+//                        })
+//                    } else {
+//                        self.view.backgroundColor = UIColor.black
+//                    }
+//                    
+//                    
+//                    
+//                    UIView.animate(withDuration: 1, animations: {
+//                        self.OrderView.frame.origin.y = 315
+//                        
+//                    })
+//                    
+//                    
+//                    
+//                    //                let alert = UIAlertController(title: "Price",
+//                    //                                              message: self.newPriceString,
+//                    //                                              preferredStyle: UIAlertControllerStyle.alert)
+//                    //
+//                    //                let cancelAction = UIAlertAction(title: "OK",
+//                    //                                                 style: .cancel, handler: nil)
+//                    //                
+//                    //                alert.addAction(cancelAction)
+//                    //                self.present(alert, animated: true)
+//                    //                
+//                    
+//                    self.newPriceString = ""
+//                    self.boolForSubstring = false
+//                    self.NextQoute = false
+//                    self.incremetor = 0
+//                    self.UrlBeforeSent = ""
+//                    
+//                }
+//                
+//            })
         
+        
+
         
     }
 
