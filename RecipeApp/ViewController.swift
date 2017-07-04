@@ -23,13 +23,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     var StringforIngredients: String = ""
     var Price:Double = 0.0
     var ChangeNewLabel:Bool = false
+    var ArrayForIngredients = [String]()
     var NumberofTimesWebViewLoaded:Int = 0
     let CanGoBack = UIImage(named: "arrow_back_white_192x192")
     let canGoForward = UIImage(named: "arrow_forward_white_192x192")
     let CantGoBack = UIImage(named: "arrowBackWhenCantGoBack")
     let cantGoForward = UIImage(named: "arrowForwardWhenCantGoForward")
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    var LabelForInsertingIngredients = UILabel()
     let grayView = UIView()
+    var arrayForDisplayItems = [UILabel]()
     
     
    var theBool: Bool!
@@ -46,15 +49,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBOutlet var OrderView: UIView!
     @IBOutlet var PriceTextinOrderView: UILabel!
     @IBOutlet var ActivitySpinner: UIActivityIndicatorView!
-    @IBOutlet var progressbar: UIProgressView!
-    @IBOutlet var whitebarforprogressbar: UIView!
-    
+    @IBOutlet var ActivityIndicatorforWeb: UIActivityIndicatorView!
+    @IBOutlet var StackViewForIngredients: UIStackView!
+    @IBOutlet var PaynowButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         Orderbutton.layer.cornerRadius = 10
-        
         
         let url = URL(string: "https://www.google.com")
 
@@ -68,6 +70,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         
         self.OrderView.frame.origin.y = 667
         OrderView.layer.cornerRadius = 10
+        //PaynowButton.layer.cornerRadius = 10
         
         ActivitySpinner.isHidden = true
         ActivitySpinner.startAnimating()
@@ -82,70 +85,29 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         self.view.addSubview(grayView)
         self.grayView.addSubview(LoaderView)
         self.grayView.isHidden = true
-        self.progressbar.transform = progressbar.transform.scaledBy(x: 1, y: 2)
-
+        self.ActivityIndicatorforWeb.isHidden = true
+        self.ActivityIndicatorforWeb.startAnimating()
+        //StackViewForIngredients.removeFromSuperview()
         
-        self.progressbar.setProgress(0.1, animated: false)
-        
-        //Orderbutton.isHidden = true
-        whitebarforprogressbar.isHidden = true
-
-
-        
-    }
-    
-    func funcToCallWhenStartLoadingYourWebview() {
-        self.progressbar.progress = 0.0
-        self.theBool = false
-        self.myTimer = Timer.scheduledTimer(timeInterval: 0.01667, target: self, selector: "timerCallback", userInfo: nil, repeats: true)
-    }
-    
-    func funcToCallCalledWhenUIWebViewFinishesLoading() {
-        self.theBool = true
-    }
-    
-    func timerCallback() {
-        
-        if(self.progressbar.isHidden == true)
-        {
-            self.progressbar.isHidden = false
-        }
-        if self.theBool {
-            if self.progressbar.progress >= 1 {
-                self.progressbar.isHidden = true
-                self.myTimer.invalidate()
-            } else {
-                self.progressbar.progress += 0.1
-            }
-        } else {
-            self.progressbar.progress += 0.05
-            if self.progressbar.progress >= 0.95 {
-                self.progressbar.progress = 0.95
-            }
-        }
-        //self.progressbar.isHidden = false
     }
 
     
     @objc(webViewDidStartLoad:) func webViewDidStartLoad(_ webView: UIWebView)
     {
-        self.progressbar.setProgress(0.0, animated: false)
-        funcToCallWhenStartLoadingYourWebview()
-        //timerCallback()
+         ActivityIndicatorforWeb.isHidden = false
 
          NumberofTimesWebViewLoaded = NumberofTimesWebViewLoaded + 1
         
             if(NumberofTimesWebViewLoaded == 2)
             {
-                whitebarforprogressbar.isHidden = false
                 SmallSearchRecipes.isHidden = false
                 var newFrame = CGRect.init(x: 0, y: 86, width: WebView.frame.width, height: WebView.frame.height + 31)
                 WebView.frame = newFrame
                 BigSearchRecipes.isHidden = true
                 WhiteBar.isHidden = true
             }
-            //checkArrowStatus()
     }
+
     
     func checkArrowStatus()
     {
@@ -199,33 +161,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
-            funcToCallCalledWhenUIWebViewFinishesLoading()
-            //timerCallback()
+            ActivityIndicatorforWeb.isHidden = true
             checkArrowStatus()
         
             let currenturl = (WebView.request?.url?.absoluteString)!
             print(currenturl)
-        
-//            if(currenturl.range(of:"https://www.google.com/search") != nil || currenturl.range(of:"https://www.google.com/") != nil)
-//            {
-//                
-//                UIWebView.transition(with: self.Orderbutton,
-//                                     duration: 0.5,
-//                                     options: .transitionCrossDissolve,
-//                                     animations: {
-//                                        self.Orderbutton.isHidden = true
-//                })
-//            }
-//            else
-//            {
-//                
-//                UIWebView.transition(with: self.Orderbutton,
-//                                     duration: 0.5,
-//                                     options: .transitionCrossDissolve,
-//                                     animations: {
-//                                        self.Orderbutton.isHidden = false
-//                })
-//            }
     }
     
     
@@ -283,7 +223,19 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                 self.ActivitySpinner.isHidden = true
                 self.LoaderView.isHidden = true
                 self.grayView.isHidden = true
-
+                
+                //self.OrderView.addSubview(self.StackViewForIngredients)
+                for item in self.ArrayForIngredients
+                {
+                    self.LabelForInsertingIngredients = UILabel()
+                    
+                    self.LabelForInsertingIngredients.text = item
+                    
+                    self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
+                    self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
+                }
+                
+                //self.LabelForInsertingIngredients = UILabel()
                 
                 if !UIAccessibilityIsReduceTransparencyEnabled() {
                     self.view.backgroundColor = UIColor.clear
@@ -299,33 +251,29 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                       animations: {
                                         self.view.addSubview(self.blurEffectView)
                                         self.view.addSubview(self.OrderView)
-                                        
-                                        
-                    })
+                                        self.OrderView.addSubview(self.PaynowButton)
+                                        self.OrderView.layoutIfNeeded()
+                                        self.PaynowButton.clipsToBounds = true
+                                        self.PaynowButton.layer.cornerRadius = 10
+                                })
+
+                        
                 } else {
                     self.view.backgroundColor = UIColor.black
                 }
                 
+                
+                let gesture = UITapGestureRecognizer(target: self, action: "someAction:")
+                self.blurEffectView.addGestureRecognizer(gesture)
+                
 
                 
                 UIView.animate(withDuration: 1, animations: {
-                    self.OrderView.frame.origin.y = 315
+                    self.OrderView.frame.origin.y = 70
                     
                 })
 
 
-                
-//                let alert = UIAlertController(title: "Price",
-//                                              message: self.newPriceString,
-//                                              preferredStyle: UIAlertControllerStyle.alert)
-//                
-//                let cancelAction = UIAlertAction(title: "OK",
-//                                                 style: .cancel, handler: nil)
-//                
-//                alert.addAction(cancelAction)
-//                self.present(alert, animated: true)
-//                
-                
                 self.newPriceString = ""
                 self.boolForSubstring = false
                 self.NextQoute = false
@@ -342,95 +290,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Loaded")
-//        print
-//            self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
-//                //print(value)
-//                self.stringforvalue = value as! String
-//                
-//                if self.stringforvalue.range(of:"price:") != nil{
-//                    
-//                    
-//                    let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
-//                    let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
-//                    self.incremetor = index + 19
-//                    
-//                    print(self.stringforvalue)
-//                    while self.boolForSubstring == false
-//                    {
-//                        if(self.stringforvalue[self.incremetor] != "<")
-//                        {
-//                            self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
-//                            self.incremetor = self.incremetor + 1
-//                        }
-//                        else
-//                        {
-//                            self.boolForSubstring = true
-//                        }
-//                    }
-//                    //self.ActivitySpinner.stopAnimating()
-//                    self.Price = Double(self.newPriceString)!
-//                    print(self.Price)
-//                    
-//                    self.PriceTextinOrderView.text = "Price: \(self.newPriceString)"
-//                    self.ActivitySpinner.isHidden = true
-//                    self.LoaderView.isHidden = true
-//                    self.grayView.isHidden = true
-//                    
-//                    
-//                    if !UIAccessibilityIsReduceTransparencyEnabled() {
-//                        self.view.backgroundColor = UIColor.clear
-//                        //always fill the view
-//                        self.blurEffectView.frame = self.view.bounds
-//                        //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
-//                        self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                        
-//                        
-//                        UIView.transition(with: self.Masterview,
-//                                          duration: 0.5,
-//                                          options: .transitionCrossDissolve,
-//                                          animations: {
-//                                            self.view.addSubview(self.blurEffectView)
-//                                            self.view.addSubview(self.OrderView)
-//                                            
-//                                            
-//                        })
-//                    } else {
-//                        self.view.backgroundColor = UIColor.black
-//                    }
-//                    
-//                    
-//                    
-//                    UIView.animate(withDuration: 1, animations: {
-//                        self.OrderView.frame.origin.y = 315
-//                        
-//                    })
-//                    
-//                    
-//                    
-//                    //                let alert = UIAlertController(title: "Price",
-//                    //                                              message: self.newPriceString,
-//                    //                                              preferredStyle: UIAlertControllerStyle.alert)
-//                    //
-//                    //                let cancelAction = UIAlertAction(title: "OK",
-//                    //                                                 style: .cancel, handler: nil)
-//                    //                
-//                    //                alert.addAction(cancelAction)
-//                    //                self.present(alert, animated: true)
-//                    //                
-//                    
-//                    self.newPriceString = ""
-//                    self.boolForSubstring = false
-//                    self.NextQoute = false
-//                    self.incremetor = 0
-//                    self.UrlBeforeSent = ""
-//                    
-//                }
-//                
-//            })
-        
-        
-
-        
     }
 
     @IBAction func OnOrderPress(_ sender: Any) {
@@ -440,14 +299,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         ActivitySpinner.isHidden = false
         var checkifrecipe = true
         
-        //LoaderView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
-        
-        
-        //self.FindIngredientPrice(Ingredient: "3 pounds beef")
         
         currentURL = (WebView.request?.url?.absoluteString)!
         print(currentURL)
-        var ArrayForIngredients = [String]()
+        ArrayForIngredients = [String]()
         
         let uRl = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
         
@@ -503,7 +358,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                    }
                                 
                                    print(contructedstring)
-                                   ArrayForIngredients.append(contructedstring)
+                                   self.ArrayForIngredients.append(contructedstring)
                                     
                                 }
                                 
@@ -520,9 +375,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
             
             if(checkifrecipe == true)
             {
-                for item in ArrayForIngredients {
+                for item in self.ArrayForIngredients {
                 
-                    if(item == ArrayForIngredients[ArrayForIngredients.count - 1])
+                    if(item == self.ArrayForIngredients[self.ArrayForIngredients.count - 1])
                     {
                         self.StringforIngredients = "\(self.StringforIngredients) \(item)"
                         break
@@ -543,10 +398,34 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
 
     }
     
+    func someAction(_ sender:UITapGestureRecognizer){
+        UIView.animate(withDuration: 0.75, animations: {
+            self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
+            
+        })
+        let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            UIView.transition(with: self.Masterview,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.blurEffectView.removeFromSuperview()
+                                for i in 0 ... self.arrayForDisplayItems.count - 1
+                                {
+                                    self.arrayForDisplayItems[i].removeFromSuperview()
+                                }
+                                self.arrayForDisplayItems = [UILabel]()
+                                self.ArrayForIngredients = [String]()
+            })
+            
+        }
+        
+    }
+
+    
     
     @IBAction func onSettingsPress(_ sender: Any) {
         print(self.Price)
-        //print(self.OrderView.frame.origin.y)
     }
     
     
@@ -566,22 +445,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
            WebView.goForward()
         }
     }
-    
-    @IBAction func OnExitOrderPress(_ sender: Any) {
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
-            
-        })
-        UIView.transition(with: self.Masterview,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                self.blurEffectView.removeFromSuperview()
-                            
-        })
-    }
-    
     
     
     override func didReceiveMemoryWarning() {
