@@ -144,7 +144,7 @@
                                         </state>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="8a4-2i-xnk">
-                                        <rect key="frame" x="259" y="78" width="79" height="460"/>
+                                        <rect key="frame" x="259" y="78" width="79" height="432"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stackView>
                                 </subviews>

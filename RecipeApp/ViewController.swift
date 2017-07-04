@@ -261,6 +261,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                         
                     
                     
+                   if(self.stringforvalue[incrematorforIndivPrice] == "$")
+                   {
                     while boolforIndivPrice == false
                     {
                         if(self.stringforvalue[incrematorforIndivPrice] != "<")
@@ -272,6 +274,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                         {
                             boolforIndivPrice = true
                         }
+                    }
                     }
                     incrematorforIndivPrice += 4
                     print(stringforIndivPrice)
