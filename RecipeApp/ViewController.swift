@@ -33,6 +33,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     var LabelForInsertingIngredients = UILabel()
     let grayView = UIView()
     var arrayForDisplayItems = [UILabel]()
+    var LabelforInsertingCost = UILabel()
+    var ArrayforType = [String]()
+    var arrayforDisplayingCost = [UILabel]()
     
     
    var theBool: Bool!
@@ -51,6 +54,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBOutlet var ActivitySpinner: UIActivityIndicatorView!
     @IBOutlet var ActivityIndicatorforWeb: UIActivityIndicatorView!
     @IBOutlet var StackViewForIngredients: UIStackView!
+    @IBOutlet var StackViewForCost: UIStackView!
     @IBOutlet var PaynowButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,6 +198,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
             //print(value)
             self.stringforvalue = value as! String
+            print(self.stringforvalue)
+            var stringforIndivPrice = ""
+            var boolforIndivPrice = false
+            var incrematorforIndivPrice = 0
             
             if self.stringforvalue.range(of:"price:") != nil{
             
@@ -219,20 +227,65 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                 self.Price = Double(self.newPriceString)!
                 print(self.Price)
                 
-                self.PriceTextinOrderView.text = "Price: \(self.newPriceString)"
+                self.PriceTextinOrderView.text = "Price: $\(self.newPriceString)"
                 self.ActivitySpinner.isHidden = true
                 self.LoaderView.isHidden = true
                 self.grayView.isHidden = true
                 
                 //self.OrderView.addSubview(self.StackViewForIngredients)
+                let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
+                let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
+                incrematorforIndivPrice = indexforIndivPrice + 4
+                var toCheckIfcontained = ""
+                var toCheckIfItemWasParsed = 0
+                
+                print(self.stringforvalue)
+                
                 for item in self.ArrayForIngredients
                 {
                     self.LabelForInsertingIngredients = UILabel()
+                    self.LabelforInsertingCost = UILabel()
                     
-                    self.LabelForInsertingIngredients.text = item
+                    self.LabelForInsertingIngredients.textColor = UIColor.gray
+                    self.LabelforInsertingCost.textColor = UIColor.gray
                     
-                    self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
-                    self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
+                    toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
+                    print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
+                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
+                        
+                        self.LabelForInsertingIngredients.text = item
+                    
+                        self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
+                    }
+                    boolforIndivPrice = false
+                        
+                    
+                    
+                    while boolforIndivPrice == false
+                    {
+                        if(self.stringforvalue[incrematorforIndivPrice] != "<")
+                        {
+                            stringforIndivPrice = stringforIndivPrice + self.stringforvalue[incrematorforIndivPrice]
+                            incrematorforIndivPrice = incrematorforIndivPrice + 1
+                        }
+                        else
+                        {
+                            boolforIndivPrice = true
+                        }
+                    }
+                    incrematorforIndivPrice += 4
+                    print(stringforIndivPrice)
+                    self.LabelforInsertingCost.text = stringforIndivPrice
+                    self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
+                    self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
+                    
+                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
+                        print("inserted:\(item)")
+                        self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
+                        //self.StackViewForCost.addArrangedSubview(stringforIndivPrice)
+                    }
+                    stringforIndivPrice = ""
+                    toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
                 }
                 
                 //self.LabelForInsertingIngredients = UILabel()
@@ -355,6 +408,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                    if let name = station["name"] as? String
                                    {
                                       contructedstring = contructedstring + " \(name)"
+                                      self.ArrayforType.append(name)
                                    }
                                 
                                    print(contructedstring)
@@ -414,8 +468,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                 {
                                     self.arrayForDisplayItems[i].removeFromSuperview()
                                 }
+                                for i in 0 ... self.arrayforDisplayingCost.count - 1
+                                {
+                                    self.arrayforDisplayingCost[i].removeFromSuperview()
+                                }
                                 self.arrayForDisplayItems = [UILabel]()
+                                self.arrayforDisplayingCost = [UILabel]()
                                 self.ArrayForIngredients = [String]()
+                                self.ArrayforType = [String]()
             })
             
         }

@@ -112,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="w31-tY-Dlo">
-                                        <rect key="frame" x="8" y="78" width="231" height="450"/>
+                                        <rect key="frame" x="8" y="78" width="231" height="432"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCK-Qn-lNP">
@@ -143,6 +143,10 @@
                                             </attributedString>
                                         </state>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="8a4-2i-xnk">
+                                        <rect key="frame" x="259" y="78" width="79" height="460"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -180,6 +184,7 @@
                         <outlet property="PaynowButton" destination="lcr-cB-cZy" id="o7A-O8-cnI"/>
                         <outlet property="PriceTextinOrderView" destination="7N2-rI-nk8" id="baL-TT-Ech"/>
                         <outlet property="SmallSearchRecipes" destination="Yqt-WZ-MVX" id="DrI-Z6-UP0"/>
+                        <outlet property="StackViewForCost" destination="8a4-2i-xnk" id="FYe-3U-JQs"/>
                         <outlet property="StackViewForIngredients" destination="w31-tY-Dlo" id="VuW-BC-Vfw"/>
                         <outlet property="WebView" destination="blr-di-NBO" id="G58-vw-2WR"/>
                         <outlet property="WhiteBar" destination="hVf-yd-gOU" id="iWt-EU-wT5"/>
