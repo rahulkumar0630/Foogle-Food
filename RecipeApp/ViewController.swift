@@ -36,6 +36,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     var LabelforInsertingCost = UILabel()
     var ArrayforType = [String]()
     var arrayforDisplayingCost = [UILabel]()
+    var servingsstring = ""
     
     
    var theBool: Bool!
@@ -56,6 +57,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBOutlet var StackViewForIngredients: UIStackView!
     @IBOutlet var StackViewForCost: UIStackView!
     @IBOutlet var PaynowButton: UIButton!
+    @IBOutlet var ServingsLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -311,6 +313,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                         self.OrderView.layoutIfNeeded()
                                         self.PaynowButton.clipsToBounds = true
                                         self.PaynowButton.layer.cornerRadius = 10
+                                        self.OrderView.addSubview(self.ServingsLabel)
+                                        self.ServingsLabel.clipsToBounds = true
                                 })
 
                         
@@ -366,13 +370,27 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
             
             
             if error != nil {
-                print("Error")
+                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    self.grayView.isHidden = true
+                }
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true, completion: nil)
             }
             else {
                 if let mydata = data {
                     do {
                         
                         let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        if let servings = myJson["servings"] as? Int {
+                            self.servingsstring = String(servings)
+                            print("SERVINGS:\(self.servingsstring)")
+                        }
+                        self.ServingsLabel.text = "Servings:\(self.servingsstring)"
+                        print(self.ServingsLabel.text)
+                        //self.servingsstring = ""
                         
                         
                         if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {

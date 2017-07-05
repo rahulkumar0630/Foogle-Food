@@ -98,7 +98,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.43133878710000001" green="0.80591511729999998" blue="0.4196120203" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vww-Ic-9Iu">
                                 <rect key="frame" x="9" y="66" width="357" height="587"/>
@@ -134,10 +134,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Pay Now" backgroundImage="SkyBlueButton.png">
                                             <attributedString key="attributedTitle">
-                                                <fragment content="Pay Now">
+                                                <fragment content="Pay">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -147,6 +148,17 @@
                                         <rect key="frame" x="259" y="78" width="79" height="432"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stackView>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-ai-Zpv">
+                                        <rect key="frame" x="131" y="548" width="94" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Servings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C76-ad-xxq">
+                                        <rect key="frame" x="8" y="550" width="115" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -183,6 +195,7 @@
                         <outlet property="Orderbutton" destination="Xp5-ht-NNJ" id="dX8-rx-tzr"/>
                         <outlet property="PaynowButton" destination="lcr-cB-cZy" id="o7A-O8-cnI"/>
                         <outlet property="PriceTextinOrderView" destination="7N2-rI-nk8" id="baL-TT-Ech"/>
+                        <outlet property="ServingsLabel" destination="C76-ad-xxq" id="i2R-9y-qsY"/>
                         <outlet property="SmallSearchRecipes" destination="Yqt-WZ-MVX" id="DrI-Z6-UP0"/>
                         <outlet property="StackViewForCost" destination="8a4-2i-xnk" id="FYe-3U-JQs"/>
                         <outlet property="StackViewForIngredients" destination="w31-tY-Dlo" id="VuW-BC-Vfw"/>
