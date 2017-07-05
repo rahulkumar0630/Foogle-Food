@@ -392,6 +392,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                         print(self.ServingsLabel.text)
                         //self.servingsstring = ""
                         
+                        if let status = myJson["status"] as? String {
+                            if(status == "failure")
+                            {
+                                let alert = UIAlertController(title: "Error", message: "This recipe cannot be extracted.", preferredStyle: UIAlertControllerStyle.alert)
+                                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                    self.grayView.isHidden = true
+                                }
+                                alert.addAction(cancelAction)
+                                
+                                self.present(alert, animated: true, completion: nil)
+
+                            }
+                        }
+                        
+                        if let Recipedifferentiater = myJson["text"] as? String
+                        {
                         
                         if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
                             
@@ -399,23 +415,23 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                 
                                 if let name = station["originalString"] as? String{
                                     
-                                   let aisle = station["aisle"] as? String
-                                   
-                                    
-                                   if(aisle == "?")
-                                   {
-                                      print("This is not a recipe")
-                                      checkifrecipe = false
-                                    
-                                      let alert = UIAlertController(title: "Uh-Oh!", message: "This is not a recipe", preferredStyle: UIAlertControllerStyle.alert)
-                                      let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                                           self.grayView.isHidden = true
-                                      }
-                                      alert.addAction(cancelAction)
-                                    
-                                      self.present(alert, animated: true, completion: nil)
-                                      break
-                                   }
+//                                   let aisle = station["aisle"] as? String
+//                                   
+//                                    
+//                                   if(aisle == "?")
+//                                   {
+//                                      print("This is not a recipe")
+//                                      checkifrecipe = false
+//                                    
+//                                      let alert = UIAlertController(title: "Uh-Oh!", message: "This is not a recipe", preferredStyle: UIAlertControllerStyle.alert)
+//                                      let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+//                                           self.grayView.isHidden = true
+//                                      }
+//                                      alert.addAction(cancelAction)
+//                                    
+//                                      self.present(alert, animated: true, completion: nil)
+//                                      break
+//                                   }
                                    var contructedstring = ""
                                     
                                    if let amount = station["amount"] as? Double
@@ -438,7 +454,21 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
                                 }
                                 
                             }
+                            }
                             
+                        }
+                        else
+                        {
+                            print("This is not a recipe")
+                            checkifrecipe = false
+                            
+                            let alert = UIAlertController(title: "Uh-Oh!", message: "This is not a recipe", preferredStyle: UIAlertControllerStyle.alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                            self.grayView.isHidden = true
+                            }
+                            alert.addAction(cancelAction)
+                                                                
+                            self.present(alert, animated: true, completion: nil)
                         }
                         
                     }
