@@ -71,10 +71,6 @@
                                     <action selector="OnForwardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrr-Hq-tDO"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WhiteBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="hVf-yd-gOU">
-                                <rect key="frame" x="0.0" y="88" width="375" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvw-sc-Z8P">
                                 <rect key="frame" x="131" y="296" width="112" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,7 +83,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vww-Ic-9Iu">
-                                <rect key="frame" x="9" y="66" width="357" height="587"/>
+                                <rect key="frame" x="9" y="900" width="357" height="587"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-rI-nk8">
@@ -166,9 +162,14 @@
                                 <rect key="frame" x="177" y="28" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Google" translatesAutoresizingMaskIntoConstraints="NO" id="30e-hb-Qxc">
-                                <rect key="frame" x="0.0" y="63" width="375" height="44"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Backdrop.png" translatesAutoresizingMaskIntoConstraints="NO" id="jxJ-HO-ylP">
+                                <rect key="frame" x="0.0" y="63" width="375" height="604"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Google" backgroundImage="nil" translatesAutoresizingMaskIntoConstraints="NO" id="30e-hb-Qxc">
+                                <rect key="frame" x="0.0" y="370" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fYB-bU-g6s"/>
@@ -182,6 +183,7 @@
                         <outlet property="ActivitySpinner" destination="gDJ-FQ-5ix" id="hlc-eD-d41"/>
                         <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
+                        <outlet property="FoogleImageView" destination="jxJ-HO-ylP" id="TZp-Wu-6t9"/>
                         <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="Be9-4c-7z6"/>
                         <outlet property="LoaderView" destination="fvw-sc-Z8P" id="gkR-mf-ehU"/>
                         <outlet property="Masterview" destination="8bC-Xf-vdC" id="Ud9-lA-kXx"/>
@@ -194,7 +196,6 @@
                         <outlet property="StackViewForCost" destination="8a4-2i-xnk" id="FYe-3U-JQs"/>
                         <outlet property="StackViewForIngredients" destination="w31-tY-Dlo" id="VuW-BC-Vfw"/>
                         <outlet property="WebView" destination="blr-di-NBO" id="G58-vw-2WR"/>
-                        <outlet property="WhiteBar" destination="hVf-yd-gOU" id="iWt-EU-wT5"/>
                         <outlet property="searchDisplayController" destination="uMP-aa-gWh" id="7t4-pm-9RE"/>
                     </connections>
                 </viewController>
@@ -212,12 +213,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Backdrop.png" width="750" height="1334"/>
         <image name="BackgroundforFoogle.png" width="750" height="1334"/>
         <image name="GrayOrderButton.png" width="750" height="126"/>
         <image name="Settings.png" width="256" height="256"/>
         <image name="SkyBlueButton.png" width="750" height="126"/>
-        <image name="WhiteBar.png" width="748" height="108"/>
         <image name="arrowBackWhenCantGoBack.png" width="192" height="192"/>
         <image name="arrowForwardWhenCantGoForward.png" width="192" height="192"/>
+        <image name="nil" width="16" height="16"/>
     </resources>
 </document>

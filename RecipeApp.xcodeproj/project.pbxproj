@@ -28,6 +28,7 @@
 		E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250541EFF0EB300222E5E /* WhiteBar.png */; };
 		E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */; };
 		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
+		E4EB3E701F0EE5E6002BA145 /* Backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */; };
 		E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */; };
 		E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C1701EEA357800CE2D6B /* ViewController.swift */; };
 		E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F0C1721EEA357800CE2D6B /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		E4C250541EFF0EB300222E5E /* WhiteBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBar.png; path = ../../../../../Downloads/WhiteBar.png; sourceTree = "<group>"; };
 		E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForwardWhenCantGoForward.png; path = ../../../../../Downloads/arrowForwardWhenCantGoForward.png; sourceTree = "<group>"; };
 		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
+		E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Backdrop.png; path = ../../../../../Downloads/Backdrop.png; sourceTree = "<group>"; };
 		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E45E194F1F00ACC1008DABD0 /* UIActivityIndicatorView.swift */,
 				E473CDCC1F004C3B007CEDEF /* UIButton.swift */,
 				E42635681EF0D9FA000D6076 /* Banner.png */,
+				E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */,
 				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E473CDCE1F007575007CEDEF /* ExitButton.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
@@ -309,6 +312,7 @@
 				E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */,
 				E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */,
 				E45072C71EF1972800DC0921 /* OrderButton.png in Resources */,
+				E4EB3E701F0EE5E6002BA145 /* Backdrop.png in Resources */,
 				E42635691EF0D9FA000D6076 /* Banner.png in Resources */,
 				E4B386661F0B08BC00E23AE3 /* GrayOrderButton.png in Resources */,
 				E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */,
