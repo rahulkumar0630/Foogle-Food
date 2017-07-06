@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate{
 
     @IBOutlet var WebView: UIWebView!
     var currentURL:String = ""
@@ -45,7 +45,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBOutlet var LoaderView: UIView!
     @IBOutlet var Masterview: UIView!
     @IBOutlet var Orderbutton: UIButton!
-    @IBOutlet var SmallSearchRecipes: UILabel!
+    //@IBOutlet var SmallSearchRecipes: UILabel!
     @IBOutlet var BigSearchRecipes: UILabel!
     @IBOutlet var WhiteBar: UIImageView!
     @IBOutlet var BackArrow: UIButton!
@@ -58,21 +58,25 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
     @IBOutlet var StackViewForCost: UIStackView!
     @IBOutlet var PaynowButton: UIButton!
     @IBOutlet var ServingsLabel: UILabel!
+    @IBOutlet var SearchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         Orderbutton.layer.cornerRadius = 10
+        SearchBar.text = ""
         
-        let url = URL(string: "https://www.google.com")
-
-        let request = URLRequest(url: url!)
-        
-        WebView.loadRequest(request)
+//        let url = URL(string: "https://www.google.com")
+//
+//        let request = URLRequest(url: url!)
+//        
+//        WebView.loadRequest(request)
+        //WebView.isHidden = true
         
         webViewforData.navigationDelegate = self
+        SearchBar.delegate = self
         WebView.delegate = self
-        SmallSearchRecipes.isHidden = true
+        //SmallSearchRecipes.isHidden = true
         
         self.OrderView.frame.origin.y = 667
         OrderView.layer.cornerRadius = 10
@@ -94,24 +98,29 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate 
         self.ActivityIndicatorforWeb.isHidden = true
         self.ActivityIndicatorforWeb.startAnimating()
         //StackViewForIngredients.removeFromSuperview()
+
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        
+        searchBar.resignFirstResponder()
+        print("hi")
+        let stringforURL = SearchBar.text?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) as! String
+        //print(stringforURL)
+
+        let urlSearch = URL(string: "https://www.google.com/search?ei=h3JeWeuwAYjRmAHG4aPgCg&q=\(stringforURL)+recipe&oq=spaghetti+&gs_l=mobile-gws-serp.1.0.41j0i67k1j0i46i67k1j46i67k1l2.25403.26647.0.27706.11.11.0.1.1.0.887.3922.2-5j4j1j0j1.11.0....0...1.1.64.mobile-gws-serp..6.5.1193.3..0j46j0i131k1j0i46k1.LMr8hsAQS2o")
+        let request = URLRequest(url: urlSearch!)
+        WebView.loadRequest(request)
         
     }
-
     
     @objc(webViewDidStartLoad:) func webViewDidStartLoad(_ webView: UIWebView)
     {
          ActivityIndicatorforWeb.isHidden = false
-
-         NumberofTimesWebViewLoaded = NumberofTimesWebViewLoaded + 1
-        
-            if(NumberofTimesWebViewLoaded == 2)
-            {
-                SmallSearchRecipes.isHidden = false
-                var newFrame = CGRect.init(x: 0, y: 86, width: WebView.frame.width, height: WebView.frame.height + 31)
-                WebView.frame = newFrame
-                BigSearchRecipes.isHidden = true
-                WhiteBar.isHidden = true
-            }
+         BigSearchRecipes.isHidden = true
+         SearchBar.placeholder = "Foogle"
     }
 
     
