@@ -60,13 +60,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var ServingsLabel: UILabel!
     @IBOutlet var SearchBar: UISearchBar!
     @IBOutlet var FoogleImageView: UIImageView!
-    
+    @IBOutlet var FoogleLogo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         Orderbutton.layer.cornerRadius = 10
         SearchBar.text = ""
+
+        
         
 //        let url = URL(string: "https://www.google.com")
 //
@@ -186,8 +188,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             print(currenturl)
         
             FoogleImageView.isHidden = true
-            let newFrameForSearchBar = CGRect.init(x: 0, y: 63, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
+            let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
             SearchBar.frame = newFrameForSearchBar
+            FoogleLogo.isHidden = true
         
             Orderbutton.isHidden = false
     }

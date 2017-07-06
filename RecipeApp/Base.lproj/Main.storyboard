@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blr-di-NBO">
-                                <rect key="frame" x="0.0" y="107" width="375" height="505"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="515"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
@@ -166,8 +166,39 @@
                                 <rect key="frame" x="0.0" y="63" width="375" height="604"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ2-ah-ysZ">
+                                <rect key="frame" x="84" y="252" width="207" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="F">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.55410056590227086" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="63" name="Avenir-Heavy"/>
+                                            <font key="NSOriginalFont" size="63" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="oo">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="63" name="Avenir-Heavy"/>
+                                            <font key="NSOriginalFont" size="63" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="gle">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.55410056590227086" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="63" name="Avenir-Heavy"/>
+                                            <font key="NSOriginalFont" size="63" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Google" backgroundImage="nil" translatesAutoresizingMaskIntoConstraints="NO" id="30e-hb-Qxc">
-                                <rect key="frame" x="0.0" y="370" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="343" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -184,6 +215,7 @@
                         <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
                         <outlet property="FoogleImageView" destination="jxJ-HO-ylP" id="TZp-Wu-6t9"/>
+                        <outlet property="FoogleLogo" destination="mZ2-ah-ysZ" id="hOs-aa-Ki2"/>
                         <outlet property="ForwardArrow" destination="9Ub-uo-mOd" id="Be9-4c-7z6"/>
                         <outlet property="LoaderView" destination="fvw-sc-Z8P" id="gkR-mf-ehU"/>
                         <outlet property="Masterview" destination="8bC-Xf-vdC" id="Ud9-lA-kXx"/>
