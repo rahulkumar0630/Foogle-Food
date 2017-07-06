@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundforAPPGreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="uhe-Qm-9tl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundforFoogle.png" translatesAutoresizingMaskIntoConstraints="NO" id="uhe-Qm-9tl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -75,7 +75,7 @@
                                 <rect key="frame" x="127" y="66" width="121" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Search Recipes">
+                                    <fragment content="Foogle">
                                         <attributes>
                                             <color key="NSColor" red="0.43134" green="0.80591999999999997" blue="0.41960999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
@@ -209,7 +209,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackgroundforAPPGreen.png" width="750" height="1334"/>
+        <image name="BackgroundforFoogle.png" width="750" height="1334"/>
         <image name="GrayOrderButton.png" width="750" height="126"/>
         <image name="Settings.png" width="256" height="256"/>
         <image name="SkyBlueButton.png" width="750" height="126"/>

@@ -10,6 +10,7 @@
 		E42635691EF0D9FA000D6076 /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = E42635681EF0D9FA000D6076 /* Banner.png */; };
 		E426356B1EF0DB33000D6076 /* BottomBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = E426356A1EF0DB33000D6076 /* BottomBanner.png */; };
 		E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */ = {isa = PBXBuildFile; fileRef = E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */; };
+		E43CD9C11F0DDB4400C84494 /* BackgroundforFoogle.png in Resources */ = {isa = PBXBuildFile; fileRef = E43CD9C01F0DDB4400C84494 /* BackgroundforFoogle.png */; };
 		E45072C71EF1972800DC0921 /* OrderButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E45072C61EF1972800DC0921 /* OrderButton.png */; };
 		E45072C91EF1A15A00DC0921 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = E45072C81EF1A15A00DC0921 /* Settings.png */; };
 		E45072CB1EF1A7D900DC0921 /* OrderButtonFalse.png in Resources */ = {isa = PBXBuildFile; fileRef = E45072CA1EF1A7D900DC0921 /* OrderButtonFalse.png */; };
@@ -57,6 +58,7 @@
 		E42635681EF0D9FA000D6076 /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Banner.png; path = ../../../../../Downloads/Banner.png; sourceTree = "<group>"; };
 		E426356A1EF0DB33000D6076 /* BottomBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BottomBanner.png; path = ../../../../../Downloads/BottomBanner.png; sourceTree = "<group>"; };
 		E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforAPP.png; path = ../../../../../Downloads/BackgroundforAPP.png; sourceTree = "<group>"; };
+		E43CD9C01F0DDB4400C84494 /* BackgroundforFoogle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforFoogle.png; path = ../../../../../Downloads/BackgroundforFoogle.png; sourceTree = "<group>"; };
 		E45072C61EF1972800DC0921 /* OrderButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrderButton.png; path = ../../../../../Downloads/OrderButton.png; sourceTree = "<group>"; };
 		E45072C81EF1A15A00DC0921 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.png; path = ../../../../../Downloads/Settings.png; sourceTree = "<group>"; };
 		E45072CA1EF1A7D900DC0921 /* OrderButtonFalse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrderButtonFalse.png; path = ../../../../../Downloads/OrderButtonFalse.png; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E473CDCE1F007575007CEDEF /* ExitButton.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
+				E43CD9C01F0DDB4400C84494 /* BackgroundforFoogle.png */,
 				E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */,
 				E4B386631F0B07BC00E23AE3 /* SkyBlueButton.png */,
 				E4B386611F0B04B300E23AE3 /* BackgroundforAPPGreen.png */,
@@ -312,6 +315,7 @@
 				E45072CB1EF1A7D900DC0921 /* OrderButtonFalse.png in Resources */,
 				E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */,
 				E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */,
+				E43CD9C11F0DDB4400C84494 /* BackgroundforFoogle.png in Resources */,
 				E4B386621F0B04B300E23AE3 /* BackgroundforAPPGreen.png in Resources */,
 				E4B386641F0B07BC00E23AE3 /* SkyBlueButton.png in Resources */,
 			);
