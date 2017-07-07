@@ -29,6 +29,7 @@
 		E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */; };
 		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
 		E4EB3E701F0EE5E6002BA145 /* Backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */; };
+		E4EB3E741F0F08C2002BA145 /* FoogleSplashScreen.PNG in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E731F0F08C2002BA145 /* FoogleSplashScreen.PNG */; };
 		E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */; };
 		E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C1701EEA357800CE2D6B /* ViewController.swift */; };
 		E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F0C1721EEA357800CE2D6B /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		E4C250561EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForwardWhenCantGoForward.png; path = ../../../../../Downloads/arrowForwardWhenCantGoForward.png; sourceTree = "<group>"; };
 		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
 		E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Backdrop.png; path = ../../../../../Downloads/Backdrop.png; sourceTree = "<group>"; };
+		E4EB3E731F0F08C2002BA145 /* FoogleSplashScreen.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FoogleSplashScreen.PNG; path = ../../../../../Downloads/FoogleSplashScreen.PNG; sourceTree = "<group>"; };
 		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */,
 				E4B386631F0B07BC00E23AE3 /* SkyBlueButton.png */,
 				E4B386611F0B04B300E23AE3 /* BackgroundforAPPGreen.png */,
+				E4EB3E731F0F08C2002BA145 /* FoogleSplashScreen.PNG */,
 				E45072C61EF1972800DC0921 /* OrderButton.png */,
 				E4614F891EF486BA003F4EE7 /* arrow_back_white_192x192.png */,
 				E4614F8B1EF486C3003F4EE7 /* arrow_forward_white_192x192.png */,
@@ -313,6 +316,7 @@
 				E4C250571EFF5E5B00222E5E /* arrowForwardWhenCantGoForward.png in Resources */,
 				E45072C71EF1972800DC0921 /* OrderButton.png in Resources */,
 				E4EB3E701F0EE5E6002BA145 /* Backdrop.png in Resources */,
+				E4EB3E741F0F08C2002BA145 /* FoogleSplashScreen.PNG in Resources */,
 				E42635691EF0D9FA000D6076 /* Banner.png in Resources */,
 				E4B386661F0B08BC00E23AE3 /* GrayOrderButton.png in Resources */,
 				E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */,

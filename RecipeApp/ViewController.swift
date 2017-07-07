@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate{
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate{
 
     @IBOutlet var WebView: UIWebView!
     var currentURL:String = ""
@@ -37,6 +37,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var ArrayforType = [String]()
     var arrayforDisplayingCost = [UILabel]()
     var servingsstring = ""
+    let toolbar = UIToolbar()
     
     
    var theBool: Bool!
@@ -61,14 +62,35 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var SearchBar: UISearchBar!
     @IBOutlet var FoogleImageView: UIImageView!
     @IBOutlet var FoogleLogo: UILabel!
+    @IBOutlet var TextFieldToEnterMore: UITextField!
+    @IBOutlet var ActivityIndicatorForTextField: UIActivityIndicatorView!
+    @IBOutlet var ActivityIndicatorforPriceLabel: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
         Orderbutton.layer.cornerRadius = 10
         SearchBar.text = ""
-
+        ActivityIndicatorForTextField.isHidden = true
+        ActivityIndicatorForTextField.startAnimating()
+        TextFieldToEnterMore.delegate = self
+        TextFieldToEnterMore.placeholder = "Add Other or Missing"
+        ActivityIndicatorforPriceLabel.isHidden = true
+        ActivityIndicatorforPriceLabel.startAnimating()
+        TextFieldToEnterMore.returnKeyType = UIReturnKeyType.done
         
+        toolbar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+        
+        toolbar.setItems([flexibleSpace,doneButton], animated: false)
+        
+        SearchBar.spellCheckingType = .yes
+        SearchBar.autocorrectionType = .yes
+        
+        TextFieldToEnterMore.inputAccessoryView = toolbar
         
 //        let url = URL(string: "https://www.google.com")
 //
@@ -106,6 +128,112 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     }
     
+    func doneClicked(){
+        self.view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        if(textField.text != "")
+        {
+        ActivityIndicatorForTextField.isHidden = false
+        PriceTextinOrderView.isHidden = true
+        ActivityIndicatorforPriceLabel.isHidden = false
+        let convertedtextfieldtext = textField.text as! String
+        
+        let Url = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(convertedtextfieldtext)"
+        print(Url)
+        var stringforvalue = ""
+        var newPriceString = ""
+        var incremetor = 0
+        var boolforSubstring = false
+        
+        let urlSet = CharacterSet.urlQueryAllowed
+            .union(CharacterSet.punctuationCharacters)
+        
+        let UrlBeforeSent = Url.addingPercentEncoding(withAllowedCharacters: urlSet)!
+        print(UrlBeforeSent)
+        
+        let foodPriceUrl = URL(string: UrlBeforeSent)
+        let requestforPrice = URLRequest(url: foodPriceUrl!)
+        self.webViewforData.load(requestforPrice)
+        
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            
+            self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
+                //print(value)
+                stringforvalue = value as! String
+                print(stringforvalue)
+                
+                if stringforvalue.range(of:"price:") != nil{
+                    print("hi")
+                    
+                    
+                    let range: Range<String.Index> = stringforvalue.range(of: "Cost per Serving: $")!
+                    let index: Int =  stringforvalue.distance(from: stringforvalue.startIndex, to: range.lowerBound)
+                    incremetor = index + 19
+                    
+                    
+                    while boolforSubstring == false
+                    {
+                        if(stringforvalue[incremetor] != "<")
+                        {
+                            newPriceString = newPriceString + stringforvalue[incremetor]
+                            print(newPriceString)
+                            incremetor = incremetor + 1
+                        }
+                        else
+                        {
+                            var labelForInsertingintoIngredients = UILabel()
+                            labelForInsertingintoIngredients.text = convertedtextfieldtext
+                            labelForInsertingintoIngredients.textColor = UIColor.gray
+                            self.StackViewForIngredients.addArrangedSubview(labelForInsertingintoIngredients)
+                            
+                            var labelforInsertingintoPrice = UILabel()
+                            labelforInsertingintoPrice.text = "$\(newPriceString)"
+                            labelforInsertingintoPrice.textColor = UIColor.gray
+                            self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
+                            
+                            var DoublefornewPriceString = Double(newPriceString)
+                            var newtotalPrice = DoublefornewPriceString! + self.Price
+                            self.Price = newtotalPrice
+                            
+                            self.PriceTextinOrderView.text = "Price: $\(newtotalPrice)"
+                            
+                            self.PriceTextinOrderView.isHidden = false
+                            self.ActivityIndicatorforPriceLabel.isHidden = true
+                            self.ActivityIndicatorForTextField.isHidden = true
+                            textField.text = ""
+                            boolforSubstring = true
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "Sorry", message: "The Ingredient you entered did not yield a price.", preferredStyle: UIAlertControllerStyle.alert)
+                    let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                        self.ActivityIndicatorForTextField.isHidden = true
+                        textField.text = ""
+                        self.ActivityIndicatorforPriceLabel.isHidden = true
+                        self.PriceTextinOrderView.isHidden = false
+                    }
+                    alert.addAction(cancelAction)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            })
+        }
+        }
+        
+
+        return true
+    }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -114,11 +242,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         print("hi")
         let stringforURL = SearchBar.text?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) as! String
         //print(stringforURL)
+        
 
         let urlSearch = URL(string: "https://www.google.com/search?ei=h3JeWeuwAYjRmAHG4aPgCg&q=\(stringforURL)+recipe&oq=spaghetti+&gs_l=mobile-gws-serp.1.0.41j0i67k1j0i46i67k1j46i67k1l2.25403.26647.0.27706.11.11.0.1.1.0.887.3922.2-5j4j1j0j1.11.0....0...1.1.64.mobile-gws-serp..6.5.1193.3..0j46j0i131k1j0i46k1.LMr8hsAQS2o")
         let request = URLRequest(url: urlSearch!)
         WebView.loadRequest(request)
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @objc(webViewDidStartLoad:) func webViewDidStartLoad(_ webView: UIWebView)
@@ -127,6 +260,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
          BigSearchRecipes.isHidden = true
          SearchBar.placeholder = "Foogle"
     }
+    
+    
 
     
     func checkArrowStatus()
@@ -184,6 +319,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ActivityIndicatorforWeb.isHidden = true
             checkArrowStatus()
         
+            SearchBar.inputAccessoryView = toolbar
+        
             let currenturl = (WebView.request?.url?.absoluteString)!
             print(currenturl)
         
@@ -194,6 +331,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
             Orderbutton.isHidden = false
     }
+    
     
     
     
@@ -553,7 +691,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
         
     }
-
+    
     
     
     @IBAction func onSettingsPress(_ sender: Any) {
