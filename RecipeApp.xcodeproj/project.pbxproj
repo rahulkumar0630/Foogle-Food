@@ -30,6 +30,8 @@
 		E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */; };
 		E4EB3E701F0EE5E6002BA145 /* Backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */; };
 		E4EB3E741F0F08C2002BA145 /* FoogleSplashScreen.PNG in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E731F0F08C2002BA145 /* FoogleSplashScreen.PNG */; };
+		E4EB3E761F119F2C002BA145 /* PlusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E751F119F2C002BA145 /* PlusSign.png */; };
+		E4EB3E781F119F35002BA145 /* MinusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB3E771F119F35002BA145 /* MinusSign.png */; };
 		E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */; };
 		E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F0C1701EEA357800CE2D6B /* ViewController.swift */; };
 		E4F0C1741EEA357800CE2D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F0C1721EEA357800CE2D6B /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		E4C250581EFF5E6900222E5E /* arrowBackWhenCantGoBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowBackWhenCantGoBack.png; path = ../../../../../Downloads/arrowBackWhenCantGoBack.png; sourceTree = "<group>"; };
 		E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Backdrop.png; path = ../../../../../Downloads/Backdrop.png; sourceTree = "<group>"; };
 		E4EB3E731F0F08C2002BA145 /* FoogleSplashScreen.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FoogleSplashScreen.PNG; path = ../../../../../Downloads/FoogleSplashScreen.PNG; sourceTree = "<group>"; };
+		E4EB3E751F119F2C002BA145 /* PlusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlusSign.png; path = ../../../../../Downloads/PlusSign.png; sourceTree = "<group>"; };
+		E4EB3E771F119F35002BA145 /* MinusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MinusSign.png; path = ../../../../../Downloads/MinusSign.png; sourceTree = "<group>"; };
 		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				E4EB3E6F1F0EE5E6002BA145 /* Backdrop.png */,
 				E4C250541EFF0EB300222E5E /* WhiteBar.png */,
 				E473CDCE1F007575007CEDEF /* ExitButton.png */,
+				E4EB3E751F119F2C002BA145 /* PlusSign.png */,
+				E4EB3E771F119F35002BA145 /* MinusSign.png */,
 				E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */,
 				E43CD9C01F0DDB4400C84494 /* BackgroundforFoogle.png */,
 				E4B386651F0B08BC00E23AE3 /* GrayOrderButton.png */,
@@ -307,6 +313,7 @@
 				E4614F8C1EF486C3003F4EE7 /* arrow_forward_white_192x192.png in Resources */,
 				E4C250591EFF5E6900222E5E /* arrowBackWhenCantGoBack.png in Resources */,
 				E4614F881EF45088003F4EE7 /* backArrow.png in Resources */,
+				E4EB3E761F119F2C002BA145 /* PlusSign.png in Resources */,
 				E45072C91EF1A15A00DC0921 /* Settings.png in Resources */,
 				E4F0C1791EEA357800CE2D6B /* LaunchScreen.storyboard in Resources */,
 				E426356B1EF0DB33000D6076 /* BottomBanner.png in Resources */,
@@ -324,6 +331,7 @@
 				E4614F8A1EF486BA003F4EE7 /* arrow_back_white_192x192.png in Resources */,
 				E4C250551EFF0EB300222E5E /* WhiteBar.png in Resources */,
 				E43CD9C11F0DDB4400C84494 /* BackgroundforFoogle.png in Resources */,
+				E4EB3E781F119F35002BA145 /* MinusSign.png in Resources */,
 				E4B386621F0B04B300E23AE3 /* BackgroundforAPPGreen.png in Resources */,
 				E4B386641F0B07BC00E23AE3 /* SkyBlueButton.png in Resources */,
 			);

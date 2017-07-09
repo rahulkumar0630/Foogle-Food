@@ -36,8 +36,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var LabelforInsertingCost = UILabel()
     var ArrayforType = [String]()
     var arrayforDisplayingCost = [UILabel]()
+    var arrayForDeleteButtons = [UIButton]()
     var servingsstring = ""
+    var deleteButtonImage = UIImage(named: "MinusSign")
+    var addButtonImage = UIImage(named: "PlusSign")
     let toolbar = UIToolbar()
+    var buttonTag = 0
     
     
    var theBool: Bool!
@@ -65,6 +69,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var TextFieldToEnterMore: UITextField!
     @IBOutlet var ActivityIndicatorForTextField: UIActivityIndicatorView!
     @IBOutlet var ActivityIndicatorforPriceLabel: UIActivityIndicatorView!
+    @IBOutlet var StackViewForDeleteButtons: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -191,11 +196,24 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             labelForInsertingintoIngredients.text = convertedtextfieldtext
                             labelForInsertingintoIngredients.textColor = UIColor.gray
                             self.StackViewForIngredients.addArrangedSubview(labelForInsertingintoIngredients)
+                            self.arrayForDisplayItems.append(labelForInsertingintoIngredients)
                             
                             var labelforInsertingintoPrice = UILabel()
                             labelforInsertingintoPrice.text = "$\(newPriceString)"
+                            self.arrayForDisplayItems.append(labelforInsertingintoPrice)
+                            
                             labelforInsertingintoPrice.textColor = UIColor.gray
                             self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
+                            
+                            var deleteButton = UIButton()
+                            deleteButton.setTitle("-", for: UIControlState.normal)
+                            deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+                            deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                            self.buttonTag = self.buttonTag + 1
+                            deleteButton.tag = self.buttonTag
+                            self.arrayForDeleteButtons.append(deleteButton)
+                            self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
                             
                             var DoublefornewPriceString = Double(newPriceString)
                             var newtotalPrice = DoublefornewPriceString! + self.Price
@@ -443,10 +461,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
                     self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
                     
+                    
+                    
                     if self.stringforvalue.range(of: toCheckIfcontained) != nil {
                         print("inserted:\(item)")
                         self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
-                        //self.StackViewForCost.addArrangedSubview(stringforIndivPrice)
+                        var deleteButton = UIButton()
+                        deleteButton.setTitle("-", for: UIControlState.normal)
+                        deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+                        deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                        deleteButton.tag = self.buttonTag
+                        self.buttonTag = self.buttonTag + 1
+                        self.arrayForDeleteButtons.append(deleteButton)
+                        self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
                     }
                     stringforIndivPrice = ""
                     toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
@@ -678,6 +706,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 {
                                     self.arrayForDisplayItems[i].removeFromSuperview()
                                 }
+                                for i in 0 ... self.arrayForDeleteButtons.count - 1
+                                {
+                                    self.arrayForDeleteButtons[i].removeFromSuperview()
+                                }
                                 for i in 0 ... self.arrayforDisplayingCost.count - 1
                                 {
                                     self.arrayforDisplayingCost[i].removeFromSuperview()
@@ -686,6 +718,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.arrayforDisplayingCost = [UILabel]()
                                 self.ArrayForIngredients = [String]()
                                 self.ArrayforType = [String]()
+                                self.buttonTag = 0
             })
             
         }
@@ -696,6 +729,54 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func onSettingsPress(_ sender: Any) {
         print(self.Price)
+    }
+    
+    func removeFromStackView(_ sender:UIButton)
+    {
+        for i in 0 ... self.arrayForDeleteButtons.count - 1
+        {
+          if(sender.tag == i)
+          {
+            
+            
+            let attributedString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
+            
+            attributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
+            
+            self.arrayForDisplayItems[i].attributedText = attributedString
+            
+            let attributedStringforCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
+            attributedStringforCost.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedStringforCost.length))
+            attributedStringforCost.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedStringforCost.length))
+            
+            self.arrayforDisplayingCost[i].attributedText = attributedStringforCost
+            //self.arrayforDisplayingCost[i].text = " "
+            
+            sender.setTitle("+", for: UIControlState.normal)
+            sender.setTitleColor(UIColor.blue, for: UIControlState.normal)
+            sender.addTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
+          }
+        }
+    }
+    
+    func addBackToStackView(_ sender:UIButton)
+    {
+        for i in 0 ... self.arrayForDeleteButtons.count - 1
+        {
+            if(sender.tag == i)
+            {
+                let originalString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
+                self.arrayForDisplayItems[i].attributedText = originalString
+                
+                let originalStringForCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
+                self.arrayforDisplayingCost[i].attributedText = originalStringForCost
+                
+                sender.setTitle("-", for: UIControlState.normal)
+                sender.setTitleColor(UIColor.red, for: UIControlState.normal)
+                sender.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+            }
+        }
     }
     
     

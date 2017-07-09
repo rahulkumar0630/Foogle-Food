@@ -156,6 +156,10 @@
                                         <rect key="frame" x="168" y="13" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-Kg-sJB">
+                                        <rect key="frame" x="314" y="103" width="35" height="424"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -243,6 +247,7 @@
                         <outlet property="SearchBar" destination="30e-hb-Qxc" id="7oO-Gj-Fwo"/>
                         <outlet property="ServingsLabel" destination="C76-ad-xxq" id="i2R-9y-qsY"/>
                         <outlet property="StackViewForCost" destination="8a4-2i-xnk" id="FYe-3U-JQs"/>
+                        <outlet property="StackViewForDeleteButtons" destination="dpA-Kg-sJB" id="fh7-Tc-g4K"/>
                         <outlet property="StackViewForIngredients" destination="w31-tY-Dlo" id="VuW-BC-Vfw"/>
                         <outlet property="TextFieldToEnterMore" destination="y80-Em-bzf" id="SPJ-2Z-ROl"/>
                         <outlet property="WebView" destination="blr-di-NBO" id="G58-vw-2WR"/>
