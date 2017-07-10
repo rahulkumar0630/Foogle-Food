@@ -35,6 +35,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var arrayForDisplayItems = [UILabel]()
     var LabelforInsertingCost = UILabel()
     var ArrayforType = [String]()
+    var arrayforCost = [Double]()
     var arrayforDisplayingCost = [UILabel]()
     var arrayForDeleteButtons = [UIButton]()
     var servingsstring = ""
@@ -192,34 +193,35 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         }
                         else
                         {
+                            
+                            var labelforInsertingintoPrice = UILabel()
+                            labelforInsertingintoPrice.text = "$\(newPriceString)"
+                            labelforInsertingintoPrice.textColor = UIColor.gray
+                            self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
+                            self.arrayforDisplayingCost.append(labelforInsertingintoPrice)
+ 
                             var labelForInsertingintoIngredients = UILabel()
                             labelForInsertingintoIngredients.text = convertedtextfieldtext
                             labelForInsertingintoIngredients.textColor = UIColor.gray
                             self.StackViewForIngredients.addArrangedSubview(labelForInsertingintoIngredients)
                             self.arrayForDisplayItems.append(labelForInsertingintoIngredients)
                             
-                            var labelforInsertingintoPrice = UILabel()
-                            labelforInsertingintoPrice.text = "$\(newPriceString)"
-                            self.arrayForDisplayItems.append(labelforInsertingintoPrice)
-                            
-                            labelforInsertingintoPrice.textColor = UIColor.gray
-                            self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
-                            
                             var deleteButton = UIButton()
-                            deleteButton.setTitle("-", for: UIControlState.normal)
+                            deleteButton.setTitle("x", for: UIControlState.normal)
                             deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 23)
                             deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
-                            self.buttonTag = self.buttonTag + 1
                             deleteButton.tag = self.buttonTag
+                            print("\(self.buttonTag)")
+                            self.buttonTag = self.buttonTag + 1
                             self.arrayForDeleteButtons.append(deleteButton)
                             self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
                             
                             var DoublefornewPriceString = Double(newPriceString)
-                            var newtotalPrice = DoublefornewPriceString! + self.Price
-                            self.Price = newtotalPrice
+                            let roundedDoublefornewPriceString = round(100 * DoublefornewPriceString!) / 100
+                            self.Price = roundedDoublefornewPriceString + self.Price
                             
-                            self.PriceTextinOrderView.text = "Price: $\(newtotalPrice)"
+                            self.PriceTextinOrderView.text = "Price: $\(self.Price)"
                             
                             self.PriceTextinOrderView.isHidden = false
                             self.ActivityIndicatorforPriceLabel.isHidden = true
@@ -340,7 +342,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             SearchBar.inputAccessoryView = toolbar
         
             let currenturl = (WebView.request?.url?.absoluteString)!
-            print(currenturl)
+            //print(currenturl)
         
             FoogleImageView.isHidden = true
             let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
@@ -385,32 +387,24 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             if self.stringforvalue.range(of:"price:") != nil{
             
                 
-                let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
-                let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
-                self.incremetor = index + 19
-                
-                
-                while self.boolForSubstring == false
-                {
-                    if(self.stringforvalue[self.incremetor] != "<")
-                    {
-                        self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
-                        self.incremetor = self.incremetor + 1
-                    }
-                    else
-                    {
-                         self.boolForSubstring = true
-                    }
-                }
+//                let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
+//                let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
+//                self.incremetor = index + 19
+//                
+//                
+//                while self.boolForSubstring == false
+//                {
+//                    if(self.stringforvalue[self.incremetor] != "<")
+//                    {
+//                        self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
+//                        self.incremetor = self.incremetor + 1
+//                    }
+//                    else
+//                    {
+//                         self.boolForSubstring = true
+//                    }
+//                }
                 //self.ActivitySpinner.stopAnimating()
-                self.Price = Double(self.newPriceString)!
-                print(self.Price)
-                
-                self.PriceTextinOrderView.text = "Price: $\(self.newPriceString)"
-                self.ActivitySpinner.isHidden = true
-                self.LoaderView.isHidden = true
-                self.grayView.isHidden = true
-                
                 //self.OrderView.addSubview(self.StackViewForIngredients)
                 let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
                 let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
@@ -442,6 +436,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     
                    if(self.stringforvalue[incrematorforIndivPrice] == "$")
                    {
+                    incrematorforIndivPrice += 1
                     while boolforIndivPrice == false
                     {
                         if(self.stringforvalue[incrematorforIndivPrice] != "<")
@@ -452,14 +447,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         else
                         {
                             boolforIndivPrice = true
+                            self.LabelforInsertingCost.text = "$\(stringforIndivPrice)"
+                            let IndivPriceConvertedIntoDouble = Double(stringforIndivPrice)
+                            let roundedIndivPrice = round(100 * IndivPriceConvertedIntoDouble!) / 100
+                            self.Price += roundedIndivPrice
+                            print("INDIVPRICE:\(roundedIndivPrice)")
+                            self.arrayforCost.append(roundedIndivPrice)
+                            self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
+                            self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
                         }
                     }
                     }
                     incrematorforIndivPrice += 4
                     print(stringforIndivPrice)
-                    self.LabelforInsertingCost.text = stringforIndivPrice
-                    self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
-                    self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
+
                     
                     
                     
@@ -467,11 +468,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         print("inserted:\(item)")
                         self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
                         var deleteButton = UIButton()
-                        deleteButton.setTitle("-", for: UIControlState.normal)
+                        deleteButton.setTitle("x", for: UIControlState.normal)
                         deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 23)
                         deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
                         deleteButton.tag = self.buttonTag
+                        print("\(item):\(self.buttonTag)")
                         self.buttonTag = self.buttonTag + 1
                         self.arrayForDeleteButtons.append(deleteButton)
                         self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
@@ -479,6 +481,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     stringforIndivPrice = ""
                     toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
                 }
+                
+                
+                self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                print(self.Price)
+                self.ActivitySpinner.isHidden = true
+                self.LoaderView.isHidden = true
+                self.grayView.isHidden = true
+
                 
                 //self.LabelForInsertingIngredients = UILabel()
                 
@@ -625,9 +635,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                    {
                                       contructedstring = "\(amount)"
                                    }
-                                   if let unitLong = station["unitLong"] as? String
+                                   if let unitShort = station["unitShort"] as? String
                                    {
-                                      contructedstring = contructedstring + " \(unitLong)"
+                                      contructedstring = contructedstring + " \(unitShort)"
                                    }
                                    if let name = station["name"] as? String
                                    {
@@ -718,7 +728,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.arrayforDisplayingCost = [UILabel]()
                                 self.ArrayForIngredients = [String]()
                                 self.ArrayforType = [String]()
+                                self.arrayforCost = [Double]()
                                 self.buttonTag = 0
+                                self.Price = 0.0
             })
             
         }
@@ -735,11 +747,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     {
         for i in 0 ... self.arrayForDeleteButtons.count - 1
         {
+          //print(self.arrayforCost[i])
           if(sender.tag == i)
           {
-            
-            
-            let attributedString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
+            sender.removeTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
+            let attributedString = NSMutableAttributedString(attributedString: self.arrayForDisplayItems[i].attributedText!)
             
             attributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedString.length))
             attributedString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
@@ -751,7 +763,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             attributedStringforCost.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedStringforCost.length))
             
             self.arrayforDisplayingCost[i].attributedText = attributedStringforCost
-            //self.arrayforDisplayingCost[i].text = " "
+            
+            print("\(self.Price) - \(self.arrayforCost[i])")
+            
+            self.Price = self.Price - self.arrayforCost[i]
+            let roundedSelfPrice = round(100 * self.Price) / 100
+            self.PriceTextinOrderView.text = "Price: $\(abs(roundedSelfPrice))"
             
             sender.setTitle("+", for: UIControlState.normal)
             sender.setTitleColor(UIColor.blue, for: UIControlState.normal)
@@ -766,15 +783,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         {
             if(sender.tag == i)
             {
+                sender.removeTarget(self, action: "removeFromStackView", for: UIControlEvents.touchUpInside)
                 let originalString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
                 self.arrayForDisplayItems[i].attributedText = originalString
                 
                 let originalStringForCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
                 self.arrayforDisplayingCost[i].attributedText = originalStringForCost
                 
-                sender.setTitle("-", for: UIControlState.normal)
+                print("\(self.Price) + \(self.arrayforCost[i])")
+                self.Price = self.Price + self.arrayforCost[i]
+                let roundedSelfPrice = round(100 * self.Price) / 100
+                self.PriceTextinOrderView.text = "Price: $\(abs(roundedSelfPrice))"
+                
+                sender.setTitle("x", for: UIControlState.normal)
                 sender.setTitleColor(UIColor.red, for: UIControlState.normal)
                 sender.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+
             }
         }
     }
