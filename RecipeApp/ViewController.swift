@@ -221,6 +221,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             let roundedDoublefornewPriceString = round(100 * DoublefornewPriceString!) / 100
                             self.Price = roundedDoublefornewPriceString + self.Price
                             
+                            self.arrayforCost.append(roundedDoublefornewPriceString)
                             self.PriceTextinOrderView.text = "Price: $\(self.Price)"
                             
                             self.PriceTextinOrderView.isHidden = false
