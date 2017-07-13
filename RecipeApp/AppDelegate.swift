@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+         IQKeyboardManager.sharedManager().enable = true
         // Override point for customization after application launch.
+        PayPalMobile .initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "AZz6uJoH43wyulU_zOqFYtR58chTrlZ265sCNi8AUGZiurG5E3YEzsMhOIuobiZsiC2QfJgBX8EPEOcV",
+                                                                PayPalEnvironmentSandbox: "fooglefood-facilitator@gmail.com"])
         return true
     }
 

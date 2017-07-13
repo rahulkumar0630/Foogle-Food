@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate{
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate, PayPalPaymentDelegate{
 
     @IBOutlet var WebView: UIWebView!
     var currentURL:String = ""
@@ -43,6 +43,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var addButtonImage = UIImage(named: "PlusSign")
     let toolbar = UIToolbar()
     var buttonTag = 0
+    var titleOfRecipe = ""
+    static var conditionforShippingAddressIsFulfilled = 0
     
     
    var theBool: Bool!
@@ -71,9 +73,34 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var ActivityIndicatorForTextField: UIActivityIndicatorView!
     @IBOutlet var ActivityIndicatorforPriceLabel: UIActivityIndicatorView!
     @IBOutlet var StackViewForDeleteButtons: UIStackView!
+    @IBOutlet var StepperOutlet: UIStepper!
+    @IBOutlet var ShippingTaxesServicesLabel: UILabel!
+    @IBOutlet var ServicePrice: UILabel!
+    
+    
+    var environment:String = PayPalEnvironmentNoNetwork {
+        willSet(newEnvironment) {
+            if (newEnvironment != environment) {
+                PayPalMobile.preconnect(withEnvironment: newEnvironment)
+            }
+        }
+    }
+    
+    var resultText = "" // empty
+    var payPalConfig = PayPalConfiguration() // default
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        payPalConfig.acceptCreditCards = true
+        payPalConfig.merchantName = "Foogle Inc."
+        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
+        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
+        
+        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
+        payPalConfig.payPalShippingAddressOption = .both;
 
         Orderbutton.layer.cornerRadius = 10
         SearchBar.text = ""
@@ -97,13 +124,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         SearchBar.autocorrectionType = .yes
         
         TextFieldToEnterMore.inputAccessoryView = toolbar
-        
-//        let url = URL(string: "https://www.google.com")
-//
-//        let request = URLRequest(url: url!)
-//        
-//        WebView.loadRequest(request)
-        //WebView.isHidden = true
         
         webViewforData.navigationDelegate = self
         SearchBar.delegate = self
@@ -131,7 +151,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         self.ActivityIndicatorforWeb.isHidden = true
         self.ActivityIndicatorforWeb.startAnimating()
         //StackViewForIngredients.removeFromSuperview()
+        
+        StepperOutlet.minimumValue = 1
+        StepperOutlet.maximumValue = 25
+        StepperOutlet.autorepeat = true
+        StepperOutlet.isHidden = true
+        ServingsLabel.isHidden = true
+        self.ShippingTaxesServicesLabel.textColor = UIColor.gray
+        self.ServicePrice.textColor = UIColor.gray
+        
+        
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        PayPalMobile.preconnect(withEnvironment: environment)
     }
     
     func doneClicked(){
@@ -209,7 +244,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             var deleteButton = UIButton()
                             deleteButton.setTitle("x", for: UIControlState.normal)
                             deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 23)
+                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
                             deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
                             deleteButton.tag = self.buttonTag
                             print("\(self.buttonTag)")
@@ -361,13 +396,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         //print("http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)")
 
         self.UrlBeforeSent = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)"
-        //print(self.UrlBeforeSent)
         
         let urlSet = CharacterSet.urlQueryAllowed
             .union(CharacterSet.punctuationCharacters)
         
         self.UrlBeforeSent = self.UrlBeforeSent.addingPercentEncoding(withAllowedCharacters: urlSet)!
-        //print(self.UrlBeforeSent)
         
         let foodPriceUrl = URL(string: self.UrlBeforeSent)
         print ("ravi....\(foodPriceUrl)")
@@ -386,27 +419,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             var incrematorforIndivPrice = 0
             
             if self.stringforvalue.range(of:"price:") != nil{
-            
-                
-//                let range: Range<String.Index> = self.stringforvalue.range(of: "Cost per Serving: $")!
-//                let index: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: range.lowerBound)
-//                self.incremetor = index + 19
-//                
-//                
-//                while self.boolForSubstring == false
-//                {
-//                    if(self.stringforvalue[self.incremetor] != "<")
-//                    {
-//                        self.newPriceString = self.newPriceString + self.stringforvalue[self.incremetor]
-//                        self.incremetor = self.incremetor + 1
-//                    }
-//                    else
-//                    {
-//                         self.boolForSubstring = true
-//                    }
-//                }
-                //self.ActivitySpinner.stopAnimating()
-                //self.OrderView.addSubview(self.StackViewForIngredients)
+
+
                 let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
                 let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
                 incrematorforIndivPrice = indexforIndivPrice + 4
@@ -471,7 +485,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         var deleteButton = UIButton()
                         deleteButton.setTitle("x", for: UIControlState.normal)
                         deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 23)
+                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
                         deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
                         deleteButton.tag = self.buttonTag
                         print("\(item):\(self.buttonTag)")
@@ -483,6 +497,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
                 }
                 
+                let serviceCharge = String((round(100 * (self.Price * 0.14))  / 100) + 2.00)
+                //print("SERVICE CHARGE: \(serviceCharge)")
+                
+                self.ServicePrice.text = "$\(serviceCharge)"
+                
+                //self.Price += Double(serviceCharge)!
+                
+                self.Price += Double(serviceCharge)!
                 
                 self.PriceTextinOrderView.text = "Price: $\(self.Price)"
                 print(self.Price)
@@ -490,9 +512,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.LoaderView.isHidden = true
                 self.grayView.isHidden = true
 
-                
-                //self.LabelForInsertingIngredients = UILabel()
-                
                 if !UIAccessibilityIsReduceTransparencyEnabled() {
                     self.view.backgroundColor = UIColor.clear
                     //always fill the view
@@ -557,7 +576,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         ActivitySpinner.isHidden = false
         var checkifrecipe = true
         
-        
         currentURL = (WebView.request?.url?.absoluteString)!
         print(currentURL)
         ArrayForIngredients = [String]()
@@ -582,13 +600,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         
                         let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
-                        if let servings = myJson["servings"] as? Int {
-                            self.servingsstring = String(servings)
-                            print("SERVINGS:\(self.servingsstring)")
-                        }
-                        self.ServingsLabel.text = "Servings:\(self.servingsstring)"
-                        print(self.ServingsLabel.text)
-                        //self.servingsstring = ""
+                        //self.StepperOutlet.value = Double(self.servingsstring)!
                         
                         if let status = myJson["status"] as? String {
                             if(status == "failure")
@@ -604,50 +616,44 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             }
                         }
                         
+                        if let title = myJson["title"] as? String
+                        {
+                            self.titleOfRecipe = title
+                        }
+                        
                         if let Recipedifferentiater = myJson["text"] as? String
                         {
+                            if let servings = myJson["servings"] as? Int {
+                                self.servingsstring = String(servings)
+                                print("SERVINGS:\(self.servingsstring)")
+                                self.ServingsLabel.text = "Servings: \(self.servingsstring)"
+                            }
+
                         
                         if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
                             
                             for station in stations {
                                 
                                 if let name = station["originalString"] as? String{
-                                    
-//                                   let aisle = station["aisle"] as? String
-//                                   
-//                                    
-//                                   if(aisle == "?")
-//                                   {
-//                                      print("This is not a recipe")
-//                                      checkifrecipe = false
-//                                    
-//                                      let alert = UIAlertController(title: "Uh-Oh!", message: "This is not a recipe", preferredStyle: UIAlertControllerStyle.alert)
-//                                      let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-//                                           self.grayView.isHidden = true
-//                                      }
-//                                      alert.addAction(cancelAction)
-//                                    
-//                                      self.present(alert, animated: true, completion: nil)
-//                                      break
-//                                   }
-                                   var contructedstring = ""
+
+                                   var constructedstring = ""
                                     
                                    if let amount = station["amount"] as? Double
                                    {
-                                      contructedstring = "\(amount)"
+                                      constructedstring = "\(amount)"
                                    }
                                    if let unitShort = station["unitShort"] as? String
                                    {
-                                      contructedstring = contructedstring + " \(unitShort)"
+                                      constructedstring = constructedstring + " \(unitShort)"
                                    }
                                    if let name = station["name"] as? String
                                    {
-                                      contructedstring = contructedstring + " \(name)"
+                                      constructedstring = constructedstring + " \(name)"
                                       self.ArrayforType.append(name)
                                    }
                                 
-                                   print(contructedstring)
-                                   self.ArrayForIngredients.append(contructedstring)
+                                   print(constructedstring)
+                                   self.ArrayForIngredients.append(constructedstring)
                                     
                                 }
                                 
@@ -660,7 +666,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             print("This is not a recipe")
                             checkifrecipe = false
                             
-                            let alert = UIAlertController(title: "Uh-Oh!", message: "This is not a recipe", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
                             let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                                             self.grayView.isHidden = true
                             }
@@ -742,13 +748,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func onSettingsPress(_ sender: Any) {
         print(self.Price)
+        performSegue(withIdentifier: "SegueToSettings", sender: self)
     }
     
     func removeFromStackView(_ sender:UIButton)
     {
+        
         for i in 0 ... self.arrayForDeleteButtons.count - 1
         {
-          //print(self.arrayforCost[i])
           if(sender.tag == i)
           {
             sender.removeTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
@@ -822,6 +829,103 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
     }
     
+    
+    @IBAction func ServingsStepper(_ sender: UIStepper) {
+        self.ServingsLabel.text = "Servings: \(Int(sender.value).description)"
+    }
+    
+    
+    func initiatePayPalController()
+    {
+        
+        // Note: For purposes of illustration, this example shows a payment that includes
+        //       both payment details (subtotal, shipping, tax) and multiple items.
+        //       You would only specify these if appropriate to your situation.
+        //       Otherwise, you can leave payment.items and/or payment.paymentDetails nil,
+        //       and simply set payment.amount to your total charge.
+        
+        
+        let nameFromSearchBartext = SearchBar.text as! String
+        let priceFromLabel = String(self.Price)
+        
+        
+        // Optional: include multiple items
+        let item1 = PayPalItem(name: "Base Item + Service Charge", withQuantity: 1, withPrice: NSDecimalNumber(string: priceFromLabel), withCurrency: "USD", withSku: "Hip-0037")
+        
+        let items = [item1]
+        let subtotal = PayPalItem.totalPrice(forItems: items)
+        
+        // Optional: include payment details
+        let shipping = NSDecimalNumber(string: "0.00")
+        let tax = NSDecimalNumber(string: "0.00")
+        let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: tax)
+        
+        let total = subtotal.adding(shipping).adding(tax)
+        
+        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: self.titleOfRecipe, intent: .sale)
+        
+        payment.items = items
+        payment.paymentDetails = paymentDetails
+        
+        if (payment.processable) {
+            
+            let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self as! PayPalPaymentDelegate)
+            present(paymentViewController!, animated: true, completion: nil)
+        }
+        else {
+            // This particular payment will always be processable. If, for
+            // example, the amount was negative or the shortDescription was
+            // empty, this payment wouldn't be processable, and you'd want
+            // to handle that here.
+            print("Payment not processalbe: \(payment)")
+        }
+
+    }
+    
+    override func viewDidAppear(_ conditionforShippingAddressIsFulfilled: Bool) {
+        
+        if let shippingSetup = UserDefaults.standard.object(forKey: "Shipping Setup") as? Bool
+        {
+          if(shippingSetup == true)
+          {
+            initiatePayPalController()
+            UserDefaults.standard.set(false, forKey: "Shipping Setup")
+          }
+        }
+
+    }
+    
+    
+    
+    @IBAction func OnPayPress(_ sender: Any) {
+        resultText = ""
+        
+        if let shippingSetup = UserDefaults.standard.object(forKey: "Shipping Setup") as? Bool
+        {
+            initiatePayPalController()
+        }
+        else
+        {
+            performSegue(withIdentifier: "ViewControllerForShippingInfo", sender: self)
+        }
+    }
+    
+    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
+        print("PayPal Payment Cancelled")
+        resultText = ""
+        //successView.isHidden = true
+        paymentViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
+        print("PayPal Payment Success !")
+        paymentViewController.dismiss(animated: true, completion: { () -> Void in
+            // send completed confirmaion to your server
+            print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
+            self.resultText = completedPayment.description
+            
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
