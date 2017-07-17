@@ -45,6 +45,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var buttonTag = 0
     var titleOfRecipe = ""
     static var conditionforShippingAddressIsFulfilled = 0
+    static var URLforOrderInfo = ""
+    static var IngredientsArrayForMySQLtransfer = [UILabel]()
+    static var CostsArrayForMySQLtransfer = [UILabel]()
+    static var OriginalIngredientsArrayForMySQLtransfer = [String]()
+    static var OriginalCostsArrayForMySQLtransfer = [Double]()
+
     
     
    var theBool: Bool!
@@ -315,8 +321,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
          ActivityIndicatorforWeb.isHidden = false
          BigSearchRecipes.isHidden = true
          SearchBar.placeholder = "Foogle"
+         //checkArrowStatus()
     }
-    
     
 
     
@@ -330,11 +336,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               options: .transitionCrossDissolve,
                               animations: {
                                 self.BackArrow.setImage(self.CanGoBack, for: UIControlState.normal)
-            },
-                              completion: nil)
+            })
         }
         
-        if(WebView.canGoForward == true)
+        else if(WebView.canGoForward == true)
         {
             
             UIWebView.transition(with: self.ForwardArrow,
@@ -342,10 +347,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               options: .transitionCrossDissolve,
                               animations: {
                                 self.ForwardArrow.setImage(self.canGoForward, for: UIControlState.normal)
-            },
-                              completion: nil)
+            })
         }
-        if(WebView.canGoBack == false)
+        else if(WebView.canGoBack == false)
         {
             
             UIWebView.transition(with: self.BackArrow,
@@ -353,11 +357,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               options: .transitionCrossDissolve,
                               animations: {
                                 self.BackArrow.setImage(self.CantGoBack, for: UIControlState.normal)
-            },
-                              completion: nil)
+            })
         }
         
-        if(WebView.canGoForward == false)
+        else if(WebView.canGoForward == false)
         {
             
             UIWebView.transition(with: self.ForwardArrow,
@@ -365,15 +368,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               options: .transitionCrossDissolve,
                               animations: {
                                 self.ForwardArrow.setImage(self.cantGoForward, for: UIControlState.normal)
-            },
-                              completion: nil)
+            })
         }
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
             ActivityIndicatorforWeb.isHidden = true
-            checkArrowStatus()
+            //checkArrowStatus()
         
             SearchBar.inputAccessoryView = toolbar
         
@@ -444,6 +446,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         self.LabelForInsertingIngredients.text = item
                     
                         self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
+                    }
+                    else
+                    {
+                        self.ArrayForIngredients.remove(at: toCheckIfItemWasParsed)
                     }
                     boolforIndivPrice = false
                         
@@ -577,6 +583,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         var checkifrecipe = true
         
         currentURL = (WebView.request?.url?.absoluteString)!
+        ViewController.URLforOrderInfo = currentURL
         print(currentURL)
         ArrayForIngredients = [String]()
         
@@ -765,12 +772,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             attributedString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
             
             self.arrayForDisplayItems[i].attributedText = attributedString
+            self.arrayForDisplayItems[i].accessibilityHint = "removed"
             
             let attributedStringforCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
             attributedStringforCost.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedStringforCost.length))
             attributedStringforCost.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedStringforCost.length))
             
             self.arrayforDisplayingCost[i].attributedText = attributedStringforCost
+            self.arrayforDisplayingCost[i].accessibilityHint = "removed"
             
             print("\(self.Price) - \(self.arrayforCost[i])")
             
@@ -794,9 +803,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 sender.removeTarget(self, action: "removeFromStackView", for: UIControlEvents.touchUpInside)
                 let originalString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
                 self.arrayForDisplayItems[i].attributedText = originalString
+                self.arrayForDisplayItems[i].accessibilityHint = "added"
                 
                 let originalStringForCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
                 self.arrayforDisplayingCost[i].attributedText = originalStringForCost
+                self.arrayforDisplayingCost[i].accessibilityHint = "added"
                 
                 print("\(self.Price) + \(self.arrayforCost[i])")
                 self.Price = self.Price + self.arrayforCost[i]
@@ -813,10 +824,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     
     @IBAction func OnBackPress(_ sender: Any) {
-        
+       
        if(WebView.canGoBack)
        {
           WebView.goBack()
+          //checkArrowStatus()
        }
     }
     
@@ -826,6 +838,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         if(WebView.canGoForward)
         {
            WebView.goForward()
+           //checkArrowStatus()
         }
     }
     
@@ -899,7 +912,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func OnPayPress(_ sender: Any) {
         resultText = ""
-        
         if let shippingSetup = UserDefaults.standard.object(forKey: "Shipping Setup") as? Bool
         {
             initiatePayPalController()
@@ -923,6 +935,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             // send completed confirmaion to your server
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
             self.resultText = completedPayment.description
+            ViewController.IngredientsArrayForMySQLtransfer = self.arrayForDisplayItems
+            ViewController.CostsArrayForMySQLtransfer = self.arrayforDisplayingCost
+            ViewController.OriginalIngredientsArrayForMySQLtransfer = self.ArrayForIngredients
+            ViewController.OriginalCostsArrayForMySQLtransfer = self.arrayforCost
+            
+            self.performSegue(withIdentifier: "SegueToOrderInfo", sender: self)
+            
             
         })
     }

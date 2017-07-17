@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7776F9B838821843A99502BB /* Pods_RecipeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB57CA858E0E7F8B07DB874 /* Pods_RecipeAppUITests.framework */; };
 		79C9933AF5506F5F40D006B6 /* Pods_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E5821614DD9E1F65ECE590 /* Pods_RecipeAppTests.framework */; };
+		E40B9B2A1F1A912B00469D15 /* ViewControllerForOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */; };
 		E42635691EF0D9FA000D6076 /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = E42635681EF0D9FA000D6076 /* Banner.png */; };
 		E426356B1EF0DB33000D6076 /* BottomBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = E426356A1EF0DB33000D6076 /* BottomBanner.png */; };
 		E42635711EF0E9DA000D6076 /* BackgroundforAPP.png in Resources */ = {isa = PBXBuildFile; fileRef = E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */; };
@@ -81,6 +82,7 @@
 		8DB57CA858E0E7F8B07DB874 /* Pods_RecipeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08C6C294743B732C77363B8 /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D49737A811A2AE8FAAEBA873 /* Pods-RecipeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerForOrderInfo.swift; sourceTree = "<group>"; };
 		E42635681EF0D9FA000D6076 /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Banner.png; path = ../../../../../Downloads/Banner.png; sourceTree = "<group>"; };
 		E426356A1EF0DB33000D6076 /* BottomBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BottomBanner.png; path = ../../../../../Downloads/BottomBanner.png; sourceTree = "<group>"; };
 		E42635701EF0E9DA000D6076 /* BackgroundforAPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforAPP.png; path = ../../../../../Downloads/BackgroundforAPP.png; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				E4F0C1701EEA357800CE2D6B /* ViewController.swift */,
 				E49DBD9F1F159189005973FE /* ViewControllerForShippingInfo.swift */,
 				E4E63F501F16F3F2006C6773 /* ViewControllerForSettingsTab.swift */,
+				E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */,
 				E46CC2541EF9D4D40063AF18 /* String.swift */,
 				E4F0C1721EEA357800CE2D6B /* Main.storyboard */,
 				E47176191F09B13600E9A65D /* UIView.swift */,
@@ -593,6 +596,7 @@
 				E45E19501F00ACC1008DABD0 /* UIActivityIndicatorView.swift in Sources */,
 				E46CC2551EF9D4D40063AF18 /* String.swift in Sources */,
 				E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */,
+				E40B9B2A1F1A912B00469D15 /* ViewControllerForOrderInfo.swift in Sources */,
 				E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */,
 				E471761A1F09B13600E9A65D /* UIView.swift in Sources */,
 				E473CDCD1F004C3B007CEDEF /* UIButton.swift in Sources */,
