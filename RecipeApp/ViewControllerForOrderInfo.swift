@@ -97,7 +97,7 @@ class ViewControllerForOrderInfo: UIViewController {
         print(postString)
         
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/MySQLphpfile/phpToMySQL.php")! as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
         request.httpMethod = "POST"
         
         request.httpBody = postString.data(using: String.Encoding.utf8)
