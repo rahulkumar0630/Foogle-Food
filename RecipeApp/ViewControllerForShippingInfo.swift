@@ -19,6 +19,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var StateTextField: UITextField!
     @IBOutlet var ContinueButton: UIButton!
     
+    @IBOutlet var FoogleLogo: UILabel!
     
     static var emailText = ""
     static var addressLine1Text = ""
@@ -28,6 +29,14 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     static var PhoneNumberText = ""
     static var CountryText = ""
     static var StateText = ""
+    
+    override func viewDidLayoutSubviews() {
+        if(ViewController.modelName == "Simulator")
+        {
+            FoogleLogo.isHidden = true
+        }
+    }
+
     
     
     

@@ -17,8 +17,25 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var ZipCodeLabel: UILabel!
     @IBOutlet var StateLabel: UILabel!
     @IBOutlet var CountryLabel: UILabel!
+    @IBOutlet var OrderInfoLabel: UILabel!
+    @IBOutlet var ZipCodeTitleLabel: UILabel!
     
+    @IBOutlet var NoticeLogo: UILabel!
+    @IBOutlet var BackDrop: UIImageView!
     
+    override func viewDidLayoutSubviews() {
+        if(ViewController.modelName == "Simulator")
+        {
+            OrderInfoLabel.frame = CGRect.init(x: 16, y: 49, width: 288, height: 107)
+            OrderInfoLabel.adjustsFontSizeToFitWidth = true
+            ZipCodeTitleLabel.frame = CGRect.init(x: 199, y: 279, width: 121, height: 30)
+            ZipCodeLabel.frame = CGRect.init(x: 208, y: 315, width: 96, height: 21)
+            NoticeLogo.frame = CGRect.init(x: 28, y: 460, width: 281, height: 113)
+            NoticeLogo.numberOfLines = 4
+            NoticeLogo.adjustsFontSizeToFitWidth = true
+            BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

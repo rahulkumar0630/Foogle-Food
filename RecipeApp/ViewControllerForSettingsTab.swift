@@ -17,6 +17,20 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var ZipCode: UILabel!
     @IBOutlet var State: UILabel!
     @IBOutlet var Country: UILabel!
+    @IBOutlet var SavedInfoLabel: UILabel!
+    @IBOutlet var ZipCodeTitleLabel: UILabel!
+    @IBOutlet var BackDrop: UIImageView!
+    
+    override func viewDidLayoutSubviews() {
+        if(ViewController.modelName == "Simulator")
+        {
+            SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
+            SavedInfoLabel.adjustsFontSizeToFitWidth = true
+            ZipCodeTitleLabel.frame = CGRect.init(x: 229, y: 391, width: 75, height: 21)
+            ZipCode.frame = CGRect.init(x: 225, y: 420, width: 83, height: 21)
+            BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+        }
+    }
     
 
     override func viewDidLoad() {

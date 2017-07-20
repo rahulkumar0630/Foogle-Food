@@ -50,6 +50,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     static var CostsArrayForMySQLtransfer = [UILabel]()
     static var OriginalIngredientsArrayForMySQLtransfer = [String]()
     static var OriginalCostsArrayForMySQLtransfer = [Double]()
+    var booleantoLayoutSearchBar = false
+
+    static let modelName = UIDevice.current.modelName
+
 
     
     
@@ -82,6 +86,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var StepperOutlet: UIStepper!
     @IBOutlet var ShippingTaxesServicesLabel: UILabel!
     @IBOutlet var ServicePrice: UILabel!
+    @IBOutlet var SettingsButton: UIButton!
+    @IBOutlet var IngredientLabelOnOrderView: UILabel!
+    
+    @IBOutlet var CostLabelOnOrderView: UILabel!
+    @IBOutlet var ShippingTaxesServicesOrderViewLabel: UILabel!
+
+    @IBOutlet var BackgroundForFoogle: UIImageView!
     
     
     var environment:String = PayPalEnvironmentNoNetwork {
@@ -94,6 +105,44 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     var resultText = "" // empty
     var payPalConfig = PayPalConfiguration() // default
+    
+    override func viewDidLayoutSubviews() {
+        if(ViewController.modelName == "Simulator")
+        {
+            //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
+            FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            FoogleLogo.frame = CGRect.init(x: 56, y: 220, width: 207, height: 77)
+            BigSearchRecipes.frame = CGRect.init(x: 28, y: 15, width: 262, height: 45)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 149, y: 27, width: 20, height: 20)
+            if(booleantoLayoutSearchBar == false)
+            {
+                SearchBar.frame = CGRect.init(x: 0, y: 296, width: 319, height: 44)
+                booleantoLayoutSearchBar = true
+            }
+            SettingsButton.frame = CGRect.init(x: 271, y: 20, width: 30, height: 30)
+            LoaderView.frame = CGRect.init(x: 103, y: 269, width: 112, height: 73)
+            ActivitySpinner.frame = CGRect.init(x: 46, y: 28, width: 20, height: 20)
+            WebView.frame = CGRect.init(x: 0, y: 78, width: 320, height: 435)
+            //self.OrderView.frame = CGRect.init(x: 9, y: 801, width: 301, height: 500)
+            IngredientLabelOnOrderView.frame = CGRect.init(x: 5, y: 42, width: 115, height: 28)
+            CostLabelOnOrderView.frame = CGRect.init(x: 207, y: 42, width: 73, height: 28)
+            StackViewForIngredients.frame = CGRect.init(x: 8, y: 103, width: 199, height: 339)
+            StackViewForCost.frame = CGRect.init(x: 227, y: 103, width: 55, height: 339)
+            StackViewForDeleteButtons.frame = CGRect.init(x: 278, y: 103, width: 24, height: 339)
+            ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 440, width: 209, height: 21)
+            ServicePrice.frame = CGRect.init(x: 227, y: 440, width: 55, height: 21)
+            PaynowButton.frame = CGRect.init(x: 207, y: 460, width: 86, height: 33)
+            TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
+            Orderbutton.frame = CGRect.init(x: 196, y: 521, width: 108, height: 39)
+            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            BackArrow.frame = CGRect.init(x: 16, y: 516, width: 47, height: 48)
+            ForwardArrow.frame = CGRect.init(x: 63, y: 516, width: 47, height: 48)
+            PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
+        
+        }
+    }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -383,8 +432,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             //print(currenturl)
         
             FoogleImageView.isHidden = true
-            let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
+            if(ViewController.modelName == "Simulator")
+            {
+               SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
+            }
+            else
+            {
+                let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
             SearchBar.frame = newFrameForSearchBar
+            }
             FoogleLogo.isHidden = true
         
             Orderbutton.isHidden = false
@@ -543,6 +599,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         
                 } else {
                     self.view.backgroundColor = UIColor.black
+                }
+                if(ViewController.modelName == "Simulator")
+                {
+                    self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                 }
                 
                 
