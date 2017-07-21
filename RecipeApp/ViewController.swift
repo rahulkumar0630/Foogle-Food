@@ -107,7 +107,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var payPalConfig = PayPalConfiguration() // default
     
     override func viewDidLayoutSubviews() {
-        if(ViewController.modelName == "Simulator")
+        if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
             FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
@@ -143,7 +144,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         }
         
-        if(ViewController.modelName == "iPhone 7 Plus")
+        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
         {
             //self.OrderView.frame.origin.y = 800
             FoogleLogo.frame = CGRect.init(x: 104, y: 253, width: 207, height: 77)
@@ -461,7 +462,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             //print(currenturl)
         
             FoogleImageView.isHidden = true
-            if(ViewController.modelName == "Simulator")
+            if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
             {
                SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
             }
@@ -629,11 +631,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 } else {
                     self.view.backgroundColor = UIColor.black
                 }
-                if(ViewController.modelName == "Simulator")
+                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
                 {
                     self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                 }
-                else if(ViewController.modelName == "iPhone 7 Plus")
+                else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
                 {
                     self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
                 }
@@ -642,7 +645,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.blurEffectView.addGestureRecognizer(gesture)
                 
 
-                if(ViewController.modelName != "iPhone 7 Plus" || ViewController.modelName != "Simulator")
+                if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus"))
                 {
                     UIView.animate(withDuration: 1, animations: {
                         self.OrderView.frame.origin.y = 70

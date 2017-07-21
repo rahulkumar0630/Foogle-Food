@@ -26,7 +26,8 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var SuportLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
-        if(ViewController.modelName == "Simulator")
+        if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+           || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             OrderInfoLabel.frame = CGRect.init(x: 16, y: 49, width: 288, height: 107)
             OrderInfoLabel.adjustsFontSizeToFitWidth = true
@@ -37,7 +38,7 @@ class ViewControllerForOrderInfo: UIViewController {
             NoticeLogo.adjustsFontSizeToFitWidth = true
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
         }
-        if(ViewController.modelName == "iPhone 7 Plus")
+        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
         {
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             FoogleLogo.frame = CGRect.init(x: 16, y: 672, width: 97, height: 44)

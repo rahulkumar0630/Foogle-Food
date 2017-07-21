@@ -30,7 +30,8 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var CountryTitleLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
-        if(ViewController.modelName == "Simulator")
+        if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
@@ -47,7 +48,7 @@ class ViewControllerForSettingsTab: UIViewController {
             Country.frame = CGRect.init(x: 32, y: 533, width: 191, height: 21)
             
         }
-        if(ViewController.modelName == "iPhone 7 Plus")
+        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
         {
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             SavedInfoLabel.frame  = CGRect.init(x: 52, y: 58, width: 312, height: 87)
