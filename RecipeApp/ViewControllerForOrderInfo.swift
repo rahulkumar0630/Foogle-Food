@@ -22,6 +22,8 @@ class ViewControllerForOrderInfo: UIViewController {
     
     @IBOutlet var NoticeLogo: UILabel!
     @IBOutlet var BackDrop: UIImageView!
+    @IBOutlet var FoogleLogo: UILabel!
+    @IBOutlet var SuportLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "Simulator")
@@ -34,6 +36,14 @@ class ViewControllerForOrderInfo: UIViewController {
             NoticeLogo.numberOfLines = 4
             NoticeLogo.adjustsFontSizeToFitWidth = true
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+        }
+        if(ViewController.modelName == "iPhone 7 Plus")
+        {
+            BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
+            FoogleLogo.frame = CGRect.init(x: 16, y: 672, width: 97, height: 44)
+            NoticeLogo.frame = CGRect.init(x: 23, y: 509, width: 340, height: 76)
+            SuportLabel.frame = CGRect.init(x: 23, y: 623, width: 264, height: 21)
+            OrderInfoLabel.frame = CGRect.init(x: -20, y: 49, width: 455, height: 107)
         }
     }
 

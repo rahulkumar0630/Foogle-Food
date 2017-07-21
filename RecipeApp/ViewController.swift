@@ -120,7 +120,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 booleantoLayoutSearchBar = true
             }
             SettingsButton.frame = CGRect.init(x: 271, y: 20, width: 30, height: 30)
-            LoaderView.frame = CGRect.init(x: 103, y: 269, width: 112, height: 73)
+            LoaderView.frame = CGRect.init(x: 104, y: 247, width: 112, height: 74)
             ActivitySpinner.frame = CGRect.init(x: 46, y: 28, width: 20, height: 20)
             WebView.frame = CGRect.init(x: 0, y: 78, width: 320, height: 435)
             //self.OrderView.frame = CGRect.init(x: 9, y: 801, width: 301, height: 500)
@@ -138,7 +138,36 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             BackArrow.frame = CGRect.init(x: 16, y: 516, width: 47, height: 48)
             ForwardArrow.frame = CGRect.init(x: 63, y: 516, width: 47, height: 48)
             PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
+            ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 141, y: 13, width: 20, height: 20)
+            ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
         
+        }
+        
+        if(ViewController.modelName == "iPhone 7 Plus")
+        {
+            //self.OrderView.frame.origin.y = 800
+            FoogleLogo.frame = CGRect.init(x: 104, y: 253, width: 207, height: 77)
+            FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
+            SettingsButton.frame = CGRect.init(x: 360, y: 20, width: 34, height: 35)
+            BigSearchRecipes.frame = CGRect.init(x: 76, y: 15, width: 262, height: 45)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 198, y: 28, width: 20, height: 20)
+            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
+            Orderbutton.frame = CGRect.init(x: 289, y: 689, width: 105, height: 39)
+            BackArrow.frame = CGRect.init(x: 9, y: 684, width: 47, height: 48)
+            ForwardArrow.frame = CGRect.init(x: 56, y: 684, width: 47, height: 48)
+            WebView.frame = CGRect.init(x: 0, y: 97, width: 414, height: 579)
+            PaynowButton.frame = CGRect.init(x: 265, y: 625, width: 110, height: 33)
+            PriceTextinOrderView.frame = CGRect.init(x: 117, y: 13, width: 156, height: 21)
+            ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 182, y: 13, width: 20, height: 20)
+            CostLabelOnOrderView.frame = CGRect.init(x: 259, y: 42, width: 73, height: 28)
+            ActivityIndicatorForTextField.frame = CGRect.init(x: 285, y: 78, width: 20, height: 20)
+            StackViewForIngredients.frame = CGRect.init(x: 8, y: 103, width: 231, height: 482)
+            StackViewForCost.frame = CGRect.init(x: 259, y: 103, width: 79, height: 482)
+            StackViewForDeleteButtons.frame = CGRect.init(x: 346, y: 103, width: 24, height: 482)
+            ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 593, width: 217, height: 21)
+            ServicePrice.frame = CGRect.init(x: 259, y: 592, width: 79, height: 21)
+            LoaderView.frame = CGRect.init(x: 151, y: 328, width: 112, height: 74)
+            
         }
     }
 
@@ -187,7 +216,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         self.OrderView.frame.origin.y = 667
         OrderView.layer.cornerRadius = 10
-        //PaynowButton.layer.cornerRadius = 10
+        OrderView.removeFromSuperview()
         
         ActivitySpinner.isHidden = true
         ActivitySpinner.startAnimating()
@@ -604,17 +633,29 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 {
                     self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                 }
-                
+                else if(ViewController.modelName == "iPhone 7 Plus")
+                {
+                    self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
+                }
                 
                 let gesture = UITapGestureRecognizer(target: self, action: "someAction:")
                 self.blurEffectView.addGestureRecognizer(gesture)
                 
 
-                
-                UIView.animate(withDuration: 1, animations: {
-                    self.OrderView.frame.origin.y = 70
+                if(ViewController.modelName != "iPhone 7 Plus" || ViewController.modelName != "Simulator")
+                {
+                    UIView.animate(withDuration: 1, animations: {
+                        self.OrderView.frame.origin.y = 70
                     
-                })
+                    })
+                }
+                else
+                {
+                    UIView.animate(withDuration: 1, animations: {
+                        self.OrderView.frame.origin.y = 53
+                        
+                    })
+                }
 
 
                 self.newPriceString = ""

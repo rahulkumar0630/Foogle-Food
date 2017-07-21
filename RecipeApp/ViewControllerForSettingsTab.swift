@@ -20,15 +20,54 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var SavedInfoLabel: UILabel!
     @IBOutlet var ZipCodeTitleLabel: UILabel!
     @IBOutlet var BackDrop: UIImageView!
+    @IBOutlet var EmailTitleLabel: UILabel!
+    @IBOutlet var AddressLine1TitleLabel: UILabel!
+    @IBOutlet var Address2TitleLabel: UILabel!
+    @IBOutlet var PhoneNumberTitle: UILabel!
+    @IBOutlet var CityTitleLabel: UILabel!
+    @IBOutlet var ZipCodeTitle: UILabel!
+    @IBOutlet var StateTitleLabel: UILabel!
+    @IBOutlet var CountryTitleLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "Simulator")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
-            ZipCodeTitleLabel.frame = CGRect.init(x: 229, y: 391, width: 75, height: 21)
-            ZipCode.frame = CGRect.init(x: 225, y: 420, width: 83, height: 21)
+            ZipCodeTitleLabel.frame = CGRect.init(x: 229, y: 388, width: 75, height: 21)
+            ZipCode.frame = CGRect.init(x: 235, y: 417, width: 83, height: 21)
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            Country.frame = CGRect.init(x: 105, y: 534, width: 191, height: 21)
+            PhoneNumber.frame = CGRect.init(x: 168, y: 342, width: 152, height: 21)
+            CityTitleLabel.frame = CGRect.init(x: 31, y: 388, width: 35, height: 21)
+            City.frame = CGRect.init(x: 31, y: 417, width: 192, height: 21)
+            StateTitleLabel.frame = CGRect.init(x: 31, y: 446, width: 45, height: 21)
+            State.frame = CGRect.init(x: 31, y: 475, width: 192, height: 21)
+            CountryTitleLabel.frame = CGRect.init(x: 31, y: 504, width: 66, height: 21)
+            Country.frame = CGRect.init(x: 32, y: 533, width: 191, height: 21)
+            
+        }
+        if(ViewController.modelName == "iPhone 7 Plus")
+        {
+            BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
+            SavedInfoLabel.frame  = CGRect.init(x: 52, y: 58, width: 312, height: 87)
+            EmailTitleLabel.frame = CGRect.init(x: 31, y: 153, width: 46, height: 21)
+            EmailLabel.frame = CGRect.init(x: 31, y: 182, width: 297, height: 21)
+            AddressLine1TitleLabel.frame = CGRect.init(x: 31, y: 218, width: 116, height: 21)
+            Address1Label.frame = CGRect.init(x: 31, y: 247, width: 297, height: 21)
+            Address2TitleLabel.frame = CGRect.init(x: 31, y: 284, width: 118, height: 21)
+            AddressLine2.frame = CGRect.init(x: 31, y: 313, width: 312, height: 21)
+            PhoneNumberTitle.frame = CGRect.init(x: 31, y: 358, width: 120, height: 21)
+            PhoneNumber.frame = CGRect.init(x: 31, y: 391, width: 192, height: 21)
+            CityTitleLabel.frame = CGRect.init(x: 32, y: 449, width: 35, height: 21)
+            City.frame = CGRect.init(x: 31, y: 489, width: 192, height: 21)
+           ZipCodeTitle.frame = CGRect.init(x: 276, y: 448, width: 75, height: 21)
+           ZipCode.frame = CGRect.init(x: 280, y: 489, width: 83, height: 21)
+            StateTitleLabel.frame = CGRect.init(x: 32, y: 528, width: 45, height: 21)
+            State.frame = CGRect.init(x: 31, y: 557, width: 192, height: 21)
+            CountryTitleLabel.frame = CGRect.init(x: 31, y: 598, width: 66, height: 21)
+            Country.frame = CGRect.init(x: 31, y: 627, width: 191, height: 21)
+            
         }
     }
     
