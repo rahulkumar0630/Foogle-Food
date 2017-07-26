@@ -963,17 +963,19 @@
                         <outlet property="BackDrop" destination="3aR-UH-Nx7" id="rMf-fq-amu"/>
                         <outlet property="CityLabel" destination="x5o-Sq-d3W" id="b6T-wB-R95"/>
                         <outlet property="CountryLabel" destination="rXq-6t-BLx" id="HHT-sh-Jvk"/>
+                        <outlet property="FoogleLogo" destination="VPk-xa-qkI" id="4HU-uf-VFA"/>
                         <outlet property="NoticeLogo" destination="aiw-S7-7cp" id="E0k-3Z-JfR"/>
                         <outlet property="OrderInfoLabel" destination="mRQ-9X-COF" id="FTf-jM-sBZ"/>
                         <outlet property="OrderNumberLabel" destination="iEo-IO-4gd" id="gyy-gN-oUT"/>
                         <outlet property="StateLabel" destination="0kG-eS-5s7" id="2aQ-yi-05r"/>
+                        <outlet property="SupportLabel" destination="6rA-1b-zTV" id="xEB-lQ-UuR"/>
                         <outlet property="ZipCodeLabel" destination="pyG-Hv-rQC" id="myR-3X-W3o"/>
                         <outlet property="ZipCodeTitleLabel" destination="iXF-37-iu9" id="XKB-UT-SCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOj-QJ-IMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="38.23088455772114"/>
+            <point key="canvasLocation" x="1716" y="29"/>
         </scene>
     </scenes>
     <resources>

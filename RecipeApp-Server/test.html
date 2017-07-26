@@ -25,5 +25,52 @@
  var spoonacularServings = 1;
  var spoonacularPriceView = 2;
 </script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+<script type="text/javascript">
+	var FirstAPIScript = document.createElement('script');
+	FirstAPIScript.src = 'https://code.jquery.com/jquery-1.9.1.min.js';
+
+	FirstAPIScript.onload = function() {
+		console.log("First API loaded");
+	};
+
+	document.body.appendChild(FirstAPIScript);
+</script>
+<script type="text/javascript">
+	var SecondAPIScript = document.createElement('script');
+	SecondAPIScript.src = 'https://spoonacular.com/cdn/spoonacular-1.6.min.js';
+
+	SecondAPIScript.onload = function() {
+		console.log("Second API loaded");
+	};
+
+	document.body.appendChild(SecondAPIScript);
+</script>
+<script type="text/javascript">
+var oldXHR = window.XMLHttpRequest;
+
+function newXHR() {
+    var realXHR = new oldXHR();
+    realXHR.addEventListener("readystatechange", function() {
+        if(realXHR.readyState==4 && realXHR.status==200){
+            console.log("Visualizer Ready");
+	    try	
+	    {
+		var message = {
+	          "Status": "Finished"
+		};
+ 		window.webkit.messageHandlers.loginSuccess.postMessage(message);
+	    }
+	    catch(err)
+	    {
+		var message = {
+	         "Status": "Finished"
+                };
+                window.webkit.messageHandlers.loginSuccess.postMessage(message);
+	    }
+        }
+    }, false);
+    return realXHR;
+}
+window.XMLHttpRequest = newXHR;
+
+</script>

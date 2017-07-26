@@ -9,11 +9,11 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate, PayPalPaymentDelegate{
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate, PayPalPaymentDelegate, WKScriptMessageHandler{
 
     @IBOutlet var WebView: UIWebView!
     var currentURL:String = ""
-    let webViewforData = WKWebView()
+    var webViewforData = WKWebView()
     var stringforvalue:String = ""
     var boolForSubstring:Bool = false
     var incremetor:Int = 0
@@ -39,7 +39,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var arrayforDisplayingCost = [UILabel]()
     var arrayForDeleteButtons = [UIButton]()
     var servingsstring = ""
-    var deleteButtonImage = UIImage(named: "MinusSign")
     var addButtonImage = UIImage(named: "PlusSign")
     let toolbar = UIToolbar()
     var buttonTag = 0
@@ -51,6 +50,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     static var OriginalIngredientsArrayForMySQLtransfer = [String]()
     static var OriginalCostsArrayForMySQLtransfer = [Double]()
     var booleantoLayoutSearchBar = false
+    var booleanToFindPrice = false
+    var boolToFindPriceFromTextArea = false
 
     static let modelName = UIDevice.current.modelName
 
@@ -172,12 +173,24 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
     }
 
-    
+    var webConfig:WKWebViewConfiguration { 
+        get {
+            var webCfg:WKWebViewConfiguration = WKWebViewConfiguration()
+            var userController:WKUserContentController = WKUserContentController()
+            userController.add(self, name: "loginSuccess")
+            
+            webCfg.userContentController = userController;
+            
+            return webCfg;
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        var userController:WKUserContentController = WKUserContentController()
+        userController.add(self, name: "loginSuccess")
+        webViewforData = WKWebView(frame: self.view.frame, configuration: webConfig)
         
         payPalConfig.acceptCreditCards = true
         payPalConfig.merchantName = "Foogle Inc."
@@ -262,8 +275,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        if(textField.text != "")
-        {
+
         ActivityIndicatorForTextField.isHidden = false
         PriceTextinOrderView.isHidden = true
         ActivityIndicatorforPriceLabel.isHidden = false
@@ -271,10 +283,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         let Url = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(convertedtextfieldtext)"
         print(Url)
-        var stringforvalue = ""
-        var newPriceString = ""
-        var incremetor = 0
-        var boolforSubstring = false
         
         let urlSet = CharacterSet.urlQueryAllowed
             .union(CharacterSet.punctuationCharacters)
@@ -285,92 +293,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         let foodPriceUrl = URL(string: UrlBeforeSent)
         let requestforPrice = URLRequest(url: foodPriceUrl!)
         self.webViewforData.load(requestforPrice)
-        
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            
-            self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
-                //print(value)
-                stringforvalue = value as! String
-                print(stringforvalue)
-                
-                if stringforvalue.range(of:"price:") != nil{
-                    print("hi")
-                    
-                    
-                    let range: Range<String.Index> = stringforvalue.range(of: "Cost per Serving: $")!
-                    let index: Int =  stringforvalue.distance(from: stringforvalue.startIndex, to: range.lowerBound)
-                    incremetor = index + 19
-                    
-                    
-                    while boolforSubstring == false
-                    {
-                        if(stringforvalue[incremetor] != "<")
-                        {
-                            newPriceString = newPriceString + stringforvalue[incremetor]
-                            print(newPriceString)
-                            incremetor = incremetor + 1
-                        }
-                        else
-                        {
-                            
-                            var labelforInsertingintoPrice = UILabel()
-                            labelforInsertingintoPrice.text = "$\(newPriceString)"
-                            labelforInsertingintoPrice.textColor = UIColor.gray
-                            self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
-                            self.arrayforDisplayingCost.append(labelforInsertingintoPrice)
- 
-                            var labelForInsertingintoIngredients = UILabel()
-                            labelForInsertingintoIngredients.text = convertedtextfieldtext
-                            labelForInsertingintoIngredients.textColor = UIColor.gray
-                            self.StackViewForIngredients.addArrangedSubview(labelForInsertingintoIngredients)
-                            self.arrayForDisplayItems.append(labelForInsertingintoIngredients)
-                            
-                            var deleteButton = UIButton()
-                            deleteButton.setTitle("x", for: UIControlState.normal)
-                            deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                            deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                            deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
-                            deleteButton.tag = self.buttonTag
-                            print("\(self.buttonTag)")
-                            self.buttonTag = self.buttonTag + 1
-                            self.arrayForDeleteButtons.append(deleteButton)
-                            self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
-                            
-                            var DoublefornewPriceString = Double(newPriceString)
-                            let roundedDoublefornewPriceString = round(100 * DoublefornewPriceString!) / 100
-                            self.Price = roundedDoublefornewPriceString + self.Price
-                            
-                            self.arrayforCost.append(roundedDoublefornewPriceString)
-                            self.PriceTextinOrderView.text = "Price: $\(self.Price)"
-                            
-                            self.PriceTextinOrderView.isHidden = false
-                            self.ActivityIndicatorforPriceLabel.isHidden = true
-                            self.ActivityIndicatorForTextField.isHidden = true
-                            textField.text = ""
-                            boolforSubstring = true
-                        }
-                    }
-                    
-                }
-                else
-                {
-                    let alert = UIAlertController(title: "Sorry", message: "The Ingredient you entered did not yield a price.", preferredStyle: UIAlertControllerStyle.alert)
-                    let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                        self.ActivityIndicatorForTextField.isHidden = true
-                        textField.text = ""
-                        self.ActivityIndicatorforPriceLabel.isHidden = true
-                        self.PriceTextinOrderView.isHidden = false
-                    }
-                    alert.addAction(cancelAction)
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-            })
-        }
-        }
-        
+        boolToFindPriceFromTextArea = true
 
         return true
     }
@@ -478,8 +401,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
     
     
-    
-    
     func FindIngredientPrice(Ingredient: String){
         
         //print("http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)")
@@ -490,133 +411,138 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             .union(CharacterSet.punctuationCharacters)
         
         self.UrlBeforeSent = self.UrlBeforeSent.addingPercentEncoding(withAllowedCharacters: urlSet)!
+        print(self.UrlBeforeSent)
         
         let foodPriceUrl = URL(string: self.UrlBeforeSent)
-        print ("ravi....\(foodPriceUrl)")
         let requestforPrice = URLRequest(url: foodPriceUrl!)
         self.webViewforData.load(requestforPrice)
+        booleanToFindPrice = true
         
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("loaded")
         
-        self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
-            //print(value)
-            self.stringforvalue = value as! String
-            print(self.stringforvalue)
-            var stringforIndivPrice = ""
-            var boolforIndivPrice = false
-            var incrematorforIndivPrice = 0
-            
-            if self.stringforvalue.range(of:"price:") != nil{
-
-
-                let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
-                let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
-                incrematorforIndivPrice = indexforIndivPrice + 4
-                var toCheckIfcontained = ""
-                var toCheckIfItemWasParsed = 0
-                
-                print(self.stringforvalue)
-                
-                for item in self.ArrayForIngredients
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        print("Script Handler Active")
+           let messageBody = message.body as! [String:AnyObject]
+           let APIDoneRequest = messageBody["Status"] as! String
+           print(APIDoneRequest)
+                if(booleanToFindPrice)
                 {
-                    self.LabelForInsertingIngredients = UILabel()
-                    self.LabelforInsertingCost = UILabel()
-                    
-                    self.LabelForInsertingIngredients.textColor = UIColor.gray
-                    self.LabelforInsertingCost.textColor = UIColor.gray
-                    
-                    toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
-                    print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
-                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
-                        
-                        self.LabelForInsertingIngredients.text = item
-                    
-                        self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
-                    }
-                    else
-                    {
-                        self.ArrayForIngredients.remove(at: toCheckIfItemWasParsed)
-                    }
-                    boolforIndivPrice = false
-                        
-                    
-                    
-                   if(self.stringforvalue[incrematorforIndivPrice] == "$")
-                   {
-                    incrematorforIndivPrice += 1
-                    while boolforIndivPrice == false
-                    {
-                        if(self.stringforvalue[incrematorforIndivPrice] != "<")
-                        {
-                            stringforIndivPrice = stringforIndivPrice + self.stringforvalue[incrematorforIndivPrice]
-                            incrematorforIndivPrice = incrematorforIndivPrice + 1
-                        }
-                        else
-                        {
-                            boolforIndivPrice = true
-                            self.LabelforInsertingCost.text = "$\(stringforIndivPrice)"
-                            let IndivPriceConvertedIntoDouble = Double(stringforIndivPrice)
-                            let roundedIndivPrice = round(100 * IndivPriceConvertedIntoDouble!) / 100
-                            self.Price += roundedIndivPrice
-                            print("INDIVPRICE:\(roundedIndivPrice)")
-                            self.arrayforCost.append(roundedIndivPrice)
-                            self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
-                            self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
-                        }
-                    }
-                    }
-                    incrematorforIndivPrice += 4
-                    print(stringforIndivPrice)
-
-                    
-                    
-                    
-                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
-                        print("inserted:\(item)")
-                        self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
-                        var deleteButton = UIButton()
-                        deleteButton.setTitle("x", for: UIControlState.normal)
-                        deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                        deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
-                        deleteButton.tag = self.buttonTag
-                        print("\(item):\(self.buttonTag)")
-                        self.buttonTag = self.buttonTag + 1
-                        self.arrayForDeleteButtons.append(deleteButton)
-                        self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
-                    }
-                    stringforIndivPrice = ""
-                    toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
-                }
-                
-                let serviceCharge = String((round(100 * (self.Price * 0.14))  / 100) + 2.00)
-                //print("SERVICE CHARGE: \(serviceCharge)")
-                
-                self.ServicePrice.text = "$\(serviceCharge)"
-                
-                //self.Price += Double(serviceCharge)!
-                
-                self.Price += Double(serviceCharge)!
-                
-                self.PriceTextinOrderView.text = "Price: $\(self.Price)"
-                print(self.Price)
-                self.ActivitySpinner.isHidden = true
-                self.LoaderView.isHidden = true
-                self.grayView.isHidden = true
-
-                if !UIAccessibilityIsReduceTransparencyEnabled() {
-                    self.view.backgroundColor = UIColor.clear
-                    //always fill the view
-                    self.blurEffectView.frame = self.view.bounds
-                    //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
-                    self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                    
-                    
-                    UIView.transition(with: self.Masterview,
-                                      duration: 0.5,
-                                      options: .transitionCrossDissolve,
-                                      animations: {
+            
+                    self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
+                        //print(value)
+                        self.stringforvalue = value as! String
+                        print(self.stringforvalue)
+                        var stringforIndivPrice = ""
+                        var boolforIndivPrice = false
+                        var incrematorforIndivPrice = 0
+            
+                        if self.stringforvalue.range(of:"price:") != nil{
+            
+            
+                            let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
+                            let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
+                            incrematorforIndivPrice = indexforIndivPrice + 4
+                            var toCheckIfcontained = ""
+                            var toCheckIfItemWasParsed = 0
+            
+                            print(self.stringforvalue)
+            
+                            for item in self.ArrayForIngredients
+                            {
+                                self.LabelForInsertingIngredients = UILabel()
+                                self.LabelforInsertingCost = UILabel()
+            
+                                self.LabelForInsertingIngredients.textColor = UIColor.gray
+                                self.LabelforInsertingCost.textColor = UIColor.gray
+            
+                                toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
+                                print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
+                                if self.stringforvalue.range(of: toCheckIfcontained) != nil {
+            
+                                    self.LabelForInsertingIngredients.text = item
+            
+                                    self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
+            
+                                boolforIndivPrice = false
+            
+            
+                               if(self.stringforvalue[incrematorforIndivPrice] == "$")
+                               {
+                                incrematorforIndivPrice += 1
+                                while boolforIndivPrice == false
+                                {
+                                    if(self.stringforvalue[incrematorforIndivPrice] != "<")
+                                    {
+                                        stringforIndivPrice = stringforIndivPrice + self.stringforvalue[incrematorforIndivPrice]
+                                        incrematorforIndivPrice = incrematorforIndivPrice + 1
+                                    }
+                                    else
+                                    {
+                                        boolforIndivPrice = true
+                                        self.LabelforInsertingCost.text = "$\(stringforIndivPrice)"
+                                        let IndivPriceConvertedIntoDouble = Double(stringforIndivPrice)
+                                        let roundedIndivPrice = round(100 * IndivPriceConvertedIntoDouble!) / 100
+                                        self.Price += roundedIndivPrice
+                                        print("INDIVPRICE:\(roundedIndivPrice)")
+                                        self.arrayforCost.append(roundedIndivPrice)
+                                        self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
+                                        self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
+                                        print("inserted:\(item)")
+                                        self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
+                                        var deleteButton = UIButton()
+                                        deleteButton.setTitle("x", for: UIControlState.normal)
+                                        deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
+                                        deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                                        deleteButton.tag = self.buttonTag
+                                        print("\(item):\(self.buttonTag)")
+                                        self.buttonTag = self.buttonTag + 1
+                                        self.arrayForDeleteButtons.append(deleteButton)
+                                        self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
+                                    }
+                                }
+                                }
+                                incrematorforIndivPrice += 4
+                                print(stringforIndivPrice)
+            
+                            }
+                                stringforIndivPrice = ""
+                                toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
+                            }
+            
+                            let serviceCharge = String((round(100 * (self.Price * 0.14))  / 100) + 2.00)
+                            //print("SERVICE CHARGE: \(serviceCharge)")
+            
+                            self.ServicePrice.text = "$\(serviceCharge)"
+            
+                            //self.Price += Double(serviceCharge)!
+            
+                            self.Price += Double(serviceCharge)!
+            
+                            self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                            print(self.Price)
+                            self.ActivitySpinner.isHidden = true
+                            self.LoaderView.isHidden = true
+                            self.grayView.isHidden = true
+            
+                            if !UIAccessibilityIsReduceTransparencyEnabled() {
+                                self.view.backgroundColor = UIColor.clear
+                                //always fill the view
+                                self.blurEffectView.frame = self.view.bounds
+                                //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
+                                self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            
+                                UIView.transition(with: self.Masterview,
+                                    duration: 0.5,
+                                    options: .transitionCrossDissolve,
+                                    animations: {
                                         self.view.addSubview(self.blurEffectView)
                                         self.view.addSubview(self.OrderView)
                                         self.OrderView.addSubview(self.PaynowButton)
@@ -626,57 +552,149 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                         self.OrderView.addSubview(self.ServingsLabel)
                                         self.ServingsLabel.clipsToBounds = true
                                 })
-
+            
+            
+                            } else {
+                                self.view.backgroundColor = UIColor.black
+                            }
+                            if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+                            {
+                                self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
+                            }
+                            else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+                            {
+                                self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
+                            }
+                            
+                            let gesture = UITapGestureRecognizer(target: self, action: "resetValues:")
+                            self.blurEffectView.addGestureRecognizer(gesture)
+                            
+            
+                            if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus"))
+                            {
+                                UIView.animate(withDuration: 1, animations: {
+                                    self.OrderView.frame.origin.y = 70
+                                
+                                })
+                            }
+                            else
+                            {
+                                UIView.animate(withDuration: 1, animations: {
+                                    self.OrderView.frame.origin.y = 53
+                                    
+                                })
+                            }
+            
+            
+                            self.newPriceString = ""
+                            self.boolForSubstring = false
+                            self.NextQoute = false
+                            self.incremetor = 0
+                            self.UrlBeforeSent = ""
+                            
+                        }
                         
-                } else {
-                    self.view.backgroundColor = UIColor.black
-                }
-                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
-                {
-                    self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
-                }
-                else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
-                {
-                    self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
-                }
-                
-                let gesture = UITapGestureRecognizer(target: self, action: "someAction:")
-                self.blurEffectView.addGestureRecognizer(gesture)
-                
-
-                if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus"))
-                {
-                    UIView.animate(withDuration: 1, animations: {
-                        self.OrderView.frame.origin.y = 70
+                        //print("CHECK in Ingred: \(self.toCheckIfAPIisReady())")
+                    })
+                    booleanToFindPrice = false
+            
+                  }
+                  if(boolToFindPriceFromTextArea)
+                  {
+                    let convertedtextfieldtext = TextFieldToEnterMore.text as! String
+                    if(TextFieldToEnterMore.text != "")
+                    {
+                    var stringforvalue = ""
+                    var newPriceString = ""
+                    var incremetor = 0
+                    var boolforSubstring = false
                     
-                    })
-                }
-                else
-                {
-                    UIView.animate(withDuration: 1, animations: {
-                        self.OrderView.frame.origin.y = 53
+                    self.webViewforData.evaluateJavaScript("document.getElementsByTagName('body')[0].innerHTML", completionHandler: { (value, error) in
+                        //print(value)
+                        stringforvalue = value as! String
+                        print(stringforvalue)
+                        
+                        if stringforvalue.range(of:"price:") != nil{
+                            print("hi")
+                            
+                            
+                            let range: Range<String.Index> = stringforvalue.range(of: "Cost per Serving: $")!
+                            let index: Int =  stringforvalue.distance(from: stringforvalue.startIndex, to: range.lowerBound)
+                            incremetor = index + 19
+                            
+                            
+                            while boolforSubstring == false
+                            {
+                                if(stringforvalue[incremetor] != "<")
+                                {
+                                    newPriceString = newPriceString + stringforvalue[incremetor]
+                                    print(newPriceString)
+                                    incremetor = incremetor + 1
+                                }
+                                else
+                                {
+                                    
+                                    let labelforInsertingintoPrice = UILabel()
+                                    labelforInsertingintoPrice.text = "$\(newPriceString)"
+                                    labelforInsertingintoPrice.textColor = UIColor.gray
+                                    self.StackViewForCost.addArrangedSubview(labelforInsertingintoPrice)
+                                    self.arrayforDisplayingCost.append(labelforInsertingintoPrice)
+                                    
+                                    let labelForInsertingintoIngredients = UILabel()
+                                    labelForInsertingintoIngredients.text = convertedtextfieldtext
+                                    labelForInsertingintoIngredients.textColor = UIColor.gray
+                                    self.StackViewForIngredients.addArrangedSubview(labelForInsertingintoIngredients)
+                                    self.arrayForDisplayItems.append(labelForInsertingintoIngredients)
+                                    
+                                    let deleteButton = UIButton()
+                                    deleteButton.setTitle("x", for: UIControlState.normal)
+                                    deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                                    deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
+                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                                    deleteButton.tag = self.buttonTag
+                                    print("\(self.buttonTag)")
+                                    self.buttonTag = self.buttonTag + 1
+                                    self.arrayForDeleteButtons.append(deleteButton)
+                                    self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
+                                    
+                                    let DoublefornewPriceString = Double(newPriceString)
+                                    let roundedDoublefornewPriceString = round(100 * DoublefornewPriceString!) / 100
+                                    self.Price = roundedDoublefornewPriceString + self.Price
+                                    
+                                    self.arrayforCost.append(roundedDoublefornewPriceString)
+                                    self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                                    
+                                    self.PriceTextinOrderView.isHidden = false
+                                    self.ActivityIndicatorforPriceLabel.isHidden = true
+                                    self.ActivityIndicatorForTextField.isHidden = true
+                                    self.TextFieldToEnterMore.text = ""
+                                    boolforSubstring = true
+                                }
+                            }
+                            
+                        }
+                        else
+                        {
+                            let alert = UIAlertController(title: "Sorry", message: "The Ingredient you entered did not yield a price.", preferredStyle: UIAlertControllerStyle.alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                self.ActivityIndicatorForTextField.isHidden = true
+                                self.TextFieldToEnterMore.text = ""
+                                self.ActivityIndicatorforPriceLabel.isHidden = true
+                                self.PriceTextinOrderView.isHidden = false
+                            }
+                            alert.addAction(cancelAction)
+                            
+                            self.present(alert, animated: true, completion: nil)
+                        }
                         
                     })
-                }
-
-
-                self.newPriceString = ""
-                self.boolForSubstring = false
-                self.NextQoute = false
-                self.incremetor = 0
-                self.UrlBeforeSent = ""
-                
-            }
-            
-        })
-            
+                    
+                  }
+                    boolToFindPriceFromTextArea = false
         }
         
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Loaded")
+        // now use the name and token as you see fit!
     }
 
     @IBAction func OnOrderPress(_ sender: Any) {
@@ -751,7 +769,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     
                                    if let amount = station["amount"] as? Double
                                    {
-                                      constructedstring = "\(amount)"
+                                    if(amount < 1.0)
+                                    {
+                                      let fraction = self.rationalApproximation(of: amount)
+                                      var fractionString = "\(fraction.num)/\(fraction.den)"
+                                      constructedstring = "\(fractionString)"
+                                    }
+                                    else
+                                    {
+                                      let roundedamount = round(amount * 100) / 100
+                                      constructedstring = "\(roundedamount)"
+                                    }
                                    }
                                    if let unitShort = station["unitShort"] as? String
                                    {
@@ -818,41 +846,57 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     }
     
-    func someAction(_ sender:UITapGestureRecognizer){
+    func resetValues(_ sender:UITapGestureRecognizer){
         UIView.animate(withDuration: 0.75, animations: {
             self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
             
         })
         let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
-            UIView.transition(with: self.Masterview,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                                self.blurEffectView.removeFromSuperview()
-                                for i in 0 ... self.arrayForDisplayItems.count - 1
-                                {
-                                    self.arrayForDisplayItems[i].removeFromSuperview()
-                                }
-                                for i in 0 ... self.arrayForDeleteButtons.count - 1
-                                {
-                                    self.arrayForDeleteButtons[i].removeFromSuperview()
-                                }
-                                for i in 0 ... self.arrayforDisplayingCost.count - 1
-                                {
-                                    self.arrayforDisplayingCost[i].removeFromSuperview()
-                                }
-                                self.arrayForDisplayItems = [UILabel]()
-                                self.arrayforDisplayingCost = [UILabel]()
-                                self.ArrayForIngredients = [String]()
-                                self.ArrayforType = [String]()
-                                self.arrayforCost = [Double]()
-                                self.buttonTag = 0
-                                self.Price = 0.0
+            UIView.transition(with: self.Masterview, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.blurEffectView.removeFromSuperview()
+                
+                for i in 0 ... self.arrayForDisplayItems.count - 1
+                {
+                   self.arrayForDisplayItems[i].removeFromSuperview()
+                }
+                
+                for i in 0 ... self.arrayForDeleteButtons.count - 1
+                {
+                  self.arrayForDeleteButtons[i].removeFromSuperview()
+                }
+                
+                for i in 0 ... self.arrayforDisplayingCost.count - 1
+                {
+                   self.arrayforDisplayingCost[i].removeFromSuperview()
+                }
+                   self.arrayForDisplayItems = [UILabel]()
+                   self.arrayforDisplayingCost = [UILabel]()
+                   self.ArrayForIngredients = [String]()
+                   self.ArrayforType = [String]()
+                   self.arrayforCost = [Double]()
+                   self.buttonTag = 0
+                   self.Price = 0.0
             })
             
         }
         
+    }
+    
+
+    typealias Rational = (num : Int, den : Int)
+    
+    func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
+        var x = x0
+        var a = x.rounded(.down)
+        var (h1, k1, h, k) = (1, 0, Int(a), 1)
+        
+        while x - a > eps * Double(k) * Double(k) {
+            x = 1.0/(x - a)
+            a = x.rounded(.down)
+            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+        }
+        return (h, k)
     }
     
     

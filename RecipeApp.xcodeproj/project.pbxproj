@@ -16,7 +16,6 @@
 		E4441C8A1F2155B800546AF7 /* WhiteBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C891F2155B800546AF7 /* WhiteBar.png */; };
 		E4441C8C1F2155BE00546AF7 /* ExitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C8B1F2155BE00546AF7 /* ExitButton.png */; };
 		E4441C8E1F2155C200546AF7 /* PlusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C8D1F2155C200546AF7 /* PlusSign.png */; };
-		E4441C901F2155C700546AF7 /* MinusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C8F1F2155C700546AF7 /* MinusSign.png */; };
 		E4441C921F2155CD00546AF7 /* BackgroundforAPP.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C911F2155CD00546AF7 /* BackgroundforAPP.png */; };
 		E4441C941F2155D300546AF7 /* BackgroundforFoogle.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C931F2155D300546AF7 /* BackgroundforFoogle.png */; };
 		E4441C961F2155DA00546AF7 /* GrayOrderButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C951F2155DA00546AF7 /* GrayOrderButton.png */; };
@@ -90,7 +89,6 @@
 		E4441C891F2155B800546AF7 /* WhiteBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBar.png; path = ../../../../../Downloads/WhiteBar.png; sourceTree = "<group>"; };
 		E4441C8B1F2155BE00546AF7 /* ExitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitButton.png; path = ../../../../../Downloads/ExitButton.png; sourceTree = "<group>"; };
 		E4441C8D1F2155C200546AF7 /* PlusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlusSign.png; path = ../../../../../Downloads/PlusSign.png; sourceTree = "<group>"; };
-		E4441C8F1F2155C700546AF7 /* MinusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MinusSign.png; path = "/Users/Rahulkumar0630/Desktop/RecipeApp-master 4/RecipeApp/../../../Downloads/MinusSign.png"; sourceTree = "<absolute>"; };
 		E4441C911F2155CD00546AF7 /* BackgroundforAPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforAPP.png; path = ../../../../../Downloads/BackgroundforAPP.png; sourceTree = "<group>"; };
 		E4441C931F2155D300546AF7 /* BackgroundforFoogle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundforFoogle.png; path = "/Users/Rahulkumar0630/Desktop/RecipeApp-master 4/RecipeApp/../../../Downloads/BackgroundforFoogle.png"; sourceTree = "<absolute>"; };
 		E4441C951F2155DA00546AF7 /* GrayOrderButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayOrderButton.png; path = ../../../../../Downloads/GrayOrderButton.png; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				E4441C891F2155B800546AF7 /* WhiteBar.png */,
 				E4441C8B1F2155BE00546AF7 /* ExitButton.png */,
 				E4441C8D1F2155C200546AF7 /* PlusSign.png */,
-				E4441C8F1F2155C700546AF7 /* MinusSign.png */,
 				E4441C911F2155CD00546AF7 /* BackgroundforAPP.png */,
 				E4441C931F2155D300546AF7 /* BackgroundforFoogle.png */,
 				E4441C951F2155DA00546AF7 /* GrayOrderButton.png */,
@@ -410,7 +407,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4441C901F2155C700546AF7 /* MinusSign.png in Resources */,
 				E4441CAC1F21562100546AF7 /* Settings.png in Resources */,
 				E4441CA61F21560D00546AF7 /* arrowBackWhenCantGoBack.png in Resources */,
 				E4441C961F2155DA00546AF7 /* GrayOrderButton.png in Resources */,

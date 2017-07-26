@@ -23,7 +23,7 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var NoticeLogo: UILabel!
     @IBOutlet var BackDrop: UIImageView!
     @IBOutlet var FoogleLogo: UILabel!
-    @IBOutlet var SuportLabel: UILabel!
+    @IBOutlet var SupportLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
@@ -43,7 +43,7 @@ class ViewControllerForOrderInfo: UIViewController {
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             FoogleLogo.frame = CGRect.init(x: 16, y: 672, width: 97, height: 44)
             NoticeLogo.frame = CGRect.init(x: 23, y: 509, width: 340, height: 76)
-            SuportLabel.frame = CGRect.init(x: 23, y: 623, width: 264, height: 21)
+            SupportLabel.frame = CGRect.init(x: 23, y: 623, width: 264, height: 21)
             OrderInfoLabel.frame = CGRect.init(x: -20, y: 49, width: 455, height: 107)
         }
     }
@@ -100,12 +100,12 @@ class ViewControllerForOrderInfo: UIViewController {
         
         var lastinstanceofi = 0
         var numberofitemsthatarenotremoved = 0
-        for i in 0 ... ViewController.OriginalIngredientsArrayForMySQLtransfer.count - 1
+        for i in 0 ... ViewController.IngredientsArrayForMySQLtransfer.count - 1
         {
            
             if(ViewController.IngredientsArrayForMySQLtransfer[i].accessibilityHint != "removed")
             {
-                postString += "ING\(numberofitemsthatarenotremoved)=\(ViewController.OriginalIngredientsArrayForMySQLtransfer[i])&"
+                postString += "ING\(numberofitemsthatarenotremoved)=\(ViewController.IngredientsArrayForMySQLtransfer[i].text!)&"
                 lastinstanceofi = i
                 numberofitemsthatarenotremoved = numberofitemsthatarenotremoved + 1
             }
@@ -114,7 +114,7 @@ class ViewControllerForOrderInfo: UIViewController {
         
         var numberofcoststhatarenotremoved = 0
         
-        for i in 0 ... ViewController.OriginalCostsArrayForMySQLtransfer.count - 1
+        for i in 0 ... ViewController.CostsArrayForMySQLtransfer.count - 1
         {
             if(ViewController.CostsArrayForMySQLtransfer[i].accessibilityHint != "removed")
             {
