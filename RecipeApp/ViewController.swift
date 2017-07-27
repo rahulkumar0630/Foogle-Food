@@ -52,7 +52,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var booleantoLayoutSearchBar = false
     var booleanToFindPrice = false
     var boolToFindPriceFromTextArea = false
-
+    var booltogetNutrition = false
     static let modelName = UIDevice.current.modelName
 
 
@@ -95,6 +95,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     @IBOutlet var BackgroundForFoogle: UIImageView!
     
+    @IBOutlet var NutritionOutlet: UIButton!
     
     var environment:String = PayPalEnvironmentNoNetwork {
         willSet(newEnvironment) {
@@ -201,6 +202,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         payPalConfig.payPalShippingAddressOption = .both;
 
         Orderbutton.layer.cornerRadius = 10
+        NutritionOutlet.clipsToBounds = true
+        NutritionOutlet.layer.cornerRadius = 10
+        NutritionOutlet.isHidden = true
         SearchBar.text = ""
         ActivityIndicatorForTextField.isHidden = true
         ActivityIndicatorForTextField.startAnimating()
@@ -398,6 +402,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             FoogleLogo.isHidden = true
         
             Orderbutton.isHidden = false
+            NutritionOutlet.isHidden = false
     }
     
     
@@ -423,6 +428,43 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("loaded")
         
+        if(self.booltogetNutrition == true)
+        {
+            if !UIAccessibilityIsReduceTransparencyEnabled() {
+                self.view.backgroundColor = UIColor.clear
+                //always fill the view
+                self.blurEffectView.frame = self.view.bounds
+                //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
+                self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+                self.ActivitySpinner.isHidden = true
+                self.LoaderView.isHidden = true
+                self.grayView.isHidden = true
+                print("Showing Nutrition")
+                self.webViewforData.clipsToBounds = true
+                self.webViewforData.layer.cornerRadius = 10
+                UIView.transition(with: self.Masterview,
+                                  duration: 0.5,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.view.addSubview(self.blurEffectView)
+                                    self.Masterview.addSubview(self.webViewforData)
+                })
+                UIView.animate(withDuration: 1, animations: {
+                self.webViewforData.frame.origin.y = 70
+                
+            })
+                let removedgesture = UITapGestureRecognizer(target: self, action: "resetValues:")
+                blurEffectView.removeGestureRecognizer(removedgesture)
+                let gesture = UITapGestureRecognizer(target: self, action: "resetvaluesForNutrition:")
+                blurEffectView.addGestureRecognizer(gesture)
+                
+            } else {
+                self.view.backgroundColor = UIColor.black
+            }
+            self.booltogetNutrition = false
+        }
+        
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -441,8 +483,19 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         var stringforIndivPrice = ""
                         var boolforIndivPrice = false
                         var incrematorforIndivPrice = 0
-            
-                        if self.stringforvalue.range(of:"price:") != nil{
+                        let removedgesture = UITapGestureRecognizer(target: self, action: "resetvaluesForNutrition:")
+                        self.blurEffectView.removeGestureRecognizer(removedgesture)
+                        if(self.ArrayForIngredients.count == 0)
+                        {
+                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                self.grayView.isHidden = true
+                            }
+                            alert.addAction(cancelAction)
+                            
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        else if self.stringforvalue.range(of:"price:") != nil{
             
             
                             let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
@@ -567,6 +620,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
                             }
                             
+                            self.blurEffectView.removeGestureRecognizer(removedgesture)
                             let gesture = UITapGestureRecognizer(target: self, action: "resetValues:")
                             self.blurEffectView.addGestureRecognizer(gesture)
                             
@@ -883,6 +937,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
     }
     
+    func resetvaluesForNutrition(_ sender:UITapGestureRecognizer)
+    {
+        print("CLICKED")
+        UIView.animate(withDuration: 0.75, animations: {
+            self.webViewforData.frame.origin.y = -500
+            
+        })
+        let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            UIView.transition(with: self.Masterview, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                 self.blurEffectView.removeFromSuperview()
+                 self.webViewforData.removeFromSuperview()
+            })
+        }
+    }
+    
 
     typealias Rational = (num : Int, den : Int)
     
@@ -990,6 +1060,166 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
     }
     
+    @IBAction func OnNutritionPress(_ sender: Any) {
+        self.grayView.isHidden = false
+        LoaderView.isHidden = false
+        ActivitySpinner.isHidden = false
+        var checkifrecipe = true
+        
+        currentURL = (WebView.request?.url?.absoluteString)!
+        ViewController.URLforOrderInfo = currentURL
+        print(currentURL)
+        ArrayForIngredients = [String]()
+        
+        let uRl = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
+        
+        let task = URLSession.shared.dataTask(with: uRl!) { (data, response, error) in
+            
+            
+            if error != nil {
+                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    self.grayView.isHidden = true
+                }
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                if let mydata = data {
+                    do {
+                        
+                        let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        //self.StepperOutlet.value = Double(self.servingsstring)!
+                        
+                        if let status = myJson["status"] as? String {
+                            if(status == "failure")
+                            {
+                                let alert = UIAlertController(title: "Error", message: "Nutrition cannot be extracted at this time", preferredStyle: UIAlertControllerStyle.alert)
+                                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                    self.grayView.isHidden = true
+                                }
+                                alert.addAction(cancelAction)
+                                
+                                self.present(alert, animated: true, completion: nil)
+                                
+                            }
+                        }
+                        
+                        if let title = myJson["title"] as? String
+                        {
+                            self.titleOfRecipe = title
+                        }
+                        
+                        if let Recipedifferentiater = myJson["text"] as? String
+                        {
+                            if let servings = myJson["servings"] as? Int {
+                                self.servingsstring = String(servings)
+                                print("SERVINGS:\(self.servingsstring)")
+                                self.ServingsLabel.text = "Servings: \(self.servingsstring)"
+                            }
+                            
+                            
+                            if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
+                                
+                                for station in stations {
+                                    
+                                    if let name = station["originalString"] as? String{
+                                        
+                                        var constructedstring = ""
+                                        
+                                        if let amount = station["amount"] as? Double
+                                        {
+                                            if(amount < 1.0)
+                                            {
+                                                let fraction = self.rationalApproximation(of: amount)
+                                                var fractionString = "\(fraction.num)/\(fraction.den)"
+                                                constructedstring = "\(fractionString)"
+                                            }
+                                            else
+                                            {
+                                                let roundedamount = round(amount * 100) / 100
+                                                constructedstring = "\(roundedamount)"
+                                            }
+                                        }
+                                        if let unitShort = station["unitShort"] as? String
+                                        {
+                                            constructedstring = constructedstring + " \(unitShort)"
+                                        }
+                                        if let name = station["name"] as? String
+                                        {
+                                            constructedstring = constructedstring + " \(name)"
+                                            self.ArrayforType.append(name)
+                                        }
+                                        
+                                        print(constructedstring)
+                                        self.ArrayForIngredients.append(constructedstring)
+                                        
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                        else
+                        {
+                            print("This is not a recipe")
+                            checkifrecipe = false
+                            
+                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe, therefore cannot get nutrition.", preferredStyle: UIAlertControllerStyle.alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                self.grayView.isHidden = true
+                            }
+                            alert.addAction(cancelAction)
+                            
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                    }
+                    catch {
+                        // catch error
+                    }
+                }
+            }
+            
+            if(checkifrecipe == true)
+            {
+                for item in self.ArrayForIngredients {
+                    
+                    if(item == self.ArrayForIngredients[self.ArrayForIngredients.count - 1])
+                    {
+                        self.StringforIngredients = "\(self.StringforIngredients) \(item)"
+                        break
+                    }
+                    self.StringforIngredients = "\(self.StringforIngredients) \(item) %0A"
+                }
+                self.StringforIngredients = self.StringforIngredients.trimmingCharacters(in: .whitespacesAndNewlines)
+                print(self.StringforIngredients)
+                self.StringforIngredients = self.StringforIngredients.trimmingCharacters(in: .whitespacesAndNewlines)
+                let urlSet = CharacterSet.urlQueryAllowed
+                    .union(CharacterSet.punctuationCharacters)
+                
+                self.StringforIngredients = self.StringforIngredients.addingPercentEncoding(withAllowedCharacters: urlSet)!
+                
+                let NutritionURL = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/Nutrition/index.php?Ingredients=" + self.StringforIngredients)
+                print(NutritionURL)
+                let requestforPrice = URLRequest(url: NutritionURL!)
+                self.StringforIngredients = ""
+                self.grayView.isHidden = false
+                self.LoaderView.isHidden = false
+                self.ActivitySpinner.isHidden = false
+                
+                self.webViewforData.frame = CGRect.init(x: 9, y: -500, width: self.view.frame.width - 18, height: 498)
+                
+                self.webViewforData.load(requestforPrice)
+                self.StringforIngredients = ""
+                self.booltogetNutrition = true
+            }
+        }
+        
+        task.resume() 
+    }
     
     @IBAction func ServingsStepper(_ sender: UIStepper) {
         self.ServingsLabel.text = "Servings: \(Int(sender.value).description)"

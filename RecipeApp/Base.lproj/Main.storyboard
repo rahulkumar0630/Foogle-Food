@@ -246,6 +246,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fYB-bU-g6s"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uP-xj-6jY">
+                                <rect key="frame" x="16" y="20" width="97" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Nutrition" backgroundImage="GrayOrderButton.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnNutritionPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXV-Ky-phW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -265,6 +276,7 @@
                         <outlet property="IngredientLabelOnOrderView" destination="NCK-Qn-lNP" id="0u2-Oe-UOb"/>
                         <outlet property="LoaderView" destination="fvw-sc-Z8P" id="gkR-mf-ehU"/>
                         <outlet property="Masterview" destination="8bC-Xf-vdC" id="Ud9-lA-kXx"/>
+                        <outlet property="NutritionOutlet" destination="3uP-xj-6jY" id="K21-s6-ERa"/>
                         <outlet property="OrderView" destination="vww-Ic-9Iu" id="eGk-Ms-KQb"/>
                         <outlet property="Orderbutton" destination="Xp5-ht-NNJ" id="dX8-rx-tzr"/>
                         <outlet property="PaynowButton" destination="lcr-cB-cZy" id="o7A-O8-cnI"/>
