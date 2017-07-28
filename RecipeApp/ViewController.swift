@@ -430,6 +430,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         if(self.booltogetNutrition == true)
         {
+            self.webViewforData.evaluateJavaScript("document.body.style.zoom = 1.8;")
             if !UIAccessibilityIsReduceTransparencyEnabled() {
                 self.view.backgroundColor = UIColor.clear
                 //always fill the view
@@ -450,10 +451,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     self.view.addSubview(self.blurEffectView)
                                     self.Masterview.addSubview(self.webViewforData)
                 })
-                UIView.animate(withDuration: 1, animations: {
-                self.webViewforData.frame.origin.y = 70
+                let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    UIView.animate(withDuration: 0.75, animations: {
+                            self.webViewforData.frame.origin.y = 70
                 
-            })
+                    })
+                }
                 let removedgesture = UITapGestureRecognizer(target: self, action: "resetValues:")
                 blurEffectView.removeGestureRecognizer(removedgesture)
                 let gesture = UITapGestureRecognizer(target: self, action: "resetvaluesForNutrition:")
@@ -627,17 +631,23 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             
                             if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus"))
                             {
-                                UIView.animate(withDuration: 1, animations: {
+                                let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                UIView.animate(withDuration: 0.75, animations: {
                                     self.OrderView.frame.origin.y = 70
                                 
                                 })
+                                }
                             }
                             else
                             {
+                                let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+                                DispatchQueue.main.asyncAfter(deadline: when) {
                                 UIView.animate(withDuration: 1, animations: {
                                     self.OrderView.frame.origin.y = 53
                                     
                                 })
+                                }
                             }
             
             
