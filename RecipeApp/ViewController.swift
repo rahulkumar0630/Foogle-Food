@@ -110,7 +110,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"
+            || ViewController.modelName == "Simulator")
         {
             //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
             FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
@@ -143,6 +144,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
             ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 141, y: 13, width: 20, height: 20)
             ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
+            NutritionOutlet.frame = CGRect.init(x: 13, y: 16, width: 97, height: 32)
         
         }
         
@@ -269,10 +271,127 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PayPalMobile.preconnect(withEnvironment: environment)
+
     }
     
     func doneClicked(){
         self.view.endEditing(true)
+    }
+
+    
+    func checkZipCode()
+    {
+        let zipcodeRetriever = UIAlertController(title: "First Time Setup!", message: "Please enter you zipcode to see if we deliver in your location.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        var tField: UITextField!
+        
+        func configurationTextField(textField: UITextField!)
+        {
+            textField.keyboardType = UIKeyboardType.numberPad
+            print("generating the TextField")
+            textField.placeholder = "Enter an item"
+            tField = textField
+        }
+        zipcodeRetriever.addTextField(configurationHandler: configurationTextField)
+        
+        let cancelAction = UIAlertAction(title: "Enter", style: .cancel) { (action) in
+            self.checkZipCodeinDB(UserZipCode: tField.text!)
+            zipcodeRetriever.dismiss(animated: false, completion: nil)
+        }
+        zipcodeRetriever.addAction(cancelAction)
+
+        
+        self.present(zipcodeRetriever, animated: true, completion: nil)
+        
+    }
+    
+    func checkZipCodeinDB(UserZipCode: String)
+    {
+        var isValid = false
+        let zipcodeURL = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/Zipcodes.json")
+        
+        print("USER: \(UserZipCode)")
+        let task = URLSession.shared.dataTask(with: zipcodeURL!) { (data, response, error) in
+            
+            if error != nil {
+                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    self.grayView.isHidden = true
+                }
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                if let mydata = data {
+                    do {
+                        let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        
+                        var count = 0
+                        
+                        if let zipcodes = myJson["zipcodes"] as? [String]
+                        {
+                            while(!(isValid) && count < zipcodes.count)
+                            {
+                                if(UserZipCode == zipcodes[count])
+                                {
+                                    isValid = true
+                                }
+                                else
+                                {
+                                    isValid = false
+                                }
+                                count =  count + 1
+                            }
+                            
+                            if(isValid)
+                            {
+                                let Congrats = UIAlertController(title: "Congratulations!", message: "Your Zipcode is one of the designated locations for delivery. You can try again if you didn't enter your zipcode properly.", preferredStyle: UIAlertControllerStyle.alert)
+                            
+                                let tryagain = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
+                                    self.checkZipCode()
+                                }
+                                Congrats.addAction(tryagain)
+
+                                let cancelAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                                    UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
+
+                                }
+
+                                Congrats.addAction(cancelAction)
+
+                                
+                                self.present(Congrats, animated: true, completion: nil)
+
+                            }
+                            else
+                            {
+                                let zipCodeNotAvaliable = UIAlertController(title: "We Are So Sorry", message: "Your Zipcode is not one of the designated locations for delivery, but feel free to use our Nutrition button, which can get nutrition off any recognizable recipe! You can try again if you didn't enter your zipcode properly.", preferredStyle: UIAlertControllerStyle.alert)
+                                
+                                let cancelAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                                    UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
+
+                                }
+                                let tryagain = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
+                                    self.checkZipCode()
+                                }
+                                zipCodeNotAvaliable.addAction(cancelAction)
+                                zipCodeNotAvaliable.addAction(tryagain)
+                                
+                                self.present(zipCodeNotAvaliable, animated: true, completion: nil)
+
+                            }
+                        }
+                    }
+                    catch {
+                        // catch error
+                    }
+                }
+            }
+        }
+        task.resume()
+
     }
     
     
@@ -430,7 +549,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         if(self.booltogetNutrition == true)
         {
-            self.webViewforData.evaluateJavaScript("document.body.style.zoom = 1.8;")
+            self.webViewforData.evaluateJavaScript("document.body.style.zoom = 2.2;")
             if !UIAccessibilityIsReduceTransparencyEnabled() {
                 self.view.backgroundColor = UIColor.clear
                 //always fill the view
@@ -453,7 +572,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 })
                 let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
                 DispatchQueue.main.asyncAfter(deadline: when) {
-                    UIView.animate(withDuration: 0.75, animations: {
+                    UIView.animate(withDuration: 1, animations: {
                             self.webViewforData.frame.origin.y = 70
                 
                     })
@@ -615,13 +734,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.view.backgroundColor = UIColor.black
                             }
                             if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
                             {
                                 self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                             }
                             else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
                             {
-                                self.OrderView.frame = CGRect.init(x: 11, y: 667, width: 390, height: 666)
+                                self.OrderView.frame = CGRect.init(x: 11, y: 900, width: 390, height: 666)
                             }
                             
                             self.blurEffectView.removeGestureRecognizer(removedgesture)
@@ -763,6 +882,21 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     @IBAction func OnOrderPress(_ sender: Any) {
         
+        
+        let userisNotinDesignatedZip = UserDefaults.standard.object(forKey: "AskForZipCode") as? Bool
+        
+        if userisNotinDesignatedZip! == false
+        {
+            let alert = UIAlertController(title: "Sorry", message: "Your Zip Code is not in the designated delivery area at this time.", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                self.grayView.isHidden = true
+            }
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
         self.grayView.isHidden = false
         LoaderView.isHidden = false
         ActivitySpinner.isHidden = false
@@ -904,6 +1038,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
         
         task.resume()
+        }
         
         
         
@@ -951,7 +1086,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     {
         print("CLICKED")
         UIView.animate(withDuration: 0.75, animations: {
-            self.webViewforData.frame.origin.y = -500
+            self.webViewforData.frame.origin.y = -900
             
         })
         let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
@@ -1220,7 +1355,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.LoaderView.isHidden = false
                 self.ActivitySpinner.isHidden = false
                 
-                self.webViewforData.frame = CGRect.init(x: 9, y: -500, width: self.view.frame.width - 18, height: 498)
+                if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+                {
+                    self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 90)
+                }
+                else if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"
+                    || ViewController.modelName == "Simulator")
+                {
+                    self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 70)
+                }
+                else
+                {
+                    self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 587)
+                }
                 
                 self.webViewforData.load(requestforPrice)
                 self.StringforIngredients = ""
@@ -1292,6 +1440,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             initiatePayPalController()
             UserDefaults.standard.set(false, forKey: "Shipping Setup")
           }
+        }
+    
+        let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
+        
+        if toCheckZip == nil
+        {
+            checkZipCode()
         }
 
     }

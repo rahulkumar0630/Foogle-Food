@@ -32,7 +32,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
         {
             FoogleLogo.isHidden = true
         }

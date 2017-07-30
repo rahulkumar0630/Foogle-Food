@@ -468,6 +468,17 @@
                                 <color key="textColor" red="0.26196235420000002" green="0.5897502899" blue="0.16468344630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZ1-55-3Jn">
+                                <rect key="frame" x="189" y="617" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <state key="normal" title="Terms and Conditions" backgroundImage="GrayOrderButton.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnTOAPress:" destination="EZF-tL-dTJ" eventType="touchUpInside" id="iOA-mr-m0C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -484,11 +495,13 @@
                         <outlet property="CountryTitleLabel" destination="PoR-F4-fUv" id="MM2-SG-PkZ"/>
                         <outlet property="EmailLabel" destination="AGi-lo-gTE" id="QAp-V7-aUv"/>
                         <outlet property="EmailTitleLabel" destination="E7c-xT-Ntf" id="K9D-xs-tvs"/>
+                        <outlet property="ExitButtonOutlet" destination="dHd-QS-ZlX" id="uby-DF-YRQ"/>
                         <outlet property="PhoneNumber" destination="qRk-XY-7tJ" id="jcy-Eu-AUt"/>
                         <outlet property="PhoneNumberTitle" destination="1cH-gc-OnY" id="jIn-2O-ZXR"/>
                         <outlet property="SavedInfoLabel" destination="CN3-MN-nRe" id="mNK-gS-NxR"/>
                         <outlet property="State" destination="gOX-w4-wv3" id="PUR-tS-300"/>
                         <outlet property="StateTitleLabel" destination="GAb-bw-fKA" id="jPB-Uq-k4C"/>
+                        <outlet property="TACOutlet" destination="gZ1-55-3Jn" id="B3r-Rw-JCj"/>
                         <outlet property="ZipCode" destination="tKn-hL-CXK" id="fpL-cF-GM7"/>
                         <outlet property="ZipCodeTitle" destination="2De-ad-e46" id="SNT-vs-Cc5"/>
                         <outlet property="ZipCodeTitleLabel" destination="2De-ad-e46" id="snt-3a-o3u"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var EmailLabel: UILabel!
@@ -28,10 +29,13 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var ZipCodeTitle: UILabel!
     @IBOutlet var StateTitleLabel: UILabel!
     @IBOutlet var CountryTitleLabel: UILabel!
-    
+    @IBOutlet var TACOutlet: UIButton!
+    var TOAWebPage = WKWebView()
+    @IBOutlet var ExitButtonOutlet: UIButton!
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" ||
+                ViewController.modelName == "Simulator")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
@@ -46,6 +50,7 @@ class ViewControllerForSettingsTab: UIViewController {
             State.frame = CGRect.init(x: 31, y: 475, width: 192, height: 21)
             CountryTitleLabel.frame = CGRect.init(x: 31, y: 504, width: 66, height: 21)
             Country.frame = CGRect.init(x: 32, y: 533, width: 191, height: 21)
+            TACOutlet.frame = CGRect.init(x: 150, y: 533, width: self.TACOutlet.frame.width, height: self.TACOutlet.frame.height)
             
         }
         if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
@@ -68,6 +73,7 @@ class ViewControllerForSettingsTab: UIViewController {
             State.frame = CGRect.init(x: 31, y: 557, width: 192, height: 21)
             CountryTitleLabel.frame = CGRect.init(x: 31, y: 598, width: 66, height: 21)
             Country.frame = CGRect.init(x: 31, y: 627, width: 191, height: 21)
+            TACOutlet.frame = CGRect.init(x: 220, y: 686, width: self.TACOutlet.frame.width, height: self.TACOutlet.frame.height)
             
         }
     }
@@ -75,6 +81,11 @@ class ViewControllerForSettingsTab: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TACOutlet.clipsToBounds = true
+        TACOutlet.layer.cornerRadius = 10
+        TOAWebPage.frame = self.view.frame
+        
 
         if let email = UserDefaults.standard.object(forKey: "Email:") as? String
         {
@@ -120,6 +131,16 @@ class ViewControllerForSettingsTab: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func OnTOAPress(_ sender: Any) {
+        
+        let TOAurl = URL(string: "https://img1.wsimg.com/blobby/go/637bcf87-64d8-4cf1-934c-2f812b81cd7f/downloads/1bmah0hda_455622.pdf")
+        let request = URLRequest(url: TOAurl!)
+        
+        TOAWebPage.load(request)
+        self.view.addSubview(TOAWebPage)
+        self.TOAWebPage.addSubview(ExitButtonOutlet)
+        
+    }
 
     /*
     // MARK: - Navigation
