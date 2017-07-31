@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
          IQKeyboardManager.sharedManager().enable = true
         // Override point for customization after application launch.
-        PayPalMobile .initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "AWbG03PRYJtZZGeGZfw1LX4yr6VT3Wb0KcwTdzHuxK-w3zR-n5mLP5DstnpXNKj0C7rH_PWcRrpjeUus"])
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "AaFK0PkN0snCPJhGj_plTf_X0u4wmT6uhOMXD2HZieKvgc9JC4izF47X2ZX2ehwmOIQtWWClj03SabKE", PayPalEnvironmentSandbox: "AatJeOxI3LADbs27nZOkH6WO89NfUfN5iVUIul-k-9ezqrWoroPInOo8d8MCufxTSKca3ohZ0_hDdJQF"])
                                                                 
         return true
     }

@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<string></string>
+	<key>org-appextension-feature-password-managment</key>
+	<string></string>
+	<key>com.paypal.ppclient.touch.v2</key>
+	<string></string>
+	<key>com.paypal.ppclient.touch.v1</key>
+	<string></string>
 	<key>NSCameraUsageDescription</key>
 	<string>We will use this data to process your payment</string>
 	<key>CFBundleDevelopmentRegion</key>

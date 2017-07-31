@@ -97,9 +97,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBOutlet var NutritionOutlet: UIButton!
     
-    var environment:String = PayPalEnvironmentNoNetwork {
+    var environment:String = PayPalEnvironmentProduction
+    {
         willSet(newEnvironment) {
-            if (newEnvironment != environment) {
+            if (newEnvironment != environment)
+            {
                 PayPalMobile.preconnect(withEnvironment: newEnvironment)
             }
         }
@@ -195,7 +197,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         userController.add(self, name: "loginSuccess")
         webViewforData = WKWebView(frame: self.view.frame, configuration: webConfig)
         
-        payPalConfig.acceptCreditCards = true
+        payPalConfig.acceptCreditCards = false
         payPalConfig.merchantName = "Foogle Inc."
         payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
         payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
@@ -1392,14 +1394,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         //       You would only specify these if appropriate to your situation.
         //       Otherwise, you can leave payment.items and/or payment.paymentDetails nil,
         //       and simply set payment.amount to your total charge.
-        
-        
+                
         let nameFromSearchBartext = SearchBar.text as! String
         let priceFromLabel = String(self.Price)
         
         
         // Optional: include multiple items
-        let item1 = PayPalItem(name: "Base Item + Service Charge", withQuantity: 1, withPrice: NSDecimalNumber(string: priceFromLabel), withCurrency: "USD", withSku: "Hip-0037")
+        let item1 = PayPalItem(name: "Base Item + Service Charge", withQuantity: 1, withPrice: NSDecimalNumber(string: priceFromLabel), withCurrency: "USD", withSku: "Meal")
         
         let items = [item1]
         let subtotal = PayPalItem.totalPrice(forItems: items)

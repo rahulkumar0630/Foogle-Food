@@ -51,6 +51,7 @@ class ViewControllerForOrderInfo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //NoticeLogo.isHidden = true
         var completedOrderString = ""
         
         for i in 0 ... 8

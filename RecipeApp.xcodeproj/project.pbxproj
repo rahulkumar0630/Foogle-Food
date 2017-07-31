@@ -135,6 +135,7 @@
 		E4F0C18A1EEA357800CE2D6B /* RecipeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C18E1EEA357800CE2D6B /* RecipeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppUITests.swift; sourceTree = "<group>"; };
 		E4F0C1901EEA357800CE2D6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4F231C31F2E9DB40064D849 /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
 		F795845841F004B1237C684D /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +269,7 @@
 				E4F0C1771EEA357800CE2D6B /* LaunchScreen.storyboard */,
 				E4F0C17A1EEA357800CE2D6B /* Info.plist */,
 				E492DEC71F1539DC007FA8AD /* RecipeApp-Bridging-Header.h */,
+				E4F231C31F2E9DB40064D849 /* ZZAppDelegate.h */,
 			);
 			path = RecipeApp;
 			sourceTree = "<group>";
