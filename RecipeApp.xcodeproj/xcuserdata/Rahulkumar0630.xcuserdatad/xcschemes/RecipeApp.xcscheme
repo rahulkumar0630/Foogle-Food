@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4F0C16A1EEA357800CE2D6B"
-               BuildableName = "RecipeApp.app"
+               BuildableName = "Foogle Food.app"
                BlueprintName = "RecipeApp"
                ReferencedContainer = "container:RecipeApp.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4F0C16A1EEA357800CE2D6B"
-            BuildableName = "RecipeApp.app"
+            BuildableName = "Foogle Food.app"
             BlueprintName = "RecipeApp"
             ReferencedContainer = "container:RecipeApp.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4F0C16A1EEA357800CE2D6B"
-            BuildableName = "RecipeApp.app"
+            BuildableName = "Foogle Food.app"
             BlueprintName = "RecipeApp"
             ReferencedContainer = "container:RecipeApp.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4F0C16A1EEA357800CE2D6B"
-            BuildableName = "RecipeApp.app"
+            BuildableName = "Foogle Food.app"
             BlueprintName = "RecipeApp"
             ReferencedContainer = "container:RecipeApp.xcodeproj">
          </BuildableReference>

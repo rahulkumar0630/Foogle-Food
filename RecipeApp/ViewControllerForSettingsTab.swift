@@ -31,6 +31,7 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var CountryTitleLabel: UILabel!
     @IBOutlet var TACOutlet: UIButton!
     var TOAWebPage = WKWebView()
+    var layedOut = false
     @IBOutlet var ExitButtonOutlet: UIButton!
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
@@ -75,6 +76,29 @@ class ViewControllerForSettingsTab: UIViewController {
             Country.frame = CGRect.init(x: 31, y: 627, width: 191, height: 21)
             TACOutlet.frame = CGRect.init(x: 220, y: 686, width: self.TACOutlet.frame.width, height: self.TACOutlet.frame.height)
             
+        }
+        
+        if(ViewController.isIpad)
+        {
+          if(!layedOut)
+          {
+            SavedInfoLabel.isHidden = true
+            for view in self.view.subviews as [UIView]
+            {
+                 view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY - 100, width: view.frame.width, height: view.frame.height)
+                if let img = view as? UIImageView {
+                    img.frame = self.view.frame
+                }
+                if let btn = view as? UIButton
+                {
+                    if(btn.clipsToBounds == false)
+                    {
+                       view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 63, width: view.frame.width, height: view.frame.height)
+                    }
+                }
+            }
+          layedOut = true
+        }
         }
     }
     

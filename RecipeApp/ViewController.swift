@@ -54,6 +54,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var boolToFindPriceFromTextArea = false
     var booltogetNutrition = false
     static let modelName = UIDevice.current.modelName
+    var forFirstTime = false
+    static var isIpad = false
 
 
     
@@ -112,8 +114,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"
-            || ViewController.modelName == "Simulator")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
             FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
@@ -140,7 +141,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             PaynowButton.frame = CGRect.init(x: 207, y: 460, width: 86, height: 33)
             TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
             Orderbutton.frame = CGRect.init(x: 196, y: 521, width: 108, height: 39)
-            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 0, width: 320, height: 535)
             BackArrow.frame = CGRect.init(x: 16, y: 516, width: 47, height: 48)
             ForwardArrow.frame = CGRect.init(x: 63, y: 516, width: 47, height: 48)
             PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
@@ -176,6 +177,48 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             LoaderView.frame = CGRect.init(x: 151, y: 328, width: 112, height: 74)
             
         }
+        
+        if(ViewController.modelName == "iPhone SE" || ViewController.modelName == "iPad 2" || ViewController.modelName == "iPad 3" || ViewController.modelName == "iPad 4" || ViewController.modelName == "iPad Air" || ViewController.modelName == "iPad Air 2" || ViewController.modelName == "iPad 5" || ViewController.modelName == "iPad Mini" || ViewController.modelName == "iPad Mini 2" || ViewController.modelName == "iPad Mini 3" || ViewController.modelName == "iPad Mini 4" || ViewController.modelName == "iPad Pro 9.7 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch 2. Generation" || ViewController.modelName == "iPad Pro 10.5 Inch" || ViewController.modelName == "Simulator")
+        {
+            FoogleImageView.frame = self.view.frame
+            FoogleLogo.frame = CGRect.init(x: 56, y: 220, width: 207, height: 77)
+            BigSearchRecipes.frame = CGRect.init(x: 28, y: 15, width: 262, height: 45)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 149, y: 27, width: 20, height: 20)
+            if(booleantoLayoutSearchBar == false)
+            {
+                SearchBar.frame = CGRect.init(x: 0, y: 296, width: 319, height: 44)
+                booleantoLayoutSearchBar = true
+            }
+            SettingsButton.frame = CGRect.init(x: 271, y: 20, width: 30, height: 30)
+            LoaderView.frame = CGRect.init(x: 104, y: 247, width: 112, height: 74)
+            ActivitySpinner.frame = CGRect.init(x: 46, y: 28, width: 20, height: 20)
+            WebView.frame = CGRect.init(x: 0, y: 78, width: 320, height: 425)
+            //self.OrderView.frame = CGRect.init(x: 9, y: 801, width: 301, height: 500)
+            IngredientLabelOnOrderView.frame = CGRect.init(x: 5, y: 42, width: 115, height: 28)
+            CostLabelOnOrderView.frame = CGRect.init(x: 207, y: 42, width: 73, height: 28)
+            StackViewForIngredients.frame = CGRect.init(x: 8, y: 103, width: 199, height: 275)
+            StackViewForCost.frame = CGRect.init(x: 227, y: 103, width: 55, height: 275)
+            StackViewForDeleteButtons.frame = CGRect.init(x: 278, y: 103, width: 24, height: 275)
+            ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 400, width: 209, height: 21)
+            ServicePrice.frame = CGRect.init(x: 227, y: 400, width: 55, height: 21)
+            PaynowButton.frame = CGRect.init(x: 207, y: 400, width: 86, height: 33)
+            TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
+            Orderbutton.frame = CGRect.init(x: 196, y: 440, width: 108, height: 35)
+            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 10, width: 320, height: 480)
+            print("FRAME:\(self.view.frame)")
+            BackArrow.frame = CGRect.init(x: 16, y: 430, width: 47, height: 48)
+            BackArrow.backgroundColor = UIColor.black
+            ForwardArrow.frame = CGRect.init(x: 63, y: 430, width: 47, height: 48)
+            ForwardArrow.backgroundColor = UIColor.black
+            PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
+            ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 141, y: 13, width: 20, height: 20)
+            ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
+            NutritionOutlet.frame = CGRect.init(x: 13, y: 21, width: 97, height: 28)
+            ViewController.isIpad = true
+        }
+
+        
+        
     }
 
     var webConfig:WKWebViewConfiguration { 
@@ -349,7 +392,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             
                             if(isValid)
                             {
-                                let Congrats = UIAlertController(title: "Congratulations!", message: "Your Zipcode is one of the designated locations for delivery. You can try again if you didn't enter your zipcode properly.", preferredStyle: UIAlertControllerStyle.alert)
+                                let Congrats = UIAlertController(title: "Congratulations!", message: "Your Zipcode is one of the designated locations for delivery. You can try again if you didn't enter your zipcode properly. Please press Order again", preferredStyle: UIAlertControllerStyle.alert)
                             
                                 let tryagain = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
                                     self.checkZipCode()
@@ -358,7 +401,27 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
                                 let cancelAction = UIAlertAction(title: "Ok", style: .default) { (action) in
                                     UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
-
+                                    
+                                    var postString = "zipcode=\(UserZipCode)"
+                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
+                                    request.httpMethod = "POST"
+                                    
+                                    request.httpBody = postString.data(using: String.Encoding.utf8)
+                                    
+                                    let task = URLSession.shared.dataTask(with: request as URLRequest) {
+                                        data, response, error in
+                                        
+                                        if error != nil {
+                                            print("error=\(error)")
+                                            return
+                                        }
+                                        
+                                        print("response = \(response)")
+                                        
+                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                                        print("responseString = \(responseString)")
+                                    }
+                                    task.resume()
                                 }
 
                                 Congrats.addAction(cancelAction)
@@ -373,6 +436,27 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 
                                 let cancelAction = UIAlertAction(title: "Ok", style: .default) { (action) in
                                     UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
+                                    var postString = "zipcode=\(UserZipCode)"
+                                    
+                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
+                                    request.httpMethod = "POST"
+                                    
+                                    request.httpBody = postString.data(using: String.Encoding.utf8)
+                                    
+                                    let task = URLSession.shared.dataTask(with: request as URLRequest) {
+                                        data, response, error in
+                                        
+                                        if error != nil {
+                                            print("error=\(error)")
+                                            return
+                                        }
+                                        
+                                        print("response = \(response)")
+                                        
+                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                                        print("responseString = \(responseString)")
+                                    }
+                                    task.resume()
 
                                 }
                                 let tryagain = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
@@ -750,7 +834,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.blurEffectView.addGestureRecognizer(gesture)
                             
             
-                            if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus"))
+                            if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus") && ViewController.isIpad == false)
                             {
                                 let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
                                 DispatchQueue.main.asyncAfter(deadline: when) {
@@ -758,6 +842,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     self.OrderView.frame.origin.y = 70
                                 
                                 })
+                                }
+                            }
+                            else if (ViewController.isIpad)
+                            {
+                                let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                    UIView.animate(withDuration: 1, animations: {
+                                        self.OrderView.frame.origin.y = 40
+                                        
+                                    })
                                 }
                             }
                             else
@@ -884,6 +978,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     @IBAction func OnOrderPress(_ sender: Any) {
         
+        
+        let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
+        
+        if toCheckZip == nil
+        {
+            checkZipCode()
+        }
+        else
+        {
         
         let userisNotinDesignatedZip = UserDefaults.standard.object(forKey: "AskForZipCode") as? Bool
         
@@ -1040,6 +1143,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
         
         task.resume()
+        }
         }
         
         
@@ -1443,12 +1547,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
           }
         }
     
-        let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
-        
-        if toCheckZip == nil
-        {
-            checkZipCode()
-        }
 
     }
     

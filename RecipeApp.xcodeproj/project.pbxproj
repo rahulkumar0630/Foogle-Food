@@ -122,7 +122,7 @@
 		E492DEC71F1539DC007FA8AD /* RecipeApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RecipeApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		E49DBD9F1F159189005973FE /* ViewControllerForShippingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerForShippingInfo.swift; sourceTree = "<group>"; };
 		E4E63F501F16F3F2006C6773 /* ViewControllerForSettingsTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerForSettingsTab.swift; sourceTree = "<group>"; };
-		E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4F0C16B1EEA357800CE2D6B /* Foogle Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foogle Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F0C16E1EEA357800CE2D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F0C1701EEA357800CE2D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E4F0C1731EEA357800CE2D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		E4F0C16C1EEA357800CE2D6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */,
+				E4F0C16B1EEA357800CE2D6B /* Foogle Food.app */,
 				E4F0C17F1EEA357800CE2D6B /* RecipeAppTests.xctest */,
 				E4F0C18A1EEA357800CE2D6B /* RecipeAppUITests.xctest */,
 			);
@@ -312,7 +312,7 @@
 			);
 			name = RecipeApp;
 			productName = RecipeApp;
-			productReference = E4F0C16B1EEA357800CE2D6B /* RecipeApp.app */;
+			productReference = E4F0C16B1EEA357800CE2D6B /* Foogle Food.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E4F0C17E1EEA357800CE2D6B /* RecipeAppTests */ = {
@@ -766,7 +766,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RahulKumar.RecipeApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Foogle Food";
 				SWIFT_OBJC_BRIDGING_HEADER = "RecipeApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -784,7 +784,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RahulKumar.RecipeApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Foogle Food";
 				SWIFT_OBJC_BRIDGING_HEADER = "RecipeApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

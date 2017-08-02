@@ -36,6 +36,38 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
         {
             FoogleLogo.isHidden = true
         }
+        if(ViewController.isIpad)
+        {
+           var isEmailField = false
+           for view in self.view.subviews as [UIView]
+           {
+            if let img = view as? UIImageView {
+               img.frame = self.view.frame
+            }
+            else if let lbl = view as? UILabel {
+               if(lbl.text == "Email Address")
+               {
+                print("reached")
+                 view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 45, width: view.frame.width, height: view.frame.height)
+               }
+               else
+               {
+               view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 25, width: view.frame.width, height: view.frame.height)
+               }
+            }
+            else
+            {
+             view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 12, width: view.frame.width, height: view.frame.height)
+                if let lbl = view as? UITextField {
+                    if !isEmailField
+                    {
+                        view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 12, width: view.frame.width, height: view.frame.height)
+                        isEmailField = true
+                    }
+                }
+            }
+            }
+        }
     }
 
     

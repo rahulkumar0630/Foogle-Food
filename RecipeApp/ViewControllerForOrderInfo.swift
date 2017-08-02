@@ -24,6 +24,8 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var BackDrop: UIImageView!
     @IBOutlet var FoogleLogo: UILabel!
     @IBOutlet var SupportLabel: UILabel!
+    var layedOut = false
+
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
@@ -46,6 +48,48 @@ class ViewControllerForOrderInfo: UIViewController {
             SupportLabel.frame = CGRect.init(x: 23, y: 623, width: 264, height: 21)
             OrderInfoLabel.frame = CGRect.init(x: -20, y: 49, width: 455, height: 107)
         }
+            if(ViewController.isIpad)
+            {
+                if(!layedOut)
+                {
+                    OrderInfoLabel.isHidden = true
+                    for view in self.view.subviews as [UIView]
+                    {
+                        view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY - 100, width: view.frame.width, height: view.frame.height)
+                        if let img = view as? UIImageView {
+                            img.frame = self.view.frame
+                        }
+                        if let btn = view as? UIButton
+                        {
+                            if(btn.clipsToBounds == false)
+                            {
+                                view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 63, width: view.frame.width, height: view.frame.height)
+                            }
+                        }
+                        if let txt = view as? UILabel
+                        {
+                            if(txt == NoticeLogo)
+                            {
+                               NoticeLogo.adjustsFontSizeToFitWidth = true
+                               view.frame = CGRect.init(x: 23, y: 380, width: 281, height: 76)
+                            }
+                            if(txt == SupportLabel)
+                            {
+                                view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY - 35, width: view.frame.width, height: view.frame.height)
+                            }
+                            if(txt == ZipCodeTitleLabel)
+                            {
+                                view.frame = CGRect.init(x: view.frame.minX - 40, y: view.frame.midY, width: view.frame.width, height: view.frame.height)
+                            }
+                            if(txt == ZipCodeLabel)
+                            {
+                                view.frame = CGRect.init(x: view.frame.minX - 40, y: view.frame.midY, width: view.frame.width, height: view.frame.height)
+                            }
+                        }
+                    }
+                    layedOut = true
+                }
+            }
     }
 
     override func viewDidLoad() {

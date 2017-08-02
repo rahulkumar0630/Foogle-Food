@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Foogle_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -314,7 +314,7 @@
         <!--View Controller For Settings Tab-->
         <scene sceneID="PTa-eg-Vyo">
             <objects>
-                <viewController id="EZF-tL-dTJ" customClass="ViewControllerForSettingsTab" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EZF-tL-dTJ" customClass="ViewControllerForSettingsTab" customModule="Foogle_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="43F-mq-oe2"/>
                         <viewControllerLayoutGuide type="bottom" id="rW4-0Q-X12"/>
@@ -514,7 +514,7 @@
         <!--View Controller For Shipping Info-->
         <scene sceneID="6gL-Dp-z2j">
             <objects>
-                <viewController storyboardIdentifier="ViewControllerForShippingInfo" id="WdP-XT-shp" customClass="ViewControllerForShippingInfo" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerForShippingInfo" id="WdP-XT-shp" customClass="ViewControllerForShippingInfo" customModule="Foogle_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jtd-WQ-P8M"/>
                         <viewControllerLayoutGuide type="bottom" id="09H-jS-fk8"/>
@@ -735,7 +735,7 @@
         <!--View Controller For Order Info-->
         <scene sceneID="wNy-Qs-fT6">
             <objects>
-                <viewController id="lSx-gv-sJf" customClass="ViewControllerForOrderInfo" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lSx-gv-sJf" customClass="ViewControllerForOrderInfo" customModule="Foogle_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5O1-v0-7eX"/>
                         <viewControllerLayoutGuide type="bottom" id="hJs-5W-6ki"/>
