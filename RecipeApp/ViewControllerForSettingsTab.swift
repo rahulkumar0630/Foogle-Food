@@ -35,8 +35,7 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var ExitButtonOutlet: UIButton!
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" ||
-                ViewController.modelName == "Simulator")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
@@ -82,6 +81,20 @@ class ViewControllerForSettingsTab: UIViewController {
         {
           if(!layedOut)
           {
+            SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
+            SavedInfoLabel.adjustsFontSizeToFitWidth = true
+            ZipCodeTitleLabel.frame = CGRect.init(x: 229, y: 388, width: 75, height: 21)
+            ZipCode.frame = CGRect.init(x: 235, y: 417, width: 83, height: 21)
+            BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            Country.frame = CGRect.init(x: 105, y: 534, width: 191, height: 21)
+            PhoneNumber.frame = CGRect.init(x: 168, y: 342, width: 152, height: 21)
+            CityTitleLabel.frame = CGRect.init(x: 31, y: 388, width: 35, height: 21)
+            City.frame = CGRect.init(x: 31, y: 417, width: 192, height: 21)
+            StateTitleLabel.frame = CGRect.init(x: 31, y: 446, width: 45, height: 21)
+            State.frame = CGRect.init(x: 31, y: 475, width: 192, height: 21)
+            CountryTitleLabel.frame = CGRect.init(x: 31, y: 504, width: 66, height: 21)
+            Country.frame = CGRect.init(x: 32, y: 533, width: 191, height: 21)
+            TACOutlet.frame = CGRect.init(x: 150, y: 533, width: self.TACOutlet.frame.width, height: self.TACOutlet.frame.height)
             SavedInfoLabel.isHidden = true
             for view in self.view.subviews as [UIView]
             {

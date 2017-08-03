@@ -594,20 +594,197 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             //print(currenturl)
         
             FoogleImageView.isHidden = true
-            if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
-            {
-               SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
-            }
-            else
-            {
-                let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
-            SearchBar.frame = newFrameForSearchBar
-            }
+        
+                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
+                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+                {
+                    SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
+                }
+                else
+                {
+                    let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
+                    SearchBar.frame = newFrameForSearchBar
+                }
+        
             FoogleLogo.isHidden = true
         
             Orderbutton.isHidden = false
             NutritionOutlet.isHidden = false
+    }
+    
+    @IBAction func OnOrderPress(_ sender: Any) {
+        
+        
+        let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
+        
+        if toCheckZip == nil
+        {
+            checkZipCode()
+        }
+        else
+        {
+            
+            let userisNotinDesignatedZip = UserDefaults.standard.object(forKey: "AskForZipCode") as? Bool
+            
+            if userisNotinDesignatedZip! == false
+            {
+                let alert = UIAlertController(title: "Sorry", message: "Your Zip Code is not in the designated delivery area at this time.", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    self.grayView.isHidden = true
+                }
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                self.grayView.isHidden = false
+                LoaderView.isHidden = false
+                ActivitySpinner.isHidden = false
+                var checkifrecipe = true
+                
+                currentURL = (WebView.request?.url?.absoluteString)!
+                ViewController.URLforOrderInfo = currentURL
+                print(currentURL)
+                ArrayForIngredients = [String]()
+                
+                let uRl = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
+                
+                let task = URLSession.shared.dataTask(with: uRl!) { (data, response, error) in
+                    
+                    
+                    if error != nil {
+                        let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                        let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                            self.grayView.isHidden = true
+                        }
+                        alert.addAction(cancelAction)
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    else {
+                        if let mydata = data {
+                            do {
+                                
+                                let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                                
+                                //self.StepperOutlet.value = Double(self.servingsstring)!
+                                
+                                if let status = myJson["status"] as? String {
+                                    if(status == "failure")
+                                    {
+                                        let alert = UIAlertController(title: "Error", message: "This recipe cannot be extracted.", preferredStyle: UIAlertControllerStyle.alert)
+                                        let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                            self.grayView.isHidden = true
+                                        }
+                                        alert.addAction(cancelAction)
+                                        
+                                        self.present(alert, animated: true, completion: nil)
+                                        
+                                    }
+                                }
+                                
+                                if let title = myJson["title"] as? String
+                                {
+                                    self.titleOfRecipe = title
+                                }
+                                
+                                if let Recipedifferentiater = myJson["text"] as? String
+                                {
+                                    if let servings = myJson["servings"] as? Int {
+                                        self.servingsstring = String(servings)
+                                        print("SERVINGS:\(self.servingsstring)")
+                                        self.ServingsLabel.text = "Servings: \(self.servingsstring)"
+                                    }
+                                    
+                                    
+                                    if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
+                                        
+                                        for station in stations {
+                                            
+                                            if let name = station["originalString"] as? String{
+                                                
+                                                var constructedstring = ""
+                                                
+                                                if let amount = station["amount"] as? Double
+                                                {
+                                                    if(amount < 1.0)
+                                                    {
+                                                        let fraction = self.rationalApproximation(of: amount)
+                                                        var fractionString = "\(fraction.num)/\(fraction.den)"
+                                                        constructedstring = "\(fractionString)"
+                                                    }
+                                                    else
+                                                    {
+                                                        let roundedamount = round(amount * 100) / 100
+                                                        constructedstring = "\(roundedamount)"
+                                                    }
+                                                }
+                                                if let unitShort = station["unitShort"] as? String
+                                                {
+                                                    constructedstring = constructedstring + " \(unitShort)"
+                                                }
+                                                if let name = station["name"] as? String
+                                                {
+                                                    constructedstring = constructedstring + " \(name)"
+                                                    self.ArrayforType.append(name)
+                                                }
+                                                
+                                                print(constructedstring)
+                                                self.ArrayForIngredients.append(constructedstring)
+                                                
+                                            }
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    print("This is not a recipe")
+                                    checkifrecipe = false
+                                    
+                                    let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
+                                    let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                        self.grayView.isHidden = true
+                                    }
+                                    alert.addAction(cancelAction)
+                                    
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                                
+                            }
+                            catch {
+                                // catch error
+                            }
+                        }
+                    }
+                    
+                    if(checkifrecipe == true)
+                    {
+                        for item in self.ArrayForIngredients {
+                            
+                            if(item == self.ArrayForIngredients[self.ArrayForIngredients.count - 1])
+                            {
+                                self.StringforIngredients = "\(self.StringforIngredients) \(item)"
+                                break
+                            }
+                            self.StringforIngredients = "\(self.StringforIngredients) \(item) %0A"
+                        }
+                        self.StringforIngredients = self.StringforIngredients.trimmingCharacters(in: .whitespacesAndNewlines)
+                        print(self.StringforIngredients)
+                        self.FindIngredientPrice(Ingredient: self.StringforIngredients)
+                        self.StringforIngredients = ""
+                    }
+                }
+                
+                task.resume()
+            }
+        }
+        
+        
+        
+        
     }
     
     
@@ -828,6 +1005,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             {
                                 self.OrderView.frame = CGRect.init(x: 11, y: 900, width: 390, height: 666)
                             }
+                            else if(ViewController.isIpad)
+                            {
+                                self.OrderView.frame = CGRect.init(x: 9, y: 900, width: 303, height: 666)
+
+                            }
                             
                             self.blurEffectView.removeGestureRecognizer(removedgesture)
                             let gesture = UITapGestureRecognizer(target: self, action: "resetValues:")
@@ -976,180 +1158,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         // now use the name and token as you see fit!
     }
 
-    @IBAction func OnOrderPress(_ sender: Any) {
-        
-        
-        let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
-        
-        if toCheckZip == nil
-        {
-            checkZipCode()
-        }
-        else
-        {
-        
-        let userisNotinDesignatedZip = UserDefaults.standard.object(forKey: "AskForZipCode") as? Bool
-        
-        if userisNotinDesignatedZip! == false
-        {
-            let alert = UIAlertController(title: "Sorry", message: "Your Zip Code is not in the designated delivery area at this time.", preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                self.grayView.isHidden = true
-            }
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        else
-        {
-        self.grayView.isHidden = false
-        LoaderView.isHidden = false
-        ActivitySpinner.isHidden = false
-        var checkifrecipe = true
-        
-        currentURL = (WebView.request?.url?.absoluteString)!
-        ViewController.URLforOrderInfo = currentURL
-        print(currentURL)
-        ArrayForIngredients = [String]()
-        
-        let uRl = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
-        
-        let task = URLSession.shared.dataTask(with: uRl!) { (data, response, error) in
-            
-            
-            if error != nil {
-                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
-                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                    self.grayView.isHidden = true
-                }
-                alert.addAction(cancelAction)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-            else {
-                if let mydata = data {
-                    do {
-                        
-                        let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        //self.StepperOutlet.value = Double(self.servingsstring)!
-                        
-                        if let status = myJson["status"] as? String {
-                            if(status == "failure")
-                            {
-                                let alert = UIAlertController(title: "Error", message: "This recipe cannot be extracted.", preferredStyle: UIAlertControllerStyle.alert)
-                                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                                    self.grayView.isHidden = true
-                                }
-                                alert.addAction(cancelAction)
-                                
-                                self.present(alert, animated: true, completion: nil)
-
-                            }
-                        }
-                        
-                        if let title = myJson["title"] as? String
-                        {
-                            self.titleOfRecipe = title
-                        }
-                        
-                        if let Recipedifferentiater = myJson["text"] as? String
-                        {
-                            if let servings = myJson["servings"] as? Int {
-                                self.servingsstring = String(servings)
-                                print("SERVINGS:\(self.servingsstring)")
-                                self.ServingsLabel.text = "Servings: \(self.servingsstring)"
-                            }
-
-                        
-                        if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
-                            
-                            for station in stations {
-                                
-                                if let name = station["originalString"] as? String{
-
-                                   var constructedstring = ""
-                                    
-                                   if let amount = station["amount"] as? Double
-                                   {
-                                    if(amount < 1.0)
-                                    {
-                                      let fraction = self.rationalApproximation(of: amount)
-                                      var fractionString = "\(fraction.num)/\(fraction.den)"
-                                      constructedstring = "\(fractionString)"
-                                    }
-                                    else
-                                    {
-                                      let roundedamount = round(amount * 100) / 100
-                                      constructedstring = "\(roundedamount)"
-                                    }
-                                   }
-                                   if let unitShort = station["unitShort"] as? String
-                                   {
-                                      constructedstring = constructedstring + " \(unitShort)"
-                                   }
-                                   if let name = station["name"] as? String
-                                   {
-                                      constructedstring = constructedstring + " \(name)"
-                                      self.ArrayforType.append(name)
-                                   }
-                                
-                                   print(constructedstring)
-                                   self.ArrayForIngredients.append(constructedstring)
-                                    
-                                }
-                                
-                            }
-                            }
-                            
-                        }
-                        else
-                        {
-                            print("This is not a recipe")
-                            checkifrecipe = false
-                            
-                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
-                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                                            self.grayView.isHidden = true
-                            }
-                            alert.addAction(cancelAction)
-                                                                
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                        
-                    }
-                    catch {
-                        // catch error
-                    }
-                }
-            }
-            
-            if(checkifrecipe == true)
-            {
-                for item in self.ArrayForIngredients {
-                
-                    if(item == self.ArrayForIngredients[self.ArrayForIngredients.count - 1])
-                    {
-                        self.StringforIngredients = "\(self.StringforIngredients) \(item)"
-                        break
-                    }
-                    self.StringforIngredients = "\(self.StringforIngredients) \(item) %0A"
-                }
-                self.StringforIngredients = self.StringforIngredients.trimmingCharacters(in: .whitespacesAndNewlines)
-                print(self.StringforIngredients)
-                self.FindIngredientPrice(Ingredient: self.StringforIngredients)
-                self.StringforIngredients = ""
-            }
-        }
-        
-        task.resume()
-        }
-        }
-        
-        
-        
-
-    }
     
     func resetValues(_ sender:UITapGestureRecognizer){
         UIView.animate(withDuration: 0.75, animations: {
