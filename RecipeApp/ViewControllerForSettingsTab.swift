@@ -35,7 +35,7 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var ExitButtonOutlet: UIButton!
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"  || ViewController.modelName == "Simulator")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
@@ -113,6 +113,26 @@ class ViewControllerForSettingsTab: UIViewController {
           layedOut = true
         }
         }
+        if(ViewController.modelName == "iPhone X")
+        {
+            BackDrop.frame = self.view.frame
+            SavedInfoLabel.frame = CGRect.init(x: 32, y: 69, width: 312, height: 87)
+            ExitButtonOutlet.frame = CGRect.init(x: 16, y: 37, width: 37, height: 36)
+            
+            for view in self.view.subviews as [UIView]
+            {
+                if let btn = view as? UILabel
+                {
+                   if(btn != SavedInfoLabel)
+                   {
+                        view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 10, width: view.frame.width, height: view.frame.height)
+                   }
+                   
+                }
+            }
+            TACOutlet.frame = CGRect.init(x: 204, y: 740, width: 155, height: 30)
+
+        }
     }
     
 
@@ -170,7 +190,7 @@ class ViewControllerForSettingsTab: UIViewController {
 
     @IBAction func OnTOAPress(_ sender: Any) {
         
-        let TOAurl = URL(string: "https://img1.wsimg.com/blobby/go/637bcf87-64d8-4cf1-934c-2f812b81cd7f/downloads/1bmah0hda_455622.pdf")
+        let TOAurl = URL(string: "https://img1.wsimg.com/blobby/go/637bcf87-64d8-4cf1-934c-2f812b81cd7f/downloads/1bn1g9ku9_408360.pdf")
         let request = URLRequest(url: TOAurl!)
         
         TOAWebPage.load(request)

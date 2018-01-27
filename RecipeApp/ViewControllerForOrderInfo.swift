@@ -24,18 +24,20 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var BackDrop: UIImageView!
     @IBOutlet var FoogleLogo: UILabel!
     @IBOutlet var SupportLabel: UILabel!
+    @IBOutlet var ExitButton: UIButton!
     var layedOut = false
 
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-           || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+           || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"  || ViewController.modelName == "Simulator")
         {
             OrderInfoLabel.frame = CGRect.init(x: 16, y: 49, width: 288, height: 107)
             OrderInfoLabel.adjustsFontSizeToFitWidth = true
             ZipCodeTitleLabel.frame = CGRect.init(x: 199, y: 279, width: 121, height: 30)
             ZipCodeLabel.frame = CGRect.init(x: 208, y: 315, width: 96, height: 21)
-            NoticeLogo.frame = CGRect.init(x: 28, y: 460, width: 281, height: 113)
+            NoticeLogo.frame = CGRect.init(x: 28, y: 435, width: 281, height: 113)
+            SupportLabel.frame = CGRect.init(x: 28, y: 480, width: 281, height: 113)
             NoticeLogo.numberOfLines = 4
             NoticeLogo.adjustsFontSizeToFitWidth = true
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
@@ -45,7 +47,7 @@ class ViewControllerForOrderInfo: UIViewController {
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             FoogleLogo.frame = CGRect.init(x: 16, y: 672, width: 97, height: 44)
             NoticeLogo.frame = CGRect.init(x: 23, y: 509, width: 340, height: 76)
-            SupportLabel.frame = CGRect.init(x: 23, y: 623, width: 264, height: 21)
+            SupportLabel.frame = CGRect.init(x: 23, y: 623, width: 340, height: 21)
             OrderInfoLabel.frame = CGRect.init(x: -20, y: 49, width: 455, height: 107)
         }
             if(ViewController.isIpad)
@@ -89,6 +91,14 @@ class ViewControllerForOrderInfo: UIViewController {
                     }
                     layedOut = true
                 }
+            }
+            if(ViewController.modelName == "iPhone X")
+            {
+               BackDrop.frame = self.view.frame
+               FoogleLogo.frame = CGRect.init(x: 16, y: 745, width: 88, height: 25)
+               ExitButton.frame = CGRect.init(x: 16, y: 44, width: 37, height: 36)
+               OrderInfoLabel.frame = CGRect.init(x: -40, y: 64, width: 455, height: 107)
+                
             }
     }
 

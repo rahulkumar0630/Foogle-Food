@@ -52,6 +52,7 @@ public extension UIDevice {
         case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
         case "AppleTV5,3":                              return "Apple TV"
         case "i386", "x86_64":                          return "Simulator"
+        case "iPhone10,3":                              return "iPhone X"
         default:                                        return identifier
         }
     }

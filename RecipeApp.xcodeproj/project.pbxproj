@@ -10,7 +10,6 @@
 		7776F9B838821843A99502BB /* Pods_RecipeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB57CA858E0E7F8B07DB874 /* Pods_RecipeAppUITests.framework */; };
 		79C9933AF5506F5F40D006B6 /* Pods_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E5821614DD9E1F65ECE590 /* Pods_RecipeAppTests.framework */; };
 		E40B9B2A1F1A912B00469D15 /* ViewControllerForOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */; };
-		E43589FA1F294DAB00630D5D /* BackgroundforAPP 3.png in Resources */ = {isa = PBXBuildFile; fileRef = E43589F91F294DAB00630D5D /* BackgroundforAPP 3.png */; };
 		E4441C841F211DA300546AF7 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4441C831F211DA300546AF7 /* UIDevice.swift */; };
 		E4441C861F21559F00546AF7 /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C851F21559F00546AF7 /* Banner.png */; };
 		E4441C881F2155B300546AF7 /* Backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C871F2155B300546AF7 /* Backdrop.png */; };
@@ -84,7 +83,6 @@
 		A08C6C294743B732C77363B8 /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D49737A811A2AE8FAAEBA873 /* Pods-RecipeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerForOrderInfo.swift; sourceTree = "<group>"; };
-		E43589F91F294DAB00630D5D /* BackgroundforAPP 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BackgroundforAPP 3.png"; path = "../../../../BackgroundforAPP 3.png"; sourceTree = "<group>"; };
 		E4441C831F211DA300546AF7 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		E4441C851F21559F00546AF7 /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Banner.png; path = ../../../../../Downloads/Banner.png; sourceTree = "<group>"; };
 		E4441C871F2155B300546AF7 /* Backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Backdrop.png; path = ../../../../../Downloads/Backdrop.png; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 				E4441C951F2155DA00546AF7 /* GrayOrderButton.png */,
 				E4441C971F2155E000546AF7 /* SkyBlueButton.png */,
 				E4441C991F2155E700546AF7 /* BackgroundforAPPGreen.png */,
-				E43589F91F294DAB00630D5D /* BackgroundforAPP 3.png */,
 				E4441C9B1F2155EC00546AF7 /* FoogleSplashScreen.PNG */,
 				E4441C9D1F2155F400546AF7 /* OrderButton.png */,
 				E4441C9F1F2155F800546AF7 /* arrow_back_white_192x192.png */,
@@ -416,7 +413,6 @@
 				E4441CA61F21560D00546AF7 /* arrowBackWhenCantGoBack.png in Resources */,
 				E4441C961F2155DA00546AF7 /* GrayOrderButton.png in Resources */,
 				E4441C881F2155B300546AF7 /* Backdrop.png in Resources */,
-				E43589FA1F294DAB00630D5D /* BackgroundforAPP 3.png in Resources */,
 				E4441C8C1F2155BE00546AF7 /* ExitButton.png in Resources */,
 				E4441CAE1F21562700546AF7 /* BottomBanner.png in Resources */,
 				E4441C8A1F2155B800546AF7 /* WhiteBar.png in Resources */,

@@ -114,10 +114,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
         {
             //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
-            FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 320, height: 568)
+            FoogleImageView.frame = self.view.frame
             FoogleLogo.frame = CGRect.init(x: 56, y: 220, width: 207, height: 77)
             BigSearchRecipes.frame = CGRect.init(x: 28, y: 15, width: 262, height: 45)
             ActivityIndicatorforWeb.frame = CGRect.init(x: 149, y: 27, width: 20, height: 20)
@@ -141,7 +141,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             PaynowButton.frame = CGRect.init(x: 207, y: 460, width: 86, height: 33)
             TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
             Orderbutton.frame = CGRect.init(x: 196, y: 521, width: 108, height: 39)
-            BackgroundForFoogle.frame = CGRect.init(x: 0, y: 0, width: 320, height: 535)
+            BackgroundForFoogle.frame = self.view.frame
             BackArrow.frame = CGRect.init(x: 16, y: 516, width: 47, height: 48)
             ForwardArrow.frame = CGRect.init(x: 63, y: 516, width: 47, height: 48)
             PriceTextinOrderView.frame = CGRect.init(x: 73, y: 12, width: 156, height: 21)
@@ -178,7 +178,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             
         }
         
-        if(ViewController.modelName == "iPhone SE" || ViewController.modelName == "iPad 2" || ViewController.modelName == "iPad 3" || ViewController.modelName == "iPad 4" || ViewController.modelName == "iPad Air" || ViewController.modelName == "iPad Air 2" || ViewController.modelName == "iPad 5" || ViewController.modelName == "iPad Mini" || ViewController.modelName == "iPad Mini 2" || ViewController.modelName == "iPad Mini 3" || ViewController.modelName == "iPad Mini 4" || ViewController.modelName == "iPad Pro 9.7 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch 2. Generation" || ViewController.modelName == "iPad Pro 10.5 Inch" || ViewController.modelName == "Simulator")
+        if(ViewController.modelName == "iPad 2" || ViewController.modelName == "iPad 3" || ViewController.modelName == "iPad 4" || ViewController.modelName == "iPad Air" || ViewController.modelName == "iPad Air 2" || ViewController.modelName == "iPad 5" || ViewController.modelName == "iPad Mini" || ViewController.modelName == "iPad Mini 2" || ViewController.modelName == "iPad Mini 3" || ViewController.modelName == "iPad Mini 4" || ViewController.modelName == "iPad Pro 9.7 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch" || ViewController.modelName == "iPad Pro 12.9 Inch 2. Generation" || ViewController.modelName == "iPad Pro 10.5 Inch")
         {
             FoogleImageView.frame = self.view.frame
             FoogleLogo.frame = CGRect.init(x: 56, y: 220, width: 207, height: 77)
@@ -215,6 +215,31 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
             NutritionOutlet.frame = CGRect.init(x: 13, y: 21, width: 97, height: 28)
             ViewController.isIpad = true
+        }
+        if(ViewController.modelName == "iPhone X")
+        {
+            FoogleImageView.frame = self.view.frame
+            BigSearchRecipes.frame = CGRect.init(x: 56, y: 24, width: 262, height: 45)
+            SettingsButton.frame = CGRect.init(x: 325, y: 31, width: 34, height: 35)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 177, y: 38, width: 20, height: 20)
+            BackgroundForFoogle.frame = self.view.frame
+            WebView.frame = CGRect.init(x: 0, y: 118, width: 375, height: 613)
+            NutritionOutlet.frame = CGRect.init(x: 16, y: 31, width: 97, height: 35)
+            BackArrow.frame = CGRect.init(x: 16, y: 739, width: 47, height: 48)
+            ForwardArrow.frame = CGRect.init(x: 56, y: 739, width: 47, height: 48)
+            Orderbutton.frame = CGRect.init(x: 251, y: 744, width: 108, height: 39)
+            LoaderView.frame = CGRect.init(x: 131, y: 336, width: 112, height: 74)
+            OrderView.frame = CGRect.init(x: 9, y: 1000, width: 357, height: 677)
+            StackViewForIngredients.frame = CGRect.init(x: 8, y: 103, width: 231, height: 486)
+            StackViewForCost.frame = CGRect.init(x: 259, y: 103, width: 79, height: 486)
+            StackViewForDeleteButtons.frame = CGRect.init(x: 314, y: 103, width: 24, height: 486)
+            ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 597, width: 217, height: 21)
+            ServicePrice.frame = CGRect.init(x: 259, y: 597, width: 79, height: 21)
+            PaynowButton.frame = CGRect.init(x: 239, y: 627, width: 110, height: 33)
+            OrderView.frame = CGRect.init(x: 9, y: 1000, width: 357, height: 677)
+
+
+
         }
 
         
@@ -309,8 +334,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         self.ShippingTaxesServicesLabel.textColor = UIColor.gray
         self.ServicePrice.textColor = UIColor.gray
         
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -594,16 +617,19 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             //print(currenturl)
         
             FoogleImageView.isHidden = true
-        
-                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
+
+                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c" || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad || ViewController.modelName == "Simulator")
                 {
                     SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
                 }
                 else
                 {
-                    let newFrameForSearchBar = CGRect.init(x: 0, y: 60, width: SearchBar.layer.frame.width, height: SearchBar.layer.frame.height)
+                    let newFrameForSearchBar = CGRect.init(x: 0, y: 63, width: SearchBar.layer.frame.width, height: 30)
                     SearchBar.frame = newFrameForSearchBar
+                }
+                if(ViewController.modelName == "iPhone X")
+                {
+                    SearchBar.frame = CGRect.init(x: 0, y: 77, width: 375, height: 44)
                 }
         
             FoogleLogo.isHidden = true
@@ -688,8 +714,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 {
                                     self.titleOfRecipe = title
                                 }
+                                let Recipedifferentiater = myJson["instructions"] as? String
                                 
-                                if let Recipedifferentiater = myJson["text"] as? String
+                                if Recipedifferentiater != "null"
                                 {
                                     if let servings = myJson["servings"] as? Int {
                                         self.servingsstring = String(servings)
@@ -812,7 +839,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         if(self.booltogetNutrition == true)
         {
-            self.webViewforData.evaluateJavaScript("document.body.style.zoom = 2.2;")
+            self.webViewforData.evaluateJavaScript("document.body.style.zoom = 2.6;")
             if !UIAccessibilityIsReduceTransparencyEnabled() {
                 self.view.backgroundColor = UIColor.clear
                 //always fill the view
@@ -839,6 +866,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.webViewforData.frame.origin.y = 70
                 
                     })
+                }
+                if(ViewController.modelName == "iPhone X")
+                {
+                    let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        UIView.animate(withDuration: 1, animations: {
+                            self.webViewforData.frame.origin.y = 110
+                            
+                        })
+                    }
                 }
                 let removedgesture = UITapGestureRecognizer(target: self, action: "resetValues:")
                 blurEffectView.removeGestureRecognizer(removedgesture)
@@ -997,7 +1034,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.view.backgroundColor = UIColor.black
                             }
                             if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
+                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"   || ViewController.modelName == "Simulator")
                             {
                                 self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                             }
@@ -1044,6 +1081,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     self.OrderView.frame.origin.y = 53
                                     
                                 })
+                                }
+                            }
+                            if(ViewController.modelName == "iPhone X")
+                            {
+                                let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                    UIView.animate(withDuration: 1, animations: {
+                                        self.OrderView.frame.origin.y = 110
+                                        
+                                    })
                                 }
                             }
             
@@ -1371,7 +1418,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.titleOfRecipe = title
                         }
                         
-                        if let Recipedifferentiater = myJson["text"] as? String
+                        let Recipedifferentiater = myJson["instructions"] as? String
+                        
+                        if Recipedifferentiater != "null"
                         {
                             if let servings = myJson["servings"] as? Int {
                                 self.servingsstring = String(servings)
@@ -1474,14 +1523,18 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 90)
                 }
                 else if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"
-                    || ViewController.modelName == "Simulator")
+                    || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad   || ViewController.modelName == "Simulator")
                 {
                     self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 70)
                 }
                 else
                 {
                     self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 587)
+                }
+                if(ViewController.modelName == "iPhone X")
+                {
+                    self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 677)
+
                 }
                 
                 self.webViewforData.load(requestforPrice)

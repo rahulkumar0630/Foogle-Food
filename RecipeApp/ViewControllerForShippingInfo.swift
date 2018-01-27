@@ -18,6 +18,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var CountryTextField: UITextField!
     @IBOutlet weak var StateTextField: UITextField!
     @IBOutlet var ContinueButton: UIButton!
+    @IBOutlet var FoogleBackground: UIImageView!
     
     @IBOutlet var FoogleLogo: UILabel!
     
@@ -38,6 +39,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
         }
         if(ViewController.isIpad)
         {
+           FoogleLogo.isHidden = true
            var isEmailField = false
            for view in self.view.subviews as [UIView]
            {
@@ -67,6 +69,10 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
                 }
             }
             }
+        }
+        if(ViewController.modelName == "iPhone X")
+        {
+            FoogleBackground.frame = self.view.frame
         }
     }
 
