@@ -53,7 +53,7 @@ class ViewControllerForSettingsTab: UIViewController {
             TACOutlet.frame = CGRect.init(x: 150, y: 533, width: self.TACOutlet.frame.width, height: self.TACOutlet.frame.height)
             
         }
-        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
         {
             BackDrop.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             SavedInfoLabel.frame  = CGRect.init(x: 52, y: 58, width: 312, height: 87)

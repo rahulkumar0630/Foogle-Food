@@ -10,6 +10,7 @@
 		7776F9B838821843A99502BB /* Pods_RecipeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB57CA858E0E7F8B07DB874 /* Pods_RecipeAppUITests.framework */; };
 		79C9933AF5506F5F40D006B6 /* Pods_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E5821614DD9E1F65ECE590 /* Pods_RecipeAppTests.framework */; };
 		E40B9B2A1F1A912B00469D15 /* ViewControllerForOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */; };
+		E417EDCD201CD10F00D5F3E6 /* ViewcontrollerForLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E417EDCC201CD10F00D5F3E6 /* ViewcontrollerForLaunchScreen.swift */; };
 		E4441C841F211DA300546AF7 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4441C831F211DA300546AF7 /* UIDevice.swift */; };
 		E4441C861F21559F00546AF7 /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C851F21559F00546AF7 /* Banner.png */; };
 		E4441C881F2155B300546AF7 /* Backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = E4441C871F2155B300546AF7 /* Backdrop.png */; };
@@ -83,6 +84,7 @@
 		A08C6C294743B732C77363B8 /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D49737A811A2AE8FAAEBA873 /* Pods-RecipeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E40B9B291F1A912B00469D15 /* ViewControllerForOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerForOrderInfo.swift; sourceTree = "<group>"; };
+		E417EDCC201CD10F00D5F3E6 /* ViewcontrollerForLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewcontrollerForLaunchScreen.swift; sourceTree = "<group>"; };
 		E4441C831F211DA300546AF7 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		E4441C851F21559F00546AF7 /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Banner.png; path = ../../../../../Downloads/Banner.png; sourceTree = "<group>"; };
 		E4441C871F2155B300546AF7 /* Backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Backdrop.png; path = ../../../../../Downloads/Backdrop.png; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				E4441CAD1F21562700546AF7 /* BottomBanner.png */,
 				E4F0C1751EEA357800CE2D6B /* Assets.xcassets */,
 				E4F0C1771EEA357800CE2D6B /* LaunchScreen.storyboard */,
+				E417EDCC201CD10F00D5F3E6 /* ViewcontrollerForLaunchScreen.swift */,
 				E4F0C17A1EEA357800CE2D6B /* Info.plist */,
 				E492DEC71F1539DC007FA8AD /* RecipeApp-Bridging-Header.h */,
 				E4F231C31F2E9DB40064D849 /* ZZAppDelegate.h */,
@@ -458,9 +461,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,13 +494,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecipeAppUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		91186AB924847194943DE30E /* [CP] Embed Pods Frameworks */ = {
@@ -563,13 +572,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecipeApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC714094D77F6BCC6FF4EF06 /* [CP] Check Pods Manifest.lock */ = {
@@ -578,13 +590,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecipeAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -596,6 +611,7 @@
 			files = (
 				E45E19501F00ACC1008DABD0 /* UIActivityIndicatorView.swift in Sources */,
 				E46CC2551EF9D4D40063AF18 /* String.swift in Sources */,
+				E417EDCD201CD10F00D5F3E6 /* ViewcontrollerForLaunchScreen.swift in Sources */,
 				E4F0C1711EEA357800CE2D6B /* ViewController.swift in Sources */,
 				E40B9B2A1F1A912B00469D15 /* ViewControllerForOrderInfo.swift in Sources */,
 				E4F0C16F1EEA357800CE2D6B /* AppDelegate.swift in Sources */,

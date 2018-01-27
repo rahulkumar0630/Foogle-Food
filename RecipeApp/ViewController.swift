@@ -151,7 +151,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         }
         
-        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+        if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
         {
             //self.OrderView.frame.origin.y = 800
             FoogleLogo.frame = CGRect.init(x: 104, y: 253, width: 207, height: 77)
@@ -1038,7 +1038,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             {
                                 self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                             }
-                            else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+                            else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
                             {
                                 self.OrderView.frame = CGRect.init(x: 11, y: 900, width: 390, height: 666)
                             }
@@ -1518,7 +1518,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.LoaderView.isHidden = false
                 self.ActivitySpinner.isHidden = false
                 
-                if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus")
+                if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
                 {
                     self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 90)
                 }
