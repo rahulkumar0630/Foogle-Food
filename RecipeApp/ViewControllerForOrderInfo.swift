@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class ViewControllerForOrderInfo: UIViewController {
     
@@ -25,6 +26,7 @@ class ViewControllerForOrderInfo: UIViewController {
     @IBOutlet var FoogleLogo: UILabel!
     @IBOutlet var SupportLabel: UILabel!
     @IBOutlet var ExitButton: UIButton!
+    var FirstTimeOrder = UserDefaults.standard.object(forKey: "RateForMoreOff") as? Bool
     var layedOut = false
 
     
@@ -177,6 +179,7 @@ class ViewControllerForOrderInfo: UIViewController {
                 numberofcoststhatarenotremoved = numberofcoststhatarenotremoved + 1
             }
         }
+        
         print(postString)
         
         
@@ -204,6 +207,8 @@ class ViewControllerForOrderInfo: UIViewController {
         
     }
     @IBAction func OnExitButtonPress(_ sender: Any) {
+        
+        SKStoreReviewController.requestReview()
         dismiss(animated: true, completion: nil)
     }
 

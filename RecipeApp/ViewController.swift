@@ -8,6 +8,8 @@
 
 import UIKit
 import WebKit
+import StoreKit
+
 
 class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate, UISearchBarDelegate, UITextFieldDelegate, PayPalPaymentDelegate, WKScriptMessageHandler{
 
@@ -56,6 +58,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     static let modelName = UIDevice.current.modelName
     var forFirstTime = false
     static var isIpad = false
+    var FirstTimeOn = UserDefaults.standard.object(forKey: "FirstTimeOn") as? Bool
+    var MessageDismissedfor50 = UserDefaults.standard.object(forKey: "MessageDismissedfor50") as? Bool
+
+    
 
 
     
@@ -220,11 +226,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         {
             FoogleImageView.frame = self.view.frame
             BigSearchRecipes.frame = CGRect.init(x: 56, y: 24, width: 262, height: 45)
-            SettingsButton.frame = CGRect.init(x: 325, y: 31, width: 34, height: 35)
+            SettingsButton.frame = CGRect.init(x: 325, y: 35, width: 34, height: 35)
             ActivityIndicatorforWeb.frame = CGRect.init(x: 177, y: 38, width: 20, height: 20)
             BackgroundForFoogle.frame = self.view.frame
             WebView.frame = CGRect.init(x: 0, y: 118, width: 375, height: 613)
-            NutritionOutlet.frame = CGRect.init(x: 16, y: 31, width: 97, height: 35)
+            NutritionOutlet.frame = CGRect.init(x: 16, y: 35, width: 97, height: 35)
             BackArrow.frame = CGRect.init(x: 16, y: 739, width: 47, height: 48)
             ForwardArrow.frame = CGRect.init(x: 56, y: 739, width: 47, height: 48)
             Orderbutton.frame = CGRect.init(x: 251, y: 744, width: 108, height: 39)
@@ -241,8 +247,25 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
 
         }
-
         
+        if(self.FirstTimeOn == nil)
+        {
+        let FirstTimePromo = UIAlertController(title: "Welcome!", message: "Please use this code for 50% off your first order: FOOGLEFIRST. To use this code, simply enter this code \"Add Other of Missing\" text field after you have pressed \"Order\" for the recipe you want.", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            UserDefaults.standard.set(false, forKey: "FirstTimeOn")
+            self.FirstTimeOn =  UserDefaults.standard.bool(forKey: "FirstTimeOn")
+            print(self.FirstTimeOn)
+            FirstTimePromo.dismiss(animated: false, completion: nil)
+            
+        }
+        FirstTimePromo.addAction(cancelAction)
+        
+        
+        self.present(FirstTimePromo, animated: true, completion: nil)
+        
+        }
+
+    
         
     }
 
@@ -258,8 +281,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
         // Do any additional setup after loading the view, typically from a nib.
         var userController:WKUserContentController = WKUserContentController()
         userController.add(self, name: "loginSuccess")
@@ -285,6 +311,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         ActivityIndicatorforPriceLabel.isHidden = true
         ActivityIndicatorforPriceLabel.startAnimating()
         TextFieldToEnterMore.returnKeyType = UIReturnKeyType.done
+        
+        self.NutritionOutlet.setTitleColor(UIColor.gray, for: .disabled)
+        self.Orderbutton.setTitleColor(UIColor.gray, for: .disabled)
+        
+        self.NutritionOutlet.isEnabled = false
+        self.Orderbutton.isEnabled = false
+        
         
         toolbar.sizeToFit()
         
@@ -362,7 +395,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         }
         zipcodeRetriever.addTextField(configurationHandler: configurationTextField)
         
-        let cancelAction = UIAlertAction(title: "Enter", style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
             self.checkZipCodeinDB(UserZipCode: tField.text!)
             zipcodeRetriever.dismiss(animated: false, completion: nil)
         }
@@ -609,15 +642,39 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
             ActivityIndicatorforWeb.isHidden = true
-            //checkArrowStatus()
         
             SearchBar.inputAccessoryView = toolbar
         
             let currenturl = (WebView.request?.url?.absoluteString)!
-            //print(currenturl)
-        
             FoogleImageView.isHidden = true
+        
 
+            if(!(currenturl.contains("google")) || (currenturl.contains("https://www.google.com/amp/")))
+            {
+            
+                UIView.transition(with: self.NutritionOutlet, duration: 0.2, options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.NutritionOutlet.isEnabled = true
+                })
+                UIView.transition(with: self.Orderbutton, duration: 0.1, options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.Orderbutton.isEnabled = true
+                })
+    
+            }
+            else
+            {
+            
+                UIView.transition(with: self.NutritionOutlet, duration: 0.5, options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.NutritionOutlet.isEnabled = false
+                })
+                UIView.transition(with: self.Orderbutton, duration: 0.5, options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.Orderbutton.isEnabled = false
+                })
+            }
+        
                 if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c" || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad || ViewController.modelName == "Simulator")
                 {
                     SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
@@ -633,7 +690,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 }
         
             FoogleLogo.isHidden = true
-        
             Orderbutton.isHidden = false
             NutritionOutlet.isHidden = false
     }
@@ -722,8 +778,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                         self.servingsstring = String(servings)
                                         print("SERVINGS:\(self.servingsstring)")
                                         self.ServingsLabel.text = "Servings: \(self.servingsstring)"
-                                    }
-                                    
+    
+                                }
                                     
                                     if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
                                         
@@ -747,7 +803,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                                         constructedstring = "\(roundedamount)"
                                                     }
                                                 }
-                                                if let unitShort = station["unitShort"] as? String
+                                                if let unitShort = station["unit"] as? String
                                                 {
                                                     constructedstring = constructedstring + " \(unitShort)"
                                                 }
@@ -837,6 +893,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("loaded")
         
+        
         if(self.booltogetNutrition == true)
         {
             self.webViewforData.evaluateJavaScript("document.body.style.zoom = 2.6;")
@@ -908,100 +965,100 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         var incrematorforIndivPrice = 0
                         let removedgesture = UITapGestureRecognizer(target: self, action: "resetvaluesForNutrition:")
                         self.blurEffectView.removeGestureRecognizer(removedgesture)
-                        if(self.ArrayForIngredients.count == 0)
-                        {
-                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
-                            let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                                self.grayView.isHidden = true
-                            }
-                            alert.addAction(cancelAction)
-                            
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                        else if self.stringforvalue.range(of:"price:") != nil{
-            
-            
-                            let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
-                            let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
-                            incrematorforIndivPrice = indexforIndivPrice + 4
-                            var toCheckIfcontained = ""
-                            var toCheckIfItemWasParsed = 0
-            
-                            print(self.stringforvalue)
-            
-                            for item in self.ArrayForIngredients
+                            if(self.ArrayForIngredients.count == 0)
                             {
-                                self.LabelForInsertingIngredients = UILabel()
-                                self.LabelforInsertingCost = UILabel()
-            
-                                self.LabelForInsertingIngredients.textColor = UIColor.gray
-                                self.LabelforInsertingCost.textColor = UIColor.gray
-            
-                                toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
-                                print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
-                                if self.stringforvalue.range(of: toCheckIfcontained) != nil {
-            
-                                    self.LabelForInsertingIngredients.text = item
-            
-                                    self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
-            
-                                boolforIndivPrice = false
+                                let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
+                                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                                self.grayView.isHidden = true
+                                }
+                                alert.addAction(cancelAction)
+                            
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                            else if self.stringforvalue.range(of:"price:") != nil{
             
             
-                               if(self.stringforvalue[incrematorforIndivPrice] == "$")
-                               {
-                                incrematorforIndivPrice += 1
-                                while boolforIndivPrice == false
+                                let rangeforIndivPrice: Range<String.Index> = self.stringforvalue.range(of: "<br>$")!
+                                let indexforIndivPrice: Int = self.stringforvalue.distance(from: self.stringforvalue.startIndex, to: rangeforIndivPrice.lowerBound)
+                                incrematorforIndivPrice = indexforIndivPrice + 4
+                                var toCheckIfcontained = ""
+                                var toCheckIfItemWasParsed = 0
+                                
+                                print(self.stringforvalue)
+            
+                                for item in self.ArrayForIngredients
                                 {
-                                    if(self.stringforvalue[incrematorforIndivPrice] != "<")
-                                    {
-                                        stringforIndivPrice = stringforIndivPrice + self.stringforvalue[incrematorforIndivPrice]
-                                        incrematorforIndivPrice = incrematorforIndivPrice + 1
+                                    self.LabelForInsertingIngredients = UILabel()
+                                    self.LabelforInsertingCost = UILabel()
+            
+                                    self.LabelForInsertingIngredients.textColor = UIColor.gray
+                                    self.LabelforInsertingCost.textColor = UIColor.gray
+            
+                                    toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
+                                    print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
+                                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
+            
+                                        self.LabelForInsertingIngredients.text = item
+            
+                                        self.arrayForDisplayItems.append(self.LabelForInsertingIngredients)
+            
+                                        boolforIndivPrice = false
+            
+            
+                                            if(self.stringforvalue[incrematorforIndivPrice] == "$")
+                                                {
+                                                        incrematorforIndivPrice += 1
+                                                        while boolforIndivPrice == false
+                                                        {
+                                                                if(self.stringforvalue[incrematorforIndivPrice] != "<")
+                                                                {
+                                                                        stringforIndivPrice = stringforIndivPrice + self.stringforvalue[incrematorforIndivPrice]
+                                                                        incrematorforIndivPrice = incrematorforIndivPrice + 1
+                                                                }
+                                                                else
+                                                                {
+                                                                    boolforIndivPrice = true
+                                                                    self.LabelforInsertingCost.text = "$\(stringforIndivPrice)"
+                                                                    let IndivPriceConvertedIntoDouble = Double(stringforIndivPrice)
+                                                                    let roundedIndivPrice = round(100 * IndivPriceConvertedIntoDouble!) / 100
+                                                                    self.Price += roundedIndivPrice
+                                                                    print("INDIVPRICE:\(roundedIndivPrice)")
+                                                                    self.arrayforCost.append(roundedIndivPrice)
+                                                                    self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
+                                                                    self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
+                                                                    print("inserted:\(item)")
+                                                                    self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
+                                                                    var deleteButton = UIButton()
+                                                                    deleteButton.setTitle("x", for: UIControlState.normal)
+                                                                    deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                                                                    deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
+                                                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                                                                    deleteButton.tag = self.buttonTag
+                                                                    print("\(item):\(self.buttonTag)")
+                                                                    self.buttonTag = self.buttonTag + 1
+                                                                    self.arrayForDeleteButtons.append(deleteButton)
+                                                                    self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
+                                                                }
+                                                    }
+                                        }
+                                        incrematorforIndivPrice += 4
+                                        print(stringforIndivPrice)
+            
                                     }
-                                    else
-                                    {
-                                        boolforIndivPrice = true
-                                        self.LabelforInsertingCost.text = "$\(stringforIndivPrice)"
-                                        let IndivPriceConvertedIntoDouble = Double(stringforIndivPrice)
-                                        let roundedIndivPrice = round(100 * IndivPriceConvertedIntoDouble!) / 100
-                                        self.Price += roundedIndivPrice
-                                        print("INDIVPRICE:\(roundedIndivPrice)")
-                                        self.arrayforCost.append(roundedIndivPrice)
-                                        self.arrayforDisplayingCost.append(self.LabelforInsertingCost)
-                                        self.StackViewForCost.addArrangedSubview(self.LabelforInsertingCost)
-                                        print("inserted:\(item)")
-                                        self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
-                                        var deleteButton = UIButton()
-                                        deleteButton.setTitle("x", for: UIControlState.normal)
-                                        deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-                                        deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                                        deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
-                                        deleteButton.tag = self.buttonTag
-                                        print("\(item):\(self.buttonTag)")
-                                        self.buttonTag = self.buttonTag + 1
-                                        self.arrayForDeleteButtons.append(deleteButton)
-                                        self.StackViewForDeleteButtons.addArrangedSubview(deleteButton)
-                                    }
-                                }
-                                }
-                                incrematorforIndivPrice += 4
-                                print(stringforIndivPrice)
-            
-                            }
-                                stringforIndivPrice = ""
-                                toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
+                                    stringforIndivPrice = ""
+                                    toCheckIfItemWasParsed = toCheckIfItemWasParsed + 1
                             }
             
-                            let serviceCharge = String((round(100 * (self.Price * 0.14))  / 100) + 2.00)
-                            //print("SERVICE CHARGE: \(serviceCharge)")
+                            let serviceCharge = (round(100 * (self.Price * 0.14))  / 100) + 2.00
             
-                            self.ServicePrice.text = "$\(serviceCharge)"
+                            self.ServicePrice.text = "$\(String(format: "%.2f", serviceCharge))"
             
-                            //self.Price += Double(serviceCharge)!
+    
             
-                            self.Price += Double(serviceCharge)!
+                            self.Price += serviceCharge
+                            self.Price = round(1000.0 * self.Price) / 1000.0
             
-                            self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                            self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", self.Price))"
                             print(self.Price)
                             self.ActivitySpinner.isHidden = true
                             self.LoaderView.isHidden = true
@@ -1028,7 +1085,31 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                         self.OrderView.addSubview(self.ServingsLabel)
                                         self.ServingsLabel.clipsToBounds = true
                                 })
-            
+                                
+                                if(self.FirstTimeOn == false && self.MessageDismissedfor50 != false)
+                                {
+                                    let FirstTimePromo = UIAlertController(title: "50% Off", message: "Apply the code FOOGLEFIRST in the \"Add Other or Missing\" text field on the top left corner of this page for 50% off.", preferredStyle: UIAlertControllerStyle.alert)
+                                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+
+                                        
+                                        FirstTimePromo.dismiss(animated: false, completion: nil)
+                                        
+                                    }
+                                    let DismissAction = UIAlertAction(title: "DISMISS", style: .default) { (action) in
+                                        UserDefaults.standard.set(false, forKey: "MessageDismissedfor50")
+                                        self.MessageDismissedfor50 =  UserDefaults.standard.bool(forKey: "FirstTimeOn")
+                                        
+                                        FirstTimePromo.dismiss(animated: false, completion: nil)
+                                        
+                                    }
+                                    FirstTimePromo.addAction(cancelAction)
+                                    FirstTimePromo.addAction(DismissAction)
+
+
+                                    
+                                    
+                                    self.present(FirstTimePromo, animated: true, completion: nil)
+                                }
             
                             } else {
                                 self.view.backgroundColor = UIColor.black
@@ -1111,7 +1192,28 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                   if(boolToFindPriceFromTextArea)
                   {
                     let convertedtextfieldtext = TextFieldToEnterMore.text as! String
-                    if(TextFieldToEnterMore.text != "")
+                    
+                    if(TextFieldToEnterMore.text == "FOOGLEFIRST" && self.FirstTimeOn == false)
+                    {
+                        let FirstTimePromo = UIAlertController(title: "Congrats!", message: "This Order is now 50% off! If you decide that this Order is not your first order, you can still use this code.", preferredStyle: UIAlertControllerStyle.alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                            self.Price = self.Price/2
+                            self.Price = round(100.0 * self.Price) / 100.0
+                            self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                            self.PriceTextinOrderView.isHidden = false
+                            self.ActivityIndicatorforPriceLabel.isHidden = true
+                            self.ActivityIndicatorForTextField.isHidden = true
+                            self.TextFieldToEnterMore.text = ""
+                            
+                            FirstTimePromo.dismiss(animated: false, completion: nil)
+                            
+                        }
+                        FirstTimePromo.addAction(cancelAction)
+                        
+                        
+                        self.present(FirstTimePromo, animated: true, completion: nil)
+                    }
+                    else if(TextFieldToEnterMore.text != "")
                     {
                     var stringforvalue = ""
                     var newPriceString = ""
@@ -1124,8 +1226,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         print(stringforvalue)
                         
                         if stringforvalue.range(of:"price:") != nil{
-                            print("hi")
-                            
                             
                             let range: Range<String.Index> = stringforvalue.range(of: "Cost per Serving: $")!
                             let index: Int =  stringforvalue.distance(from: stringforvalue.startIndex, to: range.lowerBound)
@@ -1260,20 +1360,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
     
 
-    typealias Rational = (num : Int, den : Int)
-    
-    func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
-        var x = x0
-        var a = x.rounded(.down)
-        var (h1, k1, h, k) = (1, 0, Int(a), 1)
-        
-        while x - a > eps * Double(k) * Double(k) {
-            x = 1.0/(x - a)
-            a = x.rounded(.down)
-            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
-        }
-        return (h, k)
-    }
+//    typealias Rational = (num : Int, den : Int)
+//
+//    func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
+//        var x = x0
+//        var a = x.rounded(.down)
+//        var (h1, k1, h, k) = (1, 0, Int(a), 1)
+//
+//        while x - a > eps * Double(k) * Double(k) {
+//            x = 1.0/(x - a)
+//            a = x.rounded(.down)
+//            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+//        }
+//        return (h, k)
+//    }
     
     
     
@@ -1309,8 +1409,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             
             self.Price = self.Price - self.arrayforCost[i]
             let roundedSelfPrice = round(100 * self.Price) / 100
-            self.PriceTextinOrderView.text = "Price: $\(abs(roundedSelfPrice))"
-            
+            let absofroundedSelfPrice = abs(roundedSelfPrice)
+            self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", absofroundedSelfPrice))"
+
             sender.setTitle("+", for: UIControlState.normal)
             sender.setTitleColor(UIColor.blue, for: UIControlState.normal)
             sender.addTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
@@ -1336,7 +1437,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 print("\(self.Price) + \(self.arrayforCost[i])")
                 self.Price = self.Price + self.arrayforCost[i]
                 let roundedSelfPrice = round(100 * self.Price) / 100
-                self.PriceTextinOrderView.text = "Price: $\(abs(roundedSelfPrice))"
+                let absofroundedSelfPrice = abs(roundedSelfPrice)
+                
+                self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", absofroundedSelfPrice))"
                 
                 sender.setTitle("x", for: UIControlState.normal)
                 sender.setTitleColor(UIColor.red, for: UIControlState.normal)
@@ -1348,21 +1451,21 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     
     @IBAction func OnBackPress(_ sender: Any) {
-       
+        currentURL = (WebView.request?.url?.absoluteString)!
+
        if(WebView.canGoBack)
        {
           WebView.goBack()
-          //checkArrowStatus()
        }
     }
     
     
     @IBAction func OnForwardPress(_ sender: Any) {
-        
+        currentURL = (WebView.request?.url?.absoluteString)!
+
         if(WebView.canGoForward)
         {
            WebView.goForward()
-           //checkArrowStatus()
         }
     }
     
@@ -1451,7 +1554,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                                 constructedstring = "\(roundedamount)"
                                             }
                                         }
-                                        if let unitShort = station["unitShort"] as? String
+                                        if let unitShort = station["unit"] as? String
                                         {
                                             constructedstring = constructedstring + " \(unitShort)"
                                         }
@@ -1561,7 +1664,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         //       and simply set payment.amount to your total charge.
                 
         let nameFromSearchBartext = SearchBar.text as! String
-        let priceFromLabel = String(self.Price)
+        let priceFromLabel = String(round(100 * self.Price) / 100)
         
         
         // Optional: include multiple items
@@ -1642,9 +1745,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ViewController.CostsArrayForMySQLtransfer = self.arrayforDisplayingCost
             ViewController.OriginalIngredientsArrayForMySQLtransfer = self.ArrayForIngredients
             ViewController.OriginalCostsArrayForMySQLtransfer = self.arrayforCost
+            UserDefaults.standard.set(true, forKey: "FirstTimeOn")
+            self.FirstTimeOn =  UserDefaults.standard.bool(forKey: "FirstTimeOn")
             
             self.performSegue(withIdentifier: "SegueToOrderInfo", sender: self)
-            
             
         })
     }
