@@ -698,7 +698,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
     
     
-    func FindIngredients(Servings: Int, AlsoFindNutrition: Bool) -> URLSessionDataTask
+    func FindIngredients(Servings: Int, AlsoFindNutrition: Bool)
     {
         self.grayView.isHidden = false
         LoaderView.isHidden = false
@@ -908,8 +908,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             }
         }
         
-        //task.resume()
-        return task
+        task.resume()
     }
     
     @IBAction func OnOrderPress(_ sender: Any) {
@@ -938,9 +937,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             }
             else
             {
-                let task = FindIngredients(Servings: 0, AlsoFindNutrition: false)
-                
-                task.resume()
+                FindIngredients(Servings: 0, AlsoFindNutrition: false)
             }
         }
         
@@ -1547,9 +1544,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func OnNutritionPress(_ sender: Any) {
         
-        let task = FindIngredients(Servings: 0, AlsoFindNutrition: true)
+        FindIngredients(Servings: 0, AlsoFindNutrition: true)
         
-        task.resume()
     }
     
     @IBAction func ServingsStepper(_ sender: UIStepper) {
