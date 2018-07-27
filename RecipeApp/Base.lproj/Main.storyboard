@@ -172,6 +172,64 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3w1-zX-Gw1">
+                                        <rect key="frame" x="239" y="546" width="110" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="OrderButton.png">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Confirm">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
+                                                        <font key="NSOriginalFont" size="15" name="HelveticaNeue-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops>
+                                                                <textTab alignment="left" location="28">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="56">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="84">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="112">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="140">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="168">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="196">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="224">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="252">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="280">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="308">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="336">
+                                                                    <options/>
+                                                                </textTab>
+                                                            </tabStops>
+                                                        </paragraphStyle>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="OnConfirmPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ev8-f5-iSa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -268,6 +326,7 @@
                         <outlet property="BackArrow" destination="4Th-LC-Pj2" id="198-rP-CZ8"/>
                         <outlet property="BackgroundForFoogle" destination="uhe-Qm-9tl" id="P9x-bS-5pk"/>
                         <outlet property="BigSearchRecipes" destination="WNF-Pw-Zzd" id="aPy-e9-eaR"/>
+                        <outlet property="ConfirmButton" destination="3w1-zX-Gw1" id="vWv-2Q-TLq"/>
                         <outlet property="CostLabelOnOrderView" destination="1Yk-wJ-SDe" id="IU5-pC-jaO"/>
                         <outlet property="FoogleImageView" destination="jxJ-HO-ylP" id="TZp-Wu-6t9"/>
                         <outlet property="FoogleLogo" destination="mZ2-ah-ysZ" id="hOs-aa-Ki2"/>
@@ -308,7 +367,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-18.399999999999999" y="39.130434782608695"/>
+            <point key="canvasLocation" x="-18.399999999999999" y="38.423645320197046"/>
         </scene>
         <!--View Controller For Settings Tab-->
         <scene sceneID="PTa-eg-Vyo">
@@ -1003,6 +1062,7 @@
         <image name="ExitButton.png" width="1597" height="1606"/>
         <image name="Fd" width="16" height="16"/>
         <image name="GrayOrderButton.png" width="750" height="126"/>
+        <image name="OrderButton.png" width="750" height="126"/>
         <image name="Settings.png" width="256" height="256"/>
         <image name="SkyBlueButton.png" width="750" height="126"/>
         <image name="arrow_back_white_192x192.png" width="192" height="192"/>

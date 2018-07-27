@@ -60,6 +60,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     static var isIpad = false
     var FirstTimeOn = UserDefaults.standard.object(forKey: "FirstTimeOn") as? Bool
     var MessageDismissedfor50 = UserDefaults.standard.object(forKey: "MessageDismissedfor50") as? Bool
+    var InitialServings = true
 
     
 
@@ -104,6 +105,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var BackgroundForFoogle: UIImageView!
     
     @IBOutlet var NutritionOutlet: UIButton!
+    @IBOutlet var ConfirmButton: UIButton!
     
     var environment:String = PayPalEnvironmentProduction
     {
@@ -242,6 +244,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 597, width: 217, height: 21)
             ServicePrice.frame = CGRect.init(x: 259, y: 597, width: 79, height: 21)
             PaynowButton.frame = CGRect.init(x: 239, y: 627, width: 110, height: 33)
+            ConfirmButton.frame = CGRect.init(x: 239, y: 627, width: 110, height: 33)
             OrderView.frame = CGRect.init(x: 9, y: 1000, width: 357, height: 677)
             ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: 630, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
             StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: 630, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
@@ -350,6 +353,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         LoaderView.layer.cornerRadius = 10
         //LoaderView.addBlurEffect()
         Orderbutton.isHidden = true
+        ConfirmButton.isHidden = true
+        ConfirmButton.clipsToBounds = true
+        ConfirmButton.layer.cornerRadius = 10
         
         
         //grayView.isHidden = true
@@ -756,12 +762,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         if Recipedifferentiater != "null"
                         {
                             if let servings = myJson["servings"] as? Int {
+
                                 self.servingsstring = String(servings)
-                                print("SERVINGS:\(self.servingsstring)")
-                                self.ServingsLabel.text = "Servings: \(self.servingsstring)"
+                                    if(self.InitialServings == true)
+                                    {
+                                        print("SERVINGS:\(servings)")
+                                        DispatchQueue.main.async {
+                                            self.ServingsLabel.text = "Servings: \(servings)"
+                                        }
+                                        self.StepperOutlet.value = Double(servings)
+                                        self.InitialServings = false
+                                    }
+                                print("STEP VALUE:\(self.StepperOutlet.stepValue)")
                                 recipeservings = servings
-                                
+    
                             }
+                          
                             
                             if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
                                 
@@ -773,25 +789,42 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                         
                                         if var amount = station["amount"] as? Double
                                         {
+                                            
                                           if(Servings != 0)
                                           {
-                                            if(amount < 1.0)
+                                            var servingsfraction = self.rationalApproximation(of: amount)
+                                            servingsfraction.num = Servings
+                                            servingsfraction.den = recipeservings
+                                            print("\(servingsfraction.num)/\(servingsfraction.den)")
+                                            
+                                            var amountfraction = self.rationalApproximation(of: amount)
+                                            var NumForServings = servingsfraction.num * amountfraction.num
+                                            var DemforServings =  servingsfraction.den * amountfraction.den
+                                        
+                                            
+                                            var newamount = NumForServings/DemforServings
+                                            var doublefromNum = Double(NumForServings)
+                                            var doublefromDen = Double(DemforServings)
+                                            
+                                            if(newamount == 0)
                                             {
-                                                let fraction = self.rationalApproximation(of: amount)
-                                                var fractionString = "\(fraction.num)/\(fraction.den)"
+                                                let preciseDecimal = String(format: "%.3f", Double(doublefromNum/doublefromDen))
+                                                let amountfraction = self.rationalApproximation(of: Double(preciseDecimal)!)
+                                                
+
+                                            let fractionString = "\(amountfraction.num)/\(amountfraction.den)"
                                                 constructedstring = "\(fractionString)"
                                             }
                                             else
                                             {
-                                                var DoubleofServing = Double(Servings)
-                                                var DoubleofRecipeServings = Double(recipeservings)
-                                                print(DoubleofServing/DoubleofRecipeServings)
-                                                let roundedamount = round(amount * 100) / 100
-                                                constructedstring = "\(roundedamount)"
+                                                let preciseDecimal = String(format: "%.3f", Double(doublefromNum/doublefromDen))
+                                                let preciseDecimalNoTrailing = String(format: "%g", Double(preciseDecimal)!)
+                                                constructedstring = "\(preciseDecimalNoTrailing)"
                                             }
-                                            }
-                                            else
-                                            {
+                                          }
+                                          else
+                                          {
+                                                
                                                 if(amount < 1.0)
                                                 {
                                                     let fraction = self.rationalApproximation(of: amount)
@@ -800,9 +833,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                                 }
                                                 else
                                                 {
-                                                    var DoubleofServing = Double(Servings)
-                                                    var DoubleofRecipeServings = Double(recipeservings)
-                                                    print(DoubleofServing/DoubleofRecipeServings)
                                                     let roundedamount = round(amount * 100) / 100
                                                     constructedstring = "\(roundedamount)"
                                                 }
@@ -1380,6 +1410,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     
     func resetValues(_ sender:UITapGestureRecognizer){
+        self.InitialServings = true
         UIView.animate(withDuration: 0.75, animations: {
             self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
             
@@ -1410,7 +1441,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                    self.arrayforCost = [Double]()
                    self.buttonTag = 0
                    self.Price = 0.0
+
             })
+            
             
         }
         
@@ -1438,6 +1471,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
         var x = x0
         var a = x.rounded(.down)
+        
         var (h1, k1, h, k) = (1, 0, Int(a), 1)
 
         while x - a > eps * Double(k) * Double(k) {
@@ -1446,6 +1480,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
         }
         return (h, k)
+    }
+    
+    func reducedfraction(num: Int, den: Int) -> Rational
+    {
+        var newFraction = Float(num) / Float(den)
+        var doubleForReturn = Double(newFraction)
+        
+        return rationalApproximation(of: doubleForReturn)
+        
     }
     
     
@@ -1550,33 +1593,53 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func ServingsStepper(_ sender: UIStepper) {
         self.ServingsLabel.text = "Servings: \(Int(sender.value).description)"
-                
-                for i in 0 ... self.arrayForDisplayItems.count - 1
-                {
-                    self.arrayForDisplayItems[i].removeFromSuperview()
-                }
-                
-                for i in 0 ... self.arrayForDeleteButtons.count - 1
-                {
-                    self.arrayForDeleteButtons[i].removeFromSuperview()
-                }
-                
-                for i in 0 ... self.arrayforDisplayingCost.count - 1
-                {
-                    self.arrayforDisplayingCost[i].removeFromSuperview()
-                }
-                self.arrayForDisplayItems = [UILabel]()
-                self.arrayforDisplayingCost = [UILabel]()
-                self.ArrayForIngredients = [String]()
-                self.ArrayforType = [String]()
-                self.arrayforCost = [Double]()
-                self.buttonTag = 0
-                self.Price = 0.0
-        
-        //FindIngredients(Servings: Int(StepperOutlet.stepValue))
+        self.PaynowButton.isHidden = true
+        self.ConfirmButton.isHidden = false
         
     }
     
+    @IBAction func OnConfirmPress(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.75, animations: {
+            self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
+            
+        })
+        let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+        self.blurEffectView.removeFromSuperview()
+            
+        for i in 0 ... self.arrayForDisplayItems.count - 1
+        {
+            self.arrayForDisplayItems[i].removeFromSuperview()
+        }
+        
+        for i in 0 ... self.arrayForDeleteButtons.count - 1
+        {
+            self.arrayForDeleteButtons[i].removeFromSuperview()
+        }
+        
+        for i in 0 ... self.arrayforDisplayingCost.count - 1
+        {
+            self.arrayforDisplayingCost[i].removeFromSuperview()
+        }
+        self.arrayForDisplayItems = [UILabel]()
+        self.arrayforDisplayingCost = [UILabel]()
+        self.ArrayForIngredients = [String]()
+        self.ArrayforType = [String]()
+        self.arrayforCost = [Double]()
+        self.buttonTag = 0
+        self.Price = 0.0
+        self.PaynowButton.isHidden = false
+        self.ConfirmButton.isHidden = true
+        print(self.StepperOutlet.value)
+        self.grayView.isHidden = false
+        self.LoaderView.isHidden = false
+        self.ActivitySpinner.isHidden = false
+        self.FindIngredients(Servings: Int(self.StepperOutlet.value), AlsoFindNutrition: false)
+
+        }
+        
+    }
     
     func initiatePayPalController()
     {
