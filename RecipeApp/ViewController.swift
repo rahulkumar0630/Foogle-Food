@@ -1587,7 +1587,45 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     @IBAction func OnNutritionPress(_ sender: Any) {
         
-        FindIngredients(Servings: 0, AlsoFindNutrition: true)
+        var textFieldEmpty = false
+        
+        let ServingsReciever = UIAlertController(title: "Servings", message: "Please choose the amount of servings. The nutrition will display according to the amount of servings.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        var tField: UITextField!
+        
+        func configurationTextField(textField: UITextField!)
+        {
+            textField.keyboardType = UIKeyboardType.numberPad
+            print("generating the TextField")
+            textField.placeholder = "Enter Servings"
+            tField = textField
+        }
+
+        ServingsReciever.addTextField(configurationHandler: configurationTextField)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            if(tField.text != "")
+            {
+                self.FindIngredients(Servings: Int(tField.text!)!, AlsoFindNutrition: true)
+            }
+            else
+            {
+                let RedoReciever = UIAlertController(title: "Error", message: "Please chose the amount of servings you want.", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    RedoReciever.dismiss(animated: false, completion: nil)
+                    
+                }
+                RedoReciever.addAction(okAction)
+                
+                self.present(RedoReciever, animated: true, completion: nil)
+            }
+            ServingsReciever.dismiss(animated: false, completion: nil)
+        }
+        ServingsReciever.addAction(cancelAction)
+        
+        
+        self.present(ServingsReciever, animated: true, completion: nil)
         
     }
     
