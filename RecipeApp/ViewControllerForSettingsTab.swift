@@ -35,7 +35,7 @@ class ViewControllerForSettingsTab: UIViewController {
     @IBOutlet var ExitButtonOutlet: UIButton!
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"  || ViewController.modelName == "Simulator")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             SavedInfoLabel.frame = CGRect.init(x: 18, y: 58, width: 285, height: 87)
             SavedInfoLabel.adjustsFontSizeToFitWidth = true
@@ -113,7 +113,7 @@ class ViewControllerForSettingsTab: UIViewController {
           layedOut = true
         }
         }
-        if(ViewController.modelName == "iPhone X")
+        if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS")
         {
             BackDrop.frame = self.view.frame
             SavedInfoLabel.frame = CGRect.init(x: 32, y: 69, width: 312, height: 87)
@@ -132,6 +132,24 @@ class ViewControllerForSettingsTab: UIViewController {
             }
             TACOutlet.frame = CGRect.init(x: 204, y: 740, width: 155, height: 30)
 
+        }
+        if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR"  || ViewController.modelName == "Simulator"){
+            BackDrop.frame = self.view.frame
+            SavedInfoLabel.frame = CGRect.init(x: 51, y: 75, width: 312, height: 87)
+            ExitButtonOutlet.frame = CGRect.init(x: 16, y: 37, width: 37, height: 36)
+            
+            for view in self.view.subviews as [UIView]
+            {
+                if let btn = view as? UILabel
+                {
+                    if(btn != SavedInfoLabel)
+                    {
+                        view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 50, width: view.frame.width, height: view.frame.height)
+                    }
+                    
+                }
+            }
+            TACOutlet.frame = CGRect.init(x: 219, y: 824, width: 168, height: 38)
         }
     }
     

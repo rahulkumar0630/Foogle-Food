@@ -32,7 +32,7 @@ class ViewControllerForOrderInfo: UIViewController {
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-           || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"  || ViewController.modelName == "Simulator")
+           || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             OrderInfoLabel.frame = CGRect.init(x: 16, y: 49, width: 288, height: 107)
             OrderInfoLabel.adjustsFontSizeToFitWidth = true
@@ -94,7 +94,7 @@ class ViewControllerForOrderInfo: UIViewController {
                     layedOut = true
                 }
             }
-            if(ViewController.modelName == "iPhone X")
+            if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS")
             {
                BackDrop.frame = self.view.frame
                FoogleLogo.frame = CGRect.init(x: 16, y: 745, width: 88, height: 25)
@@ -102,6 +102,30 @@ class ViewControllerForOrderInfo: UIViewController {
                OrderInfoLabel.frame = CGRect.init(x: -40, y: 64, width: 455, height: 107)
                 
             }
+         if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR"  || ViewController.modelName == "Simulator"){
+            
+                BackDrop.frame = self.view.frame
+                FoogleLogo.frame = CGRect.init(x: 16, y: 837, width: 88, height: 25)
+                ExitButton.frame = CGRect.init(x: 16, y: 64, width: 37, height: 36)
+                OrderInfoLabel.frame = CGRect.init(x: -20, y: 89, width: 455, height: 107)
+                NoticeLogo.frame = CGRect.init(x: 28, y: 652, width: 340, height: 76)
+                SupportLabel.frame = CGRect.init(x: 28, y: 736, width: 285, height: 21)
+            
+            for view in self.view.subviews as [UIView]
+            {
+                if let txt = view as? UILabel
+                {
+                    if(txt != OrderInfoLabel && txt != FoogleLogo && txt != NoticeLogo && txt != SupportLabel)
+                    {
+                        view.frame = CGRect.init(x: view.frame.minX, y: view.frame.midY + 63, width: view.frame.width, height: view.frame.height)
+                    }
+                }
+
+            }
+        }
+        
+
+        
     }
 
     override func viewDidLoad() {

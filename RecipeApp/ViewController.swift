@@ -61,6 +61,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var FirstTimeOn = UserDefaults.standard.object(forKey: "FirstTimeOn") as? Bool
     var MessageDismissedfor50 = UserDefaults.standard.object(forKey: "MessageDismissedfor50") as? Bool
     var InitialServings = true
+    var isIphone5 = false
 
     
 
@@ -122,7 +123,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             //OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
             FoogleImageView.frame = self.view.frame
@@ -147,6 +148,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 440, width: 209, height: 21)
             ServicePrice.frame = CGRect.init(x: 227, y: 440, width: 55, height: 21)
             PaynowButton.frame = CGRect.init(x: 207, y: 460, width: 86, height: 33)
+            ConfirmButton.frame = CGRect.init(x: 207, y: 460, width: 86, height: 33)
             TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
             Orderbutton.frame = CGRect.init(x: 196, y: 521, width: 108, height: 39)
             BackgroundForFoogle.frame = self.view.frame
@@ -156,12 +158,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 141, y: 13, width: 20, height: 20)
             ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
             NutritionOutlet.frame = CGRect.init(x: 13, y: 16, width: 97, height: 32)
+            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            StepperOutlet.frame = CGRect.init(x: ServingsLabel.frame.midX, y: PaynowButton.frame.minY + 3, width: StepperOutlet.frame.width - 5, height: ServingsLabel.frame.height)
+            isIphone5 = true
         
         }
         
         if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
         {
             //self.OrderView.frame.origin.y = 800
+            
             FoogleLogo.frame = CGRect.init(x: 104, y: 253, width: 207, height: 77)
             FoogleImageView.frame = CGRect.init(x: 0, y: 0, width: 414, height: 736)
             SettingsButton.frame = CGRect.init(x: 360, y: 20, width: 34, height: 35)
@@ -173,6 +179,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ForwardArrow.frame = CGRect.init(x: 56, y: 684, width: 47, height: 48)
             WebView.frame = CGRect.init(x: 0, y: 97, width: 414, height: 579)
             PaynowButton.frame = CGRect.init(x: 265, y: 625, width: 110, height: 33)
+            ConfirmButton.frame = CGRect.init(x: 265, y: 625, width: 110, height: 33)
             PriceTextinOrderView.frame = CGRect.init(x: 117, y: 13, width: 156, height: 21)
             ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 182, y: 13, width: 20, height: 20)
             CostLabelOnOrderView.frame = CGRect.init(x: 259, y: 42, width: 73, height: 28)
@@ -183,6 +190,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 593, width: 217, height: 21)
             ServicePrice.frame = CGRect.init(x: 259, y: 592, width: 79, height: 21)
             LoaderView.frame = CGRect.init(x: 151, y: 328, width: 112, height: 74)
+            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
             
         }
         
@@ -210,6 +219,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 400, width: 209, height: 21)
             ServicePrice.frame = CGRect.init(x: 227, y: 400, width: 55, height: 21)
             PaynowButton.frame = CGRect.init(x: 207, y: 400, width: 86, height: 33)
+            ConfirmButton.frame = CGRect.init(x: 207, y: 400, width: 86, height: 33)
             TextFieldToEnterMore.frame = CGRect.init(x: 5, y: 73, width: 193, height: 30)
             Orderbutton.frame = CGRect.init(x: 196, y: 440, width: 108, height: 35)
             BackgroundForFoogle.frame = CGRect.init(x: 0, y: 10, width: 320, height: 480)
@@ -222,14 +232,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 141, y: 13, width: 20, height: 20)
             ActivityIndicatorForTextField.frame = CGRect.init(x: 233, y: 78, width: 20, height: 20)
             NutritionOutlet.frame = CGRect.init(x: 13, y: 21, width: 97, height: 28)
+            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            
             ViewController.isIpad = true
         }
-        if(ViewController.modelName == "iPhone X")
+        if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS" || ViewController.modelName == "Simulator")
         {
             FoogleImageView.frame = self.view.frame
-            BigSearchRecipes.frame = CGRect.init(x: 56, y: 24, width: 262, height: 45)
+            BigSearchRecipes.frame = CGRect.init(x: 56, y: 35, width: 262, height: 45)
             SettingsButton.frame = CGRect.init(x: 325, y: 35, width: 34, height: 35)
-            ActivityIndicatorforWeb.frame = CGRect.init(x: 177, y: 38, width: 20, height: 20)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 177, y: 45, width: 20, height: 20)
             BackgroundForFoogle.frame = self.view.frame
             WebView.frame = CGRect.init(x: 0, y: 118, width: 375, height: 613)
             NutritionOutlet.frame = CGRect.init(x: 16, y: 35, width: 97, height: 35)
@@ -245,14 +258,53 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             ServicePrice.frame = CGRect.init(x: 259, y: 597, width: 79, height: 21)
             PaynowButton.frame = CGRect.init(x: 239, y: 627, width: 110, height: 33)
             ConfirmButton.frame = CGRect.init(x: 239, y: 627, width: 110, height: 33)
+            CostLabelOnOrderView.frame = CGRect.init(x: 256, y: 42, width: 73, height: 28)
             OrderView.frame = CGRect.init(x: 9, y: 1000, width: 357, height: 677)
-            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: 630, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
-            StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: 630, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            ActivityIndicatorForTextField.frame = CGRect.init(x: 270, y: 78, width: 20, height: 20)
+
 
 
 
 
         }
+        if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR"){
+            
+            FoogleLogo.frame = CGRect.init(x: 104, y: 336, width: 207, height: 77)
+            SearchBar.frame = CGRect.init(x: 0, y: 426, width: 414, height: 44)
+            FoogleImageView.frame = self.view.frame
+            SettingsButton.frame = CGRect.init(x: 360, y: 40, width: 34, height: 35)
+            NutritionOutlet.frame = CGRect.init(x: NutritionOutlet.frame.minX, y: 40, width: NutritionOutlet.frame.width, height: NutritionOutlet.frame.height)
+            BigSearchRecipes.frame = CGRect.init(x: 76, y: 35, width: 262, height: 45)
+            ActivityIndicatorforWeb.frame = CGRect.init(x: 198, y: 48, width: 20, height: 20)
+            BackgroundForFoogle.frame = self.view.frame
+            Orderbutton.frame = CGRect.init(x: 289, y: 825, width: 105, height: 39)
+            BackArrow.frame = CGRect.init(x: 9, y: 820, width: 47, height: 48)
+            ForwardArrow.frame = CGRect.init(x: 56, y: 820, width: 47, height: 48)
+            WebView.frame = CGRect.init(x: 0, y: 115, width: 414, height: 690)
+            PaynowButton.frame = CGRect.init(x: 265, y: 700, width: 110, height: 33)
+            ConfirmButton.frame = CGRect.init(x: 265, y: 625, width: 110, height: 33)
+            PriceTextinOrderView.frame = CGRect.init(x: 8, y: 13, width: 380, height: 21)
+            ActivityIndicatorforPriceLabel.frame = CGRect.init(x: 188, y: 14, width: 20, height: 20)
+            CostLabelOnOrderView.frame = CGRect.init(x: 259, y: 42, width: 73, height: 28)
+            ActivityIndicatorForTextField.frame = CGRect.init(x: 272, y: 78, width: 20, height: 20)
+            StackViewForIngredients.frame = CGRect.init(x: 8, y: 103, width: 231, height: 550)
+            StackViewForCost.frame = CGRect.init(x: 259, y: 103, width: 79, height: 550)
+            StackViewForDeleteButtons.frame = CGRect.init(x: 346, y: 103, width: 24, height: 550)
+            ShippingTaxesServicesOrderViewLabel.frame = CGRect.init(x: 8, y: 668, width: 217, height: 21)
+            ServicePrice.frame = CGRect.init(x: 259, y: 668, width: 79, height: 21)
+            LoaderView.frame = CGRect.init(x: 151, y: 411, width: 112, height: 74)
+            ActivitySpinner.frame = CGRect.init(x: 46, y: 27, width: 20, height: 20)
+            OrderView.frame = CGRect.init(x: 9, y: 1000, width: 396, height: 750)
+            ServingsLabel.frame = CGRect.init(x: ServingsLabel.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+            StepperOutlet.frame = CGRect.init(x: StepperOutlet.frame.minX, y: PaynowButton.frame.minY + 3, width: ServingsLabel.frame.width, height: ServingsLabel.frame.height)
+           
+
+            
+        }
+        
+        
         
         if(self.FirstTimeOn == nil)
         {
@@ -684,7 +736,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 })
             }
         
-                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c" || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad || ViewController.modelName == "Simulator")
+                if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c" || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad)
                 {
                     SearchBar.frame = CGRect.init(x: 0, y: 46, width: 319, height: 44)
                 }
@@ -693,9 +745,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     let newFrameForSearchBar = CGRect.init(x: 0, y: 63, width: SearchBar.layer.frame.width, height: 30)
                     SearchBar.frame = newFrameForSearchBar
                 }
-                if(ViewController.modelName == "iPhone X")
+                if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
+                {
+                    SearchBar.frame = CGRect.init(x: 0, y: 70, width: 414, height: 27)
+                }
+                if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS" || ViewController.modelName == "Simulator")
                 {
                     SearchBar.frame = CGRect.init(x: 0, y: 77, width: 375, height: 44)
+                }
+                if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR")
+                {
+                    SearchBar.frame = CGRect.init(x: 0, y: 92, width: SearchBar.frame.width, height: 20)
                 }
         
             FoogleLogo.isHidden = true
@@ -768,7 +828,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     {
                                         print("SERVINGS:\(servings)")
                                         DispatchQueue.main.async {
-                                            self.ServingsLabel.text = "Servings: \(servings)"
+                                            
+                                            if(self.isIphone5)
+                                            {
+                                                self.ServingsLabel.text = "SER: \(servings)"
+                                            }
+                                            else
+                                            {
+                                                self.ServingsLabel.text = "Servings: \(servings)"
+                                            }
                                         }
                                         self.StepperOutlet.value = Double(servings)
                                         self.InitialServings = false
@@ -916,7 +984,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 90)
                     }
                     else if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                        || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad   || ViewController.modelName == "Simulator")
+                        || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.isIpad)
                     {
                         self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: self.view.frame.height - 70)
                     }
@@ -924,9 +992,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     {
                         self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 587)
                     }
-                    if(ViewController.modelName == "iPhone X")
+                    if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS" || ViewController.modelName == "Simulator")
                     {
                         self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 677)
+                        
+                    }
+                    if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR")
+                    {
+                        self.webViewforData.frame = CGRect.init(x: 9, y: -900, width: self.view.frame.width - 18, height: 750)
                         
                     }
                     
@@ -942,7 +1015,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
     
     @IBAction func OnOrderPress(_ sender: Any) {
-        
         
         let toCheckZip = UserDefaults.standard.object(forKey: "AskForZipCode")
         
@@ -988,14 +1060,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         let foodPriceUrl = URL(string: self.UrlBeforeSent)
         let requestforPrice = URLRequest(url: foodPriceUrl!)
-        self.webViewforData.load(requestforPrice)
+        DispatchQueue.main.async {
+
+            self.webViewforData.load(requestforPrice)
+            
+        }
+        
+        self.webViewforData.isHidden = true
+        self.Masterview.addSubview(self.webViewforData)
+
+        
         booleanToFindPrice = true
         
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("loaded")
-        
         
         if(self.booltogetNutrition == true)
         {
@@ -1006,7 +1086,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.blurEffectView.frame = self.view.bounds
                 //CGRect.init(x: 0, y: 86, width: self.WebView.frame.width, height: self.WebView.frame.height)
                 self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
+                self.webViewforData.isHidden = false
                 self.ActivitySpinner.isHidden = true
                 self.LoaderView.isHidden = true
                 self.grayView.isHidden = true
@@ -1027,7 +1107,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 
                     })
                 }
-                if(ViewController.modelName == "iPhone X")
+                if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS" || ViewController.modelName == "Simulator")
+                {
+                    let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        UIView.animate(withDuration: 1, animations: {
+                            self.webViewforData.frame.origin.y = 110
+                            
+                        })
+                    }
+                }
+                if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR")
                 {
                     let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
                     DispatchQueue.main.asyncAfter(deadline: when) {
@@ -1044,6 +1134,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 
             } else {
                 self.view.backgroundColor = UIColor.black
+                
             }
             self.booltogetNutrition = false
         }
@@ -1166,6 +1257,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.ActivitySpinner.isHidden = true
                             self.LoaderView.isHidden = true
                             self.grayView.isHidden = true
+                            self.ConfirmButton.isHidden = true
+                            self.StepperOutlet.isHidden = true
+                            self.ServingsLabel.isHidden = true
             
                             if !UIAccessibilityIsReduceTransparencyEnabled() {
                                 self.view.backgroundColor = UIColor.clear
@@ -1194,23 +1288,23 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     let FirstTimePromo = UIAlertController(title: "50% Off", message: "Apply the code FOOGLEFIRST in the \"Add Other or Missing\" text field on the top left corner of this page for 50% off.", preferredStyle: UIAlertControllerStyle.alert)
                                     let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
 
-                                        
+
                                         FirstTimePromo.dismiss(animated: false, completion: nil)
-                                        
+
                                     }
                                     let DismissAction = UIAlertAction(title: "DISMISS", style: .default) { (action) in
                                         UserDefaults.standard.set(false, forKey: "MessageDismissedfor50")
                                         self.MessageDismissedfor50 =  UserDefaults.standard.bool(forKey: "FirstTimeOn")
-                                        
+
                                         FirstTimePromo.dismiss(animated: false, completion: nil)
-                                        
+
                                     }
                                     FirstTimePromo.addAction(cancelAction)
                                     FirstTimePromo.addAction(DismissAction)
 
 
-                                    
-                                    
+
+
                                     self.present(FirstTimePromo, animated: true, completion: nil)
                                 }
             
@@ -1218,7 +1312,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.view.backgroundColor = UIColor.black
                             }
                             if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE"   || ViewController.modelName == "Simulator")
+                                || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" )
                             {
                                 self.OrderView.frame = CGRect.init(x: 9, y: 600, width: 303, height: 498)
                             }
@@ -1237,7 +1331,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.blurEffectView.addGestureRecognizer(gesture)
                             
             
-                            if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus") && ViewController.isIpad == false)
+                            if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus") && ViewController.isIpad == false)
                             {
                                 let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
                                 DispatchQueue.main.asyncAfter(deadline: when) {
@@ -1257,6 +1351,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     })
                                 }
                             }
+                            else if(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus")
+                            {
+                                let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                    UIView.animate(withDuration: 0.75, animations: {
+                                        self.OrderView.frame.origin.y = 60
+                                        
+                                    })
+                                }
+                            }
                             else
                             {
                                 let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
@@ -1267,7 +1371,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 })
                                 }
                             }
-                            if(ViewController.modelName == "iPhone X")
+                            if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS" || ViewController.modelName == "Simulator")
                             {
                                 let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
                                 DispatchQueue.main.asyncAfter(deadline: when) {
@@ -1276,6 +1380,18 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                         
                                     })
                                 }
+                            }
+                            if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR")
+                            {
+                                
+                                    let when = DispatchTime.now() + 0.75 // change 2 to desired number of seconds
+                                    DispatchQueue.main.asyncAfter(deadline: when) {
+                                        UIView.animate(withDuration: 1, animations: {
+                                            self.OrderView.frame.origin.y = 110
+                                            
+                                        })
+                                    }
+                                
                             }
             
             
@@ -1374,7 +1490,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     self.Price = roundedDoublefornewPriceString + self.Price
                                     
                                     self.arrayforCost.append(roundedDoublefornewPriceString)
-                                    self.PriceTextinOrderView.text = "Price: $\(self.Price)"
+                                    self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", self.Price))"
                                     
                                     self.PriceTextinOrderView.isHidden = false
                                     self.ActivityIndicatorforPriceLabel.isHidden = true
@@ -1441,6 +1557,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                    self.arrayforCost = [Double]()
                    self.buttonTag = 0
                    self.Price = 0.0
+                   self.ConfirmButton.isHidden = true
+                   self.PaynowButton.isHidden = false
+            
 
             })
             
@@ -1630,7 +1749,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
     
     @IBAction func ServingsStepper(_ sender: UIStepper) {
-        self.ServingsLabel.text = "Servings: \(Int(sender.value).description)"
+        if(self.isIphone5)
+        {
+            self.ServingsLabel.text = "SER: \(Int(sender.value).description)"
+
+        }
+        else
+        {
+            self.ServingsLabel.text = "Servings: \(Int(sender.value).description)"
+
+        }
         self.PaynowButton.isHidden = true
         self.ConfirmButton.isHidden = false
         
@@ -1675,6 +1803,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         self.ActivitySpinner.isHidden = false
         self.FindIngredients(Servings: Int(self.StepperOutlet.value), AlsoFindNutrition: false)
 
+            
         }
         
     }

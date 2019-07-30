@@ -33,7 +33,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     
     override func viewDidLayoutSubviews() {
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
-            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE" || ViewController.modelName == "Simulator")
+            || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
             FoogleLogo.isHidden = true
         }
@@ -70,7 +70,11 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
             }
             }
         }
-        if(ViewController.modelName == "iPhone X")
+        if(ViewController.modelName == "iPhone X" || ViewController.modelName == "iPhone XS")
+        {
+            FoogleBackground.frame = self.view.frame
+        }
+        if(ViewController.modelName == "iPhone XS Max" || ViewController.modelName == "iPhone XR"  || ViewController.modelName == "Simulator")
         {
             FoogleBackground.frame = self.view.frame
         }

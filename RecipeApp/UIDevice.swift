@@ -55,6 +55,9 @@ public extension UIDevice {
         case "iPhone10,3", "iPhone10,6":                return "iPhone X"
         case "iPhone10,5", "iPhone10,2":                return "iPhone 8 Plus"
         case "iPhone10,4", "iPhone10,1":                return "iPhone 8"
+        case "iPhone11,2":                              return "iPhone XS"
+        case "iPhone11,4":                              return "iPhone XS Max"
+        case "iPhone11,8":                              return "iPhone XR"
         default:                                        return identifier
         }
     }
