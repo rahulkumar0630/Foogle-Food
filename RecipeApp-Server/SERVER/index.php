@@ -3,16 +3,17 @@
 require_once 'vendor/autoload.php';
 require_once 'vendor/mashape/unirest-php/src/Unirest.php';
 
-// These code snippets use an open-source library. http://unirest.io/php
-
 $input = $_GET['url'];
 
-$response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" . "$input",
-  array(
-    "X-Mashape-Key" => "Z5awmF4951mshriAJrQnjykAAwvLp1Eo2TrjsnaxC5oOOqIUdB"
-  )
-);
+$headers = array(
+	"X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key" => "PMSfoVRZ9vmshOZLZwIytrdaNxHop1VoClVjsnxxW2dKy7r6N6",
+        "Accept" => "application/json"
+ );
 
-print_r($response);
+$response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract?url=". $input, $headers);
+
+
+print_r($response->raw_body);
 
 ?>

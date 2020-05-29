@@ -85,6 +85,9 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } 
         ContinueButton.layer.cornerRadius = 10
         
         //registerForKeyboardNotifications()
@@ -102,7 +105,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let alert = UIAlertController(title: "Setup Information", message: "Foogle needs to collect this information to ship the recipe. ", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Setup Information", message: "Foogle needs to collect this information to ship the recipe. ", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
         }
         alert.addAction(cancelAction)
@@ -169,7 +172,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
         
        if(ViewControllerForShippingInfo.emailText == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The e-mail address was left blank.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The e-mail address was left blank.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.EmailTextField.backgroundColor = UIColor.red
         }
@@ -180,7 +183,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.emailText.range(of: "@") == nil)
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The e-mail address is invalid.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The e-mail address is invalid.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.EmailTextField.backgroundColor = UIColor.red
         }
@@ -190,7 +193,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.addressLine1Text == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The address field is empty.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The address field is empty.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.AddressLine1.backgroundColor = UIColor.red
         }
@@ -201,7 +204,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.CityText == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The City field is empty.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The City field is empty.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.CityTextField.backgroundColor = UIColor.red
         }
@@ -212,7 +215,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.ZipCodeText == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The zip code field is empty.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The zip code field is empty.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.ZipCodeTextField.backgroundColor = UIColor.red
         }
@@ -222,7 +225,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.StateText == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The state field is empty.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The state field is empty.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.StateTextField.backgroundColor = UIColor.red
         }
@@ -232,7 +235,7 @@ class ViewControllerForShippingInfo: UIViewController, UITextFieldDelegate{
        }
        else if(ViewControllerForShippingInfo.CountryText == "")
        {
-        let alert = UIAlertController(title: "Uh-Oh!", message: "The country field is empty.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Uh-Oh!", message: "The country field is empty.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
             self.CountryTextField.backgroundColor = UIColor.red
         }

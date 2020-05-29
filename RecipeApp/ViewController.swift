@@ -31,7 +31,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     let canGoForward = UIImage(named: "arrow_forward_white_192x192")
     let CantGoBack = UIImage(named: "arrowBackWhenCantGoBack")
     let cantGoForward = UIImage(named: "arrowForwardWhenCantGoForward")
-    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark))
     var LabelForInsertingIngredients = UILabel()
     let grayView = UIView()
     var arrayForDisplayItems = [UILabel]()
@@ -62,7 +62,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var MessageDismissedfor50 = UserDefaults.standard.object(forKey: "MessageDismissedfor50") as? Bool
     var InitialServings = true
     var isIphone5 = false
-
+    
     
 
 
@@ -108,6 +108,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     @IBOutlet var NutritionOutlet: UIButton!
     @IBOutlet var ConfirmButton: UIButton!
     
+    
+    
     var environment:String = PayPalEnvironmentProduction
     {
         willSet(newEnvironment) {
@@ -122,6 +124,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     var payPalConfig = PayPalConfiguration() // default
     
     override func viewDidLayoutSubviews() {
+        
+        
         if(ViewController.modelName == "iPhone 5" || ViewController.modelName == "iPhone 5c"
             || ViewController.modelName == "iPhone 5s" || ViewController.modelName == "iPhone SE")
         {
@@ -308,7 +312,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         if(self.FirstTimeOn == nil)
         {
-        let FirstTimePromo = UIAlertController(title: "Welcome!", message: "Please use this code for 50% off your first order: FOOGLEFIRST. To use this code, simply enter this code \"Add Other of Missing\" text field after you have pressed \"Order\" for the recipe you want.", preferredStyle: UIAlertControllerStyle.alert)
+            let FirstTimePromo = UIAlertController(title: "Welcome!", message: "Please use this code for 50% off your first order: FOOGLEFIRST. To use this code, simply enter this code \"Add Other of Missing\" text field after you have pressed \"Order\" for the recipe you want.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
             UserDefaults.standard.set(false, forKey: "FirstTimeOn")
             self.FirstTimeOn =  UserDefaults.standard.bool(forKey: "FirstTimeOn")
@@ -342,8 +346,12 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        SearchBar.backgroundColor = UIColor.white
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } 
+        
         // Do any additional setup after loading the view, typically from a nib.
         var userController:WKUserContentController = WKUserContentController()
         userController.add(self, name: "loginSuccess")
@@ -379,9 +387,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         toolbar.sizeToFit()
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneClicked))
         
         toolbar.setItems([flexibleSpace,doneButton], animated: false)
         
@@ -436,14 +444,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
 
     }
     
-    func doneClicked(){
+    @objc func doneClicked(){
         self.view.endEditing(true)
     }
 
     
     func checkZipCode()
     {
-        let zipcodeRetriever = UIAlertController(title: "First Time Setup!", message: "Please enter you zipcode to see if we deliver in your location.", preferredStyle: UIAlertControllerStyle.alert)
+        let zipcodeRetriever = UIAlertController(title: "First Time Setup!", message: "Please enter you zipcode to see if we deliver in your location.", preferredStyle: UIAlertController.Style.alert)
         
         var tField: UITextField!
         
@@ -470,13 +478,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     func checkZipCodeinDB(UserZipCode: String)
     {
         var isValid = false
-        let zipcodeURL = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/Zipcodes.json")
+        let zipcodeURL = URL(string: "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/Zipcodes.json")
         
         print("USER: \(UserZipCode)")
         let task = URLSession.shared.dataTask(with: zipcodeURL!) { (data, response, error) in
             
             if error != nil {
-                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertController.Style.alert)
                 let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                     self.grayView.isHidden = true
                 }
@@ -489,11 +497,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     do {
                         let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
+                        print(myJson)
                         
                         var count = 0
                         
+                        DispatchQueue.main.async {
+
                         if let zipcodes = myJson["zipcodes"] as? [String]
                         {
+                            print(zipcodes)
+                            
                             while(!(isValid) && count < zipcodes.count)
                             {
                                 if(UserZipCode == zipcodes[count])
@@ -509,7 +522,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             
                             if(isValid)
                             {
-                                let Congrats = UIAlertController(title: "Congratulations!", message: "Your Zipcode is one of the designated locations for delivery. You can try again if you didn't enter your zipcode properly. Please press Order again", preferredStyle: UIAlertControllerStyle.alert)
+                                let Congrats = UIAlertController(title: "Congratulations!", message: "Your Zipcode is one of the designated locations for delivery. You can try again if you didn't enter your zipcode properly. Please press Order again", preferredStyle: UIAlertController.Style.alert)
                             
                                 let tryagain = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
                                     self.checkZipCode()
@@ -520,7 +533,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
                                     
                                     var postString = "zipcode=\(UserZipCode)"
-                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
+                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
                                     request.httpMethod = "POST"
                                     
                                     request.httpBody = postString.data(using: String.Encoding.utf8)
@@ -549,13 +562,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             }
                             else
                             {
-                                let zipCodeNotAvaliable = UIAlertController(title: "We Are So Sorry", message: "Your Zipcode is not one of the designated locations for delivery, but feel free to use our Nutrition button, which can get nutrition off any recognizable recipe! You can try again if you didn't enter your zipcode properly.", preferredStyle: UIAlertControllerStyle.alert)
+                                let zipCodeNotAvaliable = UIAlertController(title: "We Are So Sorry", message: "Your Zipcode is not one of the designated locations for delivery, but feel free to use our Nutrition button, which can get nutrition off any recognizable recipe! You can try again if you didn't enter your zipcode properly.", preferredStyle: UIAlertController.Style.alert)
                                 
                                 let cancelAction = UIAlertAction(title: "Ok", style: .default) { (action) in
                                     UserDefaults.standard.set(isValid, forKey: "AskForZipCode")
                                     var postString = "zipcode=\(UserZipCode)"
                                     
-                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
+                                    let request = NSMutableURLRequest(url: NSURL(string: "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/EmailScript/phpToMySQLandEmail.php")! as URL)
                                     request.httpMethod = "POST"
                                     
                                     request.httpBody = postString.data(using: String.Encoding.utf8)
@@ -587,6 +600,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             }
                         }
                     }
+                    }
                     catch {
                         // catch error
                     }
@@ -607,7 +621,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         ActivityIndicatorforPriceLabel.isHidden = false
         let convertedtextfieldtext = textField.text as! String
         
-        let Url = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(convertedtextfieldtext)"
+        let Url = "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/test.html?Data=\(convertedtextfieldtext)"
         print(Url)
         
         let urlSet = CharacterSet.urlQueryAllowed
@@ -663,7 +677,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               duration: 0.3,
                               options: .transitionCrossDissolve,
                               animations: {
-                                self.BackArrow.setImage(self.CanGoBack, for: UIControlState.normal)
+                                self.BackArrow.setImage(self.CanGoBack, for: UIControl.State.normal)
             })
         }
         
@@ -674,7 +688,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               duration: 0.3,
                               options: .transitionCrossDissolve,
                               animations: {
-                                self.ForwardArrow.setImage(self.canGoForward, for: UIControlState.normal)
+                                self.ForwardArrow.setImage(self.canGoForward, for: UIControl.State.normal)
             })
         }
         else if(WebView.canGoBack == false)
@@ -684,7 +698,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               duration: 0.3,
                               options: .transitionCrossDissolve,
                               animations: {
-                                self.BackArrow.setImage(self.CantGoBack, for: UIControlState.normal)
+                                self.BackArrow.setImage(self.CantGoBack, for: UIControl.State.normal)
             })
         }
         
@@ -695,7 +709,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                               duration: 0.3,
                               options: .transitionCrossDissolve,
                               animations: {
-                                self.ForwardArrow.setImage(self.cantGoForward, for: UIControlState.normal)
+                                self.ForwardArrow.setImage(self.cantGoForward, for: UIControl.State.normal)
             })
         }
     }
@@ -777,13 +791,16 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         print(currentURL)
         ArrayForIngredients = [String]()
         
-        let uRl = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
+        let uRl = URL(string: "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/SERVER/index.php?url=" + currentURL)
+        
+        print(uRl)
+        
         
         let task = URLSession.shared.dataTask(with: uRl!) { (data, response, error) in
             
             
             if error != nil {
-                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Uh-Oh!", message: "The Server is down right now.", preferredStyle: UIAlertController.Style.alert)
                 let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                     self.grayView.isHidden = true
                 }
@@ -792,17 +809,23 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 self.present(alert, animated: true, completion: nil)
             }
             else {
+                print("we have reached liftoff")
                 if let mydata = data {
                     do {
-                        
                         let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
+                        print(myJson)
+
+                        if let body = myJson["body"] as? String {
+                            print("reached body")
+                        }
+
                         //self.StepperOutlet.value = Double(self.servingsstring)!
                         
                         if let status = myJson["status"] as? String {
                             if(status == "failure")
                             {
-                                let alert = UIAlertController(title: "Error", message: "This recipe cannot be extracted.", preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: "Error", message: "This recipe cannot be extracted.", preferredStyle: UIAlertController.Style.alert)
                                 let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                                     self.grayView.isHidden = true
                                 }
@@ -816,6 +839,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         if let title = myJson["title"] as? String
                         {
                             self.titleOfRecipe = title
+                            print("in title area")
                         }
                         let Recipedifferentiater = myJson["instructions"] as? String
                         
@@ -848,11 +872,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                           
                             
                             if let stations = myJson["extendedIngredients"] as? [[String: AnyObject]] {
-                                
+                                print("we are in the ingredient loop")
+                            
                                 for station in stations {
                                     
                                     if let name = station["originalString"] as? String{
                                         
+                                        print(name)
                                         var constructedstring = ""
                                         
                                         if var amount = station["amount"] as? Double
@@ -916,7 +942,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                             self.ArrayforType.append(name)
                                         }
                                         
-                                        print(constructedstring)
+                                        print("APPENDING: \(constructedstring)")
                                         self.ArrayForIngredients.append(constructedstring)
                                         
                                     }
@@ -930,7 +956,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             print("This is not a recipe")
                             checkifrecipe = false
                             
-                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertController.Style.alert)
                             let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                                 self.grayView.isHidden = true
                             }
@@ -971,7 +997,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     
                     self.StringforIngredients = self.StringforIngredients.addingPercentEncoding(withAllowedCharacters: urlSet)!
                     
-                    let NutritionURL = URL(string: "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/Nutrition/index.php?Ingredients=" + self.StringforIngredients)
+                    print(self.StringforIngredients)
+                    let NutritionURL = URL(string: "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/Nutrition/index.php?Ingredients=" + self.StringforIngredients)
                     print(NutritionURL)
                     let requestforPrice = URLRequest(url: NutritionURL!)
                     self.StringforIngredients = ""
@@ -1029,7 +1056,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             
             if userisNotinDesignatedZip! == false
             {
-                let alert = UIAlertController(title: "Sorry", message: "Your Zip Code is not in the designated delivery area at this time.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Sorry", message: "Your Zip Code is not in the designated delivery area at this time.", preferredStyle: UIAlertController.Style.alert)
                 let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                     self.grayView.isHidden = true
                 }
@@ -1048,9 +1075,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     
     func FindIngredientPrice(Ingredient: String){
         
-        //print("http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)")
 
-        self.UrlBeforeSent = "http://ec2-13-58-166-251.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)"
+        self.UrlBeforeSent = "http://ec2-18-188-107-168.us-east-2.compute.amazonaws.com/test.html?Data=\(Ingredient)"
         
         let urlSet = CharacterSet.urlQueryAllowed
             .union(CharacterSet.punctuationCharacters)
@@ -1063,11 +1089,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         DispatchQueue.main.async {
 
             self.webViewforData.load(requestforPrice)
-            
+            self.webViewforData.isHidden = true
+            //self.Masterview.addSubview(self.webViewforData)
         }
         
-        self.webViewforData.isHidden = true
-        self.Masterview.addSubview(self.webViewforData)
 
         
         booleanToFindPrice = true
@@ -1080,7 +1105,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         if(self.booltogetNutrition == true)
         {
             self.webViewforData.evaluateJavaScript("document.body.style.zoom = 2.6;")
-            if !UIAccessibilityIsReduceTransparencyEnabled() {
+            if !UIAccessibility.isReduceTransparencyEnabled {
                 self.view.backgroundColor = UIColor.clear
                 //always fill the view
                 self.blurEffectView.frame = self.view.bounds
@@ -1161,7 +1186,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         self.blurEffectView.removeGestureRecognizer(removedgesture)
                             if(self.ArrayForIngredients.count == 0)
                             {
-                                let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: "Uh-Oh!", message: "Foogle could not recognize this webpage to be a recipe.", preferredStyle: UIAlertController.Style.alert)
                                 let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                                 self.grayView.isHidden = true
                                 }
@@ -1177,20 +1202,26 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 incrematorforIndivPrice = indexforIndivPrice + 4
                                 var toCheckIfcontained = ""
                                 var toCheckIfItemWasParsed = 0
+                                var firstItemScrewUp = true
                                 
                                 print(self.stringforvalue)
             
                                 for item in self.ArrayForIngredients
                                 {
+                                    print("Ingredient:\(item)")
+                                    
                                     self.LabelForInsertingIngredients = UILabel()
                                     self.LabelforInsertingCost = UILabel()
             
                                     self.LabelForInsertingIngredients.textColor = UIColor.gray
                                     self.LabelforInsertingCost.textColor = UIColor.gray
+                                    
+        
             
                                     toCheckIfcontained = "\(self.ArrayforType[toCheckIfItemWasParsed])<br>"
-                                    print("\(self.ArrayforType[toCheckIfItemWasParsed])<br>")
-                                    if self.stringforvalue.range(of: toCheckIfcontained) != nil {
+                                    print("Containment check:\(toCheckIfcontained)")
+                                    
+                                    if self.stringforvalue.range(of: toCheckIfcontained) != nil || firstItemScrewUp == true {
             
                                         self.LabelForInsertingIngredients.text = item
             
@@ -1223,10 +1254,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                                                     print("inserted:\(item)")
                                                                     self.StackViewForIngredients.addArrangedSubview(self.LabelForInsertingIngredients)
                                                                     var deleteButton = UIButton()
-                                                                    deleteButton.setTitle("x", for: UIControlState.normal)
-                                                                    deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                                                                    deleteButton.setTitle("x", for: UIControl.State.normal)
+                                                                    deleteButton.setTitleColor(UIColor.red, for: UIControl.State.normal)
                                                                     deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                                                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                                                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControl.Event.touchUpInside)
                                                                     deleteButton.tag = self.buttonTag
                                                                     print("\(item):\(self.buttonTag)")
                                                                     self.buttonTag = self.buttonTag + 1
@@ -1261,7 +1292,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                             self.StepperOutlet.isHidden = true
                             self.ServingsLabel.isHidden = true
             
-                            if !UIAccessibilityIsReduceTransparencyEnabled() {
+                                if !UIAccessibility.isReduceTransparencyEnabled {
                                 self.view.backgroundColor = UIColor.clear
                                 //always fill the view
                                 self.blurEffectView.frame = self.view.bounds
@@ -1270,22 +1301,28 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             
             
                                 UIView.transition(with: self.Masterview,
-                                    duration: 0.5,
+                                                  duration: 0.5,
                                     options: .transitionCrossDissolve,
                                     animations: {
                                         self.view.addSubview(self.blurEffectView)
-                                        self.view.addSubview(self.OrderView)
-                                        self.OrderView.addSubview(self.PaynowButton)
-                                        self.OrderView.layoutIfNeeded()
-                                        self.PaynowButton.clipsToBounds = true
-                                        self.PaynowButton.layer.cornerRadius = 10
-                                        self.OrderView.addSubview(self.ServingsLabel)
-                                        self.ServingsLabel.clipsToBounds = true
+                                        
+                    
                                 })
+                                    self.view.addSubview(self.OrderView)
+                                    self.OrderView.addSubview(self.PaynowButton)
+                                    self.OrderView.layoutIfNeeded()
+                                    self.PaynowButton.clipsToBounds = true
+                                    self.PaynowButton.layer.cornerRadius = 10
+                                    self.OrderView.addSubview(self.ServingsLabel)
+                                    self.ServingsLabel.clipsToBounds = true
+                                    
+                                    self.blurEffectView.removeGestureRecognizer(removedgesture)
+                                    let gesture = UITapGestureRecognizer(target: self, action: "resetValues:")
+                                    self.blurEffectView.addGestureRecognizer(gesture)
                                 
                                 if(self.FirstTimeOn == false && self.MessageDismissedfor50 != false)
                                 {
-                                    let FirstTimePromo = UIAlertController(title: "50% Off", message: "Apply the code FOOGLEFIRST in the \"Add Other or Missing\" text field on the top left corner of this page for 50% off.", preferredStyle: UIAlertControllerStyle.alert)
+                                    let FirstTimePromo = UIAlertController(title: "50% Off", message: "Apply the code FOOGLEFIRST in the \"Add Other or Missing\" text field on the top left corner of this page for 50% off.", preferredStyle: UIAlertController.Style.alert)
                                     let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
 
 
@@ -1325,10 +1362,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                 self.OrderView.frame = CGRect.init(x: 9, y: 900, width: 303, height: 666)
 
                             }
-                            
-                            self.blurEffectView.removeGestureRecognizer(removedgesture)
-                            let gesture = UITapGestureRecognizer(target: self, action: "resetValues:")
-                            self.blurEffectView.addGestureRecognizer(gesture)
                             
             
                             if(!(ViewController.modelName == "iPhone 7 Plus" || ViewController.modelName == "iPhone 6s Plus" || ViewController.modelName == "iPhone 6 Plus" || ViewController.modelName == "iPhone 8 Plus") && ViewController.isIpad == false)
@@ -1414,7 +1447,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                     
                     if(TextFieldToEnterMore.text == "FOOGLEFIRST" && self.FirstTimeOn == false)
                     {
-                        let FirstTimePromo = UIAlertController(title: "Congrats!", message: "This Order is now 50% off! If you decide that this Order is not your first order, you can still use this code.", preferredStyle: UIAlertControllerStyle.alert)
+                        let FirstTimePromo = UIAlertController(title: "Congrats!", message: "This Order is now 50% off! If you decide that this Order is not your first order, you can still use this code.", preferredStyle: UIAlertController.Style.alert)
                         let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
                             self.Price = self.Price/2
                             self.Price = round(100.0 * self.Price) / 100.0
@@ -1475,10 +1508,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                                     self.arrayForDisplayItems.append(labelForInsertingintoIngredients)
                                     
                                     let deleteButton = UIButton()
-                                    deleteButton.setTitle("x", for: UIControlState.normal)
-                                    deleteButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                                    deleteButton.setTitle("x", for: UIControl.State.normal)
+                                    deleteButton.setTitleColor(UIColor.red, for: UIControl.State.normal)
                                     deleteButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                                    deleteButton.addTarget(self, action: "removeFromStackView:", for: UIControl.Event.touchUpInside)
                                     deleteButton.tag = self.buttonTag
                                     print("\(self.buttonTag)")
                                     self.buttonTag = self.buttonTag + 1
@@ -1503,7 +1536,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                         }
                         else
                         {
-                            let alert = UIAlertController(title: "Sorry", message: "The Ingredient you entered did not yield a price.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: "Sorry", message: "The Ingredient you entered did not yield a price.", preferredStyle: UIAlertController.Style.alert)
                             let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                                 self.ActivityIndicatorForTextField.isHidden = true
                                 self.TextFieldToEnterMore.text = ""
@@ -1525,7 +1558,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
     }
 
     
-    func resetValues(_ sender:UITapGestureRecognizer){
+    @objc func resetValues(_ sender:UITapGestureRecognizer){
         self.InitialServings = true
         UIView.animate(withDuration: 0.75, animations: {
             self.OrderView.frame.origin.y = self.Masterview.frame.origin.y + self.Masterview.frame.size.height
@@ -1536,7 +1569,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             UIView.transition(with: self.Masterview, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 self.blurEffectView.removeFromSuperview()
                 
-                for i in 0 ... self.arrayForDisplayItems.count - 1
+                  for i in 0 ... self.arrayForDisplayItems.count - 1
                 {
                    self.arrayForDisplayItems[i].removeFromSuperview()
                 }
@@ -1568,7 +1601,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
     }
     
-    func resetvaluesForNutrition(_ sender:UITapGestureRecognizer)
+    @objc func resetvaluesForNutrition(_ sender:UITapGestureRecognizer)
     {
         print("CLICKED")
         UIView.animate(withDuration: 0.75, animations: {
@@ -1617,25 +1650,25 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         performSegue(withIdentifier: "SegueToSettings", sender: self)
     }
     
-    func removeFromStackView(_ sender:UIButton)
+    @objc func removeFromStackView(_ sender:UIButton)
     {
         
         for i in 0 ... self.arrayForDeleteButtons.count - 1
         {
           if(sender.tag == i)
           {
-            sender.removeTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
+            sender.removeTarget(self, action: "addBackToStackView:", for: UIControl.Event.touchUpInside)
             let attributedString = NSMutableAttributedString(attributedString: self.arrayForDisplayItems[i].attributedText!)
             
-            attributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.single.rawValue), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.strikethroughColor, value: UIColor.red, range: NSMakeRange(0, attributedString.length))
             
             self.arrayForDisplayItems[i].attributedText = attributedString
             self.arrayForDisplayItems[i].accessibilityHint = "removed"
             
             let attributedStringforCost = NSMutableAttributedString(string: self.arrayforDisplayingCost[i].text!)
-            attributedStringforCost.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue), range: NSMakeRange(0, attributedStringforCost.length))
-            attributedStringforCost.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributedStringforCost.length))
+            attributedStringforCost.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.single.rawValue), range: NSMakeRange(0, attributedStringforCost.length))
+            attributedStringforCost.addAttribute(NSAttributedString.Key.strikethroughColor, value: UIColor.red, range: NSMakeRange(0, attributedStringforCost.length))
             
             self.arrayforDisplayingCost[i].attributedText = attributedStringforCost
             self.arrayforDisplayingCost[i].accessibilityHint = "removed"
@@ -1647,20 +1680,20 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             let absofroundedSelfPrice = abs(roundedSelfPrice)
             self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", absofroundedSelfPrice))"
 
-            sender.setTitle("+", for: UIControlState.normal)
-            sender.setTitleColor(UIColor.blue, for: UIControlState.normal)
-            sender.addTarget(self, action: "addBackToStackView:", for: UIControlEvents.touchUpInside)
+            sender.setTitle("+", for: UIControl.State.normal)
+            sender.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+            sender.addTarget(self, action: "addBackToStackView:", for: UIControl.Event.touchUpInside)
           }
         }
     }
     
-    func addBackToStackView(_ sender:UIButton)
+    @objc func addBackToStackView(_ sender:UIButton)
     {
         for i in 0 ... self.arrayForDeleteButtons.count - 1
         {
             if(sender.tag == i)
             {
-                sender.removeTarget(self, action: "removeFromStackView", for: UIControlEvents.touchUpInside)
+                sender.removeTarget(self, action: "removeFromStackView", for: UIControl.Event.touchUpInside)
                 let originalString = NSMutableAttributedString(string: self.arrayForDisplayItems[i].text!)
                 self.arrayForDisplayItems[i].attributedText = originalString
                 self.arrayForDisplayItems[i].accessibilityHint = "added"
@@ -1676,9 +1709,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
                 
                 self.PriceTextinOrderView.text = "Price: $\(String(format: "%.2f", absofroundedSelfPrice))"
                 
-                sender.setTitle("x", for: UIControlState.normal)
-                sender.setTitleColor(UIColor.red, for: UIControlState.normal)
-                sender.addTarget(self, action: "removeFromStackView:", for: UIControlEvents.touchUpInside)
+                sender.setTitle("x", for: UIControl.State.normal)
+                sender.setTitleColor(UIColor.red, for: UIControl.State.normal)
+                sender.addTarget(self, action: "removeFromStackView:", for: UIControl.Event.touchUpInside)
 
             }
         }
@@ -1708,7 +1741,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
         
         var textFieldEmpty = false
         
-        let ServingsReciever = UIAlertController(title: "Servings", message: "Please choose the amount of servings. The nutrition will display according to the amount of servings.", preferredStyle: UIAlertControllerStyle.alert)
+        let ServingsReciever = UIAlertController(title: "Servings", message: "Please choose the amount of servings. The nutrition will display according to the amount of servings.", preferredStyle: UIAlertController.Style.alert)
         
         var tField: UITextField!
         
@@ -1729,7 +1762,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate,
             }
             else
             {
-                let RedoReciever = UIAlertController(title: "Error", message: "Please chose the amount of servings you want.", preferredStyle: UIAlertControllerStyle.alert)
+                let RedoReciever = UIAlertController(title: "Error", message: "Please chose the amount of servings you want.", preferredStyle: UIAlertController.Style.alert)
                 
                 let okAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
                     RedoReciever.dismiss(animated: false, completion: nil)

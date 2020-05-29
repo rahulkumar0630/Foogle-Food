@@ -156,7 +156,9 @@ class ViewControllerForSettingsTab: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } 
         TACOutlet.clipsToBounds = true
         TACOutlet.layer.cornerRadius = 10
         TOAWebPage.frame = self.view.frame

@@ -6,477 +6,559 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		567CA674524E8EC21855A87ED65D6541 /* PayPal-iOS-SDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FF11F82AF4529ABDF1CBF9385097A522 /* Build configuration list for PBXAggregateTarget "PayPal-iOS-SDK" */;
+			buildPhases = (
+			);
+			dependencies = (
+				D526087C60CBB6D5BE62D8395E6E8A72 /* PBXTargetDependency */,
+			);
+			name = "PayPal-iOS-SDK";
+		};
+		A5AFDBFF44C91B5332DDBF2B370A941E /* CardIO */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BE2D23DBDD07ECE5D86E860EE36B0BD2 /* Build configuration list for PBXAggregateTarget "CardIO" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = CardIO;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		02A8CD406255AE081E99A62241BAC587 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB722A4B448D951B3B734FA55098440 /* IQToolbar.swift */; };
-		1B8A65D0E78D315DDD3299A680D700B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */; };
-		1F0F49D029C4471F2AE3712D1FCB1D8A /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101E900AA34921C4B62E1E57028A05F /* IQTitleBarButtonItem.swift */; };
-		2384AC373E752D55842F37DE4F2CE2A7 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5D7A01CF21566C5E90EF23A5D0FD0 /* IQUIScrollView+Additions.swift */; };
-		27FB212D30B59EBDC644FDC305250AF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */; };
-		2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0BF4E15E8DBB980F45141097B2F77F90 /* IQKeyboardManager.bundle */; };
-		2D7F690F64330C7F5AA02B1D9AE6405E /* Pods-RecipeAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7862A9A282E0131C9FEE77996EB8F32E /* Pods-RecipeAppTests-dummy.m */; };
-		3077B4186B916A8DB980BBB72DF7FFB9 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E4CA2AEBD94F711BE390A634AC77F /* IQUIView+Hierarchy.swift */; };
-		4882783C5576C5D43CE79C03DE33C3DD /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C1A54648BB5A34B6958FF079619E9 /* IQKeyboardManager.swift */; };
-		64FFC1F647245F61C405AE7AC1DA9D31 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8620D64C866311308FBA9346A762632 /* IQUIWindow+Hierarchy.swift */; };
-		76BF53B9E50521E8B1F9F19B89BC154A /* Pods-RecipeApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E47311A6C038BC254014D863F1661F10 /* Pods-RecipeApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F748DA8F98E61F788C3488D6BA25DD /* QuartzCore.framework */; };
-		866952184CCB9236E8D567A97A7C3224 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA25F6812870E0AB162B5C2813C585 /* IQUIViewController+Additions.swift */; };
-		87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4815A5311BB4F5A80CBC97E35DC45146 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88A25F661A4435D57041D21700515CC6 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A2BEBE1808365A9FEE559472A96369 /* IQTextView.swift */; };
-		9B9C1A095D68E3B91BD38F910C6F2E7F /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A14225EC67EA5CF4BAC1055D82156CA /* IQKeyboardManagerConstants.swift */; };
-		9C178A996A6A0F14CF4B1F1D1BA4B2EB /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A81E6EFA6BC2081A333F7166DA783 /* IQUIView+IQKeyboardToolbar.swift */; };
-		A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */; };
-		B0EF72D8E2CB6594FEE4DB2600B32650 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFBC6B2D2F95582AA41F47CB2F0E5C0 /* IQKeyboardManagerSwift-dummy.m */; };
-		B1A7ADAE2CAEDA5D703CE5C6A6DA405B /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DE84ADE266F0A0A3A86B0D86912480 /* IQUITextFieldView+Additions.swift */; };
-		B37284EB5B2730125A61B3EBF51720D2 /* Pods-RecipeAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD970683245B126B01F6633EE0B2583A /* Pods-RecipeAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3292CC8DBF6352C2BF2B949CB548248F /* CoreGraphics.framework */; };
-		C40F6D2FE20755C045864C23F73260C8 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C7E61849068980960B20F5C1E8540 /* IQKeyboardReturnKeyHandler.swift */; };
-		C54EFAC295C408C9CB37D0E8F1FD579B /* Pods-RecipeAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F522D8964747C5BCC26C4BEA748F52D6 /* Pods-RecipeAppUITests-dummy.m */; };
-		CB29E86F679E9DDC5C5A1C89482701CA /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4D06240B2BDB9C7E458B547C8F467E /* IQPreviousNextView.swift */; };
-		CC93854C66A808596F5A3B58FDB49BF8 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4864ACE483BC0DAD425D2F0DA71CF29A /* IQNSArray+Sort.swift */; };
-		D1F4537608EB0F523F2EF5DC4C9DFEB9 /* Pods-RecipeAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5591DB83C9C0141DB113CCDD972B5FC /* Pods-RecipeAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3005960DDC06D8A0DCFDF29B29E28A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */; };
-		E7F02C00063CFBBC38F2E10BBBD0BDC7 /* Pods-RecipeApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEE2C2BEBEB820D3110E7E50BA23BD4 /* Pods-RecipeApp-dummy.m */; };
-		EC2CCB07B8CCEF669FAF345D29691030 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B45D63CBFBBF7281E54C59E1EB4BBA /* IQKeyboardManagerConstantsInternal.swift */; };
-		EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDBA94A94B982885ECCA1662BE8CD7CF /* UIKit.framework */; };
-		F48DD4AF7C254B7A2F67A690AF8EF143 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03885EEF600B1360A8DFEFD36D6A8C /* IQBarButtonItem.swift */; };
+		0564E54A6F03094F6F39F7D2325CE0D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */; };
+		102F4487BC4ADC3C2B56A0470E0A9468 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDF3D3D5230C9A256EFB3A692620DF /* IQKeyboardManagerConstantsInternal.swift */; };
+		157A89A2DC82745A97A07D7134BE905D /* Pods-RecipeAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4717521E50A9E674FB52E2927134925C /* Pods-RecipeAppTests-dummy.m */; };
+		259D6FC80BCFE785471F743B1F533970 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52249702A4EB3E44F5C2A3B32EB3351 /* IQNSArray+Sort.swift */; };
+		2964A4832ED09F9CB441D25FB2F7B76C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		3F091C427A3E96117C902E8EA143729E /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A5CDBF87B7FC22C6F2EE6CEE127A90 /* IQKeyboardManager.swift */; };
+		4737103B10A1C40C5301D0512B9310E4 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA49A8B2A0FDF50507FCDBA427241 /* IQKeyboardReturnKeyHandler.swift */; };
+		4C069FA7FAA45154DA92CF5DF3BCDCA9 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536896F384A2BA675B6BD7469F736C84 /* IQUITextFieldView+Additions.swift */; };
+		4F0CF2AD58CF0D08BC090E7AF0DD63D7 /* IQInvocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0703ED1615270F58F2ABF0257146867 /* IQInvocation.swift */; };
+		5044FEAEF09468B6964F9F37A1F1F45C /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DEE0EEBCD40B950DEFADEA2F75DACC /* IQPreviousNextView.swift */; };
+		62A85277D0462C43B80A05E8822794BB /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C65517808DEE1F47B99109E9B32CD67E /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74341DA37F4B926FDF4CB2599CAC547A /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77094E3ACA16F27F64782CBF6C1E00D5 /* IQUIViewController+Additions.swift */; };
+		7903B1D17348ADF5D75752F1A4B6ED32 /* Pods-RecipeApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D68BD25EF57459E2951EEF71DAB78DD /* Pods-RecipeApp-dummy.m */; };
+		7FB3576FD619DD256294BAD7E5F83CBE /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DE935414858B1C05BE42912989629 /* IQTextView.swift */; };
+		8323FB211013A6DA21F95A512EBEBF01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		84C73BDCB60C792556FBC63585E1B96C /* Pods-RecipeAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD68DD9B3E163AAB31FBE4B1CB84942 /* Pods-RecipeAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B439A47AA5FDEF67AD63BDDB808AC5A /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9323D28F6DC0393B09819932375921EC /* IQUIView+Hierarchy.swift */; };
+		8F92DE493E66A26C230C75F95BEB6C77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */; };
+		980E5594F8DBCE362764AEDC2F086E36 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B553995676587A697296D5959445F33C /* IQToolbar.swift */; };
+		9A0E8A37D48058B87A2F0A0D6AE55D6B /* Pods-RecipeApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A26C5B26F940B90E015F3AA81226C5B7 /* Pods-RecipeApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A24B111A2F18EB60FFFAE5C0648B1714 /* Pods-RecipeAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9E423585AF3A0FE01E79272E0DFF1 /* Pods-RecipeAppUITests-dummy.m */; };
+		AE3B246482DCD60BA846EA3CE983A1FB /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381AFD43F93606A681DF7DE15E90EE6 /* IQUIView+IQKeyboardToolbar.swift */; };
+		B98378C55379E1B92897F11A22E38443 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D24015E1E9C83F78B77F407B7F7409 /* IQKeyboardManagerSwift-dummy.m */; };
+		C04C5F1F1D6B337F87E157B55A747E41 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A7F14B207A145AB38B241070FCE9FC /* IQKeyboardManagerConstants.swift */; };
+		C0EB3776478AB80676E488BC9C9CDA3C /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3441F4918D32AC84DFC4E932CF041 /* IQUIScrollView+Additions.swift */; };
+		C208785A628ED163000C3E8C458CFEB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		C35DCE97EB77150C41E735DB57BD6616 /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB94EFF2CDE0ED6AC447479A5308F /* IQTitleBarButtonItem.swift */; };
+		DDE417BA9D13D2BB98316DF0512A1944 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF1D85416F7C01D69DFA1EC9078910 /* IQBarButtonItem.swift */; };
+		E2F241AE194191F06998ECFD8517ACB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */; };
+		F934A91008E1FC73C857D44B18100CD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		F9BDE51CB61FB20D9EBAFF64C1E964DF /* Pods-RecipeAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 93155590C49F62CB07F0FB33BED905B6 /* Pods-RecipeAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9E743E780F141BE9F421646F27B1FD86 /* PBXContainerItemProxy */ = {
+		99B92DADE0D9A774D22172264CF82D04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C235F77E101E742652CCF98FFDFA5182;
+			remoteGlobalIDString = 8E36E9575D911D1E5C78DA064D05B3CB;
+			remoteInfo = "Pods-RecipeApp";
+		};
+		9AB47CB3AA44F062FD90FDE6F28FEF24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5AFDBFF44C91B5332DDBF2B370A941E;
+			remoteInfo = CardIO;
+		};
+		A60159B3AF0A0B506C2B3C8C6B2A2E2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 567CA674524E8EC21855A87ED65D6541;
+			remoteInfo = "PayPal-iOS-SDK";
+		};
+		BA0E08EE52EBDD0D7308BD76C92E6914 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B490E7485944099E16C9CBD79119D1D4;
 			remoteInfo = IQKeyboardManagerSwift;
+		};
+		E58FD72814CC775EBB79032AEA534CB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E36E9575D911D1E5C78DA064D05B3CB;
+			remoteInfo = "Pods-RecipeApp";
+		};
+		EB8F48C5ADE8C792D0628EA31145446D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5AFDBFF44C91B5332DDBF2B370A941E;
+			remoteInfo = CardIO;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		012965D4D0F72644A2157AA812CAE560 /* libPayPalMobile.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPayPalMobile.a; path = PayPalMobile/libPayPalMobile.a; sourceTree = "<group>"; };
-		09D93F05811F260FE879F511C9656467 /* Pods-RecipeAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0BF4E15E8DBB980F45141097B2F77F90 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		0C0F4F65C40A0ECD847821AA30CE79D6 /* Pods-RecipeAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		0C136097AC8F97FD01F6D77B6CDE7799 /* CardIOView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOView.h; path = CardIO/CardIOView.h; sourceTree = "<group>"; };
-		10D5D7A01CF21566C5E90EF23A5D0FD0 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
-		1671592118685DCE8759A1541F43A696 /* Pods-RecipeApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeApp-resources.sh"; sourceTree = "<group>"; };
-		1AE8BF3E143D90CD38A698BA8182840B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20566F31B1861C3979011CC9BCE40D39 /* PayPalMobile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalMobile.h; path = PayPalMobile/PayPalMobile.h; sourceTree = "<group>"; };
-		206B2240E1173685F3E2C25F5D278CB7 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerDelegate.h; path = CardIO/CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
-		234D9523E12260C70925A1DA3B5CD070 /* PayPalConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalConfiguration.h; path = PayPalMobile/PayPalConfiguration.h; sourceTree = "<group>"; };
-		2F9415662A4DDAB50400F4FE098709E7 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOCreditCardInfo.h; path = CardIO/CardIOCreditCardInfo.h; sourceTree = "<group>"; };
-		2FED0187E67E385D1E97DB18FF334B21 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalProfileSharingViewController.h; path = PayPalMobile/PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
-		3292CC8DBF6352C2BF2B949CB548248F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		3682466670E2AEAC4992E5DE81BAA8A1 /* CardIODetectionMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIODetectionMode.h; path = CardIO/CardIODetectionMode.h; sourceTree = "<group>"; };
-		392D8216880879BBFFC90BD339DB9348 /* libopencv_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libopencv_core.a; path = CardIO/libopencv_core.a; sourceTree = "<group>"; };
-		3B2123506A35B4249A708FDAA5A2CCE3 /* Pods-RecipeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		442D669EEABC27BD6A8D9B8E9381D9BD /* Pods-RecipeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		44655BB21CC1950587433B5D95439FE4 /* Pods-RecipeAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4815A5311BB4F5A80CBC97E35DC45146 /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
-		4864ACE483BC0DAD425D2F0DA71CF29A /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
-		48A2BEBE1808365A9FEE559472A96369 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
-		4A14225EC67EA5CF4BAC1055D82156CA /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
-		4A3B21A00EDD6B20C71462DBF14E2A5F /* Pods-RecipeAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeAppTests-resources.sh"; sourceTree = "<group>"; };
-		4A77F5A6908BA8C045B50462A72ED294 /* Pods-RecipeApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		4D03885EEF600B1360A8DFEFD36D6A8C /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
-		528E1343AF795323273042DCE143F0BF /* Pods-RecipeApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RecipeApp.modulemap"; sourceTree = "<group>"; };
-		55776C70D1910FE9B5B6FBFEC156B706 /* Pods_RecipeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeAppUITests.framework; path = "Pods-RecipeAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		57E7F3F1F8F62E38E7E134F1B7B3F7DB /* Pods-RecipeApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeApp-acknowledgements.markdown"; sourceTree = "<group>"; };
-		5FC6163379F104DD984002F220E3E69A /* CardIOUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOUtilities.h; path = CardIO/CardIOUtilities.h; sourceTree = "<group>"; };
-		6285C737B6984EBFF4622A74CC69EEAB /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
-		6E19E90FB6E26A0FB8B650D6124EA398 /* Pods-RecipeAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeAppUITests-frameworks.sh"; sourceTree = "<group>"; };
-		709AEC5D59D35C1352F5BE1E712A3882 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		767E8E9C8FE04E95ECBD1DCFD555AC5E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7862A9A282E0131C9FEE77996EB8F32E /* Pods-RecipeAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeAppTests-dummy.m"; sourceTree = "<group>"; };
-		79F4D57ABF1DEAF1D70550C872B1DBD0 /* libopencv_imgproc.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = CardIO/libopencv_imgproc.a; sourceTree = "<group>"; };
-		80DE84ADE266F0A0A3A86B0D86912480 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
-		850C7E61849068980960B20F5C1E8540 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
-		85AA25F6812870E0AB162B5C2813C585 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
-		8A1661184DF5CF308CF8341CC71C3946 /* Pods-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		8BCEB976AB34CF74BE1DCECC5F8B40E7 /* Pods-RecipeAppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeAppUITests-resources.sh"; sourceTree = "<group>"; };
-		8D4D06240B2BDB9C7E458B547C8F467E /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
-		8D5FBE090CE6D0BFC21CED68103F4294 /* Pods-RecipeAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RecipeAppUITests.modulemap"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9430A6903BE10DD2A1E4BE7A1C27CDD4 /* Pods-RecipeAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		9DF887E7A120EE1A71915138C612FE8C /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalPaymentViewController.h; path = PayPalMobile/PayPalPaymentViewController.h; sourceTree = "<group>"; };
-		A1B45D63CBFBBF7281E54C59E1EB4BBA /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
-		A32DFC0FABF4B952FD032AF9D0321C34 /* Pods-RecipeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AB633F9C09A1957861D4839CC916E929 /* CardIO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIO.h; path = CardIO/CardIO.h; sourceTree = "<group>"; };
-		AC0462F951B3A34EF1A7B6547B747716 /* Pods-RecipeAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeAppTests-frameworks.sh"; sourceTree = "<group>"; };
-		AD47EF81286D43DA64FCE9674A9AE86D /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewController.h; path = CardIO/CardIOPaymentViewController.h; sourceTree = "<group>"; };
-		ADB722A4B448D951B3B734FA55098440 /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
-		AF03453F638B3AF68A8669662019656E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF24F92B9B9FC9ED32422C6DE1181CE2 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOViewDelegate.h; path = CardIO/CardIOViewDelegate.h; sourceTree = "<group>"; };
-		B101E900AA34921C4B62E1E57028A05F /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
-		B23A81E6EFA6BC2081A333F7166DA783 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
-		B7B6C956B661ADD0E7B3897ECC0F2AE0 /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
-		B8620D64C866311308FBA9346A762632 /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIWindow+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
-		BFDEB39CE63F2D266A36B5BEBBF87FA1 /* libCardIO.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libCardIO.a; path = CardIO/libCardIO.a; sourceTree = "<group>"; };
-		C26D8CA0B1DF4452F9EFFBBC7A5524DE /* PayPalPayment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = PayPalMobile/PayPalPayment.h; sourceTree = "<group>"; };
-		C70B17B2250D2B0A49758CE327C7F6F5 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8C9E64BA8F1A92B2B2FDB6612ACE177 /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
-		CD970683245B126B01F6633EE0B2583A /* Pods-RecipeAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeAppTests-umbrella.h"; sourceTree = "<group>"; };
-		D1E1E8176031CA747EFED25D13F0EEC7 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalFuturePaymentViewController.h; path = PayPalMobile/PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
-		D56F1BE555CCA470DADFD97EB6B85080 /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
-		D79C1A54648BB5A34B6958FF079619E9 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
-		D9C33B174B5FD60A7378B30F84F980D8 /* Pods-RecipeApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeApp-frameworks.sh"; sourceTree = "<group>"; };
-		DAFBC6B2D2F95582AA41F47CB2F0E5C0 /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
-		E16101DA3F4ECBAC3C889C8392F7099F /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
-		E47311A6C038BC254014D863F1661F10 /* Pods-RecipeApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeApp-umbrella.h"; sourceTree = "<group>"; };
-		E5591DB83C9C0141DB113CCDD972B5FC /* Pods-RecipeAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeAppUITests-umbrella.h"; sourceTree = "<group>"; };
-		E5F748DA8F98E61F788C3488D6BA25DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		E7ED3583E56E1C55606D87AC28B4395C /* Pods_RecipeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeAppTests.framework; path = "Pods-RecipeAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA4E4CA2AEBD94F711BE390A634AC77F /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
-		ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EDEE2C2BEBEB820D3110E7E50BA23BD4 /* Pods-RecipeApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeApp-dummy.m"; sourceTree = "<group>"; };
-		F522D8964747C5BCC26C4BEA748F52D6 /* Pods-RecipeAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeAppUITests-dummy.m"; sourceTree = "<group>"; };
-		F749CE445FFB01778D46E19BBB59E4D0 /* Pods_RecipeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeApp.framework; path = "Pods-RecipeApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8443544FA5A822139DBC5EB071068AF /* Pods-RecipeAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RecipeAppTests.modulemap"; sourceTree = "<group>"; };
-		FB4EC9D87C84FF868C7070E1E8DBAE45 /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalOAuthScopes.h; path = PayPalMobile/PayPalOAuthScopes.h; sourceTree = "<group>"; };
-		FDBA94A94B982885ECCA1662BE8CD7CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		02412398DEC60817E459402E27FF282E /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
+		076A853933D554F4B80EB614612DF010 /* libopencv_imgproc.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = CardIO/libopencv_imgproc.a; sourceTree = "<group>"; };
+		0782DCF445964060C6DAA2DCAECE3A06 /* Pods-RecipeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0ACE11D81D7EA20CA2EC6E22FBB3A913 /* PayPalPayment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = PayPalMobile/PayPalPayment.h; sourceTree = "<group>"; };
+		0DC9E423585AF3A0FE01E79272E0DFF1 /* Pods-RecipeAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeAppUITests-dummy.m"; sourceTree = "<group>"; };
+		12E9BDD892C51773C71C511FF076CC95 /* Pods-RecipeApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RecipeApp.modulemap"; sourceTree = "<group>"; };
+		169712C960BAA4A35CD6F8D40A027A78 /* Pods-RecipeAppUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppUITests-Info.plist"; sourceTree = "<group>"; };
+		190AFCF5D47116EE375E87AAA15E901A /* PayPalConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalConfiguration.h; path = PayPalMobile/PayPalConfiguration.h; sourceTree = "<group>"; };
+		19A7F14B207A145AB38B241070FCE9FC /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
+		19F669B658373A803C58EF96CB992B18 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalFuturePaymentViewController.h; path = PayPalMobile/PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
+		1A4D27A086A5A067B57D72DC53D127C7 /* Pods-RecipeAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1C1FC40C8F325797E422FDBEA2388193 /* CardIO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIO.h; path = CardIO/CardIO.h; sourceTree = "<group>"; };
+		20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		20CBE4E812D38C2072B9016EFD968DF2 /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
+		23EDF3D3D5230C9A256EFB3A692620DF /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		25A5CDBF87B7FC22C6F2EE6CEE127A90 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
+		2F588FD429634B65BF19D6323ABDDFC8 /* IQKeyboardManagerSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IQKeyboardManagerSwift-Info.plist"; sourceTree = "<group>"; };
+		313163516C75C25D36B02FDA3317AF7B /* CardIOUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOUtilities.h; path = CardIO/CardIOUtilities.h; sourceTree = "<group>"; };
+		322A4E4927BC8F9992392042CE85E63B /* Pods_RecipeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeAppTests.framework; path = "Pods-RecipeAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		368E71A8ACC20DC690643732DBE1B972 /* libCardIO.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libCardIO.a; path = CardIO/libCardIO.a; sourceTree = "<group>"; };
+		36DEE0EEBCD40B950DEFADEA2F75DACC /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
+		42CD8886A109A99C28509ACEFF0FAE8D /* CardIOView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOView.h; path = CardIO/CardIOView.h; sourceTree = "<group>"; };
+		447CC1B4B2C6A015D2B719C588138058 /* Pods_RecipeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeApp.framework; path = "Pods-RecipeApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4717521E50A9E674FB52E2927134925C /* Pods-RecipeAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeAppTests-dummy.m"; sourceTree = "<group>"; };
+		494EB94EFF2CDE0ED6AC447479A5308F /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		4D35A4F912CB36213FFCC27C5F48D18E /* CardIODetectionMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIODetectionMode.h; path = CardIO/CardIODetectionMode.h; sourceTree = "<group>"; };
+		50307CBF1741A78715769983BB154700 /* Pods-RecipeApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		525CA49A8B2A0FDF50507FCDBA427241 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		536896F384A2BA675B6BD7469F736C84 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5B4DE935414858B1C05BE42912989629 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
+		5B8C7DFDA4FE56AF69817A468E1FA904 /* Pods-RecipeAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5CDDD8E4B4674F870A9A3D1B61C6ADAD /* Pods-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D051465C14BE1B4A562A7CBB1553544 /* libopencv_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libopencv_core.a; path = CardIO/libopencv_core.a; sourceTree = "<group>"; };
+		6A8B87C5AFA8DBDF26F1A26C5586CE79 /* Pods-RecipeApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeApp-Info.plist"; sourceTree = "<group>"; };
+		6C49B877B710C89111B223839E06F8E9 /* Pods-RecipeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D180A9821C646BDB5CAC5FB2FF166C5 /* Pods-RecipeAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RecipeAppUITests.modulemap"; sourceTree = "<group>"; };
+		7381AFD43F93606A681DF7DE15E90EE6 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
+		762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		77094E3ACA16F27F64782CBF6C1E00D5 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		7A647D446A9B718000607B6574DF1B75 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewController.h; path = CardIO/CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		7A93C0D84AE1737D114739E71FFE0160 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOCreditCardInfo.h; path = CardIO/CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		7D68BD25EF57459E2951EEF71DAB78DD /* Pods-RecipeApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecipeApp-dummy.m"; sourceTree = "<group>"; };
+		833415A06E393D6DE3A2F81E131ECD26 /* Pods-RecipeAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RecipeAppTests.modulemap"; sourceTree = "<group>"; };
+		86BF1D85416F7C01D69DFA1EC9078910 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
+		92E68F9508AFF7313041BFB3663E96FE /* CardIO.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CardIO.xcconfig; sourceTree = "<group>"; };
+		93155590C49F62CB07F0FB33BED905B6 /* Pods-RecipeAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeAppUITests-umbrella.h"; sourceTree = "<group>"; };
+		9323D28F6DC0393B09819932375921EC /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		933193AC3EC02BD35A574E39FF146AE4 /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
+		9635E0656F9BC1AB1D862A29E9636651 /* PayPalMobile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalMobile.h; path = PayPalMobile/PayPalMobile.h; sourceTree = "<group>"; };
+		992C82FDE3805ACCC9C742AF230C5F48 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerDelegate.h; path = CardIO/CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FE3441F4918D32AC84DFC4E932CF041 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		A1B5F9278BE4AFD9493DD3D08EE8E2D1 /* Pods-RecipeAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A26C5B26F940B90E015F3AA81226C5B7 /* Pods-RecipeApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeApp-umbrella.h"; sourceTree = "<group>"; };
+		A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1723F7E05DF470A6E4AB1AC38A8FC9 /* Pods-RecipeAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecipeAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B553995676587A697296D5959445F33C /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
+		B72B83AAD3BEAD243550FE42B741170F /* libPayPalMobile.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPayPalMobile.a; path = PayPalMobile/libPayPalMobile.a; sourceTree = "<group>"; };
+		B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		C3B1873F0AD231ACA71C8CA1EAD48C87 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOViewDelegate.h; path = CardIO/CardIOViewDelegate.h; sourceTree = "<group>"; };
+		C3D24015E1E9C83F78B77F407B7F7409 /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
+		C4ABAE88C9F47ECEF29A8FC472306972 /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C52249702A4EB3E44F5C2A3B32EB3351 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		C65517808DEE1F47B99109E9B32CD67E /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
+		CFD68DD9B3E163AAB31FBE4B1CB84942 /* Pods-RecipeAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecipeAppTests-umbrella.h"; sourceTree = "<group>"; };
+		D0703ED1615270F58F2ABF0257146867 /* IQInvocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQInvocation.swift; path = IQKeyboardManagerSwift/IQToolbar/IQInvocation.swift; sourceTree = "<group>"; };
+		D33ACF13D3C2DD6C685116CC21A75A50 /* Pods-RecipeAppTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeAppTests-Info.plist"; sourceTree = "<group>"; };
+		E0C17281EF1E67BB870FB6C748D793C2 /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
+		E4903EA3872329C7613B13CA5BCE8697 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalPaymentViewController.h; path = PayPalMobile/PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		EBCB9D34E1D4AB68712FF7F8AD43242E /* Pods-RecipeApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecipeApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		EF15A7ECCBEA6B30298712E7388F604C /* Pods-RecipeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecipeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F3F60215B80023F4C6C530E739533AB7 /* Pods_RecipeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RecipeAppUITests.framework; path = "Pods-RecipeAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F70F479CA4CB268CA8BAEF8F38C6C0A5 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalProfileSharingViewController.h; path = PayPalMobile/PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		FC0A288422654A947DC0565AB0414A41 /* PayPal-iOS-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "PayPal-iOS-SDK.xcconfig"; sourceTree = "<group>"; };
+		FD8CEBC146A0E98B012AC13CF37775E0 /* Pods-RecipeApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecipeApp-frameworks.sh"; sourceTree = "<group>"; };
+		FDADFEBEAB56A8AD8D62A64B2E2015F6 /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalOAuthScopes.h; path = PayPalMobile/PayPalOAuthScopes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3A7B577388563AA5509CC7AF777E0E6F /* Frameworks */ = {
+		17314F4E90A2EF9257E545B3B04BA089 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B8A65D0E78D315DDD3299A680D700B1 /* Foundation.framework in Frameworks */,
+				8323FB211013A6DA21F95A512EBEBF01 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */ = {
+		2C2292E431F316076553538B7FBB63C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */,
-				A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */,
-				81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */,
-				EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */,
+				0564E54A6F03094F6F39F7D2325CE0D5 /* CoreGraphics.framework in Frameworks */,
+				2964A4832ED09F9CB441D25FB2F7B76C /* Foundation.framework in Frameworks */,
+				8F92DE493E66A26C230C75F95BEB6C77 /* QuartzCore.framework in Frameworks */,
+				E2F241AE194191F06998ECFD8517ACB9 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C11140E341599554D3444FBBF81A4F5 /* Frameworks */ = {
+		5129CBA6A0FFD22D04B1157FA9A350DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3005960DDC06D8A0DCFDF29B29E28A3 /* Foundation.framework in Frameworks */,
+				F934A91008E1FC73C857D44B18100CD8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6B470D4A34475ECE7DE4BC228D5FD53 /* Frameworks */ = {
+		FF9F44400BCE413D654B47BA0E4FB831 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FB212D30B59EBDC644FDC305250AF8 /* Foundation.framework in Frameworks */,
+				C208785A628ED163000C3E8C458CFEB6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+		216D11D6253026459814863746CC99A1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8F8FEF3140598EAB2B3D56BB84B5389A /* iOS */,
+				20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */,
+				762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */,
+				B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */,
+				56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */,
 			);
-			name = Frameworks;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		20DDA40993365480E61A3CCA481241C7 /* Targets Support Files */ = {
+		2AA58C391C02759DA57D10AB9EA88BDD /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				56A923F2EEDDBC289DE83DA3D9D92D9B /* Pods-RecipeApp */,
-				7F4DFBDE172992A2E279A9BC565705C6 /* Pods-RecipeAppTests */,
-				BB91D4C612E72AD54B2A5359581A89D0 /* Pods-RecipeAppUITests */,
+				190AFCF5D47116EE375E87AAA15E901A /* PayPalConfiguration.h */,
+				19F669B658373A803C58EF96CB992B18 /* PayPalFuturePaymentViewController.h */,
+				9635E0656F9BC1AB1D862A29E9636651 /* PayPalMobile.h */,
+				FDADFEBEAB56A8AD8D62A64B2E2015F6 /* PayPalOAuthScopes.h */,
+				0ACE11D81D7EA20CA2EC6E22FBB3A913 /* PayPalPayment.h */,
+				E4903EA3872329C7613B13CA5BCE8697 /* PayPalPaymentViewController.h */,
+				F70F479CA4CB268CA8BAEF8F38C6C0A5 /* PayPalProfileSharingViewController.h */,
+				93B56D419EC2FA3FCB9BEB28F7D440A0 /* Frameworks */,
 			);
-			name = "Targets Support Files";
+			name = Core;
 			sourceTree = "<group>";
 		};
-		3679F77D38852F11A27641F61D1986A1 /* Pods */ = {
+		2D70F64C0F60D1385F3D60EF7E81CAE5 /* PayPal-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				6BE2DBF6F59181D102D6C6896889EF56 /* CardIO */,
-				541959C4F9042F5C772251167EA440C8 /* IQKeyboardManagerSwift */,
-				381AFB91688015EEB9668CD595D16EE2 /* PayPal-iOS-SDK */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		381AFB91688015EEB9668CD595D16EE2 /* PayPal-iOS-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				FBC45876FE177B9E341B2E4BB2A604FC /* Core */,
+				2AA58C391C02759DA57D10AB9EA88BDD /* Core */,
+				92E11A808CED87649FFFB539239EB7C3 /* Support Files */,
 			);
 			name = "PayPal-iOS-SDK";
 			path = "PayPal-iOS-SDK";
 			sourceTree = "<group>";
 		};
-		3BB364ACE259F2DC911935B15FF70AAB /* Frameworks */ = {
+		37FBAFFA08A013E7ACDBA06A901BBB90 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				012965D4D0F72644A2157AA812CAE560 /* libPayPalMobile.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5299EBBB6BA967ED12C8358A1F6160CA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C70B17B2250D2B0A49758CE327C7F6F5 /* IQKeyboardManagerSwift.framework */,
-				F749CE445FFB01778D46E19BBB59E4D0 /* Pods_RecipeApp.framework */,
-				E7ED3583E56E1C55606D87AC28B4395C /* Pods_RecipeAppTests.framework */,
-				55776C70D1910FE9B5B6FBFEC156B706 /* Pods_RecipeAppUITests.framework */,
+				A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */,
+				447CC1B4B2C6A015D2B719C588138058 /* Pods_RecipeApp.framework */,
+				322A4E4927BC8F9992392042CE85E63B /* Pods_RecipeAppTests.framework */,
+				F3F60215B80023F4C6C530E739533AB7 /* Pods_RecipeAppUITests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		541959C4F9042F5C772251167EA440C8 /* IQKeyboardManagerSwift */ = {
+		4DD077CF98143A36B617F1569BF88A68 /* Pods-RecipeAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4D03885EEF600B1360A8DFEFD36D6A8C /* IQBarButtonItem.swift */,
-				D79C1A54648BB5A34B6958FF079619E9 /* IQKeyboardManager.swift */,
-				4A14225EC67EA5CF4BAC1055D82156CA /* IQKeyboardManagerConstants.swift */,
-				A1B45D63CBFBBF7281E54C59E1EB4BBA /* IQKeyboardManagerConstantsInternal.swift */,
-				850C7E61849068980960B20F5C1E8540 /* IQKeyboardReturnKeyHandler.swift */,
-				4864ACE483BC0DAD425D2F0DA71CF29A /* IQNSArray+Sort.swift */,
-				8D4D06240B2BDB9C7E458B547C8F467E /* IQPreviousNextView.swift */,
-				48A2BEBE1808365A9FEE559472A96369 /* IQTextView.swift */,
-				B101E900AA34921C4B62E1E57028A05F /* IQTitleBarButtonItem.swift */,
-				ADB722A4B448D951B3B734FA55098440 /* IQToolbar.swift */,
-				10D5D7A01CF21566C5E90EF23A5D0FD0 /* IQUIScrollView+Additions.swift */,
-				80DE84ADE266F0A0A3A86B0D86912480 /* IQUITextFieldView+Additions.swift */,
-				EA4E4CA2AEBD94F711BE390A634AC77F /* IQUIView+Hierarchy.swift */,
-				B23A81E6EFA6BC2081A333F7166DA783 /* IQUIView+IQKeyboardToolbar.swift */,
-				85AA25F6812870E0AB162B5C2813C585 /* IQUIViewController+Additions.swift */,
-				B8620D64C866311308FBA9346A762632 /* IQUIWindow+Hierarchy.swift */,
-				BF38C689FA841274FD271B0DC8B8AF33 /* Resources */,
-				82FB23F1A9571D715AA2666EF6E8EAA3 /* Support Files */,
-			);
-			name = IQKeyboardManagerSwift;
-			path = IQKeyboardManagerSwift;
-			sourceTree = "<group>";
-		};
-		56A923F2EEDDBC289DE83DA3D9D92D9B /* Pods-RecipeApp */ = {
-			isa = PBXGroup;
-			children = (
-				709AEC5D59D35C1352F5BE1E712A3882 /* Info.plist */,
-				528E1343AF795323273042DCE143F0BF /* Pods-RecipeApp.modulemap */,
-				57E7F3F1F8F62E38E7E134F1B7B3F7DB /* Pods-RecipeApp-acknowledgements.markdown */,
-				4A77F5A6908BA8C045B50462A72ED294 /* Pods-RecipeApp-acknowledgements.plist */,
-				EDEE2C2BEBEB820D3110E7E50BA23BD4 /* Pods-RecipeApp-dummy.m */,
-				D9C33B174B5FD60A7378B30F84F980D8 /* Pods-RecipeApp-frameworks.sh */,
-				1671592118685DCE8759A1541F43A696 /* Pods-RecipeApp-resources.sh */,
-				E47311A6C038BC254014D863F1661F10 /* Pods-RecipeApp-umbrella.h */,
-				C8C9E64BA8F1A92B2B2FDB6612ACE177 /* Pods-RecipeApp.debug.xcconfig */,
-				6285C737B6984EBFF4622A74CC69EEAB /* Pods-RecipeApp.release.xcconfig */,
-			);
-			name = "Pods-RecipeApp";
-			path = "Target Support Files/Pods-RecipeApp";
-			sourceTree = "<group>";
-		};
-		6BE2DBF6F59181D102D6C6896889EF56 /* CardIO */ = {
-			isa = PBXGroup;
-			children = (
-				AB633F9C09A1957861D4839CC916E929 /* CardIO.h */,
-				2F9415662A4DDAB50400F4FE098709E7 /* CardIOCreditCardInfo.h */,
-				3682466670E2AEAC4992E5DE81BAA8A1 /* CardIODetectionMode.h */,
-				AD47EF81286D43DA64FCE9674A9AE86D /* CardIOPaymentViewController.h */,
-				206B2240E1173685F3E2C25F5D278CB7 /* CardIOPaymentViewControllerDelegate.h */,
-				5FC6163379F104DD984002F220E3E69A /* CardIOUtilities.h */,
-				0C136097AC8F97FD01F6D77B6CDE7799 /* CardIOView.h */,
-				AF24F92B9B9FC9ED32422C6DE1181CE2 /* CardIOViewDelegate.h */,
-				F772024D03771976EACEF280B61DD363 /* Frameworks */,
-			);
-			name = CardIO;
-			path = CardIO;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				3679F77D38852F11A27641F61D1986A1 /* Pods */,
-				5299EBBB6BA967ED12C8358A1F6160CA /* Products */,
-				20DDA40993365480E61A3CCA481241C7 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		7F4DFBDE172992A2E279A9BC565705C6 /* Pods-RecipeAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				1AE8BF3E143D90CD38A698BA8182840B /* Info.plist */,
-				F8443544FA5A822139DBC5EB071068AF /* Pods-RecipeAppTests.modulemap */,
-				44655BB21CC1950587433B5D95439FE4 /* Pods-RecipeAppTests-acknowledgements.markdown */,
-				0C0F4F65C40A0ECD847821AA30CE79D6 /* Pods-RecipeAppTests-acknowledgements.plist */,
-				7862A9A282E0131C9FEE77996EB8F32E /* Pods-RecipeAppTests-dummy.m */,
-				AC0462F951B3A34EF1A7B6547B747716 /* Pods-RecipeAppTests-frameworks.sh */,
-				4A3B21A00EDD6B20C71462DBF14E2A5F /* Pods-RecipeAppTests-resources.sh */,
-				CD970683245B126B01F6633EE0B2583A /* Pods-RecipeAppTests-umbrella.h */,
-				3B2123506A35B4249A708FDAA5A2CCE3 /* Pods-RecipeAppTests.debug.xcconfig */,
-				8A1661184DF5CF308CF8341CC71C3946 /* Pods-RecipeAppTests.release.xcconfig */,
+				833415A06E393D6DE3A2F81E131ECD26 /* Pods-RecipeAppTests.modulemap */,
+				AA1723F7E05DF470A6E4AB1AC38A8FC9 /* Pods-RecipeAppTests-acknowledgements.markdown */,
+				A1B5F9278BE4AFD9493DD3D08EE8E2D1 /* Pods-RecipeAppTests-acknowledgements.plist */,
+				4717521E50A9E674FB52E2927134925C /* Pods-RecipeAppTests-dummy.m */,
+				D33ACF13D3C2DD6C685116CC21A75A50 /* Pods-RecipeAppTests-Info.plist */,
+				CFD68DD9B3E163AAB31FBE4B1CB84942 /* Pods-RecipeAppTests-umbrella.h */,
+				0782DCF445964060C6DAA2DCAECE3A06 /* Pods-RecipeAppTests.debug.xcconfig */,
+				5CDDD8E4B4674F870A9A3D1B61C6ADAD /* Pods-RecipeAppTests.release.xcconfig */,
 			);
 			name = "Pods-RecipeAppTests";
 			path = "Target Support Files/Pods-RecipeAppTests";
 			sourceTree = "<group>";
 		};
-		82FB23F1A9571D715AA2666EF6E8EAA3 /* Support Files */ = {
+		61210BC4CFED247EA89A202945B84B8E /* CardIO */ = {
 			isa = PBXGroup;
 			children = (
-				767E8E9C8FE04E95ECBD1DCFD555AC5E /* Info.plist */,
-				D56F1BE555CCA470DADFD97EB6B85080 /* IQKeyboardManagerSwift.modulemap */,
-				E16101DA3F4ECBAC3C889C8392F7099F /* IQKeyboardManagerSwift.xcconfig */,
-				DAFBC6B2D2F95582AA41F47CB2F0E5C0 /* IQKeyboardManagerSwift-dummy.m */,
-				B7B6C956B661ADD0E7B3897ECC0F2AE0 /* IQKeyboardManagerSwift-prefix.pch */,
-				4815A5311BB4F5A80CBC97E35DC45146 /* IQKeyboardManagerSwift-umbrella.h */,
+				1C1FC40C8F325797E422FDBEA2388193 /* CardIO.h */,
+				7A93C0D84AE1737D114739E71FFE0160 /* CardIOCreditCardInfo.h */,
+				4D35A4F912CB36213FFCC27C5F48D18E /* CardIODetectionMode.h */,
+				7A647D446A9B718000607B6574DF1B75 /* CardIOPaymentViewController.h */,
+				992C82FDE3805ACCC9C742AF230C5F48 /* CardIOPaymentViewControllerDelegate.h */,
+				313163516C75C25D36B02FDA3317AF7B /* CardIOUtilities.h */,
+				42CD8886A109A99C28509ACEFF0FAE8D /* CardIOView.h */,
+				C3B1873F0AD231ACA71C8CA1EAD48C87 /* CardIOViewDelegate.h */,
+				9ECAA39A41FD5CC288C92CBFD90CCAA8 /* Frameworks */,
+				A1E82C868D5ECB0978980BE182037EC5 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/IQKeyboardManagerSwift";
+			name = CardIO;
+			path = CardIO;
 			sourceTree = "<group>";
 		};
-		8F8FEF3140598EAB2B3D56BB84B5389A /* iOS */ = {
+		846933D780C2322E89EE617E72CB688E /* Pods-RecipeAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3292CC8DBF6352C2BF2B949CB548248F /* CoreGraphics.framework */,
-				ECB56A22A987E846FF65248DA108CAD2 /* Foundation.framework */,
-				E5F748DA8F98E61F788C3488D6BA25DD /* QuartzCore.framework */,
-				FDBA94A94B982885ECCA1662BE8CD7CF /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		BB91D4C612E72AD54B2A5359581A89D0 /* Pods-RecipeAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AF03453F638B3AF68A8669662019656E /* Info.plist */,
-				8D5FBE090CE6D0BFC21CED68103F4294 /* Pods-RecipeAppUITests.modulemap */,
-				09D93F05811F260FE879F511C9656467 /* Pods-RecipeAppUITests-acknowledgements.markdown */,
-				9430A6903BE10DD2A1E4BE7A1C27CDD4 /* Pods-RecipeAppUITests-acknowledgements.plist */,
-				F522D8964747C5BCC26C4BEA748F52D6 /* Pods-RecipeAppUITests-dummy.m */,
-				6E19E90FB6E26A0FB8B650D6124EA398 /* Pods-RecipeAppUITests-frameworks.sh */,
-				8BCEB976AB34CF74BE1DCECC5F8B40E7 /* Pods-RecipeAppUITests-resources.sh */,
-				E5591DB83C9C0141DB113CCDD972B5FC /* Pods-RecipeAppUITests-umbrella.h */,
-				442D669EEABC27BD6A8D9B8E9381D9BD /* Pods-RecipeAppUITests.debug.xcconfig */,
-				A32DFC0FABF4B952FD032AF9D0321C34 /* Pods-RecipeAppUITests.release.xcconfig */,
+				6D180A9821C646BDB5CAC5FB2FF166C5 /* Pods-RecipeAppUITests.modulemap */,
+				5B8C7DFDA4FE56AF69817A468E1FA904 /* Pods-RecipeAppUITests-acknowledgements.markdown */,
+				1A4D27A086A5A067B57D72DC53D127C7 /* Pods-RecipeAppUITests-acknowledgements.plist */,
+				0DC9E423585AF3A0FE01E79272E0DFF1 /* Pods-RecipeAppUITests-dummy.m */,
+				169712C960BAA4A35CD6F8D40A027A78 /* Pods-RecipeAppUITests-Info.plist */,
+				93155590C49F62CB07F0FB33BED905B6 /* Pods-RecipeAppUITests-umbrella.h */,
+				6C49B877B710C89111B223839E06F8E9 /* Pods-RecipeAppUITests.debug.xcconfig */,
+				EF15A7ECCBEA6B30298712E7388F604C /* Pods-RecipeAppUITests.release.xcconfig */,
 			);
 			name = "Pods-RecipeAppUITests";
 			path = "Target Support Files/Pods-RecipeAppUITests";
 			sourceTree = "<group>";
 		};
-		BF38C689FA841274FD271B0DC8B8AF33 /* Resources */ = {
+		92E11A808CED87649FFFB539239EB7C3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0BF4E15E8DBB980F45141097B2F77F90 /* IQKeyboardManager.bundle */,
+				FC0A288422654A947DC0565AB0414A41 /* PayPal-iOS-SDK.xcconfig */,
 			);
-			name = Resources;
+			name = "Support Files";
+			path = "../Target Support Files/PayPal-iOS-SDK";
 			sourceTree = "<group>";
 		};
-		F772024D03771976EACEF280B61DD363 /* Frameworks */ = {
+		92F808A1029FEF3345C6FA74686A37A0 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFDEB39CE63F2D266A36B5BEBBF87FA1 /* libCardIO.a */,
-				392D8216880879BBFFC90BD339DB9348 /* libopencv_core.a */,
-				79F4D57ABF1DEAF1D70550C872B1DBD0 /* libopencv_imgproc.a */,
+				A672DE8C9B32ECA5D3D207DB55EC4C79 /* Pods-RecipeApp */,
+				4DD077CF98143A36B617F1569BF88A68 /* Pods-RecipeAppTests */,
+				846933D780C2322E89EE617E72CB688E /* Pods-RecipeAppUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		93B56D419EC2FA3FCB9BEB28F7D440A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B72B83AAD3BEAD243550FE42B741170F /* libPayPalMobile.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FBC45876FE177B9E341B2E4BB2A604FC /* Core */ = {
+		9ECAA39A41FD5CC288C92CBFD90CCAA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				234D9523E12260C70925A1DA3B5CD070 /* PayPalConfiguration.h */,
-				D1E1E8176031CA747EFED25D13F0EEC7 /* PayPalFuturePaymentViewController.h */,
-				20566F31B1861C3979011CC9BCE40D39 /* PayPalMobile.h */,
-				FB4EC9D87C84FF868C7070E1E8DBAE45 /* PayPalOAuthScopes.h */,
-				C26D8CA0B1DF4452F9EFFBBC7A5524DE /* PayPalPayment.h */,
-				9DF887E7A120EE1A71915138C612FE8C /* PayPalPaymentViewController.h */,
-				2FED0187E67E385D1E97DB18FF334B21 /* PayPalProfileSharingViewController.h */,
-				3BB364ACE259F2DC911935B15FF70AAB /* Frameworks */,
+				368E71A8ACC20DC690643732DBE1B972 /* libCardIO.a */,
+				5D051465C14BE1B4A562A7CBB1553544 /* libopencv_core.a */,
+				076A853933D554F4B80EB614612DF010 /* libopencv_imgproc.a */,
 			);
-			name = Core;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A08FA321CC444EAF0FF69B9D8F339BAF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				02412398DEC60817E459402E27FF282E /* IQKeyboardManagerSwift.modulemap */,
+				E0C17281EF1E67BB870FB6C748D793C2 /* IQKeyboardManagerSwift.xcconfig */,
+				C3D24015E1E9C83F78B77F407B7F7409 /* IQKeyboardManagerSwift-dummy.m */,
+				2F588FD429634B65BF19D6323ABDDFC8 /* IQKeyboardManagerSwift-Info.plist */,
+				933193AC3EC02BD35A574E39FF146AE4 /* IQKeyboardManagerSwift-prefix.pch */,
+				C65517808DEE1F47B99109E9B32CD67E /* IQKeyboardManagerSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IQKeyboardManagerSwift";
+			sourceTree = "<group>";
+		};
+		A1E82C868D5ECB0978980BE182037EC5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				92E68F9508AFF7313041BFB3663E96FE /* CardIO.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CardIO";
+			sourceTree = "<group>";
+		};
+		A672DE8C9B32ECA5D3D207DB55EC4C79 /* Pods-RecipeApp */ = {
+			isa = PBXGroup;
+			children = (
+				12E9BDD892C51773C71C511FF076CC95 /* Pods-RecipeApp.modulemap */,
+				50307CBF1741A78715769983BB154700 /* Pods-RecipeApp-acknowledgements.markdown */,
+				EBCB9D34E1D4AB68712FF7F8AD43242E /* Pods-RecipeApp-acknowledgements.plist */,
+				7D68BD25EF57459E2951EEF71DAB78DD /* Pods-RecipeApp-dummy.m */,
+				FD8CEBC146A0E98B012AC13CF37775E0 /* Pods-RecipeApp-frameworks.sh */,
+				6A8B87C5AFA8DBDF26F1A26C5586CE79 /* Pods-RecipeApp-Info.plist */,
+				A26C5B26F940B90E015F3AA81226C5B7 /* Pods-RecipeApp-umbrella.h */,
+				C4ABAE88C9F47ECEF29A8FC472306972 /* Pods-RecipeApp.debug.xcconfig */,
+				20CBE4E812D38C2072B9016EFD968DF2 /* Pods-RecipeApp.release.xcconfig */,
+			);
+			name = "Pods-RecipeApp";
+			path = "Target Support Files/Pods-RecipeApp";
+			sourceTree = "<group>";
+		};
+		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				216D11D6253026459814863746CC99A1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7062FFF9F04127C524CDBE5865CDB50 /* IQKeyboardManagerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				86BF1D85416F7C01D69DFA1EC9078910 /* IQBarButtonItem.swift */,
+				D0703ED1615270F58F2ABF0257146867 /* IQInvocation.swift */,
+				25A5CDBF87B7FC22C6F2EE6CEE127A90 /* IQKeyboardManager.swift */,
+				19A7F14B207A145AB38B241070FCE9FC /* IQKeyboardManagerConstants.swift */,
+				23EDF3D3D5230C9A256EFB3A692620DF /* IQKeyboardManagerConstantsInternal.swift */,
+				525CA49A8B2A0FDF50507FCDBA427241 /* IQKeyboardReturnKeyHandler.swift */,
+				C52249702A4EB3E44F5C2A3B32EB3351 /* IQNSArray+Sort.swift */,
+				36DEE0EEBCD40B950DEFADEA2F75DACC /* IQPreviousNextView.swift */,
+				5B4DE935414858B1C05BE42912989629 /* IQTextView.swift */,
+				494EB94EFF2CDE0ED6AC447479A5308F /* IQTitleBarButtonItem.swift */,
+				B553995676587A697296D5959445F33C /* IQToolbar.swift */,
+				9FE3441F4918D32AC84DFC4E932CF041 /* IQUIScrollView+Additions.swift */,
+				536896F384A2BA675B6BD7469F736C84 /* IQUITextFieldView+Additions.swift */,
+				9323D28F6DC0393B09819932375921EC /* IQUIView+Hierarchy.swift */,
+				7381AFD43F93606A681DF7DE15E90EE6 /* IQUIView+IQKeyboardToolbar.swift */,
+				77094E3ACA16F27F64782CBF6C1E00D5 /* IQUIViewController+Additions.swift */,
+				A08FA321CC444EAF0FF69B9D8F339BAF /* Support Files */,
+			);
+			name = IQKeyboardManagerSwift;
+			path = IQKeyboardManagerSwift;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
+				DD565483A63F389085AEFC956DFBDE46 /* Pods */,
+				37FBAFFA08A013E7ACDBA06A901BBB90 /* Products */,
+				92F808A1029FEF3345C6FA74686A37A0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DD565483A63F389085AEFC956DFBDE46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				61210BC4CFED247EA89A202945B84B8E /* CardIO */,
+				C7062FFF9F04127C524CDBE5865CDB50 /* IQKeyboardManagerSwift */,
+				2D70F64C0F60D1385F3D60EF7E81CAE5 /* PayPal-iOS-SDK */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6248E4A6C3501867966D5B92EF240E12 /* Headers */ = {
+		860FE26A8B2C89102472572ED8841DFF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1F4537608EB0F523F2EF5DC4C9DFEB9 /* Pods-RecipeAppUITests-umbrella.h in Headers */,
+				84C73BDCB60C792556FBC63585E1B96C /* Pods-RecipeAppTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5A1EA2F0030993A0DB1F7DF07D21E66 /* Headers */ = {
+		AAFA9583C7F9814F07CF20252AF351A4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37284EB5B2730125A61B3EBF51720D2 /* Pods-RecipeAppTests-umbrella.h in Headers */,
+				F9BDE51CB61FB20D9EBAFF64C1E964DF /* Pods-RecipeAppUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C82B5F04767CB991E84734A54D0ABA5B /* Headers */ = {
+		E8E0A6353E06E7FAF6848C6D58CAF7BD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */,
+				9A0E8A37D48058B87A2F0A0D6AE55D6B /* Pods-RecipeApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF8EFC506D6FF2B4464B594AB8C09ABD /* Headers */ = {
+		F4A6429FF0F9608A16E4D96813E85F23 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76BF53B9E50521E8B1F9F19B89BC154A /* Pods-RecipeApp-umbrella.h in Headers */,
+				62A85277D0462C43B80A05E8822794BB /* IQKeyboardManagerSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		163CACF63595D45785CCA4792719456B /* Pods-RecipeApp */ = {
+		3AE695B011F1D91F3A3A77CC90D70D3E /* Pods-RecipeAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 752BAA713B081EC04D175FCAFC34BD4C /* Build configuration list for PBXNativeTarget "Pods-RecipeApp" */;
+			buildConfigurationList = 02642E4BA91884E7578FBB0BC8DE305A /* Build configuration list for PBXNativeTarget "Pods-RecipeAppTests" */;
 			buildPhases = (
-				2A40B796845157D45CF820364A5AD7F2 /* Sources */,
-				8C11140E341599554D3444FBBF81A4F5 /* Frameworks */,
-				DF8EFC506D6FF2B4464B594AB8C09ABD /* Headers */,
+				860FE26A8B2C89102472572ED8841DFF /* Headers */,
+				9D490F927A6411ABCBDF3AF80CF6FDE8 /* Sources */,
+				17314F4E90A2EF9257E545B3B04BA089 /* Frameworks */,
+				1455C7FE273C28393220261A268C0C05 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6FF4228C14ECAB97A4725BC5D15D6B5F /* PBXTargetDependency */,
+				E91DFEEBF37F4DCF7590593512D1A7B2 /* PBXTargetDependency */,
 			);
-			name = "Pods-RecipeApp";
-			productName = "Pods-RecipeApp";
-			productReference = F749CE445FFB01778D46E19BBB59E4D0 /* Pods_RecipeApp.framework */;
+			name = "Pods-RecipeAppTests";
+			productName = "Pods-RecipeAppTests";
+			productReference = 322A4E4927BC8F9992392042CE85E63B /* Pods_RecipeAppTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A3E2BEDDD7F5821A6B8106812D0129D8 /* Pods-RecipeAppUITests */ = {
+		72F36EB024D508F12DADE2328C6B7D9D /* Pods-RecipeAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 641AEE36B67DA196CF1459C6F62A1716 /* Build configuration list for PBXNativeTarget "Pods-RecipeAppUITests" */;
+			buildConfigurationList = 459A8C45177D746F1BEC5CD92E5DF733 /* Build configuration list for PBXNativeTarget "Pods-RecipeAppUITests" */;
 			buildPhases = (
-				C3B9395429F8EFDEAC0DB7F8A0DB1412 /* Sources */,
-				C6B470D4A34475ECE7DE4BC228D5FD53 /* Frameworks */,
-				6248E4A6C3501867966D5B92EF240E12 /* Headers */,
+				AAFA9583C7F9814F07CF20252AF351A4 /* Headers */,
+				B5DDB29BF8DC29A67EAC87C1647E0E8C /* Sources */,
+				FF9F44400BCE413D654B47BA0E4FB831 /* Frameworks */,
+				7ED91B6FECD35185D16F3F67DDFE4EC4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3910D15B083BBB4C4004993C908A0D8F /* PBXTargetDependency */,
 			);
 			name = "Pods-RecipeAppUITests";
 			productName = "Pods-RecipeAppUITests";
-			productReference = 55776C70D1910FE9B5B6FBFEC156B706 /* Pods_RecipeAppUITests.framework */;
+			productReference = F3F60215B80023F4C6C530E739533AB7 /* Pods_RecipeAppUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */ = {
+		8E36E9575D911D1E5C78DA064D05B3CB /* Pods-RecipeApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */;
+			buildConfigurationList = 2E95944C76AE57E4DC4E69EE14C2352B /* Build configuration list for PBXNativeTarget "Pods-RecipeApp" */;
 			buildPhases = (
-				B0CAA73D50E134E589B648ABF6682839 /* Sources */,
-				81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */,
-				918D58E08AC7FD6CC66B75FF048005F7 /* Resources */,
-				C82B5F04767CB991E84734A54D0ABA5B /* Headers */,
+				E8E0A6353E06E7FAF6848C6D58CAF7BD /* Headers */,
+				A1E44568134078DC1554E4615747064E /* Sources */,
+				5129CBA6A0FFD22D04B1157FA9A350DF /* Frameworks */,
+				648EB14F76CFC2118727F33AF96EBBBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF1989491BD9E25D4B414E4A2630B8A2 /* PBXTargetDependency */,
+				129577211E9661DA2AA51029F30CE1D7 /* PBXTargetDependency */,
+				693ED907A617622113A6CC273186F909 /* PBXTargetDependency */,
+			);
+			name = "Pods-RecipeApp";
+			productName = "Pods-RecipeApp";
+			productReference = 447CC1B4B2C6A015D2B719C588138058 /* Pods_RecipeApp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B490E7485944099E16C9CBD79119D1D4 /* IQKeyboardManagerSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7155AE59A19533F60ECE3B4045B01F0 /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */;
+			buildPhases = (
+				F4A6429FF0F9608A16E4D96813E85F23 /* Headers */,
+				6C02E9CBF87ED8A1C6D8ED4C951F75A4 /* Sources */,
+				2C2292E431F316076553538B7FBB63C3 /* Frameworks */,
+				FAA5DA81F8292820D65F403E941074FC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -484,230 +566,165 @@
 			);
 			name = IQKeyboardManagerSwift;
 			productName = IQKeyboardManagerSwift;
-			productReference = C70B17B2250D2B0A49758CE327C7F6F5 /* IQKeyboardManagerSwift.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EB7A268C5F988A4D5F24005F0EA35D72 /* Pods-RecipeAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 89C758810A90D2003E3559D60A1D229C /* Build configuration list for PBXNativeTarget "Pods-RecipeAppTests" */;
-			buildPhases = (
-				5C7105F998EFF48A8E2EDBE1919EE913 /* Sources */,
-				3A7B577388563AA5509CC7AF777E0E6F /* Frameworks */,
-				A5A1EA2F0030993A0DB1F7DF07D21E66 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-RecipeAppTests";
-			productName = "Pods-RecipeAppTests";
-			productReference = E7ED3583E56E1C55606D87AC28B4395C /* Pods_RecipeAppTests.framework */;
+			productReference = A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 5299EBBB6BA967ED12C8358A1F6160CA /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 37FBAFFA08A013E7ACDBA06A901BBB90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */,
-				163CACF63595D45785CCA4792719456B /* Pods-RecipeApp */,
-				EB7A268C5F988A4D5F24005F0EA35D72 /* Pods-RecipeAppTests */,
-				A3E2BEDDD7F5821A6B8106812D0129D8 /* Pods-RecipeAppUITests */,
+				A5AFDBFF44C91B5332DDBF2B370A941E /* CardIO */,
+				B490E7485944099E16C9CBD79119D1D4 /* IQKeyboardManagerSwift */,
+				567CA674524E8EC21855A87ED65D6541 /* PayPal-iOS-SDK */,
+				8E36E9575D911D1E5C78DA064D05B3CB /* Pods-RecipeApp */,
+				3AE695B011F1D91F3A3A77CC90D70D3E /* Pods-RecipeAppTests */,
+				72F36EB024D508F12DADE2328C6B7D9D /* Pods-RecipeAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		918D58E08AC7FD6CC66B75FF048005F7 /* Resources */ = {
+		1455C7FE273C28393220261A268C0C05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		648EB14F76CFC2118727F33AF96EBBBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED91B6FECD35185D16F3F67DDFE4EC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAA5DA81F8292820D65F403E941074FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2A40B796845157D45CF820364A5AD7F2 /* Sources */ = {
+		6C02E9CBF87ED8A1C6D8ED4C951F75A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7F02C00063CFBBC38F2E10BBBD0BDC7 /* Pods-RecipeApp-dummy.m in Sources */,
+				DDE417BA9D13D2BB98316DF0512A1944 /* IQBarButtonItem.swift in Sources */,
+				4F0CF2AD58CF0D08BC090E7AF0DD63D7 /* IQInvocation.swift in Sources */,
+				3F091C427A3E96117C902E8EA143729E /* IQKeyboardManager.swift in Sources */,
+				C04C5F1F1D6B337F87E157B55A747E41 /* IQKeyboardManagerConstants.swift in Sources */,
+				102F4487BC4ADC3C2B56A0470E0A9468 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				B98378C55379E1B92897F11A22E38443 /* IQKeyboardManagerSwift-dummy.m in Sources */,
+				4737103B10A1C40C5301D0512B9310E4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				259D6FC80BCFE785471F743B1F533970 /* IQNSArray+Sort.swift in Sources */,
+				5044FEAEF09468B6964F9F37A1F1F45C /* IQPreviousNextView.swift in Sources */,
+				7FB3576FD619DD256294BAD7E5F83CBE /* IQTextView.swift in Sources */,
+				C35DCE97EB77150C41E735DB57BD6616 /* IQTitleBarButtonItem.swift in Sources */,
+				980E5594F8DBCE362764AEDC2F086E36 /* IQToolbar.swift in Sources */,
+				C0EB3776478AB80676E488BC9C9CDA3C /* IQUIScrollView+Additions.swift in Sources */,
+				4C069FA7FAA45154DA92CF5DF3BCDCA9 /* IQUITextFieldView+Additions.swift in Sources */,
+				8B439A47AA5FDEF67AD63BDDB808AC5A /* IQUIView+Hierarchy.swift in Sources */,
+				AE3B246482DCD60BA846EA3CE983A1FB /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				74341DA37F4B926FDF4CB2599CAC547A /* IQUIViewController+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C7105F998EFF48A8E2EDBE1919EE913 /* Sources */ = {
+		9D490F927A6411ABCBDF3AF80CF6FDE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7F690F64330C7F5AA02B1D9AE6405E /* Pods-RecipeAppTests-dummy.m in Sources */,
+				157A89A2DC82745A97A07D7134BE905D /* Pods-RecipeAppTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0CAA73D50E134E589B648ABF6682839 /* Sources */ = {
+		A1E44568134078DC1554E4615747064E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F48DD4AF7C254B7A2F67A690AF8EF143 /* IQBarButtonItem.swift in Sources */,
-				4882783C5576C5D43CE79C03DE33C3DD /* IQKeyboardManager.swift in Sources */,
-				9B9C1A095D68E3B91BD38F910C6F2E7F /* IQKeyboardManagerConstants.swift in Sources */,
-				EC2CCB07B8CCEF669FAF345D29691030 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
-				B0EF72D8E2CB6594FEE4DB2600B32650 /* IQKeyboardManagerSwift-dummy.m in Sources */,
-				C40F6D2FE20755C045864C23F73260C8 /* IQKeyboardReturnKeyHandler.swift in Sources */,
-				CC93854C66A808596F5A3B58FDB49BF8 /* IQNSArray+Sort.swift in Sources */,
-				CB29E86F679E9DDC5C5A1C89482701CA /* IQPreviousNextView.swift in Sources */,
-				88A25F661A4435D57041D21700515CC6 /* IQTextView.swift in Sources */,
-				1F0F49D029C4471F2AE3712D1FCB1D8A /* IQTitleBarButtonItem.swift in Sources */,
-				02A8CD406255AE081E99A62241BAC587 /* IQToolbar.swift in Sources */,
-				2384AC373E752D55842F37DE4F2CE2A7 /* IQUIScrollView+Additions.swift in Sources */,
-				B1A7ADAE2CAEDA5D703CE5C6A6DA405B /* IQUITextFieldView+Additions.swift in Sources */,
-				3077B4186B916A8DB980BBB72DF7FFB9 /* IQUIView+Hierarchy.swift in Sources */,
-				9C178A996A6A0F14CF4B1F1D1BA4B2EB /* IQUIView+IQKeyboardToolbar.swift in Sources */,
-				866952184CCB9236E8D567A97A7C3224 /* IQUIViewController+Additions.swift in Sources */,
-				64FFC1F647245F61C405AE7AC1DA9D31 /* IQUIWindow+Hierarchy.swift in Sources */,
+				7903B1D17348ADF5D75752F1A4B6ED32 /* Pods-RecipeApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C3B9395429F8EFDEAC0DB7F8A0DB1412 /* Sources */ = {
+		B5DDB29BF8DC29A67EAC87C1647E0E8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C54EFAC295C408C9CB37D0E8F1FD579B /* Pods-RecipeAppUITests-dummy.m in Sources */,
+				A24B111A2F18EB60FFFAE5C0648B1714 /* Pods-RecipeAppUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6FF4228C14ECAB97A4725BC5D15D6B5F /* PBXTargetDependency */ = {
+		129577211E9661DA2AA51029F30CE1D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = IQKeyboardManagerSwift;
-			target = C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */;
-			targetProxy = 9E743E780F141BE9F421646F27B1FD86 /* PBXContainerItemProxy */;
+			target = B490E7485944099E16C9CBD79119D1D4 /* IQKeyboardManagerSwift */;
+			targetProxy = BA0E08EE52EBDD0D7308BD76C92E6914 /* PBXContainerItemProxy */;
+		};
+		3910D15B083BBB4C4004993C908A0D8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-RecipeApp";
+			target = 8E36E9575D911D1E5C78DA064D05B3CB /* Pods-RecipeApp */;
+			targetProxy = 99B92DADE0D9A774D22172264CF82D04 /* PBXContainerItemProxy */;
+		};
+		693ED907A617622113A6CC273186F909 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "PayPal-iOS-SDK";
+			target = 567CA674524E8EC21855A87ED65D6541 /* PayPal-iOS-SDK */;
+			targetProxy = A60159B3AF0A0B506C2B3C8C6B2A2E2F /* PBXContainerItemProxy */;
+		};
+		D526087C60CBB6D5BE62D8395E6E8A72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CardIO;
+			target = A5AFDBFF44C91B5332DDBF2B370A941E /* CardIO */;
+			targetProxy = EB8F48C5ADE8C792D0628EA31145446D /* PBXContainerItemProxy */;
+		};
+		DF1989491BD9E25D4B414E4A2630B8A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CardIO;
+			target = A5AFDBFF44C91B5332DDBF2B370A941E /* CardIO */;
+			targetProxy = 9AB47CB3AA44F062FD90FDE6F28FEF24 /* PBXContainerItemProxy */;
+		};
+		E91DFEEBF37F4DCF7590593512D1A7B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-RecipeApp";
+			target = 8E36E9575D911D1E5C78DA064D05B3CB /* Pods-RecipeApp */;
+			targetProxy = E58FD72814CC775EBB79032AEA534CB3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		001AE8556727E7ED8B142F689280BFEE /* Release */ = {
+		15011036DC276A3DEAE1BD2282592EF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A1661184DF5CF308CF8341CC71C3946 /* Pods-RecipeAppTests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeAppTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		07182E55116FF2C5A8C7ACDE8B0A3B57 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A32DFC0FABF4B952FD032AF9D0321C34 /* Pods-RecipeAppUITests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeAppUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2D8537CF16CD44EA175F062FD26C847C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8C9E64BA8F1A92B2B2FDB6612ACE177 /* Pods-RecipeApp.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4D049E6148ECCA2DF9A97CC8A4C6A964 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E16101DA3F4ECBAC3C889C8392F7099F /* IQKeyboardManagerSwift.xcconfig */;
+			baseConfigurationReference = E0C17281EF1E67BB870FB6C748D793C2 /* IQKeyboardManagerSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -719,91 +736,24 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
 				PRODUCT_NAME = IQKeyboardManagerSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		57AEE3A9498F5903AB39A11EE4518D4E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B2123506A35B4249A708FDAA5A2CCE3 /* Pods-RecipeAppTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeAppTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		587D858DA381E129590094D91C844F7C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6285C737B6984EBFF4622A74CC69EEAB /* Pods-RecipeApp.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7C07ED8089F70A31B83996A8910D7F18 /* Debug */ = {
+		196DFA3E4A09A28224918543529A1885 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -813,10 +763,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -824,6 +776,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -832,7 +785,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -853,17 +805,146 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		98F29E7567052F62660DDD7069ADF73C /* Release */ = {
+		214F549BB87C4B7C84ED75AB4DB9E4DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0A288422654A947DC0565AB0414A41 /* PayPal-iOS-SDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		34DB0FD20A0999AD5A482E11420B0B9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4ABAE88C9F47ECEF29A8FC472306972 /* Pods-RecipeApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3D62FFBD5B4C144A0A87C393BF4B1AA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CDDD8E4B4674F870A9A3D1B61C6ADAD /* Pods-RecipeAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4A7882F90C994C1525DDB3DA4ABB1EA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92E68F9508AFF7313041BFB3663E96FE /* CardIO.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0A080185E903F0D6BF0C541394BA394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C17281EF1E67BB870FB6C748D793C2 /* IQKeyboardManagerSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -873,10 +954,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -884,6 +967,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -892,7 +976,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -911,17 +994,22 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		CFD80DB712FDBDE4262680DE0D87F74E /* Debug */ = {
+		B66999A02DEA6319B6F6CE91F3AAFE86 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E16101DA3F4ECBAC3C889C8392F7099F /* IQKeyboardManagerSwift.xcconfig */;
+			baseConfigurationReference = EF15A7ECCBEA6B30298712E7388F604C /* Pods-RecipeAppUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -931,38 +1019,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
-				PRODUCT_NAME = IQKeyboardManagerSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FDDFCC2568B34AA4D5B1141628EB5F54 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 442D669EEABC27BD6A8D9B8E9381D9BD /* Pods-RecipeAppUITests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppUITests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -972,7 +1029,139 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RecipeAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C8C233F8B1E1CA4E7F1D83671CC70EB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20CBE4E812D38C2072B9016EFD968DF2 /* Pods-RecipeApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DCBE92FD3FB2D411CB8DA1A7F5C6AA96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0782DCF445964060C6DAA2DCAECE3A06 /* Pods-RecipeAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EEFC3014C06F5634040992540E3FB39B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92E68F9508AFF7313041BFB3663E96FE /* CardIO.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F20EB6712619D77FDF4CACB02F5A7F95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0A288422654A947DC0565AB0414A41 /* PayPal-iOS-SDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC5FA3D2189FEAD276F68D0D3AD9A9D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C49B877B710C89111B223839E06F8E9 /* Pods-RecipeAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -984,52 +1173,70 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		02642E4BA91884E7578FBB0BC8DE305A /* Build configuration list for PBXNativeTarget "Pods-RecipeAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C07ED8089F70A31B83996A8910D7F18 /* Debug */,
-				98F29E7567052F62660DDD7069ADF73C /* Release */,
+				DCBE92FD3FB2D411CB8DA1A7F5C6AA96 /* Debug */,
+				3D62FFBD5B4C144A0A87C393BF4B1AA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		641AEE36B67DA196CF1459C6F62A1716 /* Build configuration list for PBXNativeTarget "Pods-RecipeAppUITests" */ = {
+		2E95944C76AE57E4DC4E69EE14C2352B /* Build configuration list for PBXNativeTarget "Pods-RecipeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FDDFCC2568B34AA4D5B1141628EB5F54 /* Debug */,
-				07182E55116FF2C5A8C7ACDE8B0A3B57 /* Release */,
+				34DB0FD20A0999AD5A482E11420B0B9B /* Debug */,
+				C8C233F8B1E1CA4E7F1D83671CC70EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		752BAA713B081EC04D175FCAFC34BD4C /* Build configuration list for PBXNativeTarget "Pods-RecipeApp" */ = {
+		459A8C45177D746F1BEC5CD92E5DF733 /* Build configuration list for PBXNativeTarget "Pods-RecipeAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D8537CF16CD44EA175F062FD26C847C /* Debug */,
-				587D858DA381E129590094D91C844F7C /* Release */,
+				FC5FA3D2189FEAD276F68D0D3AD9A9D3 /* Debug */,
+				B66999A02DEA6319B6F6CE91F3AAFE86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89C758810A90D2003E3559D60A1D229C /* Build configuration list for PBXNativeTarget "Pods-RecipeAppTests" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				57AEE3A9498F5903AB39A11EE4518D4E /* Debug */,
-				001AE8556727E7ED8B142F689280BFEE /* Release */,
+				196DFA3E4A09A28224918543529A1885 /* Debug */,
+				B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
+		A7155AE59A19533F60ECE3B4045B01F0 /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFD80DB712FDBDE4262680DE0D87F74E /* Debug */,
-				4D049E6148ECCA2DF9A97CC8A4C6A964 /* Release */,
+				15011036DC276A3DEAE1BD2282592EF6 /* Debug */,
+				A0A080185E903F0D6BF0C541394BA394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE2D23DBDD07ECE5D86E860EE36B0BD2 /* Build configuration list for PBXAggregateTarget "CardIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A7882F90C994C1525DDB3DA4ABB1EA7 /* Debug */,
+				EEFC3014C06F5634040992540E3FB39B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF11F82AF4529ABDF1CBF9385097A522 /* Build configuration list for PBXAggregateTarget "PayPal-iOS-SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214F549BB87C4B7C84ED75AB4DB9E4DC /* Debug */,
+				F20EB6712619D77FDF4CACB02F5A7F95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

@@ -20,7 +20,7 @@ $data =  array(
   );
 $body = Unirest\Request\Body::form($data);
 
-$response = Unirest\Request::post('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/visualizeNutrition', $headers, $body);
+$response = Unirest\Request::post('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/visualizeNutrition', $headers, $body);
 
 print_r($response->body);
 

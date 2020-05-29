@@ -301,7 +301,6 @@
 				E4F0C1681EEA357800CE2D6B /* Frameworks */,
 				E4F0C1691EEA357800CE2D6B /* Resources */,
 				107A13DA7573F952BBAF26E2 /* [CP] Embed Pods Frameworks */,
-				41E8DAB381A3B6AF2CCBF572 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,8 +319,6 @@
 				E4F0C17B1EEA357800CE2D6B /* Sources */,
 				E4F0C17C1EEA357800CE2D6B /* Frameworks */,
 				E4F0C17D1EEA357800CE2D6B /* Resources */,
-				91186AB924847194943DE30E /* [CP] Embed Pods Frameworks */,
-				A1315BD3E85328B40FB0C278 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -341,8 +338,6 @@
 				E4F0C1861EEA357800CE2D6B /* Sources */,
 				E4F0C1871EEA357800CE2D6B /* Frameworks */,
 				E4F0C1881EEA357800CE2D6B /* Resources */,
-				96EE99A95278527CC06E6DB7 /* [CP] Embed Pods Frameworks */,
-				AACC0EDAC9EB0A953C4520E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +384,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -458,7 +454,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -467,22 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		41E8DAB381A3B6AF2CCBF572 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		668DA33C1EAB089C781BA0CB /* [CP] Check Pods Manifest.lock */ = {
@@ -501,66 +482,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91186AB924847194943DE30E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96EE99A95278527CC06E6DB7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1315BD3E85328B40FB0C278 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AACC0EDAC9EB0A953C4520E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF6E37A3198C0FC23C7B3E97 /* [CP] Check Pods Manifest.lock */ = {
@@ -777,7 +698,7 @@
 				PRODUCT_NAME = "Foogle Food";
 				SWIFT_OBJC_BRIDGING_HEADER = "RecipeApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -794,7 +715,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RahulKumar.RecipeApp;
 				PRODUCT_NAME = "Foogle Food";
 				SWIFT_OBJC_BRIDGING_HEADER = "RecipeApp-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
